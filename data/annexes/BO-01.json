@@ -1,0 +1,11 @@
+{
+  "code": "BO-01",
+  "version": "1.0",
+  "title": "Bitácora de operaciones (foso / trabajos especiales)",
+  "type": "bitacora",
+  "frequency": "Por cada operación en foso o trabajo especial",
+  "archivalYears": 1,
+  "usedInProtocols": ["P1-02"],
+  "description": "Registra trabajos especiales con técnico, vigía, hora inicio/término y observaciones.",
+  "headerFields": ["Estación / Sucursal", "Fecha", "Responsable de turno"]
+}

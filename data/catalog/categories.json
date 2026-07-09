@@ -1,0 +1,28 @@
+{
+  "categories": [
+    {
+      "id": "P1",
+      "name": "Operaciones en Estación de Servicio",
+      "shortName": "Estación",
+      "description": "Protocolos para operaciones en estaciones físicas con foso, elevadores y atención presencial.",
+      "color": "blue",
+      "icon": "building"
+    },
+    {
+      "id": "P2",
+      "name": "Operaciones en Terreno - Taller Móvil",
+      "shortName": "Taller Móvil",
+      "description": "Protocolos para servicios automotrices a domicilio del cliente.",
+      "color": "teal",
+      "icon": "truck"
+    },
+    {
+      "id": "P3",
+      "name": "Lineamientos Transversales",
+      "shortName": "Transversal",
+      "description": "Protocolos aplicables a todas las operaciones: EPP, primeros auxilios, capacitación.",
+      "color": "green",
+      "icon": "shield"
+    }
+  ]
+}

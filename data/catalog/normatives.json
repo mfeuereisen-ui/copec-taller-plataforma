@@ -1,0 +1,10 @@
+{
+  "normatives": [
+    { "id": "Ley 16.744",       "name": "Ley 16.744", "fullName": "Seguro social contra accidentes del trabajo y enfermedades profesionales" },
+    { "id": "DS 594",           "name": "DS 594", "fullName": "Reglamento sobre condiciones sanitarias y ambientales básicas en lugares de trabajo" },
+    { "id": "DS 40",            "name": "DS 40", "fullName": "Reglamento sobre prevención de riesgos profesionales" },
+    { "id": "NCh 382",          "name": "NCh 382", "fullName": "Sustancias peligrosas — Clasificación general" },
+    { "id": "NCh 2245",         "name": "NCh 2245", "fullName": "Sustancias químicas — Hoja de datos de seguridad" },
+    { "id": "Normativa Bomberos","name": "Bomberos de Chile", "fullName": "Normativa de prevención y combate de incendios" }
+  ]
+}

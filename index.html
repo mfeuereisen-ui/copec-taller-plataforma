@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plataforma de Seguridad Operacional · Copec Taller</title>
+  <meta name="description" content="Plataforma digital del Manual de Seguridad Operacional de Copec Taller." />
+
+  <!-- Favicon inline para evitar 404 -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230B3D91' d='M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z'/%3E%3C/svg%3E" />
+
+  <!-- Tailwind CDN (modo dev/play). Para producción: compilar con Tailwind CLI -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50:  '#EFF6FF',
+              100: '#DBEAFE',
+              200: '#BFDBFE',
+              300: '#93C5FD',
+              500: '#3B82F6',
+              600: '#2563EB',
+              700: '#1D4ED8',
+              800: '#1E40AF',
+              900: '#0B3D91'
+            },
+            safe: {
+              50:  '#F0FDF4',
+              100: '#DCFCE7',
+              300: '#86EFAC',
+              500: '#22C55E',
+              600: '#16A34A',
+              700: '#15803D'
+            },
+            warn: {
+              50:  '#FFFBEB',
+              100: '#FEF3C7',
+              500: '#F59E0B',
+              700: '#B45309'
+            },
+            danger: {
+              50:  '#FEF2F2',
+              100: '#FEE2E2',
+              500: '#EF4444',
+              700: '#B91C1C'
+            },
+            ink: {
+              900: '#0F172A',
+              700: '#334155',
+              500: '#64748B',
+              300: '#CBD5E1',
+              100: '#F1F5F9',
+              50:  '#F8FAFC'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+            display: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
+          },
+          boxShadow: {
+            card:  '0 1px 2px 0 rgb(15 23 42 / 0.04), 0 1px 3px 0 rgb(15 23 42 / 0.06)',
+            cardH: '0 4px 12px -2px rgb(15 23 42 / 0.08), 0 2px 6px -2px rgb(15 23 42 / 0.06)',
+            pop:   '0 10px 32px -8px rgb(15 23 42 / 0.18)'
+          },
+          animation: {
+            'fade-in': 'fadeIn 200ms ease-out',
+            'slide-up': 'slideUp 220ms ease-out'
+          },
+          keyframes: {
+            fadeIn:  { '0%': { opacity: 0 }, '100%': { opacity: 1 } },
+            slideUp: { '0%': { opacity: 0, transform: 'translateY(8px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Inter font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Theme/print CSS local -->
+  <link rel="stylesheet" href="./assets/css/theme.css" />
+
+  <!-- Import map for ESM dependencies -->
+  <script type="importmap">
+  {
+    "imports": {
+      "vue": "https://unpkg.com/vue@3.4.21/dist/vue.esm-browser.prod.js",
+      "vue-router": "https://unpkg.com/vue-router@4.3.0/dist/vue-router.esm-browser.js",
+      "fuse.js": "https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.mjs",
+      "mermaid": "https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.esm.min.mjs"
+    }
+  }
+  </script>
+</head>
+<body class="bg-white text-ink-900 font-sans antialiased">
+  <div id="app">
+    <!-- Loading state visible mientras carga la app -->
+    <div class="min-h-screen flex items-center justify-center">
+      <div class="text-center">
+        <div class="inline-block w-10 h-10 border-4 border-brand-100 border-t-brand-700 rounded-full animate-spin"></div>
+        <p class="mt-4 text-ink-500 text-sm">Cargando plataforma…</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- App entry point -->
+  <script type="module" src="./assets/js/app.js"></script>
+</body>
+</html>
+

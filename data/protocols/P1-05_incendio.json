@@ -1,0 +1,143 @@
+{
+  "code": "P1-05",
+  "version": "1.0",
+  "lastUpdated": "2026-05-15",
+  "title": "Incendio o Conato de Incendio en la Estación",
+  "shortTitle": "Incendio en estación",
+  "category": "P1",
+  "criticality": "alto-riesgo",
+  "service": ["estacion"],
+  "tags": ["incendio", "evacuacion", "emergencia", "extintor"],
+  "icon": "fire",
+
+  "alertBanner": "Emergencia de alto impacto. Priorice la evacuación. La vida siempre es primero que los bienes.",
+
+  "objective": "Establecer la respuesta ante un incendio o conato de incendio en la estación, garantizando la evacuación segura del personal y clientes, el control del fuego si es posible y la notificación oportuna a los servicios de emergencia.",
+  "scope": "Aplica a todos los trabajadores, supervisores, clientes y visitantes presentes en la estación en el momento del incendio.",
+
+  "risks": [
+    { "id": "R1", "description": "Quemaduras por contacto con llamas o superficies calientes", "severity": "alta", "family": "incendio" },
+    { "id": "R2", "description": "Intoxicación por inhalación de humo y gases tóxicos", "severity": "alta", "family": "quimico" },
+    { "id": "R3", "description": "Explosión de recipientes presurizados o de combustibles", "severity": "alta", "family": "incendio" },
+    { "id": "R4", "description": "Pánico colectivo y lesiones durante la evacuación", "severity": "media", "family": "biologico" },
+    { "id": "R5", "description": "Propagación del incendio a vehículos y estructura del edificio", "severity": "alta", "family": "incendio" }
+  ],
+
+  "responsibles": [
+    { "role": "Cualquier trabajador que detecte el fuego", "duty": "Activa la alarma de inmediato" },
+    { "role": "Supervisor de turno", "duty": "Dirige la evacuación y coordina con servicios de emergencia" },
+    { "role": "Personal brigadista", "duty": "Intenta controlar el conato con extintores (solo si es seguro)" },
+    { "role": "Recepcionista / Cajero", "duty": "Evacúa a los clientes en espera" }
+  ],
+
+  "epp": [
+    { "item": "EPP de uso regular (zapatos de seguridad, overol)", "obligatory": true },
+    { "item": "Extintor portátil y máscara de humo", "obligatory": false, "note": "Para brigadistas si está disponible" }
+  ],
+
+  "tools": [
+    { "name": "Extintor ABC", "verification": null, "note": "Fuegos combinados" },
+    { "name": "Extintor CO2", "verification": null, "note": "Fuego eléctrico" },
+    { "name": "Extintor de espuma", "verification": null, "note": "Líquidos inflamables" },
+    { "name": "Sistema de alarma sonora", "verification": null }
+  ],
+
+  "normatives": ["Ley 16.744", "DS 594", "DS 40", "Normativa Bomberos"],
+
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "alert",
+        "title": "Activar alarma y dar aviso",
+        "summary": "Sonar la alarma y gritar 'INCENDIO' para alertar al área.",
+        "description": "Al detectar fuego o humo, active la alarma de incendio (sistema sonoro de la estación) y grite 'INCENDIO' para alertar a todos en el área.",
+        "next": ["s2"]
+      },
+      {
+        "id": "s2",
+        "type": "action",
+        "title": "Llamar a Bomberos (132)",
+        "summary": "Informar dirección, tipo de fuego y si hay atrapados.",
+        "description": "Llame inmediatamente a Bomberos: 132. Informe: dirección exacta, tipo de fuego (líquidos, eléctrico, sólidos), si hay personas atrapadas.",
+        "criticalAlerts": ["No corte la llamada hasta que se confirme la información."],
+        "next": ["s3"]
+      },
+      {
+        "id": "s3",
+        "type": "decision",
+        "title": "¿El conato es pequeño (<1m²) y controlable?",
+        "description": "Solo si está capacitado y el fuego es manejable con extintor portátil.",
+        "yes": "s4",
+        "no": "s5",
+        "yesLabel": "Sí, intentar control",
+        "noLabel": "No, evacuar"
+      },
+      {
+        "id": "s4",
+        "type": "action",
+        "title": "Combatir con extintor adecuado (técnica PASS)",
+        "summary": "ABC / CO2 / espuma según tipo de fuego. Si no cede en 30 s, evacúe.",
+        "description": "Seleccione el extintor correcto: ABC para fuegos combinados, CO2 para fuego eléctrico, espuma para líquidos inflamables. Técnica PASS: Pasador / Apuntar a la base / Apretar palanca / Sweep de lado a lado a 2-3m. Mantenga siempre una ruta de escape a sus espaldas.",
+        "criticalAlerts": ["Si el fuego no cede en 30 segundos, abandone y evacúe."],
+        "next": ["s5"]
+      },
+      {
+        "id": "s5",
+        "type": "action",
+        "title": "Evacuación general",
+        "summary": "Supervisor ordena evacuación por rutas señalizadas.",
+        "description": "El supervisor ordena la evacuación general. Todos los trabajadores y clientes deben abandonar las instalaciones por las rutas de evacuación señalizadas. Evacúe a los clientes hacia el punto de encuentro designado (área exterior señalizada con cartel verde).",
+        "criticalAlerts": ["NO vuelva al interior por objetos personales."],
+        "next": ["s6"]
+      },
+      {
+        "id": "s6",
+        "type": "action",
+        "title": "Conteo en punto de encuentro",
+        "summary": "Supervisor pasa lista; informar a Bomberos si falta alguien.",
+        "description": "En el punto de encuentro, el supervisor pasa lista de todo el personal. Informe a Bomberos si falta alguien. Verifique que nadie quede al interior o cerca de la zona afectada.",
+        "verifications": ["Lista de personal completa", "Clientes en zona segura"],
+        "next": ["s7"]
+      },
+      {
+        "id": "s7",
+        "type": "action",
+        "title": "Espera hasta declaración de seguridad",
+        "summary": "Permanecer en punto de encuentro hasta autorización de Bomberos.",
+        "description": "Permanezca en el punto de encuentro hasta que Bomberos declare el área segura para reingresar. Una vez controlado el incendio: no encienda equipos eléctricos ni inicie operaciones hasta que un técnico autorizado inspeccione las instalaciones.",
+        "next": ["s_end"]
+      },
+      {
+        "id": "s_end",
+        "type": "end",
+        "title": "Incidente cerrado — Reporte obligatorio",
+        "description": "Completar Registro de Emergencias (RE-01) y Reporte de Incidentes (RI-01) dentro de las 24 horas. Notificar al organismo administrador."
+      }
+    ]
+  },
+
+  "stopRules": [
+    "Se detecta humo dentro de las instalaciones aunque no haya llama visible.",
+    "Hay olor a quemado o recalentamiento de cableado.",
+    "Un extintor no opera correctamente al intentar usarlo.",
+    "La evacuación no puede completarse por obstáculos en las rutas de salida.",
+    "Se escuchan detonaciones o hay materiales bajo presión en el área del fuego."
+  ],
+
+  "emergencyActions": [
+    { "situation": "Personas con quemaduras", "action": "NO retire ropa adherida a la piel. Enfríe con agua fría durante 20 minutos. Cubra con paño limpio. Traslade a urgencias." },
+    { "situation": "Alguien inhaló humo", "action": "Traslade a aire fresco. Si hay pérdida de conciencia, active SAMU (131) y aplique primeros auxilios (Protocolo P3-02)." },
+    { "situation": "Contactos de emergencia", "action": "Bomberos: 132. SAMU: 131. Carabineros: 133. Emergencias Copec: [número interno]." },
+    { "situation": "Cierre", "action": "Activar Protocolo P3-03 (Reporte de Incidentes) en 24 horas. Notificar Gerencia y organismo administrador." }
+  ],
+
+  "linkedAnnexes": ["RE-01", "RI-01", "RPA-01"],
+  "linkedProtocols": ["P3-02", "P3-03"],
+
+  "registry": [
+    "Registro de emergencias RE-01: descripción del evento, hora, causa probable, daños, acciones tomadas.",
+    "Formulario de Reporte de Incidentes RI-01 enviado al organismo administrador.",
+    "Inspección y recarga de extintores posterior al evento."
+  ]
+}

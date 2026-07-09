@@ -1,0 +1,183 @@
+{
+  "code": "P3-02",
+  "version": "1.0",
+  "lastUpdated": "2026-05-15",
+  "title": "Primeros Auxilios y Activación de Emergencias Médicas",
+  "shortTitle": "Primeros auxilios",
+  "category": "P3",
+  "criticality": "alto-riesgo",
+  "service": ["ambos"],
+  "tags": ["primeros-auxilios", "samu", "rcp", "emergencia-medica", "transversal"],
+  "icon": "medical",
+
+  "alertBanner": "Una atención oportuna y correcta puede salvar vidas. Aplique el protocolo paso a paso sin titubear.",
+
+  "objective": "Proporcionar atención de primeros auxilios adecuada ante lesiones o emergencias médicas que afecten a trabajadores o clientes, mientras se activan los servicios de emergencia profesionales.",
+  "scope": "Aplica a todos los trabajadores de Copec Taller en sus distintas modalidades. El botiquín de primeros auxilios debe estar disponible y operativo en todo momento en la estación / sucursal y en el taller móvil.",
+
+  "risks": [
+    { "id": "R1", "description": "Demora en la atención que agrava lesiones", "severity": "alta", "family": "biologico" },
+    { "id": "R2", "description": "Aplicación incorrecta de primeros auxilios que empeora la condición", "severity": "alta", "family": "biologico" },
+    { "id": "R3", "description": "Botiquín incompleto o con insumos vencidos", "severity": "media", "family": "biologico" },
+    { "id": "R4", "description": "Personal sin conocimientos básicos de primeros auxilios", "severity": "alta", "family": "biologico" }
+  ],
+
+  "responsibles": [
+    { "role": "Primer respondedor", "duty": "Cualquier trabajador capacitado aplica primeros auxilios básicos" },
+    { "role": "Supervisor de turno", "duty": "Coordina la emergencia y notifica a los servicios pertinentes" },
+    { "role": "Empresa", "duty": "Capacita al personal en primeros auxilios (mínimo 1 persona certificada por turno)" }
+  ],
+
+  "epp": [
+    { "item": "Guantes de látex o nitrilo descartables", "obligatory": true, "note": "Siempre en el botiquín" },
+    { "item": "Mascarilla para RCP", "obligatory": true, "note": "En el botiquín" }
+  ],
+
+  "tools": [
+    { "name": "Botiquín de primeros auxilios", "verification": "RB-01" },
+    { "name": "DEA (desfibrilador externo automático)", "verification": null, "note": "Si está disponible" }
+  ],
+
+  "normatives": ["Ley 16.744", "DS 594", "Directrices ACHS/Mutual"],
+
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "action",
+        "title": "Evaluar la escena",
+        "summary": "¿Es segura? ¿Hay riesgo eléctrico, gas, derrumbe o tráfico?",
+        "description": "Evalúe la escena antes de acercarse: ¿Es segura? ¿Hay riesgo eléctrico, de derrumbe, gas o tráfico? Si no es segura, NO ingrese hasta que el riesgo sea controlado.",
+        "criticalAlerts": ["Si no es segura: NO ingrese. Controle primero el riesgo."],
+        "next": ["s2"]
+      },
+      {
+        "id": "s2",
+        "type": "action",
+        "title": "Evaluación primaria del accidentado (DR. ABCD)",
+        "summary": "Danger / Response / Airway / Breathing / Circulation / Defibrillation.",
+        "description": "D — Peligro. R — Respuesta (¿Responde?). A — Vía aérea (¿Está despejada?). B — Respiración (¿Respira?). C — Circulación (¿Pulso? ¿Hemorragia?). D — Desfibrilación (si hay paro y DEA disponible).",
+        "verifications": ["Peligro controlado", "Estado de conciencia evaluado", "Vía aérea revisada", "Respiración y pulso evaluados"],
+        "next": ["s3"]
+      },
+      {
+        "id": "s3",
+        "type": "decision",
+        "title": "¿Respira y tiene pulso?",
+        "yes": "s4",
+        "no": "s_rcp",
+        "yesLabel": "Sí",
+        "noLabel": "No"
+      },
+      {
+        "id": "s_rcp",
+        "type": "alert",
+        "title": "Iniciar RCP inmediato (30:2)",
+        "summary": "30 compresiones torácicas + 2 ventilaciones. Continúe hasta SAMU.",
+        "description": "Si el accidentado NO respira y NO tiene pulso: inicie RCP inmediatamente. 30 compresiones torácicas seguidas de 2 ventilaciones. Continúe hasta que llegue el SAMU o el accidentado recupere la conciencia. Si hay DEA disponible, úselo.",
+        "criticalAlerts": ["No interrumpa la RCP por más de 10 segundos."],
+        "next": ["s4"]
+      },
+      {
+        "id": "s4",
+        "type": "action",
+        "title": "Llamar al SAMU (131)",
+        "summary": "Proporcionar dirección, víctimas, tipo de lesión y contacto.",
+        "description": "Llame al SAMU (131) o pida a otra persona que llame mientras aplica primeros auxilios. Proporcione: dirección exacta, número de víctimas, tipo de lesión, su nombre y teléfono.",
+        "next": ["s5"]
+      },
+      {
+        "id": "s5",
+        "type": "decision",
+        "title": "¿Qué tipo de lesión presenta?",
+        "description": "Selecciona el tipo de lesión para el manejo específico.",
+        "branches": [
+          { "label": "Hemorragia", "next": "s_hem" },
+          { "label": "Fractura", "next": "s_frac" },
+          { "label": "Quemadura", "next": "s_quem" },
+          { "label": "Cuerpo extraño en ojo", "next": "s_ojo" },
+          { "label": "Golpe en cabeza", "next": "s_cab" },
+          { "label": "Inhalación de gases", "next": "s_gas" }
+        ]
+      },
+      {
+        "id": "s_hem",
+        "type": "action",
+        "title": "Hemorragia: presión directa",
+        "description": "Presione directamente sobre la herida con un paño limpio o gasa. Mantenga la presión constante. No levante el paño para revisar. Si el paño se empapa, agregue otro encima.",
+        "next": ["s_aco"]
+      },
+      {
+        "id": "s_frac",
+        "type": "action",
+        "title": "Fractura: inmovilizar sin alinear",
+        "description": "Inmovilice el miembro sin intentar alinear el hueso. Use tablillas improvisadas si es necesario.",
+        "next": ["s_aco"]
+      },
+      {
+        "id": "s_quem",
+        "type": "action",
+        "title": "Quemadura: agua fría 20 minutos",
+        "description": "Enfríe con agua fría durante mínimo 20 minutos. NO use hielo, ni cremas, ni pasta de dientes. Cubra con paño limpio y húmedo.",
+        "next": ["s_aco"]
+      },
+      {
+        "id": "s_ojo",
+        "type": "action",
+        "title": "Cuerpo extraño en ojo: enjuagar",
+        "description": "NO frote. Enjuague con agua limpia de forma continua. Cubra con apósito limpio. Traslade a urgencias.",
+        "next": ["s_aco"]
+      },
+      {
+        "id": "s_cab",
+        "type": "action",
+        "title": "Golpe en cabeza con pérdida de conciencia",
+        "description": "NO mueva a la persona. Mantenga vía aérea despejada. Espere al SAMU.",
+        "criticalAlerts": ["Sospecha de lesión cervical: NO mover bajo ninguna circunstancia."],
+        "next": ["s_aco"]
+      },
+      {
+        "id": "s_gas",
+        "type": "action",
+        "title": "Intoxicación / Inhalación de gases",
+        "description": "Traslade a la víctima a aire fresco. Si no respira, inicie RCP. Llame al SAMU.",
+        "next": ["s_aco"]
+      },
+      {
+        "id": "s_aco",
+        "type": "action",
+        "title": "Acompañar hasta llegada del SAMU",
+        "summary": "No administrar medicamentos. No ofrecer agua si requiere cirugía.",
+        "description": "No administre medicamentos sin indicación médica. No ofrezca agua ni alimentos si la persona puede requerir cirugía. Acompañe al lesionado hasta que llegue el SAMU o hasta que sea trasladado al centro asistencial.",
+        "next": ["s_end"]
+      },
+      {
+        "id": "s_end",
+        "type": "end",
+        "title": "Atención registrada",
+        "description": "Completar Registro de Atención de Primeros Auxilios (RPA-01). Si fue trabajador, abrir Reporte de Incidentes (RI-01) y DIAT al organismo administrador."
+      }
+    ]
+  },
+
+  "stopRules": [
+    "El botiquín no tiene insumos básicos (gasas, guantes, vendas): reponer de inmediato.",
+    "Ningún trabajador del turno tiene capacitación en primeros auxilios: notificar a la gerencia.",
+    "La persona accidentada tiene sospecha de lesión de columna: NO moverla bajo ninguna circunstancia."
+  ],
+
+  "emergencyActions": [
+    { "situation": "Contactos de emergencia", "action": "SAMU: 131. Bomberos: 132. Carabineros: 133." },
+    { "situation": "Centro asistencial", "action": "Centro asistencial ACHS/Mutual: dirección y teléfono actualizados en cartelera de la estación y en el taller móvil." },
+    { "situation": "Paro cardíaco con DEA disponible", "action": "El supervisor designa a una persona para traer el DEA de inmediato al inicio de un paro cardíaco." }
+  ],
+
+  "linkedAnnexes": ["RPA-01", "RB-01", "CP-01", "RI-01"],
+  "linkedProtocols": ["P3-03", "P1-06", "P1-07", "P2-03"],
+
+  "registry": [
+    "Registro de atención de primeros auxilios (RPA-01).",
+    "Revisión mensual del botiquín (RB-01).",
+    "Registro de capacitación en primeros auxilios del personal (CP-01)."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "code": "LV-FOSO-01",
+  "version": "1.0",
+  "title": "Lista de verificación del foso de inspección",
+  "type": "checklist",
+  "frequency": "Antes de cada jornada de trabajo en el foso",
+  "archivalYears": 1,
+  "usedInProtocols": ["P1-02"],
+  "description": "Garantiza que el foso de inspección está en condiciones de seguridad antes de iniciar el trabajo.",
+  "headerFields": ["Estación / Sucursal", "Fecha", "Técnico", "Técnico de superficie", "Supervisor", "Hora de inicio"],
+  "checks": [
+    "Área delimitada con barreras y conos a ambos lados del acceso",
+    "Iluminación del foso operativa (mínimo 300 lux)",
+    "Foso libre de líquidos acumulados, aceite o residuos",
+    "Bordes del foso limpios y secos",
+    "Escalera de acceso firme, completa y en buen estado",
+    "Ventilación del foso activa (mínimo 5 min antes de ingresar)",
+    "Medición de gases realizada (CO ≤ 25 ppm TWA, DS 594)",
+    "Detector de gases disponible y operativo (si aplica)",
+    "Vehículo posicionado con motor apagado",
+    "Cuñas colocadas y freno de mano aplicado",
+    "Barreras físicas instaladas adelante y atrás del vehículo",
+    "Lámpara portátil con protección antiexplosión (ATEX) disponible",
+    "Extintor accesible cerca del área",
+    "Técnico de superficie asignado y presente"
+  ],
+  "stopRule": "No se autoriza el ingreso al foso si algún ítem está marcado como FALLA o si la medición de gases supera el límite permitido."
+}

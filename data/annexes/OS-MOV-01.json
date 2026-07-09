@@ -1,0 +1,11 @@
+{
+  "code": "OS-MOV-01",
+  "version": "1.0",
+  "title": "Orden de servicio móvil",
+  "type": "orden-servicio",
+  "frequency": "Por cada servicio a domicilio",
+  "archivalYears": 1,
+  "usedInProtocols": ["P2-02"],
+  "description": "Documenta cada servicio a domicilio: cliente, vehículo, evaluación del espacio, servicio realizado, residuos retirados, incidencias.",
+  "headerFields": ["N° de orden", "Fecha", "Cliente", "Teléfono", "Dirección", "Vehículo (marca/modelo/patente)", "Técnico", "Hora de llegada"]
+}

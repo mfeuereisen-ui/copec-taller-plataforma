@@ -1,0 +1,23 @@
+{
+  "code": "IPTM-01",
+  "version": "1.0",
+  "title": "Inspección preoperacional — Taller móvil",
+  "type": "inspeccion-preoperacional",
+  "frequency": "Diaria, al inicio de cada jornada",
+  "archivalYears": 1,
+  "usedInProtocols": ["P2-02"],
+  "description": "Garantiza que el vehículo, los equipos de levantamiento y los elementos de emergencia del taller móvil estén operativos antes de salir a terreno.",
+  "headerFields": ["Patente del vehículo", "Fecha", "Técnico responsable", "Km inicial", "Supervisor", "Hora"],
+  "checks": [
+    "Niveles de aceite, refrigerante y líquido de frenos correctos",
+    "Neumáticos en buen estado y presión correcta (incl. repuesto)",
+    "Luces, intermitentes y balizas operativas",
+    "Documentación al día (permiso, revisión técnica, seguro, SOAP)",
+    "Gato hidráulico sin fugas y operativo",
+    "Caballetes completos, sin deformaciones, con pasador",
+    "Cuñas para ruedas disponibles",
+    "Kit de derrames completo",
+    "Botiquín completo",
+    "EPP completo del técnico"
+  ]
+}

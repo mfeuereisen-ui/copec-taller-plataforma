@@ -1,0 +1,81 @@
+/* Plataforma Copec Taller — Tema + impresión */
+
+:root {
+  --brand-900: #0B3D91;
+  --brand-700: #1D4ED8;
+  --brand-100: #DBEAFE;
+  --safe-600:  #16A34A;
+  --safe-100:  #DCFCE7;
+  --warn-700:  #B45309;
+  --warn-100:  #FEF3C7;
+  --danger-700:#B91C1C;
+  --danger-100:#FEE2E2;
+  --ink-900:   #0F172A;
+  --ink-700:   #334155;
+  --ink-500:   #64748B;
+  --ink-100:   #F1F5F9;
+}
+
+/* Scrollbar discreto */
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 8px; }
+*::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+/* Transiciones suaves */
+.page-fade-enter-active, .page-fade-leave-active { transition: opacity 180ms ease; }
+.page-fade-enter-from, .page-fade-leave-to { opacity: 0; }
+
+/* === Mermaid tema custom === */
+#mermaid-container svg { max-width: 100%; height: auto; }
+.mermaid .node rect, .mermaid .node polygon, .mermaid .node circle {
+  filter: drop-shadow(0 1px 2px rgba(15,23,42,0.06));
+}
+.mermaid .nodeStep rect { fill: #DBEAFE; stroke: #1D4ED8; stroke-width: 1.5px; }
+.mermaid .nodeStep .label { color: #0F172A; }
+.mermaid .nodeDecision polygon { fill: #FEF3C7; stroke: #B45309; stroke-width: 1.5px; }
+.mermaid .nodeAlert rect { fill: #FEE2E2; stroke: #B91C1C; stroke-width: 1.5px; }
+.mermaid .nodeEnd rect { fill: #DCFCE7; stroke: #15803D; stroke-width: 1.5px; }
+.mermaid .nodeCurrent rect, .mermaid .nodeCurrent polygon {
+  stroke-width: 3px !important;
+  filter: drop-shadow(0 2px 8px rgba(11,61,145,0.25)) !important;
+}
+
+/* Diagrama: cursor interactivo */
+.mermaid .node { cursor: pointer; transition: opacity 150ms; }
+.mermaid .node:hover { opacity: 0.85; }
+
+/* Líneas */
+.mermaid .edgePath .path { stroke: #94A3B8; stroke-width: 1.5px; }
+.mermaid .edgeLabel { background: white !important; color: #475569; font-size: 12px; padding: 2px 6px; }
+
+/* Animación entrada */
+.fade-in { animation: fadeIn 200ms ease-out; }
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+
+.slide-up-enter-active { transition: all 220ms ease-out; }
+.slide-up-leave-active { transition: all 180ms ease-in; }
+.slide-up-enter-from { opacity: 0; transform: translateX(20px); }
+.slide-up-leave-to   { opacity: 0; transform: translateX(20px); }
+
+/* === IMPRESIÓN === */
+@media print {
+  body { background: white; }
+  .no-print { display: none !important; }
+  .print-block { display: block !important; }
+  nav, aside, header.app-header { display: none !important; }
+  main { max-width: none !important; padding: 0 !important; }
+  .protocol-detail { page-break-inside: avoid; }
+  a[href]:after { content: ""; }
+  .shadow-card, .shadow-cardH, .shadow-pop { box-shadow: none !important; }
+  .rounded-2xl, .rounded-xl { border-radius: 0 !important; }
+  .bg-ink-50, .bg-ink-100 { background: white !important; }
+}
+
+/* Skeleton loader */
+.skeleton {
+  background: linear-gradient(90deg, #F1F5F9 0%, #E2E8F0 50%, #F1F5F9 100%);
+  background-size: 200% 100%;
+  animation: skeleton 1.4s linear infinite;
+}
+@keyframes skeleton { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }

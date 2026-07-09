@@ -1,0 +1,12 @@
+{
+  "code": "RPA-01",
+  "version": "1.0",
+  "title": "Registro de atención de primeros auxilios",
+  "type": "registro-evento",
+  "frequency": "Ante cada atención de primeros auxilios",
+  "archivalYears": 5,
+  "usedInProtocols": ["P3-02"],
+  "description": "Bitácora de toda atención de primeros auxilios, por menor que sea, para seguimiento y eventual derivación.",
+  "headerFields": ["Fecha", "Hora", "Persona atendida", "Trabajador / Cliente", "Tipo de lesión", "Acciones brindadas", "Derivación", "Atendido por"],
+  "stopRule": "Ante pérdida de conciencia, dificultad para respirar, hemorragia severa o síntomas de infarto/ACV, llame al SAMU (131) de inmediato."
+}

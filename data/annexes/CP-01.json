@@ -1,0 +1,11 @@
+{
+  "code": "CP-01",
+  "version": "1.0",
+  "title": "Registro de capacitación en primeros auxilios",
+  "type": "registro-capacitacion",
+  "frequency": "Por cada actividad de capacitación",
+  "archivalYears": 3,
+  "usedInProtocols": ["P3-02"],
+  "description": "Registra asistencia y firmas de capacitación en primeros auxilios.",
+  "headerFields": ["Tema / curso", "Fecha", "Duración", "Relator / organismo", "Lugar", "N° asistentes"]
+}

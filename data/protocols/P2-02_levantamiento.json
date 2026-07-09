@@ -1,0 +1,195 @@
+{
+  "code": "P2-02",
+  "version": "1.0",
+  "lastUpdated": "2026-05-15",
+  "title": "Levantamiento Seguro del Vehículo con Gato Hidráulico y Caballetes en Domicilio",
+  "shortTitle": "Levantamiento en domicilio",
+  "category": "P2",
+  "criticality": "alto-riesgo",
+  "service": ["movil"],
+  "tags": ["gato", "caballetes", "aplastamiento", "domicilio", "taller-movil"],
+  "icon": "home",
+
+  "alertBanner": "RIESGO DE APLASTAMIENTO FATAL. El gato hidráulico es un equipo de posicionamiento, NO de soporte. Siempre use caballetes.",
+
+  "objective": "Elevar y sostener de forma segura un vehículo en el domicilio del cliente utilizando gato hidráulico y caballetes, garantizando la estabilidad del vehículo y la integridad del técnico durante la intervención bajo el vehículo.",
+  "scope": "Aplica al técnico de taller móvil en todo servicio que requiera elevar parcial o totalmente el vehículo del cliente fuera de la estación de servicio.",
+
+  "risks": [
+    { "id": "R1", "description": "Caída del vehículo por falla o deslizamiento del gato hidráulico", "severity": "alta", "family": "aplastamiento" },
+    { "id": "R2", "description": "Aplastamiento del técnico bajo el vehículo", "severity": "alta", "family": "aplastamiento" },
+    { "id": "R3", "description": "Volcamiento del vehículo por posicionamiento incorrecto del gato", "severity": "alta", "family": "aplastamiento" },
+    { "id": "R4", "description": "Deslizamiento del vehículo sobre superficies inclinadas", "severity": "alta", "family": "aplastamiento" },
+    { "id": "R5", "description": "Rotura o deformación de puntos de apoyo del vehículo", "severity": "media", "family": "aplastamiento" },
+    { "id": "R6", "description": "Lesiones por manejo inadecuado del gato hidráulico (aplastamiento de manos)", "severity": "media", "family": "ergonomico" }
+  ],
+
+  "responsibles": [
+    { "role": "Técnico de taller móvil", "duty": "Ejecuta el procedimiento en su totalidad" },
+    { "role": "Cliente", "duty": "No debe intervenir ni acercarse al vehículo elevado" }
+  ],
+
+  "epp": [
+    { "item": "Zapatos de seguridad", "obligatory": true },
+    { "item": "Guantes de trabajo", "obligatory": true },
+    { "item": "Lentes de seguridad", "obligatory": true },
+    { "item": "Rodilleras para trabajo en piso", "obligatory": false, "note": "Recomendado" }
+  ],
+
+  "tools": [
+    { "name": "Gato hidráulico", "verification": "IPTM-01" },
+    { "name": "Caballetes (jamais inferior a 2)", "verification": "IPTM-01" },
+    { "name": "Cuñas para ruedas", "verification": null },
+    { "name": "Adaptadores de goma para gato", "verification": null }
+  ],
+
+  "normatives": ["Ley 16.744", "DS 594", "DS 40"],
+
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "decision",
+        "title": "¿Espacio cumple condiciones (P2-01)?",
+        "description": "Superficie plana, firme, nivelada y sin riesgos en el entorno.",
+        "yes": "s2",
+        "no": "s_reject",
+        "yesLabel": "Sí, apto",
+        "noLabel": "No, no apto"
+      },
+      {
+        "id": "s2",
+        "type": "action",
+        "title": "Inspección del gato hidráulico",
+        "summary": "Sin fugas, brazo sin deformación, descenso suave.",
+        "description": "Inspeccione el gato hidráulico antes de usar: sin fugas de aceite, brazo sin deformaciones, descenso suave y controlado.",
+        "criticalAlerts": ["Si detecta fallas, NO use el gato. Notifique al supervisor."],
+        "verifications": ["Sin fugas de aceite", "Brazo sin deformaciones", "Descenso suave"],
+        "next": ["s3"]
+      },
+      {
+        "id": "s3",
+        "type": "action",
+        "title": "Inspección de los caballetes",
+        "summary": "Sin grietas, sin deformaciones, pasadores firmes.",
+        "description": "Inspeccione los caballetes: sin grietas, sin deformaciones, pernos de ajuste de altura firmes.",
+        "verifications": ["Caballetes íntegros", "Pasadores firmes"],
+        "next": ["s4"]
+      },
+      {
+        "id": "s4",
+        "type": "action",
+        "title": "Inmovilización del vehículo",
+        "summary": "Freno de mano + cuñas en ruedas opuestas.",
+        "description": "Aplique el freno de mano del vehículo y coloque cuñas en las ruedas opuestas a las que va a elevar.",
+        "verifications": ["Freno de mano activado", "Cuñas en ruedas opuestas"],
+        "next": ["s5"]
+      },
+      {
+        "id": "s5",
+        "type": "action",
+        "title": "Identificación de puntos de levantamiento",
+        "summary": "Según manual del fabricante o marcas en la carrocería.",
+        "description": "Identifique los puntos de levantamiento correctos del vehículo según el manual del fabricante o las marcas de la carrocería. Coloque el adaptador de goma en la cazoleta del gato.",
+        "criticalAlerts": ["NUNCA apoye el gato en el fondo de la carrocería, tubo de escape ni componentes plásticos."],
+        "next": ["s6"]
+      },
+      {
+        "id": "s6",
+        "type": "action",
+        "title": "Posicionamiento del gato",
+        "summary": "Gato vertical, base completamente apoyada en el suelo.",
+        "description": "Posicione el gato directamente bajo el punto de levantamiento. Verifique que el gato esté perfectamente vertical y que la base esté completamente apoyada en el suelo.",
+        "verifications": ["Gato vertical", "Base totalmente apoyada"],
+        "next": ["s7"]
+      },
+      {
+        "id": "s7",
+        "type": "action",
+        "title": "Elevación inicial y prueba de estabilidad",
+        "summary": "Elevar 20 cm y verificar equilibrio.",
+        "description": "Eleve el vehículo lentamente. Detenga a unos 20 cm del suelo y verifique que el vehículo esté estable y equilibrado.",
+        "criticalAlerts": ["Si hay inclinación anormal, baje y reposicione."],
+        "next": ["s8"]
+      },
+      {
+        "id": "s8",
+        "type": "action",
+        "title": "Instalación de los caballetes",
+        "summary": "Caballetes bajo refuerzos de umbral o puntos marcados.",
+        "description": "Continúe elevando hasta la altura mínima necesaria para instalar los caballetes. Coloque los caballetes bajo los puntos de soporte designados del vehículo. Ajuste la altura del caballete hasta que quede firme.",
+        "next": ["s9"]
+      },
+      {
+        "id": "s9",
+        "type": "action",
+        "title": "Transferencia de peso a los caballetes",
+        "summary": "Bajar el gato hasta que los caballetes soporten el vehículo.",
+        "description": "Baje el gato hidráulico lentamente hasta que el peso del vehículo recaiga sobre los caballetes. Verifique que los caballetes soporten el peso de forma estable. Sacuda levemente el vehículo para confirmar estabilidad.",
+        "criticalAlerts": ["Si hay movimiento: eleve con el gato, reposicione caballetes y repita."],
+        "next": ["s10"]
+      },
+      {
+        "id": "s10",
+        "type": "decision",
+        "title": "¿Vehículo estable sobre los caballetes?",
+        "yes": "s11",
+        "no": "s9",
+        "yesLabel": "Sí, estable",
+        "noLabel": "No, reposicionar"
+      },
+      {
+        "id": "s11",
+        "type": "action",
+        "title": "Trabajo bajo el vehículo",
+        "summary": "El gato queda como respaldo, NO como soporte único.",
+        "description": "SOLO cuando los caballetes estén firmemente instalados y el peso del vehículo descanse sobre ellos, proceda a trabajar bajo el vehículo. El gato puede permanecer como respaldo, pero NO como soporte único.",
+        "criticalAlerts": ["NO trabaje bajo un vehículo sostenido únicamente por un gato hidráulico."],
+        "next": ["s12"]
+      },
+      {
+        "id": "s12",
+        "type": "action",
+        "title": "Descenso del vehículo",
+        "summary": "Elevar con gato → retirar caballetes → bajar → retirar cuñas.",
+        "description": "Para bajar el vehículo: eleve con el gato para liberar el peso de los caballetes. Retire los caballetes. Baje lentamente con el gato. Retire el gato y las cuñas.",
+        "next": ["s_end"]
+      },
+      {
+        "id": "s_reject",
+        "type": "alert",
+        "title": "No realizar el servicio en este espacio",
+        "description": "El técnico está autorizado a NO realizar el servicio si el espacio no cumple condiciones de seguridad. Notifique al supervisor y proponga reagendar.",
+        "next": []
+      },
+      {
+        "id": "s_end",
+        "type": "end",
+        "title": "Servicio cerrado",
+        "description": "Completar Orden de Servicio Móvil (OS-MOV-01). Registrar uso de equipos en IPTM-01."
+      }
+    ]
+  },
+
+  "stopRules": [
+    "El gato no mantiene la presión y el vehículo baja lentamente por sí solo.",
+    "El vehículo queda inclinado o en desequilibrio al elevarse.",
+    "Los caballetes no logran asentarse de forma firme en el punto de apoyo.",
+    "La superficie donde está el gato o los caballetes comienza a ceder o hundirse.",
+    "El cliente u otra persona se acerca o intenta entrar al área bajo el vehículo elevado."
+  ],
+
+  "emergencyActions": [
+    { "situation": "Vehículo cae", "action": "Retírese inmediatamente del área. Si hay lesionados, llame al SAMU (131). NO intente mover al lesionado si hay sospecha de trauma vertebral. Active Protocolo P2-03 y P3-02." },
+    { "situation": "Cierre", "action": "Notifique al supervisor de inmediato. Preserve la escena para la investigación." }
+  ],
+
+  "linkedAnnexes": ["IPTM-01", "OS-MOV-01", "RI-01"],
+  "linkedProtocols": ["P2-01", "P2-03", "P3-02", "P3-03"],
+
+  "registry": [
+    "Inspección del gato y caballetes en la Planilla IPTM-01 al inicio de cada turno.",
+    "Registro del servicio en la Orden de Servicio Móvil (OS-MOV-01).",
+    "Reporte de Incidentes RI-01 ante cualquier situación de caída o inestabilidad."
+  ]
+}

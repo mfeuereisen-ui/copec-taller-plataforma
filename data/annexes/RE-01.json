@@ -1,0 +1,17 @@
+{
+  "code": "RE-01",
+  "version": "1.0",
+  "title": "Registro de emergencias",
+  "type": "registro-evento",
+  "frequency": "Ante cada emergencia (incendio, evacuación, etc.)",
+  "archivalYears": 5,
+  "usedInProtocols": ["P1-05"],
+  "description": "Documenta toda emergencia que active los protocolos de respuesta de Copec Taller.",
+  "headerFields": ["Fecha", "Hora de inicio", "Hora de control", "Lugar / Estación", "Tipo de emergencia", "Reportado por"],
+  "sections": [
+    "Tipo de emergencia (incendio, derrame mayor, explosión, sismo, emergencia médica, otra)",
+    "Descripción del evento y causa probable",
+    "Acciones tomadas / recursos utilizados (extintores, Bomberos 132, SAMU 131)",
+    "Daños y consecuencias (lesionados, daños materiales, interrupción de operación)"
+  ]
+}

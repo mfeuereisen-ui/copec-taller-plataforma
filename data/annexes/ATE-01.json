@@ -1,0 +1,12 @@
+{
+  "code": "ATE-01",
+  "version": "1.0",
+  "title": "Autorización de trabajo en espacio confinado / ventilación limitada",
+  "type": "permiso-trabajo",
+  "frequency": "Antes de cada ingreso a espacio confinado",
+  "archivalYears": 1,
+  "usedInProtocols": ["P1-02"],
+  "description": "Permiso formal antes del ingreso a espacios confinados o con ventilación limitada.",
+  "headerFields": ["Fecha", "Lugar", "Descripción del trabajo", "Hora inicio", "Hora término estimada", "Vigencia"],
+  "stopRule": "Sin medición de gases dentro de límite o sin vigía asignado, no se autoriza el ingreso."
+}

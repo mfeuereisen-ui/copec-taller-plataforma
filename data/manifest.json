@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "generated": "2026-06-05T02:48:35.185Z",
+  "platform": {
+    "name": "Plataforma de Seguridad Operacional",
+    "owner": "Copec Taller",
+    "manualVersion": "1.0",
+    "manualDate": "Mayo 2026"
+  },
+  "protocols": [
+    "P1-01_elevador.json",
+    "P1-02_foso.json",
+    "P1-05_incendio.json",
+    "P2-02_levantamiento.json",
+    "P3-02_primeros-auxilios.json"
+  ],
+  "annexes": [
+    "ATE-01.json",
+    "BO-01.json",
+    "CP-01.json",
+    "IPTM-01.json",
+    "LV-ELE-01.json",
+    "LV-FOSO-01.json",
+    "OS-MOV-01.json",
+    "RB-01.json",
+    "RE-01.json",
+    "RI-01.json",
+    "RMG-01.json",
+    "RPA-01.json"
+  ]
+}

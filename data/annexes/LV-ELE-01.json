@@ -1,0 +1,28 @@
+{
+  "code": "LV-ELE-01",
+  "version": "1.0",
+  "title": "Lista de verificación preoperacional del elevador",
+  "type": "checklist",
+  "frequency": "Al inicio de cada turno (por cada elevador en uso)",
+  "archivalYears": 1,
+  "usedInProtocols": ["P1-01"],
+  "description": "Permite validar que el elevador hidráulico/neumático se encuentra en condiciones seguras antes de su operación.",
+  "headerFields": ["Estación / Sucursal", "Fecha", "N° o identificación del elevador", "Turno", "Técnico que inspecciona", "Hora"],
+  "checks": [
+    "Elevador en posición completamente baja al iniciar la revisión",
+    "Brazos limpios, sin aceite ni grasa",
+    "Brazos sin deformaciones, fisuras ni desgaste anormal",
+    "Adaptadores de goma (tacones) presentes y en buen estado",
+    "Mangueras hidráulicas / neumáticas sin fugas ni grietas",
+    "Nivel de aceite hidráulico correcto (si aplica)",
+    "Mecanismos de bloqueo / pestillos de seguridad funcionales",
+    "Botonera de mando operativa (sube, baja, parada)",
+    "Parada de emergencia operativa",
+    "Pernos y anclajes de la columna firmes",
+    "Cables / cadenas de sincronización sin daños (si aplica)",
+    "Área perimetral despejada y señalizada",
+    "Piso del área sin derrames ni obstáculos",
+    "Cuñas para ruedas disponibles"
+  ],
+  "stopRule": "Si CUALQUIER ítem se marca FALLA, el elevador NO debe utilizarse. Notifique al supervisor."
+}

@@ -1,0 +1,13 @@
+{
+  "riskFamilies": [
+    { "id": "aplastamiento", "name": "Caída / Aplastamiento", "severity": "alta", "icon": "warning" },
+    { "id": "incendio",      "name": "Incendio y Explosión",  "severity": "alta", "icon": "fire" },
+    { "id": "quimico",       "name": "Exposición Química",    "severity": "media", "icon": "flask" },
+    { "id": "electrico",     "name": "Riesgo Eléctrico",      "severity": "media", "icon": "bolt" },
+    { "id": "vial",          "name": "Accidente Vial",        "severity": "alta", "icon": "car" },
+    { "id": "derrame",       "name": "Derrames / Contaminación", "severity": "media", "icon": "droplet" },
+    { "id": "ergonomico",    "name": "Lesión Ergonómica",     "severity": "baja", "icon": "person" },
+    { "id": "personal",      "name": "Agresión / Zona Insegura", "severity": "media", "icon": "user-shield" },
+    { "id": "biologico",     "name": "Emergencia Médica",     "severity": "alta", "icon": "medical" }
+  ]
+}
