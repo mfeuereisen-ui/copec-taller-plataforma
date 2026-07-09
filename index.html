@@ -9,6 +9,14 @@
   <!-- Favicon inline para evitar 404 -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230B3D91' d='M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z'/%3E%3C/svg%3E" />
 
+  <!-- Flags globales que Vue espera al usar la build "esm-browser".
+       Sin esto, Vue arroja "__VUE_PROD_DEVTOOLS__ is not defined". -->
+  <script>
+    window.__VUE_OPTIONS_API__ = true;
+    window.__VUE_PROD_DEVTOOLS__ = false;
+    window.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__ = false;
+  </script>
+
   <!-- Tailwind CDN (modo dev/play). Para producción: compilar con Tailwind CLI -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -87,8 +95,8 @@
   <link rel="stylesheet" href="./assets/css/theme.css" />
 
   <!-- Import map for ESM dependencies.
-       CLAVE: usamos el bundle "vue.esm-browser.prod.js" que incluye el compilador
-       de plantillas (necesario porque nuestros componentes usan template: "..." como string). -->
+       Vue usa la build "esm-browser.prod.js" que incluye el compilador de plantillas
+       necesario para nuestros componentes definidos con template: "..." como string. -->
   <script type="importmap">
   {
     "imports": {
