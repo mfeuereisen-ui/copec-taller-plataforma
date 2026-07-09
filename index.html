@@ -9,8 +9,7 @@
   <!-- Favicon inline para evitar 404 -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230B3D91' d='M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z'/%3E%3C/svg%3E" />
 
-  <!-- Flags globales que Vue espera al usar la build "esm-browser".
-       Sin esto, Vue arroja "__VUE_PROD_DEVTOOLS__ is not defined". -->
+  <!-- Flags globales que Vue espera al usar la build "esm-browser". -->
   <script>
     window.__VUE_OPTIONS_API__ = true;
     window.__VUE_PROD_DEVTOOLS__ = false;
@@ -94,14 +93,18 @@
   <!-- Theme/print CSS local -->
   <link rel="stylesheet" href="./assets/css/theme.css" />
 
-  <!-- Import map for ESM dependencies.
-       CLAVE: vue-router usa ?external=vue para que comparta la misma instancia de Vue
-       ya cargada, en vez de traer una propia. Esto evita el "Cannot destructure options of L(...)". -->
+  <!-- Import map completo con todas las dependencias que usa la aplicación:
+       - vue: build esm-browser.prod con compilador de plantillas incluido
+       - vue-router: en modo external para compartir la misma instancia de Vue
+       - fuse.js: usado por el motor de búsqueda
+       - mermaid: usado para renderizar los diagramas de flujo -->
   <script type="importmap">
   {
     "imports": {
       "vue": "https://esm.sh/vue@3.4.21/dist/vue.esm-browser.prod.js",
-      "vue-router": "https://esm.sh/vue-router@4.3.0/dist/vue-router.esm-browser.js?external=vue"
+      "vue-router": "https://esm.sh/vue-router@4.3.0/dist/vue-router.esm-browser.js?external=vue",
+      "fuse.js": "https://esm.sh/fuse.js@7.0.0?bundle",
+      "mermaid": "https://esm.sh/mermaid@10.9.0?bundle"
     }
   }
   </script>
