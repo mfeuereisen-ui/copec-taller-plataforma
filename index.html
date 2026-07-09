@@ -87,12 +87,12 @@
   <link rel="stylesheet" href="./assets/css/theme.css" />
 
   <!-- Import map for ESM dependencies.
-       Usamos esm.sh con el flag ?bundle para empaquetar todas las dependencias internas
-       y evitar que queden submódulos sin resolver (como @vue/devtools-api). -->
+       CLAVE: usamos el bundle "vue.esm-browser.prod.js" que incluye el compilador
+       de plantillas (necesario porque nuestros componentes usan template: "..." como string). -->
   <script type="importmap">
   {
     "imports": {
-      "vue": "https://esm.sh/vue@3.4.21?bundle",
+      "vue": "https://esm.sh/vue@3.4.21/dist/vue.esm-browser.prod.js",
       "vue-router": "https://esm.sh/vue-router@4.3.0?bundle&deps=vue@3.4.21",
       "fuse.js": "https://esm.sh/fuse.js@7.0.0?bundle",
       "mermaid": "https://esm.sh/mermaid@10.9.0?bundle"
