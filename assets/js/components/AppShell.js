@@ -60,11 +60,13 @@ export default defineComponent({
     });
 
     watch(searchQuery, () => runSearch());
-    watch(() => route.path, () => closeSearch());
+    watch(() => route?.path, () => closeSearch());
 
-    const isHome = computed(() => route.path === '/');
+    // Computed protegido: si route aún no está listo, asumimos home
+    const isHome = computed(() => !route || route.path === '/');
+    const crumb = computed(() => route?.meta?.crumb || route?.name || '');
 
-    return { searchQuery, searchResults, searchOpen, searchInput, openSearch, closeSearch, goToResult, isHome, route };
+    return { searchQuery, searchResults, searchOpen, searchInput, openSearch, closeSearch, goToResult, isHome, route, crumb };
   },
   template: `
     <div class="min-h-screen flex flex-col bg-white">
@@ -118,7 +120,7 @@ export default defineComponent({
           <nav class="flex items-center text-[12.5px] text-ink-500 gap-1.5">
             <router-link to="/" class="hover:text-brand-700">Inicio</router-link>
             <span>/</span>
-            <span class="text-ink-900 font-medium truncate">{{ route.meta.crumb || route.name }}</span>
+            <span class="text-ink-900 font-medium truncate">{{ crumb }}</span>
           </nav>
         </div>
       </div>
