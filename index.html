@@ -95,15 +95,13 @@
   <link rel="stylesheet" href="./assets/css/theme.css" />
 
   <!-- Import map for ESM dependencies.
-       Vue usa la build "esm-browser.prod.js" que incluye el compilador de plantillas
-       necesario para nuestros componentes definidos con template: "..." como string. -->
+       CLAVE: vue-router usa ?external=vue para que comparta la misma instancia de Vue
+       ya cargada, en vez de traer una propia. Esto evita el "Cannot destructure options of L(...)". -->
   <script type="importmap">
   {
     "imports": {
       "vue": "https://esm.sh/vue@3.4.21/dist/vue.esm-browser.prod.js",
-      "vue-router": "https://esm.sh/vue-router@4.3.0?bundle&deps=vue@3.4.21",
-      "fuse.js": "https://esm.sh/fuse.js@7.0.0?bundle",
-      "mermaid": "https://esm.sh/mermaid@10.9.0?bundle"
+      "vue-router": "https://esm.sh/vue-router@4.3.0/dist/vue-router.esm-browser.js?external=vue"
     }
   }
   </script>
