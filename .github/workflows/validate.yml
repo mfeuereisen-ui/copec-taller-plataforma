@@ -1,0 +1,27 @@
+name: Validar contenido
+
+# Corre el validador propio del proyecto en cada push y pull request.
+# Si la validación falla (código de salida distinto de 0), el check queda
+# en rojo y — si proteges la rama master — impide fusionar contenido roto.
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Regenerar manifest y validar JSON
+        run: |
+          node tools/build-manifest.js
+          node tools/validate-json.js
