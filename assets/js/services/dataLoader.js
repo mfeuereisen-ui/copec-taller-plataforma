@@ -16,6 +16,7 @@ async function fetchJson(path) {
  */
 export async function loadAllData() {
   const manifest = await fetchJson(`${DATA_BASE}/manifest.json`);
+  const loadErrors = [];
 
   const [categories, risks, normatives, protocols, annexes] = await Promise.all([
     fetchJson(`${DATA_BASE}/catalog/categories.json`).then(d => d.categories),
@@ -23,10 +24,12 @@ export async function loadAllData() {
     fetchJson(`${DATA_BASE}/catalog/normatives.json`).then(d => d.normatives),
     Promise.all(manifest.protocols.map(f => fetchJson(`${DATA_BASE}/protocols/${f}`).catch(err => {
       console.warn(`Protocolo no cargado: ${f}`, err);
+      loadErrors.push({ file: f, type: 'protocolo', message: err.message });
       return null;
     }))),
     Promise.all(manifest.annexes.map(f => fetchJson(`${DATA_BASE}/annexes/${f}`).catch(err => {
       console.warn(`Anexo no cargado: ${f}`, err);
+      loadErrors.push({ file: f, type: 'anexo', message: err.message });
       return null;
     })))
   ]);
@@ -61,6 +64,7 @@ export async function loadAllData() {
     catalog: { categories, risks, normatives },
     protocols: protocolList,
     annexes: annexList,
+    loadErrors,
     indices: {
       byCode,
       anByCode,

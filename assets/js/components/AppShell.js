@@ -46,6 +46,11 @@ export default defineComponent({
       searchResults.value = [];
     }
 
+    const mobileMenuOpen = ref(false);
+    function toggleMobileMenu() { mobileMenuOpen.value = !mobileMenuOpen.value; }
+    function closeMobileMenu() { mobileMenuOpen.value = false; }
+    watch(() => route?.path, () => closeMobileMenu());
+
     // Atajo de teclado Cmd/Ctrl + K
     onMounted(() => {
       window.addEventListener('keydown', (e) => {
@@ -55,6 +60,9 @@ export default defineComponent({
         }
         if (e.key === 'Escape' && searchOpen.value) {
           closeSearch();
+        }
+        if (e.key === 'Escape' && mobileMenuOpen.value) {
+          closeMobileMenu();
         }
       });
     });
@@ -66,7 +74,7 @@ export default defineComponent({
     const isHome = computed(() => !route || route.path === '/');
     const crumb = computed(() => route?.meta?.crumb || route?.name || '');
 
-    return { searchQuery, searchResults, searchOpen, searchInput, openSearch, closeSearch, goToResult, isHome, route, crumb };
+    return { searchQuery, searchResults, searchOpen, searchInput, openSearch, closeSearch, goToResult, isHome, route, crumb, mobileMenuOpen, toggleMobileMenu, closeMobileMenu, loadErrors: computed(() => store.loadErrors || []) };
   },
   template: `
     <div class="min-h-screen flex flex-col bg-white">
@@ -85,8 +93,8 @@ export default defineComponent({
               </div>
             </router-link>
 
-            <!-- Nav links -->
-            <nav class="hidden md:flex items-center gap-1 ml-4">
+            <!-- Nav links (desktop) -->
+            <nav class="hidden md:flex items-center gap-1 ml-4" aria-label="Navegación principal">
               <router-link to="/" class="px-3 py-2 text-sm rounded-md hover:bg-ink-50 transition" active-class="text-brand-700 font-medium">
                 Mapa
               </router-link>
@@ -101,6 +109,17 @@ export default defineComponent({
               </router-link>
             </nav>
 
+            <!-- Hamburger trigger (mobile only) -->
+            <button
+              @click="toggleMobileMenu"
+              class="md:hidden p-2 rounded-lg border border-ink-100 hover:bg-ink-50 text-ink-700"
+              aria-label="Abrir menú de navegación"
+              :aria-expanded="mobileMenuOpen"
+              aria-controls="mobile-nav-panel"
+            >
+              <Icon :name="mobileMenuOpen ? 'x' : 'menu'" :size="20" />
+            </button>
+
             <!-- Search trigger -->
             <button
               @click="openSearch"
@@ -113,6 +132,37 @@ export default defineComponent({
           </div>
         </div>
       </header>
+
+      <!-- AVISO: fallas de carga de datos (distinto de "sin resultados por filtro") -->
+      <div v-if="loadErrors.length > 0" class="bg-danger-50 border-b border-danger-100 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center gap-2.5 text-[13px] text-danger-700">
+          <Icon name="alert" :size="16" stroke="#B91C1C" class="flex-shrink-0" />
+          <span>
+            No se pudieron cargar {{ loadErrors.length }} archivo(s) de contenido (posible problema de red).
+            Es posible que falten protocolos o anexos en esta sesión — recarga la página para reintentar.
+          </span>
+        </div>
+      </div>
+
+      <!-- MOBILE NAV PANEL -->
+      <transition name="slide-up">
+        <nav v-if="mobileMenuOpen" id="mobile-nav-panel" class="md:hidden border-b border-ink-100 bg-white no-print" aria-label="Navegación principal (móvil)">
+          <div class="px-4 py-2 flex flex-col">
+            <router-link to="/" @click="closeMobileMenu" class="px-3 py-3 text-[15px] rounded-md hover:bg-ink-50 transition" active-class="text-brand-700 font-medium">
+              Mapa
+            </router-link>
+            <router-link to="/anexos" @click="closeMobileMenu" class="px-3 py-3 text-[15px] rounded-md hover:bg-ink-50 transition" active-class="text-brand-700 font-medium">
+              Anexos
+            </router-link>
+            <router-link to="/capacitacion" @click="closeMobileMenu" class="px-3 py-3 text-[15px] rounded-md hover:bg-ink-50 transition" active-class="text-brand-700 font-medium">
+              Capacitación
+            </router-link>
+            <router-link to="/favoritos" @click="closeMobileMenu" class="px-3 py-3 text-[15px] rounded-md hover:bg-ink-50 transition" active-class="text-brand-700 font-medium">
+              Favoritos
+            </router-link>
+          </div>
+        </nav>
+      </transition>
 
       <!-- Breadcrumb -->
       <div v-if="!isHome" class="border-b border-ink-100 bg-ink-50/40 no-print">

@@ -69,6 +69,7 @@ async function bootstrap() {
     // Cargar datos
     const data = await loadAllData();
     store.data = data;
+    store.loadErrors = data.loadErrors || [];
     store.searchEngine = buildSearchIndex(data.protocols, data.annexes);
     store.loading = false;
 

@@ -31,11 +31,14 @@
 .mermaid .node rect, .mermaid .node polygon, .mermaid .node circle {
   filter: drop-shadow(0 1px 2px rgba(15,23,42,0.06));
 }
-.mermaid .nodeStep rect { fill: #DBEAFE; stroke: #1D4ED8; stroke-width: 1.5px; }
+/* !important es necesario: Mermaid con theme:'base' inyecta fill/stroke en línea
+   sobre cada forma SVG desde themeVariables, que de otro modo tendría más
+   prioridad que estas reglas de clase y anularía la diferenciación por tipo de nodo. */
+.mermaid .nodeStep rect { fill: #DBEAFE !important; stroke: #1D4ED8 !important; stroke-width: 1.5px; }
 .mermaid .nodeStep .label { color: #0F172A; }
-.mermaid .nodeDecision polygon { fill: #FEF3C7; stroke: #B45309; stroke-width: 1.5px; }
-.mermaid .nodeAlert rect { fill: #FEE2E2; stroke: #B91C1C; stroke-width: 1.5px; }
-.mermaid .nodeEnd rect { fill: #DCFCE7; stroke: #15803D; stroke-width: 1.5px; }
+.mermaid .nodeDecision polygon { fill: #FEF3C7 !important; stroke: #B45309 !important; stroke-width: 1.5px; }
+.mermaid .nodeAlert rect { fill: #FEE2E2 !important; stroke: #B91C1C !important; stroke-width: 1.5px; }
+.mermaid .nodeEnd rect { fill: #DCFCE7 !important; stroke: #15803D !important; stroke-width: 1.5px; }
 .mermaid .nodeCurrent rect, .mermaid .nodeCurrent polygon {
   stroke-width: 3px !important;
   filter: drop-shadow(0 2px 8px rgba(11,61,145,0.25)) !important;

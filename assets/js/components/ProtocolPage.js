@@ -113,7 +113,7 @@ export default defineComponent({
 
       <!-- TABS -->
       <div class="border-b border-ink-100 mb-6 no-print">
-        <nav class="flex gap-1 -mb-px overflow-x-auto">
+        <nav class="flex gap-1 -mb-px overflow-x-auto" role="tablist" aria-label="Secciones del protocolo">
           <button v-for="t in [
             { id:'flow',       label:'Diagrama de flujo', icon:'grid' },
             { id:'risks',      label:'Riesgos',           icon:'warning', count: protocol.risks?.length },
@@ -125,6 +125,11 @@ export default defineComponent({
             { id:'emergency',  label:'Emergencias',       icon:'medical' }
           ]" :key="t.id"
             @click="activeTab = t.id"
+            role="tab"
+            :id="'tab-' + t.id"
+            :aria-selected="activeTab === t.id"
+            :aria-controls="'panel-' + t.id"
+            :tabindex="activeTab === t.id ? 0 : -1"
             :class="['flex items-center gap-1.5 px-3.5 py-2.5 text-[13px] font-medium border-b-2 whitespace-nowrap transition',
               activeTab === t.id ? 'border-brand-700 text-brand-700' : 'border-transparent text-ink-500 hover:text-ink-900']">
             <Icon :name="t.icon" :size="14" />
@@ -136,7 +141,7 @@ export default defineComponent({
       </div>
 
       <!-- TAB CONTENT -->
-      <div class="protocol-detail">
+      <div class="protocol-detail" role="tabpanel" :id="'panel-' + activeTab" :aria-labelledby="'tab-' + activeTab">
         <!-- FLOW -->
         <div v-if="activeTab === 'flow'" class="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <div :class="['bg-white border border-ink-100 rounded-2xl overflow-hidden shadow-card', selectedStep ? 'lg:col-span-2' : 'lg:col-span-3']">
@@ -144,7 +149,7 @@ export default defineComponent({
           </div>
           <transition name="slide-up">
             <div v-if="selectedStep" class="bg-white border border-ink-100 rounded-2xl overflow-hidden shadow-card lg:max-h-[700px]">
-              <StepDetail :step="selectedStep" :protocol="protocol" @close="closeDetail" />
+              <StepDetail :step="selectedStep" :protocol="protocol" @close="closeDetail" @select-step="selectStep" />
             </div>
           </transition>
         </div>

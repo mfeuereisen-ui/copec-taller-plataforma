@@ -63,6 +63,8 @@ export default defineComponent({
       'stroke-width': this.strokeWidth,
       'stroke-linecap': 'round',
       'stroke-linejoin': 'round',
+      'aria-hidden': 'true',
+      focusable: 'false',
       class: 'inline-block flex-shrink-0'
     }, [h('path', { d })]);
   }

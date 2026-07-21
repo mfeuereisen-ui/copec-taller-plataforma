@@ -15,6 +15,7 @@ export const store = reactive({
   loading: true,
   error: null,
   data: null,             // resultado de loadAllData
+  loadErrors: [],         // archivos individuales que fallaron al cargar (ver dataLoader.js)
   searchEngine: null,
   favorites: initialFavs,
   history: initialHist,   // [{ code, ts }]

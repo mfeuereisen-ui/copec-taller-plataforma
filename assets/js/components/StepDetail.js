@@ -10,8 +10,8 @@ export default defineComponent({
     step: { type: Object, required: true },
     protocol: { type: Object, required: true }
   },
-  emits: ['close'],
-  setup(props) {
+  emits: ['close', 'select-step'],
+  setup(props, { emit }) {
     const typeMeta = computed(() => {
       switch (props.step.type) {
         case 'decision': return { label: 'Punto de decisión', variant: 'warn', icon: 'filter', color: '#B45309' };
@@ -21,7 +21,15 @@ export default defineComponent({
       }
     });
 
-    return { typeMeta };
+    function targetSummary(id) {
+      const target = props.protocol?.procedure?.steps?.find(s => s.id === id);
+      return target ? (target.summary || target.title || '') : '';
+    }
+    function goToStep(id) {
+      emit('select-step', id);
+    }
+
+    return { typeMeta, targetSummary, goToStep };
   },
   template: `
     <aside class="bg-white border-l border-ink-100 h-full flex flex-col">
@@ -52,17 +60,26 @@ export default defineComponent({
         <section v-if="step.type === 'decision'">
           <h4 class="text-[11px] uppercase tracking-wider text-ink-500 font-semibold mb-2">Bifurcación</h4>
           <ul class="space-y-1.5">
-            <li v-if="step.yes" class="flex items-center gap-2 px-3 py-2 bg-safe-50 rounded-lg text-[13px]">
-              <Badge variant="safe" size="sm">{{ step.yesLabel || 'Sí' }}</Badge>
-              <span class="text-ink-700">→ paso <span class="font-mono">{{ step.yes }}</span></span>
+            <li v-if="step.yes">
+              <button @click="goToStep(step.yes)" class="w-full flex items-center gap-2 px-3 py-2 bg-safe-50 hover:bg-safe-100 rounded-lg text-[13px] text-left transition group">
+                <Badge variant="safe" size="sm">{{ step.yesLabel || 'Sí' }}</Badge>
+                <span class="text-ink-700 flex-1 min-w-0 truncate">{{ targetSummary(step.yes) || ('→ paso ' + step.yes) }}</span>
+                <Icon name="chevron" :size="14" stroke="#15803D" class="opacity-0 group-hover:opacity-100 transition flex-shrink-0" />
+              </button>
             </li>
-            <li v-if="step.no" class="flex items-center gap-2 px-3 py-2 bg-danger-50 rounded-lg text-[13px]">
-              <Badge variant="danger" size="sm">{{ step.noLabel || 'No' }}</Badge>
-              <span class="text-ink-700">→ paso <span class="font-mono">{{ step.no }}</span></span>
+            <li v-if="step.no">
+              <button @click="goToStep(step.no)" class="w-full flex items-center gap-2 px-3 py-2 bg-danger-50 hover:bg-danger-100 rounded-lg text-[13px] text-left transition group">
+                <Badge variant="danger" size="sm">{{ step.noLabel || 'No' }}</Badge>
+                <span class="text-ink-700 flex-1 min-w-0 truncate">{{ targetSummary(step.no) || ('→ paso ' + step.no) }}</span>
+                <Icon name="chevron" :size="14" stroke="#B91C1C" class="opacity-0 group-hover:opacity-100 transition flex-shrink-0" />
+              </button>
             </li>
-            <li v-for="b in step.branches" :key="b.label" class="flex items-center gap-2 px-3 py-2 bg-ink-50 rounded-lg text-[13px]">
-              <Badge variant="brand" size="sm">{{ b.label }}</Badge>
-              <span class="text-ink-700">→ paso <span class="font-mono">{{ b.next }}</span></span>
+            <li v-for="b in step.branches" :key="b.label">
+              <button @click="goToStep(b.next)" class="w-full flex items-center gap-2 px-3 py-2 bg-ink-50 hover:bg-ink-100 rounded-lg text-[13px] text-left transition group">
+                <Badge variant="brand" size="sm">{{ b.label }}</Badge>
+                <span class="text-ink-700 flex-1 min-w-0 truncate">{{ targetSummary(b.next) || ('→ paso ' + b.next) }}</span>
+                <Icon name="chevron" :size="14" stroke="#1D4ED8" class="opacity-0 group-hover:opacity-100 transition flex-shrink-0" />
+              </button>
             </li>
           </ul>
         </section>

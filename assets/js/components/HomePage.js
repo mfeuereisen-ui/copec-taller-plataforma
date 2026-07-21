@@ -100,18 +100,18 @@ export default defineComponent({
             </p>
           </div>
           <!-- KPIs -->
-          <div class="grid grid-cols-3 gap-3 lg:gap-4">
-            <div class="px-4 py-3 bg-brand-50 rounded-xl">
-              <div class="text-2xl font-bold text-brand-900 leading-tight">{{ totalProtocols }}</div>
-              <div class="text-[11px] text-brand-700 mt-0.5">Protocolos</div>
+          <div class="grid grid-cols-3 gap-2 sm:gap-3 lg:gap-4">
+            <div class="px-3 sm:px-4 py-3 bg-brand-50 rounded-xl">
+              <div class="text-xl sm:text-2xl font-bold text-brand-900 leading-tight">{{ totalProtocols }}</div>
+              <div class="text-[10.5px] sm:text-[11px] text-brand-700 mt-0.5">Protocolos</div>
             </div>
-            <div class="px-4 py-3 bg-warn-50 rounded-xl">
-              <div class="text-2xl font-bold text-warn-700 leading-tight">{{ highRiskCount }}</div>
-              <div class="text-[11px] text-warn-700 mt-0.5">Alto riesgo</div>
+            <div class="px-3 sm:px-4 py-3 bg-warn-50 rounded-xl">
+              <div class="text-xl sm:text-2xl font-bold text-warn-700 leading-tight">{{ highRiskCount }}</div>
+              <div class="text-[10.5px] sm:text-[11px] text-warn-700 mt-0.5">Alto riesgo</div>
             </div>
-            <div class="px-4 py-3 bg-safe-50 rounded-xl">
-              <div class="text-2xl font-bold text-safe-700 leading-tight">{{ annexCount }}</div>
-              <div class="text-[11px] text-safe-700 mt-0.5">Anexos</div>
+            <div class="px-3 sm:px-4 py-3 bg-safe-50 rounded-xl">
+              <div class="text-xl sm:text-2xl font-bold text-safe-700 leading-tight">{{ annexCount }}</div>
+              <div class="text-[10.5px] sm:text-[11px] text-safe-700 mt-0.5">Anexos</div>
             </div>
           </div>
         </div>
@@ -259,7 +259,12 @@ export default defineComponent({
         <!-- === Vista GRID === -->
         <div v-if="view === 'grid'">
           <div v-if="protocols.length === 0" class="text-center py-12 text-ink-500">
-            No hay protocolos que coincidan con los filtros aplicados.
+            <template v-if="store.loadErrors && store.loadErrors.length > 0">
+              No se pudo cargar el contenido de protocolos en esta sesión (posible problema de red). Recarga la página para reintentar.
+            </template>
+            <template v-else>
+              No hay protocolos que coincidan con los filtros aplicados.
+            </template>
           </div>
           <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <ProtocolCard v-for="p in protocols" :key="p.code" :protocol="p" @open="openProtocol(p)" />
