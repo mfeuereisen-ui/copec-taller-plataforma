@@ -1,0 +1,35 @@
+{
+  "intro": {
+    "title": "¿Cómo usar esta plataforma?",
+    "subtitle": "Guía rápida para nuevos usuarios",
+    "faqs": [
+      {
+        "q": "¿Qué es un protocolo de seguridad operacional?",
+        "a": "Es un procedimiento estandarizado que define la forma segura y obligatoria de ejecutar una tarea, identificando sus riesgos, los controles críticos, el equipo de protección personal (EPP) requerido y qué hacer ante una emergencia. Su objetivo es prevenir accidentes."
+      },
+      {
+        "q": "¿Por qué es importante seguirlos?",
+        "a": "Los protocolos concentran el conocimiento acumulado sobre cómo evitar accidentes en cada tarea. Seguirlos protege la integridad física de las personas y es un requisito de cumplimiento dentro de Copec Taller."
+      },
+      {
+        "q": "¿A quiénes aplican?",
+        "a": "A todo el personal que ejecuta o supervisa las operaciones: mecánicos, técnicos móviles, supervisores, personal nuevo en inducción, contratistas y empresas externas."
+      },
+      {
+        "q": "¿Cómo están organizados?",
+        "a": "Cada protocolo tiene un código según su ámbito de operación (ver glosario: P1, P2, P3) seguido de un número. Puedes navegar por el mapa, filtrar por categoría, riesgo o servicio, o buscar directamente por nombre o código."
+      }
+    ],
+    "note": "Este contenido es editable por el equipo de Prevención de Riesgos en data/catalog/intro.json. Complete o ajuste las respuestas sobre marco regulatorio e implicancias de incumplimiento según la política oficial de Copec Taller."
+  },
+  "glossary": [
+    { "term": "P1", "definition": "Protocolos de operaciones en Estación de Servicio (foso, elevadores, atención presencial)." },
+    { "term": "P2", "definition": "Protocolos de operaciones en Terreno — Taller Móvil (servicios a domicilio del cliente)." },
+    { "term": "P3", "definition": "Lineamientos transversales, aplicables a todas las operaciones (EPP, primeros auxilios, capacitación)." },
+    { "term": "EPP", "definition": "Equipo de Protección Personal: elementos de uso obligatorio para reducir la exposición a riesgos (guantes, mascarilla, etc.)." },
+    { "term": "RCP", "definition": "Reanimación Cardiopulmonar: maniobra de primeros auxilios ante paro cardiorrespiratorio." },
+    { "term": "Regla de parada", "definition": "Condición ante la cual se debe detener inmediatamente la operación por riesgo inminente." },
+    { "term": "Anexo", "definition": "Documento de apoyo vinculado a un protocolo: checklists, formularios, registros y permisos de trabajo." },
+    { "term": "Protocolo de cumplimiento obligatorio", "definition": "Protocolo de alto riesgo cuyos pasos no pueden omitirse bajo ninguna circunstancia." }
+  ]
+}

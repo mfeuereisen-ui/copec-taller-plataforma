@@ -23,7 +23,7 @@ Referencia completa del schema de los protocolos. Para una guía de edición pr�
 | `responsibles` | array | — | Roles y responsabilidades |
 | `epp` | array | — | EPP requerido |
 | `tools` | array | — | Herramientas necesarias |
-| `normatives` | array | — | Normativas aplicables |
+| `normatives` | array | — | Normativas aplicables. Cada elemento puede ser un texto plano (`"DS N°594"`) o un objeto con enlace (`{ "text": "DS N°594", "url": "https://..." }`). Cuando trae `url`, se muestra como enlace directo al documento. |
 | `procedure` | object | ✓ | Procedimiento como grafo de pasos |
 | `stopRules` | array | — | Reglas de parada inmediata |
 | `emergencyActions` | array | — | Acciones ante emergencias |

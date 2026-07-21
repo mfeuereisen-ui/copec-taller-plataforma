@@ -20,6 +20,12 @@ export default defineComponent({
     const categories = computed(() => store.data?.catalog.categories || []);
     const riskFamilies = computed(() => store.data?.catalog.risks || []);
 
+    // Intro / glosario (contenido editable en data/catalog/intro.json)
+    const intro = computed(() => store.data?.catalog.intro?.intro || null);
+    const glossary = computed(() => store.data?.catalog.intro?.glossary || []);
+    const showIntro = ref(false);
+    function toggleIntro() { showIntro.value = !showIntro.value; }
+
     // KPIs
     const totalProtocols = computed(() => store.data?.protocols.length || 0);
     const highRiskCount = computed(() => (store.data?.protocols || []).filter(p => p.criticality === 'alto-riesgo').length);
@@ -75,6 +81,7 @@ export default defineComponent({
 
     return {
       store, view, showFilters, protocols, allTags, categories, riskFamilies,
+      intro, glossary, showIntro, toggleIntro,
       totalProtocols, highRiskCount, annexCount,
       emergencyProtocols, criticalProtocols, recentProtocols,
       openProtocol, setView, resetFilters, hasActiveFilters,
@@ -115,6 +122,44 @@ export default defineComponent({
             </div>
           </div>
         </div>
+      </section>
+
+      <!-- INTRODUCCIÓN / GLOSARIO (colapsable) -->
+      <section v-if="intro" class="mb-10">
+        <button @click="toggleIntro"
+          class="w-full flex items-center gap-3 px-4 py-3 bg-brand-50 hover:bg-brand-100 border border-brand-100 rounded-xl transition text-left"
+          :aria-expanded="showIntro" aria-controls="intro-panel">
+          <div class="w-9 h-9 rounded-lg bg-brand-900 flex items-center justify-center flex-shrink-0">
+            <Icon name="book" :size="18" stroke="white" />
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="text-[14.5px] font-semibold text-ink-900">{{ intro.title }}</div>
+            <div class="text-[12.5px] text-ink-500">{{ intro.subtitle }}</div>
+          </div>
+          <Icon :name="showIntro ? 'chevron-down' : 'chevron'" :size="18" stroke="#1D4ED8" class="flex-shrink-0" />
+        </button>
+
+        <transition name="slide-up">
+          <div v-if="showIntro" id="intro-panel" class="mt-3 grid grid-cols-1 lg:grid-cols-2 gap-4">
+            <!-- FAQs -->
+            <div class="space-y-3">
+              <div v-for="(f, i) in intro.faqs" :key="i" class="p-4 bg-white border border-ink-100 rounded-xl">
+                <h3 class="text-[13.5px] font-semibold text-ink-900 mb-1">{{ f.q }}</h3>
+                <p class="text-[13px] text-ink-700 leading-relaxed">{{ f.a }}</p>
+              </div>
+            </div>
+            <!-- Glosario -->
+            <div class="p-4 bg-white border border-ink-100 rounded-xl">
+              <h3 class="text-[11px] uppercase tracking-wider text-ink-500 font-semibold mb-3">Glosario de siglas y términos</h3>
+              <dl class="space-y-2.5">
+                <div v-for="(g, i) in glossary" :key="i" class="flex gap-3">
+                  <dt class="text-[12.5px] font-mono font-semibold text-brand-700 flex-shrink-0 w-28">{{ g.term }}</dt>
+                  <dd class="text-[12.5px] text-ink-700 flex-1">{{ g.definition }}</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </transition>
       </section>
 
       <!-- QUICK ACCESS -->

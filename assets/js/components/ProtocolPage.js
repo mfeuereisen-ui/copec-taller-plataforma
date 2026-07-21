@@ -37,6 +37,10 @@ export default defineComponent({
     function goToProtocol(p) { router.push(`/protocolo/${p.code}`); }
     function goToTraining() { if (protocol.value) router.push(`/capacitacion/${protocol.value.code}`); }
 
+    // Normativas: soportan string plano u objeto { text, url }
+    function normativeText(n) { return typeof n === 'string' ? n : (n?.text || ''); }
+    function normativeUrl(n) { return (n && typeof n === 'object' && n.url) ? n.url : null; }
+
     // Registrar en historial
     watch(protocol, (p) => {
       if (p) pushHistory(p.code);
@@ -51,7 +55,8 @@ export default defineComponent({
     return {
       route, protocol, category, fav, selectedStep, selectedStepId, activeTab,
       related, linkedAnnexes,
-      selectStep, closeDetail, toggleFav, print, goToAnnex, goToProtocol, goToTraining
+      selectStep, closeDetail, toggleFav, print, goToAnnex, goToProtocol, goToTraining,
+      normativeText, normativeUrl
     };
   },
   template: `
@@ -226,14 +231,26 @@ export default defineComponent({
         </div>
 
         <!-- NORMATIVES -->
+        <!-- Cada normativa puede ser un string (texto plano) o un objeto {text, url}.
+             Si trae url, se muestra como enlace directo al documento. -->
         <div v-if="activeTab === 'normatives'" class="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <article v-for="n in protocol.normatives" :key="n"
-            class="p-4 bg-white border border-ink-100 rounded-xl flex items-center gap-3">
-            <div class="w-10 h-10 rounded-lg bg-ink-50 flex items-center justify-center">
-              <Icon name="book" :size="20" stroke="#1D4ED8" />
-            </div>
-            <span class="text-[14px] text-ink-900">{{ n }}</span>
-          </article>
+          <template v-for="(n, i) in protocol.normatives" :key="i">
+            <a v-if="normativeUrl(n)" :href="normativeUrl(n)" target="_blank" rel="noopener noreferrer"
+              class="p-4 bg-white border border-ink-100 hover:border-brand-200 hover:shadow-card rounded-xl flex items-center gap-3 group transition">
+              <div class="w-10 h-10 rounded-lg bg-brand-50 flex items-center justify-center flex-shrink-0">
+                <Icon name="book" :size="20" stroke="#1D4ED8" />
+              </div>
+              <span class="text-[14px] text-brand-700 flex-1 group-hover:underline">{{ normativeText(n) }}</span>
+              <Icon name="link" :size="15" stroke="#1D4ED8" class="opacity-0 group-hover:opacity-100 transition flex-shrink-0" />
+            </a>
+            <article v-else
+              class="p-4 bg-white border border-ink-100 rounded-xl flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-ink-50 flex items-center justify-center flex-shrink-0">
+                <Icon name="book" :size="20" stroke="#1D4ED8" />
+              </div>
+              <span class="text-[14px] text-ink-900">{{ normativeText(n) }}</span>
+            </article>
+          </template>
         </div>
 
         <!-- ANNEXES -->
@@ -289,8 +306,81 @@ export default defineComponent({
         </div>
       </div>
 
+      <!-- ============================================================ -->
+      <!-- VERSIÓN DE IMPRESIÓN: solo visible al imprimir.               -->
+      <!-- Renderiza TODO el protocolo en formato documento, sin tabs.  -->
+      <!-- ============================================================ -->
+      <div class="print-only protocol-print">
+        <div class="print-section">
+          <div class="print-h">Objetivo</div>
+          <p>{{ protocol.objective }}</p>
+        </div>
+        <div class="print-section">
+          <div class="print-h">Alcance</div>
+          <p>{{ protocol.scope }}</p>
+        </div>
+        <div v-if="protocol.procedure && protocol.procedure.steps && protocol.procedure.steps.length" class="print-section">
+          <div class="print-h">Procedimiento paso a paso</div>
+          <ol class="print-steps">
+            <li v-for="s in protocol.procedure.steps" :key="s.id">
+              <strong>{{ s.title }}</strong>
+              <template v-if="s.summary"> — {{ s.summary }}</template>
+              <div v-if="s.description" class="print-sub">{{ s.description }}</div>
+            </li>
+          </ol>
+        </div>
+        <div v-if="protocol.risks && protocol.risks.length" class="print-section">
+          <div class="print-h">Riesgos ({{ protocol.risks.length }})</div>
+          <ul>
+            <li v-for="r in protocol.risks" :key="r.id">[{{ r.id }} · Severidad {{ r.severity }}] {{ r.description }}</li>
+          </ul>
+        </div>
+        <div v-if="protocol.epp && protocol.epp.length" class="print-section">
+          <div class="print-h">EPP obligatorio</div>
+          <ul>
+            <li v-for="e in protocol.epp" :key="e.item">{{ e.item }}<template v-if="e.note"> — {{ e.note }}</template></li>
+          </ul>
+        </div>
+        <div v-if="protocol.tools && protocol.tools.length" class="print-section">
+          <div class="print-h">Herramientas y equipos</div>
+          <ul>
+            <li v-for="t in protocol.tools" :key="t.name">{{ t.name }}<template v-if="t.note"> — {{ t.note }}</template></li>
+          </ul>
+        </div>
+        <div v-if="protocol.responsibles && protocol.responsibles.length" class="print-section">
+          <div class="print-h">Responsables</div>
+          <ul>
+            <li v-for="r in protocol.responsibles" :key="r.role"><strong>{{ r.role }}:</strong> {{ r.duty }}</li>
+          </ul>
+        </div>
+        <div v-if="protocol.stopRules && protocol.stopRules.length" class="print-section">
+          <div class="print-h">Reglas de parada — DETENER inmediatamente si:</div>
+          <ul>
+            <li v-for="(rule, i) in protocol.stopRules" :key="i">{{ rule }}</li>
+          </ul>
+        </div>
+        <div v-if="protocol.emergencyActions && protocol.emergencyActions.length" class="print-section">
+          <div class="print-h">Acciones de emergencia</div>
+          <ul>
+            <li v-for="(e, i) in protocol.emergencyActions" :key="i"><strong>{{ e.situation }}:</strong> {{ e.action }}</li>
+          </ul>
+        </div>
+        <div v-if="protocol.normatives && protocol.normatives.length" class="print-section">
+          <div class="print-h">Normativa aplicable</div>
+          <ul>
+            <li v-for="(n, i) in protocol.normatives" :key="i">{{ normativeText(n) }}</li>
+          </ul>
+        </div>
+        <div v-if="protocol.registry && protocol.registry.length" class="print-section">
+          <div class="print-h">Registros obligatorios</div>
+          <ul>
+            <li v-for="(reg, i) in protocol.registry" :key="i">{{ reg }}</li>
+          </ul>
+        </div>
+      </div>
+
       <!-- RELACIONADOS -->
-      <section v-if="related.length > 0" class="mt-10 pt-8 border-t border-ink-100">
+      <section v-if="related.length > 0" class="mt-10 pt-8 border-t border-ink-100 no-print">
         <h3 class="text-[11px] uppercase tracking-wider text-ink-500 font-semibold mb-4">Protocolos relacionados</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           <button v-for="p in related" :key="p.code" @click="goToProtocol(p)"

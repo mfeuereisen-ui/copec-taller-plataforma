@@ -62,17 +62,38 @@
 .slide-up-leave-to   { opacity: 0; transform: translateX(20px); }
 
 /* === IMPRESIÓN === */
+/* La versión de impresión (.print-only) está oculta en pantalla y solo
+   aparece al imprimir. Contiene TODO el protocolo en formato documento,
+   independiente de la pestaña activa. Ver ProtocolPage.js. */
+.print-only { display: none; }
+
 @media print {
-  body { background: white; }
+  body { background: white; color: #111; font-size: 11pt; }
   .no-print { display: none !important; }
-  .print-block { display: block !important; }
+  /* Ocultar la vista interactiva por pestañas al imprimir */
+  .protocol-detail { display: none !important; }
   nav, aside, header.app-header { display: none !important; }
   main { max-width: none !important; padding: 0 !important; }
-  .protocol-detail { page-break-inside: avoid; }
   a[href]:after { content: ""; }
   .shadow-card, .shadow-cardH, .shadow-pop { box-shadow: none !important; }
   .rounded-2xl, .rounded-xl { border-radius: 0 !important; }
   .bg-ink-50, .bg-ink-100 { background: white !important; }
+
+  /* Mostrar la versión documento */
+  .print-only { display: block !important; }
+  .protocol-print { margin-top: 8pt; }
+  .protocol-print .print-section { page-break-inside: avoid; margin-bottom: 14pt; }
+  .protocol-print .print-h {
+    font-size: 12pt; font-weight: 700; color: #0B3D91;
+    border-bottom: 1px solid #C7D2E5; padding-bottom: 2pt; margin-bottom: 6pt;
+    text-transform: uppercase; letter-spacing: 0.02em;
+  }
+  .protocol-print p, .protocol-print li { line-height: 1.4; margin: 2pt 0; }
+  .protocol-print ul, .protocol-print ol { padding-left: 18pt; margin: 4pt 0; }
+  .protocol-print .print-steps li { margin-bottom: 5pt; }
+  .protocol-print .print-sub { color: #444; font-size: 10pt; margin-top: 1pt; }
+  /* Encabezado del protocolo sí se imprime (título, código, versión) */
+  header { page-break-after: avoid; }
 }
 
 /* Skeleton loader */

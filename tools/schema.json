@@ -70,7 +70,7 @@
         }
       }
     },
-    "normatives": { "type": "array", "items": { "type": "string" } },
+    "normatives": { "type": "array", "items": { "type": ["string", "object"] } },
     "procedure": {
       "type": "object",
       "required": ["steps"],
