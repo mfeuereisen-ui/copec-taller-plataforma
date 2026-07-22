@@ -6,49 +6,134 @@
   "shortTitle": "Subida y bajada al elevador",
   "category": "P1",
   "criticality": "alto-riesgo",
-  "service": ["estacion"],
-  "tags": ["elevador", "aplastamiento", "vehiculo", "hidraulico", "neumatico"],
+  "service": [
+    "estacion"
+  ],
+  "tags": [
+    "elevador",
+    "aplastamiento",
+    "vehiculo",
+    "hidraulico",
+    "neumatico"
+  ],
   "icon": "lift",
-
   "alertBanner": "Riesgo de aplastamiento y caída de vehículo. Ningún paso puede omitirse.",
-
   "objective": "Establecer el procedimiento seguro para subir y bajar vehículos en los elevadores hidráulicos o neumáticos de la estación, previniendo accidentes por caída o desequilibrio del vehículo.",
-
   "scope": "Aplica a todos los técnicos que operen elevadores hidráulicos o neumáticos en la estación de servicio Copec Taller y/o sucursales. Incluye tanto la posición de operador del elevador como de cualquier persona en el área de trabajo adyacente.",
-
   "risks": [
-    { "id": "R1", "description": "Caída del vehículo por posicionamiento incorrecto en los brazos del elevador", "severity": "alta", "family": "aplastamiento" },
-    { "id": "R2", "description": "Aplastamiento del técnico o terceros bajo el vehículo en caso de falla", "severity": "alta", "family": "aplastamiento" },
-    { "id": "R3", "description": "Volcamiento lateral por carga desequilibrada", "severity": "alta", "family": "aplastamiento" },
-    { "id": "R4", "description": "Falla hidráulica o neumática durante el trabajo de elevación", "severity": "media", "family": "aplastamiento" },
-    { "id": "R5", "description": "Atrapamiento de extremidades en mecanismos del elevador", "severity": "media", "family": "aplastamiento" },
-    { "id": "R6", "description": "Contacto eléctrico con sistemas del vehículo durante el trabajo", "severity": "media", "family": "electrico" },
-    { "id": "R7", "description": "Golpes o cortes al posicionar los brazos del elevador", "severity": "baja", "family": "ergonomico" }
+    {
+      "id": "R1",
+      "description": "Caída del vehículo por posicionamiento incorrecto en los brazos del elevador",
+      "severity": "alta",
+      "family": "aplastamiento"
+    },
+    {
+      "id": "R2",
+      "description": "Aplastamiento del técnico o terceros bajo el vehículo en caso de falla",
+      "severity": "alta",
+      "family": "aplastamiento"
+    },
+    {
+      "id": "R3",
+      "description": "Volcamiento lateral por carga desequilibrada",
+      "severity": "alta",
+      "family": "aplastamiento"
+    },
+    {
+      "id": "R4",
+      "description": "Falla hidráulica o neumática durante el trabajo de elevación",
+      "severity": "media",
+      "family": "aplastamiento"
+    },
+    {
+      "id": "R5",
+      "description": "Atrapamiento de extremidades en mecanismos del elevador",
+      "severity": "media",
+      "family": "aplastamiento"
+    },
+    {
+      "id": "R6",
+      "description": "Contacto eléctrico con sistemas del vehículo durante el trabajo",
+      "severity": "media",
+      "family": "electrico"
+    },
+    {
+      "id": "R7",
+      "description": "Golpes o cortes al posicionar los brazos del elevador",
+      "severity": "baja",
+      "family": "ergonomico"
+    }
   ],
-
   "responsibles": [
-    { "role": "Técnico automotriz", "duty": "Ejecuta el protocolo en su totalidad" },
-    { "role": "Supervisor de turno", "duty": "Verifica cumplimiento y autoriza operación en casos especiales" },
-    { "role": "Cliente", "duty": "Permanece fuera del área de trabajo durante todo el proceso" }
+    {
+      "role": "Técnico automotriz",
+      "duty": "Ejecuta el protocolo en su totalidad"
+    },
+    {
+      "role": "Supervisor de turno",
+      "duty": "Verifica cumplimiento y autoriza operación en casos especiales"
+    },
+    {
+      "role": "Cliente",
+      "duty": "Permanece fuera del área de trabajo durante todo el proceso"
+    }
   ],
-
   "epp": [
-    { "item": "Zapatos de seguridad con suela antideslizante", "obligatory": true, "note": "Uso permanente" },
-    { "item": "Guantes de cuero o nitrilo de alta resistencia", "obligatory": true },
-    { "item": "Lentes de seguridad", "obligatory": true },
-    { "item": "Ropa de trabajo (overol o pantalón y camisa)", "obligatory": true }
+    {
+      "item": "Zapatos de seguridad con suela antideslizante",
+      "obligatory": true,
+      "note": "Uso permanente"
+    },
+    {
+      "item": "Guantes de cuero o nitrilo de alta resistencia",
+      "obligatory": true
+    },
+    {
+      "item": "Lentes de seguridad",
+      "obligatory": true
+    },
+    {
+      "item": "Ropa de trabajo (overol o pantalón y camisa)",
+      "obligatory": true
+    }
   ],
-
   "tools": [
-    { "name": "Elevador hidráulico/neumático", "verification": "LV-ELE-01" },
-    { "name": "Adaptadores de goma (tacones)", "verification": null },
-    { "name": "Cuñas para ruedas", "verification": null },
-    { "name": "Escalera de apoyo", "verification": null },
-    { "name": "Conos o barreras perimetrales", "verification": null }
+    {
+      "name": "Elevador hidráulico/neumático",
+      "verification": "LV-ELE-01"
+    },
+    {
+      "name": "Adaptadores de goma (tacones)",
+      "verification": null
+    },
+    {
+      "name": "Cuñas para ruedas",
+      "verification": null
+    },
+    {
+      "name": "Escalera de apoyo",
+      "verification": null
+    },
+    {
+      "name": "Conos o barreras perimetrales",
+      "verification": null
+    }
   ],
-
-  "normatives": ["Ley 16.744", "DS 594", "DS 40", "Normativa fabricante del elevador"],
-
+  "normatives": [
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS N°594 — Condiciones sanitarias y ambientales básicas en los lugares de trabajo",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=167766"
+    },
+    {
+      "text": "DS N°40 — Reglamento sobre prevención de riesgos profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1041130"
+    },
+    "Normativa fabricante del elevador"
+  ],
   "procedure": {
     "steps": [
       {
@@ -57,9 +142,18 @@
         "title": "Inspección preoperacional",
         "summary": "Verificar elevador en posición baja, brazos limpios y sin daños.",
         "description": "Verifique que el elevador esté en posición completamente baja y que los brazos estén limpios, sin aceite ni grasa. Verifique visualmente el estado del elevador: mangueras hidráulicas sin fugas, brazos sin deformaciones, mecanismos de bloqueo funcionales.",
-        "criticalAlerts": ["Si detecta fallas, NO USE el elevador y notifique al supervisor."],
-        "verifications": ["Elevador en posición baja", "Brazos limpios sin aceite", "Mangueras sin fugas", "Mecanismos de bloqueo funcionales"],
-        "next": ["s2"]
+        "criticalAlerts": [
+          "Si detecta fallas, NO USE el elevador y notifique al supervisor."
+        ],
+        "verifications": [
+          "Elevador en posición baja",
+          "Brazos limpios sin aceite",
+          "Mangueras sin fugas",
+          "Mecanismos de bloqueo funcionales"
+        ],
+        "next": [
+          "s2"
+        ]
       },
       {
         "id": "s2",
@@ -77,8 +171,14 @@
         "title": "Señalización y preparación del área",
         "summary": "Delimitar zona, retirar objetos y despejar de personas.",
         "description": "Señalice el área con conos o barreras perimetrales. Solicite al cliente que retire todos los objetos del interior del vehículo que puedan caer. Comunique al cliente que el ingreso del vehículo solo puede ser realizado por personal Copec Taller autorizado.",
-        "verifications": ["Área delimitada", "Sin personas ajenas", "Vehículo sin objetos sueltos"],
-        "next": ["s4"]
+        "verifications": [
+          "Área delimitada",
+          "Sin personas ajenas",
+          "Vehículo sin objetos sueltos"
+        ],
+        "next": [
+          "s4"
+        ]
       },
       {
         "id": "s4",
@@ -86,8 +186,14 @@
         "title": "Ingreso y posicionamiento del vehículo",
         "summary": "Ingresar el vehículo en marcha lenta y alinearlo sobre los brazos.",
         "description": "Ingrese el vehículo en marcha lenta al área del elevador. Posicione el vehículo exactamente sobre los brazos del elevador, alineando los puntos de apoyo. Asegúrese de que el vehículo esté en neutro (caja manual) o parking (automático), con freno de mano activado. Descienda del vehículo utilizando la escalera de apoyo.",
-        "verifications": ["Vehículo alineado", "Freno de mano activado", "Caja en neutro/parking"],
-        "next": ["s5"]
+        "verifications": [
+          "Vehículo alineado",
+          "Freno de mano activado",
+          "Caja en neutro/parking"
+        ],
+        "next": [
+          "s5"
+        ]
       },
       {
         "id": "s5",
@@ -95,9 +201,16 @@
         "title": "Colocación de adaptadores y cuñas",
         "summary": "Posicionar tacones de goma en los puntos de apoyo del fabricante.",
         "description": "Coloque cuñas en las ruedas si el vehículo está en pendiente. Coloque los adaptadores de goma (tacones) en los puntos de apoyo indicados por el fabricante del vehículo.",
-        "criticalAlerts": ["NUNCA apoye en fondos de carrocería, tubos de escape o componentes frágiles."],
-        "verifications": ["Tacones en puntos correctos", "Cuñas instaladas si corresponde"],
-        "next": ["s6"]
+        "criticalAlerts": [
+          "NUNCA apoye en fondos de carrocería, tubos de escape o componentes frágiles."
+        ],
+        "verifications": [
+          "Tacones en puntos correctos",
+          "Cuñas instaladas si corresponde"
+        ],
+        "next": [
+          "s6"
+        ]
       },
       {
         "id": "s6",
@@ -105,9 +218,16 @@
         "title": "Elevación inicial y prueba de estabilidad",
         "summary": "Elevar 30 cm y sacudir para verificar estabilidad.",
         "description": "Eleve el vehículo lentamente (aprox. 30 cm) y detenga. Sacuda suavemente el vehículo desde los parachoques para verificar estabilidad.",
-        "criticalAlerts": ["Si hay movimiento anormal, baje de inmediato."],
-        "verifications": ["Vehículo estable a 30 cm", "Sin movimiento lateral"],
-        "next": ["s7"]
+        "criticalAlerts": [
+          "Si hay movimiento anormal, baje de inmediato."
+        ],
+        "verifications": [
+          "Vehículo estable a 30 cm",
+          "Sin movimiento lateral"
+        ],
+        "next": [
+          "s7"
+        ]
       },
       {
         "id": "s7",
@@ -115,9 +235,16 @@
         "title": "Elevación completa y activación de seguros",
         "summary": "Subir hasta altura de trabajo y activar pestillos mecánicos.",
         "description": "Continúe elevando hasta la altura de trabajo requerida. Active los seguros mecánicos de la columna (pestillos de seguridad). Verifique una vez más la estabilidad antes de comenzar el trabajo.",
-        "criticalAlerts": ["NUNCA trabaje bajo un vehículo sin seguros mecánicos activados."],
-        "verifications": ["Seguros mecánicos activados", "Estabilidad confirmada visualmente"],
-        "next": ["s8"]
+        "criticalAlerts": [
+          "NUNCA trabaje bajo un vehículo sin seguros mecánicos activados."
+        ],
+        "verifications": [
+          "Seguros mecánicos activados",
+          "Estabilidad confirmada visualmente"
+        ],
+        "next": [
+          "s8"
+        ]
       },
       {
         "id": "s8",
@@ -125,7 +252,9 @@
         "title": "Ejecución del servicio bajo el vehículo",
         "summary": "Realizar la intervención técnica con el vehículo asegurado.",
         "description": "El técnico puede proceder a trabajar solo cuando ha confirmado visualmente que el elevador está bloqueado mediante seguros mecánicos.",
-        "next": ["s9"]
+        "next": [
+          "s9"
+        ]
       },
       {
         "id": "s9",
@@ -133,8 +262,14 @@
         "title": "Preparación para descenso",
         "summary": "Retirar herramientas y verificar que nadie esté bajo el vehículo.",
         "description": "Retire todas las herramientas, repuestos y recipientes del área bajo el vehículo. Verifique que nadie esté bajo el vehículo o en el radio de los brazos. Desactive los seguros mecánicos.",
-        "verifications": ["Área despejada bajo el vehículo", "Sin personas en zona de brazos", "Seguros desactivados"],
-        "next": ["s10"]
+        "verifications": [
+          "Área despejada bajo el vehículo",
+          "Sin personas en zona de brazos",
+          "Seguros desactivados"
+        ],
+        "next": [
+          "s10"
+        ]
       },
       {
         "id": "s10",
@@ -142,7 +277,9 @@
         "title": "Descenso controlado",
         "summary": "Bajar lentamente, deteniendo a 30 cm para verificar alineación.",
         "description": "Baje lentamente. Detenga a 30 cm del suelo para verificar que los brazos sigan alineados y libres de obstáculos. Baje completamente, retire los brazos a posición de descanso y libere el área.",
-        "next": ["s_end"]
+        "next": [
+          "s_end"
+        ]
       },
       {
         "id": "s_stop",
@@ -159,7 +296,6 @@
       }
     ]
   },
-
   "stopRules": [
     "El vehículo se mueve, vibra excesivamente o hace ruidos al elevarse: baje de inmediato.",
     "Se detecta fuga hidráulica activa (aceite goteando del sistema del elevador).",
@@ -168,16 +304,28 @@
     "El vehículo tiene carga descentrada que no puede ser redistribuida.",
     "Hay personas no autorizadas dentro del perímetro del elevador."
   ],
-
   "emergencyActions": [
-    { "situation": "Vehículo cae o colapsa", "action": "Active la emergencia interna y llame al SAMU (131). No mueva a personas lesionadas salvo riesgo vital inminente." },
-    { "situation": "Persona queda atrapada", "action": "Mantenga la calma. NO intente mover el vehículo manualmente. Llame a Bomberos (132)." },
-    { "situation": "Después del incidente", "action": "Aísle el área. Notifique al supervisor de inmediato y active Protocolo P3-03 (Reporte de Incidentes). Preserve la escena para investigación." }
+    {
+      "situation": "Vehículo cae o colapsa",
+      "action": "Active la emergencia interna y llame al SAMU (131). No mueva a personas lesionadas salvo riesgo vital inminente."
+    },
+    {
+      "situation": "Persona queda atrapada",
+      "action": "Mantenga la calma. NO intente mover el vehículo manualmente. Llame a Bomberos (132)."
+    },
+    {
+      "situation": "Después del incidente",
+      "action": "Aísle el área. Notifique al supervisor de inmediato y active Protocolo P3-03 (Reporte de Incidentes). Preserve la escena para investigación."
+    }
   ],
-
-  "linkedAnnexes": ["LV-ELE-01", "RI-01"],
-  "linkedProtocols": ["P3-02", "P3-03"],
-
+  "linkedAnnexes": [
+    "LV-ELE-01",
+    "RI-01"
+  ],
+  "linkedProtocols": [
+    "P3-02",
+    "P3-03"
+  ],
   "registry": [
     "Registro de uso del elevador en el sistema interno (hora, vehículo, técnico, observaciones, registro fotográfico).",
     "Lista de verificación preoperacional del elevador (LV-ELE-01) al inicio de cada turno.",

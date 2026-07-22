@@ -40,34 +40,47 @@ export function generateMermaidDefinition(procedure, currentStepId = null) {
   }
 
   const lines = ['flowchart TD'];
-  const classAssigns = [];
+  const styleDirectives = [];
+
+  // Colores por tipo de nodo. Se aplican con "style <id> fill:..." porque en
+  // Mermaid 10.9 eso genera un estilo INLINE sobre cada forma, que tiene mayor
+  // prioridad que la regla CSS del tema base (.node polygon { fill: primaryColor }).
+  // El enfoque class+classDef NO funciona aquí porque su selector es sobreescrito
+  // por la regla genérica del tema.
+  const NODE_STYLES = {
+    nodeStep:     'fill:#DBEAFE,stroke:#1D4ED8,stroke-width:1.5px,color:#0F172A',
+    nodeDecision: 'fill:#FEF3C7,stroke:#B45309,stroke-width:1.5px,color:#0F172A',
+    nodeAlert:    'fill:#FEE2E2,stroke:#B91C1C,stroke-width:1.5px,color:#0F172A',
+    nodeEnd:      'fill:#DCFCE7,stroke:#15803D,stroke-width:1.5px,color:#0F172A',
+    nodeCurrent:  'fill:#DBEAFE,stroke:#0B3D91,stroke-width:3px,color:#0F172A'
+  };
 
   for (const step of procedure.steps) {
     const id = step.id;
     const label = wrapText(escapeMermaid(step.title || ''), 30);
 
     let nodeStr;
-    let cssClass;
+    let styleKey;
     switch (step.type) {
       case 'decision':
         nodeStr = `${id}{"${label}"}`;
-        cssClass = 'nodeDecision';
+        styleKey = 'nodeDecision';
         break;
       case 'alert':
         nodeStr = `${id}["${label}"]`;
-        cssClass = 'nodeAlert';
+        styleKey = 'nodeAlert';
         break;
       case 'end':
         nodeStr = `${id}(["${label}"])`;
-        cssClass = 'nodeEnd';
+        styleKey = 'nodeEnd';
         break;
       case 'action':
       default:
         nodeStr = `${id}["${label}"]`;
-        cssClass = 'nodeStep';
+        styleKey = 'nodeStep';
     }
     lines.push(`  ${nodeStr}`);
-    classAssigns.push(`  class ${id} ${cssClass}`);
+    styleDirectives.push(`  style ${id} ${NODE_STYLES[styleKey]}`);
 
     // Conexiones
     if (step.type === 'decision') {
@@ -89,22 +102,12 @@ export function generateMermaidDefinition(procedure, currentStepId = null) {
     }
   }
 
-  // Aplicar clases
-  lines.push(...classAssigns);
+  // Aplicar estilos por nodo (después de las conexiones)
+  lines.push(...styleDirectives);
 
-  // classDef: define los estilos por tipo de nodo DENTRO de la sintaxis Mermaid.
-  // Esto tiene prioridad sobre el tema base y evita depender de CSS externo
-  // (que Mermaid sobreescribe con estilos en línea). Corrige el problema de
-  // "todos los bloques se ven azules".
-  lines.push('  classDef nodeStep fill:#DBEAFE,stroke:#1D4ED8,stroke-width:1.5px,color:#0F172A');
-  lines.push('  classDef nodeDecision fill:#FEF3C7,stroke:#B45309,stroke-width:1.5px,color:#0F172A');
-  lines.push('  classDef nodeAlert fill:#FEE2E2,stroke:#B91C1C,stroke-width:1.5px,color:#0F172A');
-  lines.push('  classDef nodeEnd fill:#DCFCE7,stroke:#15803D,stroke-width:1.5px,color:#0F172A');
-  lines.push('  classDef nodeCurrent fill:#DBEAFE,stroke:#0B3D91,stroke-width:3px,color:#0F172A');
-
-  // Resaltar paso actual (se declara después para ganar prioridad)
+  // Resaltar paso actual: su "style" se declara al final para ganar prioridad
   if (currentStepId) {
-    lines.push(`  class ${currentStepId} nodeCurrent`);
+    lines.push(`  style ${currentStepId} ${NODE_STYLES.nodeCurrent}`);
   }
 
   return lines.join('\n');

@@ -6,48 +6,133 @@
   "shortTitle": "Trabajo en foso",
   "category": "P1",
   "criticality": "alto-riesgo",
-  "service": ["estacion"],
-  "tags": ["foso", "espacio-confinado", "gases", "vigia"],
+  "service": [
+    "estacion"
+  ],
+  "tags": [
+    "foso",
+    "espacio-confinado",
+    "gases",
+    "vigia"
+  ],
   "icon": "search",
-
   "alertBanner": "Riesgo de atropellamiento, caída al foso y exposición a gases. Cumplimiento estricto obligatorio.",
-
   "objective": "Garantizar condiciones seguras de trabajo dentro del foso de inspección, previniendo caídas, atropellamiento del técnico por el vehículo en movimiento, y exposición a gases nocivos.",
   "scope": "Aplica a todos los técnicos que realicen trabajos dentro o en el área perimetral del foso de inspección de la estación de servicio.",
-
   "risks": [
-    { "id": "R1", "description": "Caída al interior del foso (profundidad típica: 1,2 a 1,8 m)", "severity": "alta", "family": "aplastamiento" },
-    { "id": "R2", "description": "Atropellamiento o aplastamiento por movimiento inesperado del vehículo", "severity": "alta", "family": "aplastamiento" },
-    { "id": "R3", "description": "Exposición a gases de escape, vapores de combustible o monóxido de carbono", "severity": "alta", "family": "quimico" },
-    { "id": "R4", "description": "Resbalones en bordes húmedos o contaminados con aceite", "severity": "media", "family": "ergonomico" },
-    { "id": "R5", "description": "Impactos en la cabeza con el fondo del vehículo al incorporarse", "severity": "media", "family": "ergonomico" },
-    { "id": "R6", "description": "Incendio por vapores inflamables acumulados en espacio confinado", "severity": "alta", "family": "incendio" },
-    { "id": "R7", "description": "Falta de iluminación adecuada dentro del foso", "severity": "media", "family": "ergonomico" }
+    {
+      "id": "R1",
+      "description": "Caída al interior del foso (profundidad típica: 1,2 a 1,8 m)",
+      "severity": "alta",
+      "family": "aplastamiento"
+    },
+    {
+      "id": "R2",
+      "description": "Atropellamiento o aplastamiento por movimiento inesperado del vehículo",
+      "severity": "alta",
+      "family": "aplastamiento"
+    },
+    {
+      "id": "R3",
+      "description": "Exposición a gases de escape, vapores de combustible o monóxido de carbono",
+      "severity": "alta",
+      "family": "quimico"
+    },
+    {
+      "id": "R4",
+      "description": "Resbalones en bordes húmedos o contaminados con aceite",
+      "severity": "media",
+      "family": "ergonomico"
+    },
+    {
+      "id": "R5",
+      "description": "Impactos en la cabeza con el fondo del vehículo al incorporarse",
+      "severity": "media",
+      "family": "ergonomico"
+    },
+    {
+      "id": "R6",
+      "description": "Incendio por vapores inflamables acumulados en espacio confinado",
+      "severity": "alta",
+      "family": "incendio"
+    },
+    {
+      "id": "R7",
+      "description": "Falta de iluminación adecuada dentro del foso",
+      "severity": "media",
+      "family": "ergonomico"
+    }
   ],
-
   "responsibles": [
-    { "role": "Técnico que trabaja en el foso", "duty": "Responsable primario del cumplimiento del protocolo" },
-    { "role": "Técnico de superficie (vigía)", "duty": "Permanece visible y disponible durante toda la operación" },
-    { "role": "Supervisor de turno", "duty": "Verifica condiciones antes del inicio de actividades en el foso" }
+    {
+      "role": "Técnico que trabaja en el foso",
+      "duty": "Responsable primario del cumplimiento del protocolo"
+    },
+    {
+      "role": "Técnico de superficie (vigía)",
+      "duty": "Permanece visible y disponible durante toda la operación"
+    },
+    {
+      "role": "Supervisor de turno",
+      "duty": "Verifica condiciones antes del inicio de actividades en el foso"
+    }
   ],
-
   "epp": [
-    { "item": "Zapatos de seguridad con suela antideslizante resistente a hidrocarburos", "obligatory": true },
-    { "item": "Guantes de cuero o nitrilo para trabajo mecánico", "obligatory": true },
-    { "item": "Lentes de seguridad antiproyección", "obligatory": true },
-    { "item": "Uniforme de trabajo con mangas largas", "obligatory": true },
-    { "item": "Lámpara portátil ATEX", "obligatory": false, "note": "Si hay vapores inflamables" }
+    {
+      "item": "Zapatos de seguridad con suela antideslizante resistente a hidrocarburos",
+      "obligatory": true
+    },
+    {
+      "item": "Guantes de cuero o nitrilo para trabajo mecánico",
+      "obligatory": true
+    },
+    {
+      "item": "Lentes de seguridad antiproyección",
+      "obligatory": true
+    },
+    {
+      "item": "Uniforme de trabajo con mangas largas",
+      "obligatory": true
+    },
+    {
+      "item": "Lámpara portátil ATEX",
+      "obligatory": false,
+      "note": "Si hay vapores inflamables"
+    }
   ],
-
   "tools": [
-    { "name": "Foso con iluminación mínima 300 lux", "verification": "LV-FOSO-01" },
-    { "name": "Detector de gases (CO, vapores HC)", "verification": "RMG-01" },
-    { "name": "Barreras y conos perimetrales", "verification": null },
-    { "name": "Escalera de acceso al foso", "verification": null }
+    {
+      "name": "Foso con iluminación mínima 300 lux",
+      "verification": "LV-FOSO-01"
+    },
+    {
+      "name": "Detector de gases (CO, vapores HC)",
+      "verification": "RMG-01"
+    },
+    {
+      "name": "Barreras y conos perimetrales",
+      "verification": null
+    },
+    {
+      "name": "Escalera de acceso al foso",
+      "verification": null
+    }
   ],
-
-  "normatives": ["Ley 16.744", "DS 594", "DS 40", "NCh 382"],
-
+  "normatives": [
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS N°594 — Condiciones sanitarias y ambientales básicas en los lugares de trabajo",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=167766"
+    },
+    {
+      "text": "DS N°40 — Reglamento sobre prevención de riesgos profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1041130"
+    },
+    "NCh 382"
+  ],
   "procedure": {
     "steps": [
       {
@@ -56,8 +141,14 @@
         "title": "Delimitar el área y verificar iluminación",
         "summary": "Barreras a ambos lados + iluminación mínima 300 lux.",
         "description": "Verifique que el área esté delimitada con barreras y conos a ambos lados del acceso vehicular al foso. Verifique el sistema de iluminación: mínimo 300 lux en el área de trabajo. Reemplace lámparas fundidas antes de comenzar.",
-        "verifications": ["Barreras instaladas", "Iluminación ≥ 300 lux", "Lámparas operativas"],
-        "next": ["s2"]
+        "verifications": [
+          "Barreras instaladas",
+          "Iluminación ≥ 300 lux",
+          "Lámparas operativas"
+        ],
+        "next": [
+          "s2"
+        ]
       },
       {
         "id": "s2",
@@ -65,8 +156,13 @@
         "title": "Limpieza y ventilación previa",
         "summary": "Foso libre de líquidos + ventilación mínima 5 minutos.",
         "description": "Compruebe que el foso esté libre de líquidos acumulados, aceite o residuos. Limpie antes de ingresar. Ventile el foso durante al menos 5 minutos antes de ingresar.",
-        "verifications": ["Foso seco y limpio", "Ventilación activa 5 min"],
-        "next": ["s3"]
+        "verifications": [
+          "Foso seco y limpio",
+          "Ventilación activa 5 min"
+        ],
+        "next": [
+          "s3"
+        ]
       },
       {
         "id": "s3",
@@ -74,9 +170,16 @@
         "title": "Medición de gases",
         "summary": "Medir CO y vapores HC. Límite: CO ≤ 25 ppm (DS 594).",
         "description": "Si dispone de detector de gases (CO, vapores HC), realice medición. El nivel de CO no debe superar 25 ppm (TWA) según DS 594.",
-        "criticalAlerts": ["Registrar valores en RMG-01."],
-        "verifications": ["CO ≤ 25 ppm", "Vapores HC bajo LEL"],
-        "next": ["s4"]
+        "criticalAlerts": [
+          "Registrar valores en RMG-01."
+        ],
+        "verifications": [
+          "CO ≤ 25 ppm",
+          "Vapores HC bajo LEL"
+        ],
+        "next": [
+          "s4"
+        ]
       },
       {
         "id": "s4",
@@ -93,8 +196,15 @@
         "title": "Posicionamiento e inmovilización del vehículo",
         "summary": "Motor apagado, freno de mano, cuñas y barreras al frente y atrás.",
         "description": "Posicione el vehículo sobre el foso únicamente con el motor apagado. Coloque cuñas en las ruedas y aplique freno de mano. Instale barreras físicas (cadenas, conos altos o barras) al frente y detrás del vehículo para impedir cualquier movimiento.",
-        "verifications": ["Motor apagado", "Freno de mano activado", "Cuñas instaladas", "Barreras frontales y traseras"],
-        "next": ["s6"]
+        "verifications": [
+          "Motor apagado",
+          "Freno de mano activado",
+          "Cuñas instaladas",
+          "Barreras frontales y traseras"
+        ],
+        "next": [
+          "s6"
+        ]
       },
       {
         "id": "s6",
@@ -102,9 +212,16 @@
         "title": "Asignación del vigía y descenso al foso",
         "summary": "Vigía en superficie + descenso por escalera de frente.",
         "description": "Asigne un técnico de superficie que permanezca a la vista del foso durante toda la operación. Ingrese al foso por la escalera provista, de frente y con ambas manos libres. Nunca salte al interior.",
-        "criticalAlerts": ["El vigía no debe abandonar su posición mientras haya personal en el foso."],
-        "verifications": ["Vigía asignado y presente", "Comunicación entre vigía y técnico"],
-        "next": ["s7"]
+        "criticalAlerts": [
+          "El vigía no debe abandonar su posición mientras haya personal en el foso."
+        ],
+        "verifications": [
+          "Vigía asignado y presente",
+          "Comunicación entre vigía y técnico"
+        ],
+        "next": [
+          "s7"
+        ]
       },
       {
         "id": "s7",
@@ -112,7 +229,9 @@
         "title": "Ejecución del trabajo en el foso",
         "summary": "Trabajar manteniendo orden, sin objetos en los bordes.",
         "description": "Durante el trabajo, mantenga las herramientas y piezas ordenadas. No deje objetos en los bordes del foso donde puedan caer. Si el motor debe encenderse durante alguna etapa del trabajo, notifíquelo al técnico de superficie y aléjese de la zona de escape. Asegúrese de que la ventilación esté activa.",
-        "next": ["s8"]
+        "next": [
+          "s8"
+        ]
       },
       {
         "id": "s8",
@@ -120,7 +239,9 @@
         "title": "Salida del foso y cierre",
         "summary": "Subir de frente por escalera + despejar el área.",
         "description": "Para salir del foso, asegúrese primero de que no haya piezas sueltas que puedan caer al reincorporarse. Ascienda por la escalera de frente. Al término del trabajo, despeje el área de circulación y retire el vehículo del foso.",
-        "next": ["s_end"]
+        "next": [
+          "s_end"
+        ]
       },
       {
         "id": "s_evac",
@@ -137,7 +258,6 @@
       }
     ]
   },
-
   "stopRules": [
     "Sensación de mareo, dolor de cabeza o náuseas dentro del foso: salga de inmediato.",
     "Se detecta olor fuerte a combustible o gases dentro del foso.",
@@ -146,17 +266,37 @@
     "El técnico de superficie no está en su posición de vigilancia.",
     "Hay acumulación visible de líquido en el piso del foso."
   ],
-
   "emergencyActions": [
-    { "situation": "Técnico pierde el conocimiento dentro del foso", "action": "NO ingrese al foso sin protección respiratoria. Llame al SAMU (131) y Bomberos (132). Ventile el espacio desde el exterior." },
-    { "situation": "Vehículo cae sobre el foso", "action": "Corte el encendido si es seguro. Llame a emergencias. No mueva al técnico sin asistencia médica." },
-    { "situation": "Acumulación de gases inflamables", "action": "No encienda nada eléctrico. Evacúe. Ventile. Notifique a Bomberos (132)." },
-    { "situation": "Cualquier emergencia médica", "action": "Active el Protocolo P3-02 (Primeros Auxilios) y el P3-03 (Reporte de Incidentes)." }
+    {
+      "situation": "Técnico pierde el conocimiento dentro del foso",
+      "action": "NO ingrese al foso sin protección respiratoria. Llame al SAMU (131) y Bomberos (132). Ventile el espacio desde el exterior."
+    },
+    {
+      "situation": "Vehículo cae sobre el foso",
+      "action": "Corte el encendido si es seguro. Llame a emergencias. No mueva al técnico sin asistencia médica."
+    },
+    {
+      "situation": "Acumulación de gases inflamables",
+      "action": "No encienda nada eléctrico. Evacúe. Ventile. Notifique a Bomberos (132)."
+    },
+    {
+      "situation": "Cualquier emergencia médica",
+      "action": "Active el Protocolo P3-02 (Primeros Auxilios) y el P3-03 (Reporte de Incidentes)."
+    }
   ],
-
-  "linkedAnnexes": ["LV-FOSO-01", "RMG-01", "BO-01", "RI-01", "ATE-01"],
-  "linkedProtocols": ["P3-02", "P3-03", "P3-07", "P3-08"],
-
+  "linkedAnnexes": [
+    "LV-FOSO-01",
+    "RMG-01",
+    "BO-01",
+    "RI-01",
+    "ATE-01"
+  ],
+  "linkedProtocols": [
+    "P3-02",
+    "P3-03",
+    "P3-07",
+    "P3-08"
+  ],
   "registry": [
     "Lista de verificación del foso (LV-FOSO-01) antes de cada jornada.",
     "Registro de medición de gases (RMG-01).",
