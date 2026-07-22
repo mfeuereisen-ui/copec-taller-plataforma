@@ -92,7 +92,17 @@ export function generateMermaidDefinition(procedure, currentStepId = null) {
   // Aplicar clases
   lines.push(...classAssigns);
 
-  // Resaltar paso actual
+  // classDef: define los estilos por tipo de nodo DENTRO de la sintaxis Mermaid.
+  // Esto tiene prioridad sobre el tema base y evita depender de CSS externo
+  // (que Mermaid sobreescribe con estilos en línea). Corrige el problema de
+  // "todos los bloques se ven azules".
+  lines.push('  classDef nodeStep fill:#DBEAFE,stroke:#1D4ED8,stroke-width:1.5px,color:#0F172A');
+  lines.push('  classDef nodeDecision fill:#FEF3C7,stroke:#B45309,stroke-width:1.5px,color:#0F172A');
+  lines.push('  classDef nodeAlert fill:#FEE2E2,stroke:#B91C1C,stroke-width:1.5px,color:#0F172A');
+  lines.push('  classDef nodeEnd fill:#DCFCE7,stroke:#15803D,stroke-width:1.5px,color:#0F172A');
+  lines.push('  classDef nodeCurrent fill:#DBEAFE,stroke:#0B3D91,stroke-width:3px,color:#0F172A');
+
+  // Resaltar paso actual (se declara después para ganar prioridad)
   if (currentStepId) {
     lines.push(`  class ${currentStepId} nodeCurrent`);
   }

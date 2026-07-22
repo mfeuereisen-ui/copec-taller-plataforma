@@ -6,9 +6,84 @@ import { applyFilters, getAllTags } from '../services/filterEngine.js';
 import Icon from './shared/Icon.js';
 import Badge from './shared/Badge.js';
 
+// Sub-componente: card de protocolo principal
+const ProtocolCard = defineComponent({
+  name: 'ProtocolCard',
+  components: { Icon, Badge },
+  props: { protocol: Object },
+  emits: ['open'],
+  setup(props) {
+    const cat = computed(() => getCategory(props.protocol.category));
+    const isFav = computed(() => isFavorite(props.protocol.code));
+    function fav(e) { e.stopPropagation(); toggleFavorite(props.protocol.code); }
+    return { cat, isFav, fav };
+  },
+  template: `
+    <article
+      @click="$emit('open')"
+      class="group cursor-pointer bg-white border border-ink-100 hover:border-brand-200 hover:shadow-cardH rounded-2xl p-5 transition relative overflow-hidden"
+    >
+      <!-- Lateral color por criticidad -->
+      <div class="absolute left-0 top-0 bottom-0 w-1"
+        :class="protocol.criticality === 'alto-riesgo' ? 'bg-warn-500' : protocol.criticality === 'medio' ? 'bg-brand-500' : 'bg-safe-500'"
+      ></div>
+      <div class="flex items-start justify-between gap-3 mb-3">
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-[12px] font-mono font-semibold text-brand-700">{{ protocol.code }}</span>
+            <Badge v-if="protocol.criticality === 'alto-riesgo'" variant="warn" size="sm">Alto riesgo</Badge>
+          </div>
+          <h3 class="font-semibold text-ink-900 leading-snug text-[15px] line-clamp-2 group-hover:text-brand-700 transition">
+            {{ protocol.shortTitle || protocol.title }}
+          </h3>
+        </div>
+        <button @click="fav" class="opacity-50 hover:opacity-100" :class="{'opacity-100 text-warn-500': isFav}">
+          <Icon :name="isFav ? 'star-filled' : 'star'" :size="18" :fill="isFav ? '#F59E0B' : 'none'" :stroke="isFav ? '#F59E0B' : '#94A3B8'" />
+        </button>
+      </div>
+      <p v-if="protocol.objective" class="text-[12.5px] text-ink-500 line-clamp-2 mb-4">{{ protocol.objective }}</p>
+      <div class="flex items-center justify-between text-[11px] text-ink-500">
+        <div class="flex items-center gap-2">
+          <Badge v-if="cat" variant="brand" size="sm">{{ cat.shortName }}</Badge>
+          <span v-if="protocol.procedure?.steps?.length" class="inline-flex items-center gap-1">
+            <Icon name="list" :size="12" stroke="#94A3B8" /> {{ protocol.procedure.steps.length }} pasos
+          </span>
+        </div>
+        <span>{{ protocol.lastUpdated }}</span>
+      </div>
+    </article>
+  `
+});
+
+// Sub-componente compacto para listas
+const ProtocolCardCompact = defineComponent({
+  name: 'ProtocolCardCompact',
+  components: { Icon, Badge },
+  props: { protocol: Object },
+  emits: ['open'],
+  template: `
+    <button @click="$emit('open')"
+      class="w-full text-left bg-white border border-ink-100 hover:border-brand-200 hover:bg-brand-50/30 rounded-xl px-4 py-3 transition flex items-center gap-3 group">
+      <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0"
+        :class="protocol.criticality === 'alto-riesgo' ? 'bg-warn-50' : 'bg-brand-50'">
+        <Icon name="shield" :size="16"
+          :stroke="protocol.criticality === 'alto-riesgo' ? '#B45309' : '#1D4ED8'" />
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2">
+          <span class="text-[11.5px] font-mono font-semibold text-brand-700">{{ protocol.code }}</span>
+          <Badge v-if="protocol.criticality === 'alto-riesgo'" variant="warn" size="sm">Alto riesgo</Badge>
+        </div>
+        <div class="text-sm text-ink-900 truncate">{{ protocol.shortTitle || protocol.title }}</div>
+      </div>
+      <Icon name="chevron" :size="16" stroke="#94A3B8" class="opacity-0 group-hover:opacity-100 transition" />
+    </button>
+  `
+});
+
 export default defineComponent({
   name: 'HomePage',
-  components: { Icon, Badge },
+  components: { Icon, Badge, ProtocolCard, ProtocolCardCompact },
   setup() {
     const router = useRouter();
     const view = ref('grid'); // grid | category | risk | service
@@ -160,6 +235,29 @@ export default defineComponent({
             </div>
           </div>
         </transition>
+      </section>
+
+      <!-- MÓDULO DE CAPACITACIÓN (destacado) -->
+      <section class="mb-10">
+        <button @click="$router.push('/capacitacion')"
+          class="w-full text-left rounded-2xl overflow-hidden bg-brand-900 hover:bg-brand-800 transition group relative">
+          <div class="px-6 py-5 sm:px-8 sm:py-6 flex flex-col sm:flex-row sm:items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+              <Icon name="graduation" :size="26" stroke="white" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="text-[11px] uppercase tracking-[0.18em] text-brand-100 font-semibold mb-1">Formación continua</div>
+              <h2 class="text-lg sm:text-xl font-bold text-white leading-snug">Módulo de Capacitación</h2>
+              <p class="text-[13.5px] text-brand-100 mt-1 max-w-2xl">
+                Recorre cada protocolo paso a paso y valida tu comprensión. Pensado para capacitar de forma continua a técnicos, supervisores y todo el personal de operaciones.
+              </p>
+            </div>
+            <div class="flex items-center gap-2 text-white font-medium text-[14px] flex-shrink-0">
+              Ir a capacitación
+              <Icon name="arrow-right" :size="18" stroke="white" class="group-hover:translate-x-1 transition-transform" />
+            </div>
+          </div>
+        </button>
       </section>
 
       <!-- QUICK ACCESS -->
@@ -378,77 +476,3 @@ export default defineComponent({
   `
 });
 
-// Sub-componente: card de protocolo principal
-const ProtocolCard = defineComponent({
-  name: 'ProtocolCard',
-  components: { Icon, Badge },
-  props: { protocol: Object },
-  emits: ['open'],
-  setup(props) {
-    const cat = computed(() => getCategory(props.protocol.category));
-    const isFav = computed(() => isFavorite(props.protocol.code));
-    function fav(e) { e.stopPropagation(); toggleFavorite(props.protocol.code); }
-    return { cat, isFav, fav };
-  },
-  template: `
-    <article
-      @click="$emit('open')"
-      class="group cursor-pointer bg-white border border-ink-100 hover:border-brand-200 hover:shadow-cardH rounded-2xl p-5 transition relative overflow-hidden"
-    >
-      <!-- Lateral color por criticidad -->
-      <div class="absolute left-0 top-0 bottom-0 w-1"
-        :class="protocol.criticality === 'alto-riesgo' ? 'bg-warn-500' : protocol.criticality === 'medio' ? 'bg-brand-500' : 'bg-safe-500'"
-      ></div>
-      <div class="flex items-start justify-between gap-3 mb-3">
-        <div class="flex-1 min-w-0">
-          <div class="flex items-center gap-2 mb-1">
-            <span class="text-[12px] font-mono font-semibold text-brand-700">{{ protocol.code }}</span>
-            <Badge v-if="protocol.criticality === 'alto-riesgo'" variant="warn" size="sm">Alto riesgo</Badge>
-          </div>
-          <h3 class="font-semibold text-ink-900 leading-snug text-[15px] line-clamp-2 group-hover:text-brand-700 transition">
-            {{ protocol.shortTitle || protocol.title }}
-          </h3>
-        </div>
-        <button @click="fav" class="opacity-50 hover:opacity-100" :class="{'opacity-100 text-warn-500': isFav}">
-          <Icon :name="isFav ? 'star-filled' : 'star'" :size="18" :fill="isFav ? '#F59E0B' : 'none'" :stroke="isFav ? '#F59E0B' : '#94A3B8'" />
-        </button>
-      </div>
-      <p v-if="protocol.objective" class="text-[12.5px] text-ink-500 line-clamp-2 mb-4">{{ protocol.objective }}</p>
-      <div class="flex items-center justify-between text-[11px] text-ink-500">
-        <div class="flex items-center gap-2">
-          <Badge v-if="cat" variant="brand" size="sm">{{ cat.shortName }}</Badge>
-          <span v-if="protocol.procedure?.steps?.length" class="inline-flex items-center gap-1">
-            <Icon name="list" :size="12" stroke="#94A3B8" /> {{ protocol.procedure.steps.length }} pasos
-          </span>
-        </div>
-        <span>{{ protocol.lastUpdated }}</span>
-      </div>
-    </article>
-  `
-});
-
-// Sub-componente compacto para listas
-const ProtocolCardCompact = defineComponent({
-  name: 'ProtocolCardCompact',
-  components: { Icon, Badge },
-  props: { protocol: Object },
-  emits: ['open'],
-  template: `
-    <button @click="$emit('open')"
-      class="w-full text-left bg-white border border-ink-100 hover:border-brand-200 hover:bg-brand-50/30 rounded-xl px-4 py-3 transition flex items-center gap-3 group">
-      <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0"
-        :class="protocol.criticality === 'alto-riesgo' ? 'bg-warn-50' : 'bg-brand-50'">
-        <Icon name="shield" :size="16"
-          :stroke="protocol.criticality === 'alto-riesgo' ? '#B45309' : '#1D4ED8'" />
-      </div>
-      <div class="flex-1 min-w-0">
-        <div class="flex items-center gap-2">
-          <span class="text-[11.5px] font-mono font-semibold text-brand-700">{{ protocol.code }}</span>
-          <Badge v-if="protocol.criticality === 'alto-riesgo'" variant="warn" size="sm">Alto riesgo</Badge>
-        </div>
-        <div class="text-sm text-ink-900 truncate">{{ protocol.shortTitle || protocol.title }}</div>
-      </div>
-      <Icon name="chevron" :size="16" stroke="#94A3B8" class="opacity-0 group-hover:opacity-100 transition" />
-    </button>
-  `
-});

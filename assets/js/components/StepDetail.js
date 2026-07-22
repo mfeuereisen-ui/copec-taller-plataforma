@@ -8,9 +8,10 @@ export default defineComponent({
   components: { Icon, Badge },
   props: {
     step: { type: Object, required: true },
-    protocol: { type: Object, required: true }
+    protocol: { type: Object, required: true },
+    canGoBack: { type: Boolean, default: false }
   },
-  emits: ['close', 'select-step'],
+  emits: ['close', 'select-step', 'go-back'],
   setup(props, { emit }) {
     const typeMeta = computed(() => {
       switch (props.step.type) {
@@ -36,10 +37,18 @@ export default defineComponent({
       <!-- Header -->
       <div class="px-5 py-4 border-b border-ink-100">
         <div class="flex items-start justify-between gap-3 mb-2">
-          <Badge :variant="typeMeta.variant" size="md">
-            <Icon :name="typeMeta.icon" :size="12" :stroke="typeMeta.color" />
-            {{ typeMeta.label }}
-          </Badge>
+          <div class="flex items-center gap-2">
+            <button v-if="canGoBack" @click="$emit('go-back')"
+              class="inline-flex items-center gap-1 px-2 py-1 -ml-1 rounded text-[12px] text-ink-500 hover:bg-ink-50 hover:text-ink-900 transition"
+              title="Volver al paso anterior">
+              <Icon name="arrow-left" :size="14" />
+              Volver
+            </button>
+            <Badge :variant="typeMeta.variant" size="md">
+              <Icon :name="typeMeta.icon" :size="12" :stroke="typeMeta.color" />
+              {{ typeMeta.label }}
+            </Badge>
+          </div>
           <button @click="$emit('close')" class="p-1 hover:bg-ink-50 rounded text-ink-500 -mt-1 -mr-1">
             <Icon name="x" :size="18" />
           </button>

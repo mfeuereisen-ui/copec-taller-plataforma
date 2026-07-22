@@ -16,11 +16,13 @@ export default defineComponent({
     const router = useRouter();
     const activeTab = ref('flow');
     const selectedStepId = ref(null);
+    const stepHistory = ref([]); // pila de pasos visitados para el botón "volver"
 
     const protocol = computed(() => getProtocol(route.params.code));
     const category = computed(() => protocol.value ? getCategory(protocol.value.category) : null);
     const fav = computed(() => protocol.value ? isFavorite(protocol.value.code) : false);
     const selectedStep = computed(() => protocol.value ? findStep(protocol.value.procedure, selectedStepId.value) : null);
+    const canGoBackStep = computed(() => stepHistory.value.length > 0);
     const related = computed(() => protocol.value ? findRelatedProtocols(protocol.value.code) : []);
     const linkedAnnexes = computed(() => {
       if (!protocol.value) return [];
@@ -28,9 +30,17 @@ export default defineComponent({
     });
 
     function selectStep(id) {
+      // Guarda el paso actual en el historial antes de saltar al nuevo
+      if (selectedStepId.value && selectedStepId.value !== id) {
+        stepHistory.value.push(selectedStepId.value);
+      }
       selectedStepId.value = id;
     }
-    function closeDetail() { selectedStepId.value = null; }
+    function goBackStep() {
+      const prev = stepHistory.value.pop();
+      if (prev) selectedStepId.value = prev;
+    }
+    function closeDetail() { selectedStepId.value = null; stepHistory.value = []; }
     function toggleFav() { if (protocol.value) toggleFavorite(protocol.value.code); }
     function print() { window.print(); }
     function goToAnnex(a) { router.push(`/anexo/${a.code}`); }
@@ -49,13 +59,14 @@ export default defineComponent({
     // Resetear estado al cambiar de ruta
     watch(() => route.params.code, () => {
       selectedStepId.value = null;
+      stepHistory.value = [];
       activeTab.value = 'flow';
     });
 
     return {
       route, protocol, category, fav, selectedStep, selectedStepId, activeTab,
-      related, linkedAnnexes,
-      selectStep, closeDetail, toggleFav, print, goToAnnex, goToProtocol, goToTraining,
+      related, linkedAnnexes, canGoBackStep,
+      selectStep, goBackStep, closeDetail, toggleFav, print, goToAnnex, goToProtocol, goToTraining,
       normativeText, normativeUrl
     };
   },
@@ -154,7 +165,7 @@ export default defineComponent({
           </div>
           <transition name="slide-up">
             <div v-if="selectedStep" class="bg-white border border-ink-100 rounded-2xl overflow-hidden shadow-card lg:max-h-[700px]">
-              <StepDetail :step="selectedStep" :protocol="protocol" @close="closeDetail" @select-step="selectStep" />
+              <StepDetail :step="selectedStep" :protocol="protocol" :can-go-back="canGoBackStep" @close="closeDetail" @select-step="selectStep" @go-back="goBackStep" />
             </div>
           </transition>
         </div>
