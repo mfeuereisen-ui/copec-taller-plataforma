@@ -38,7 +38,7 @@ const ProtocolCard = defineComponent({
           </h3>
         </div>
         <button @click="fav" class="opacity-50 hover:opacity-100" :class="{'opacity-100 text-warn-500': isFav}">
-          <Icon :name="isFav ? 'star-filled' : 'star'" :size="18" :fill="isFav ? '#F59E0B' : 'none'" :stroke="isFav ? '#F59E0B' : '#94A3B8'" />
+          <Icon :name="isFav ? 'star-filled' : 'star'" :size="18" :fill="isFav ? $c.warn500 : 'none'" :stroke="isFav ? $c.warn500 : $c.ink400" />
         </button>
       </div>
       <p v-if="protocol.objective" class="text-[12.5px] text-ink-500 line-clamp-2 mb-4">{{ protocol.objective }}</p>
@@ -46,7 +46,7 @@ const ProtocolCard = defineComponent({
         <div class="flex items-center gap-2">
           <Badge v-if="cat" variant="brand" size="sm">{{ cat.shortName }}</Badge>
           <span v-if="protocol.procedure?.steps?.length" class="inline-flex items-center gap-1">
-            <Icon name="list" :size="12" stroke="#94A3B8" /> {{ protocol.procedure.steps.length }} pasos
+            <Icon name="list" :size="12" :stroke="$c.ink400" /> {{ protocol.procedure.steps.length }} pasos
           </span>
         </div>
         <span>{{ protocol.lastUpdated }}</span>
@@ -67,7 +67,7 @@ const ProtocolCardCompact = defineComponent({
       <div class="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0"
         :class="protocol.criticality === 'alto-riesgo' ? 'bg-warn-50' : 'bg-brand-50'">
         <Icon name="shield" :size="16"
-          :stroke="protocol.criticality === 'alto-riesgo' ? '#B45309' : '#1D4ED8'" />
+          :stroke="protocol.criticality === 'alto-riesgo' ? $c.warn700 : $c.brand700" />
       </div>
       <div class="flex-1 min-w-0">
         <div class="flex items-center gap-2">
@@ -76,7 +76,7 @@ const ProtocolCardCompact = defineComponent({
         </div>
         <div class="text-sm text-ink-900 truncate">{{ protocol.shortTitle || protocol.title }}</div>
       </div>
-      <Icon name="chevron" :size="16" stroke="#94A3B8" class="opacity-0 group-hover:opacity-100 transition" />
+      <Icon name="chevron" :size="16" :stroke="$c.ink400" class="opacity-0 group-hover:opacity-100 transition" />
     </button>
   `
 });
@@ -211,7 +211,7 @@ export default defineComponent({
             <div class="text-[14.5px] font-semibold text-ink-900">{{ intro.title }}</div>
             <div class="text-[12.5px] text-ink-500">{{ intro.subtitle }}</div>
           </div>
-          <Icon :name="showIntro ? 'chevron-down' : 'chevron'" :size="18" stroke="#1D4ED8" class="flex-shrink-0" />
+          <Icon :name="showIntro ? 'chevron-down' : 'chevron'" :size="18" :stroke="$c.brand700" class="flex-shrink-0" />
         </button>
 
         <transition name="slide-up">
@@ -266,7 +266,7 @@ export default defineComponent({
         <div class="rounded-2xl border border-danger-100 bg-gradient-to-br from-danger-50 to-white p-5">
           <div class="flex items-start gap-3 mb-4">
             <div class="w-10 h-10 rounded-lg bg-danger-100 flex items-center justify-center">
-              <Icon name="alert" :size="20" stroke="#B91C1C" />
+              <Icon name="alert" :size="20" :stroke="$c.danger700" />
             </div>
             <div>
               <h3 class="font-semibold text-ink-900 text-[15px]">Emergencias</h3>
@@ -280,7 +280,7 @@ export default defineComponent({
                   <span class="text-[11.5px] font-mono font-semibold text-danger-700">{{ p.code }}</span>
                   <div class="text-sm text-ink-900 truncate">{{ p.shortTitle || p.title }}</div>
                 </div>
-                <Icon name="chevron" :size="16" stroke="#B91C1C" class="opacity-0 group-hover:opacity-100 transition" />
+                <Icon name="chevron" :size="16" :stroke="$c.danger700" class="opacity-0 group-hover:opacity-100 transition" />
               </button>
             </li>
           </ul>
@@ -290,7 +290,7 @@ export default defineComponent({
         <div class="rounded-2xl border border-warn-100 bg-gradient-to-br from-warn-50 to-white p-5">
           <div class="flex items-start gap-3 mb-4">
             <div class="w-10 h-10 rounded-lg bg-warn-100 flex items-center justify-center">
-              <Icon name="warning" :size="20" stroke="#B45309" />
+              <Icon name="warning" :size="20" :stroke="$c.warn700" />
             </div>
             <div>
               <h3 class="font-semibold text-ink-900 text-[15px]">Protocolos críticos</h3>
@@ -304,7 +304,7 @@ export default defineComponent({
                   <span class="text-[11.5px] font-mono font-semibold text-warn-700">{{ p.code }}</span>
                   <div class="text-sm text-ink-900 truncate">{{ p.shortTitle || p.title }}</div>
                 </div>
-                <Icon name="chevron" :size="16" stroke="#B45309" class="opacity-0 group-hover:opacity-100 transition" />
+                <Icon name="chevron" :size="16" :stroke="$c.warn700" class="opacity-0 group-hover:opacity-100 transition" />
               </button>
             </li>
           </ul>
@@ -314,7 +314,7 @@ export default defineComponent({
         <div class="rounded-2xl border border-brand-100 bg-gradient-to-br from-brand-50 to-white p-5">
           <div class="flex items-start gap-3 mb-4">
             <div class="w-10 h-10 rounded-lg bg-brand-100 flex items-center justify-center">
-              <Icon name="clock" :size="20" stroke="#1D4ED8" />
+              <Icon name="clock" :size="20" :stroke="$c.brand700" />
             </div>
             <div>
               <h3 class="font-semibold text-ink-900 text-[15px]">Actualizados</h3>
@@ -437,7 +437,7 @@ export default defineComponent({
               <div class="w-9 h-9 rounded-lg flex items-center justify-center"
                 :class="rf.severity === 'alta' ? 'bg-danger-50' : rf.severity === 'media' ? 'bg-warn-50' : 'bg-safe-50'">
                 <Icon name="warning" :size="18"
-                  :stroke="rf.severity === 'alta' ? '#B91C1C' : rf.severity === 'media' ? '#B45309' : '#15803D'" />
+                  :stroke="rf.severity === 'alta' ? $c.danger700 : rf.severity === 'media' ? $c.warn700 : $c.safe700" />
               </div>
               <div>
                 <h3 class="text-base font-semibold">{{ rf.name }}</h3>
@@ -459,7 +459,7 @@ export default defineComponent({
           ]" :key="srv.id">
             <div class="flex items-start gap-3 mb-4">
               <div class="w-11 h-11 rounded-xl bg-brand-50 flex items-center justify-center">
-                <Icon :name="srv.icon" :size="22" stroke="#1D4ED8" />
+                <Icon :name="srv.icon" :size="22" :stroke="$c.brand700" />
               </div>
               <div>
                 <h3 class="text-lg font-semibold">{{ srv.name }}</h3>

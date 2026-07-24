@@ -94,7 +94,7 @@ export default defineComponent({
   },
   template: `
     <div v-if="!protocol" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
-      <Icon name="alert" :size="40" stroke="#94A3B8" class="mx-auto mb-3" />
+      <Icon name="alert" :size="40" :stroke="$c.ink400" class="mx-auto mb-3" />
       <h2 class="text-lg font-semibold text-ink-900 mb-1">Protocolo no encontrado</h2>
       <router-link to="/capacitacion" class="text-brand-700 text-sm hover:underline">← Volver a capacitación</router-link>
     </div>
@@ -123,7 +123,7 @@ export default defineComponent({
 
       <!-- INTRO -->
       <section v-if="stage === 'intro'" class="bg-white border border-ink-100 rounded-2xl p-6 shadow-card">
-        <Icon name="graduation" :size="36" stroke="#1D4ED8" class="mb-3" />
+        <Icon name="graduation" :size="36" :stroke="$c.brand700" class="mb-3" />
         <h2 class="text-xl font-semibold text-ink-900 mb-2">Capacitación en {{ protocol.shortTitle }}</h2>
         <p class="text-[14px] text-ink-700 leading-relaxed mb-4">{{ protocol.objective }}</p>
         <div class="grid grid-cols-3 gap-3 mb-6">
@@ -165,7 +165,7 @@ export default defineComponent({
           <div class="text-[11px] uppercase tracking-wider text-ink-500 font-semibold mb-2">Debes verificar</div>
           <ul class="space-y-1.5">
             <li v-for="v in currentStep.verifications" :key="v" class="flex items-start gap-2 text-[13.5px] text-ink-700">
-              <Icon name="check" :size="14" stroke="#16A34A" class="mt-0.5 flex-shrink-0" /> {{ v }}
+              <Icon name="check" :size="14" :stroke="$c.safe600" class="mt-0.5 flex-shrink-0" /> {{ v }}
             </li>
           </ul>
         </div>
@@ -196,7 +196,7 @@ export default defineComponent({
         <div class="space-y-2">
           <article v-for="(rule, i) in protocol.stopRules" :key="i"
             class="flex items-start gap-3 p-3 bg-warn-50 border-l-4 border-warn-500 rounded-r-lg">
-            <Icon name="alert" :size="18" stroke="#B45309" class="flex-shrink-0 mt-0.5" />
+            <Icon name="alert" :size="18" :stroke="$c.warn700" class="flex-shrink-0 mt-0.5" />
             <p class="text-[13.5px] text-ink-900">{{ rule }}</p>
           </article>
         </div>
@@ -238,7 +238,7 @@ export default defineComponent({
         <div :class="['inline-flex items-center justify-center w-20 h-20 rounded-full mb-4',
           score >= 80 ? 'bg-safe-100' : score >= 60 ? 'bg-warn-100' : 'bg-danger-100']">
           <Icon name="check" :size="36"
-            :stroke="score >= 80 ? '#15803D' : score >= 60 ? '#B45309' : '#B91C1C'" :stroke-width="2.5" />
+            :stroke="score >= 80 ? $c.safe700 : score >= 60 ? $c.warn700 : $c.danger700" :stroke-width="2.5" />
         </div>
         <h2 class="text-2xl font-bold text-ink-900 mb-1">{{ score }}%</h2>
         <p class="text-[14.5px] text-ink-500 mb-6">

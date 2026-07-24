@@ -2,6 +2,7 @@
 // Bootstrap principal. Carga datos, monta Vue + Router, inicializa Mermaid.
 
 import { createApp, h } from 'vue';
+import { C } from './tokens.js';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import mermaid from 'mermaid';
 
@@ -49,12 +50,12 @@ async function bootstrap() {
       themeVariables: {
         fontFamily: 'Inter, sans-serif',
         fontSize: '13px',
-        primaryColor: '#DBEAFE',
-        primaryBorderColor: '#1D4ED8',
-        primaryTextColor: '#0F172A',
-        lineColor: '#94A3B8',
-        secondaryColor: '#FEF3C7',
-        tertiaryColor: '#DCFCE7'
+        primaryColor: C.brand100,
+        primaryBorderColor: C.brand700,
+        primaryTextColor: C.ink900,
+        lineColor: C.ink400,
+        secondaryColor: C.warn100,
+        tertiaryColor: C.safe100
       },
       flowchart: {
         useMaxWidth: true,
@@ -77,6 +78,7 @@ async function bootstrap() {
     const app = createApp({
       render: () => h(AppShell)
     });
+    app.config.globalProperties.$c = C;   // tokens de color disponibles en plantillas
     app.use(router);
     app.mount('#app');
 

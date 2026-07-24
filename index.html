@@ -23,44 +23,49 @@
       theme: {
         extend: {
           colors: {
+            // Los valores viven en assets/css/theme.css (:root).
+            // Para cambiar la identidad de marca, edita SOLO ese archivo.
             brand: {
-              50:  '#EFF6FF',
-              100: '#DBEAFE',
-              200: '#BFDBFE',
-              300: '#93C5FD',
-              500: '#3B82F6',
-              600: '#2563EB',
-              700: '#1D4ED8',
-              800: '#1E40AF',
-              900: '#0B3D91'
+              50:  'rgb(var(--brand-50) / <alpha-value>)',
+              100: 'rgb(var(--brand-100) / <alpha-value>)',
+              200: 'rgb(var(--brand-200) / <alpha-value>)',
+              300: 'rgb(var(--brand-300) / <alpha-value>)',
+              500: 'rgb(var(--brand-500) / <alpha-value>)',
+              600: 'rgb(var(--brand-600) / <alpha-value>)',
+              700: 'rgb(var(--brand-700) / <alpha-value>)',
+              800: 'rgb(var(--brand-800) / <alpha-value>)',
+              900: 'rgb(var(--brand-900) / <alpha-value>)'
             },
             safe: {
-              50:  '#F0FDF4',
-              100: '#DCFCE7',
-              300: '#86EFAC',
-              500: '#22C55E',
-              600: '#16A34A',
-              700: '#15803D'
+              50:  'rgb(var(--safe-50) / <alpha-value>)',
+              100: 'rgb(var(--safe-100) / <alpha-value>)',
+              300: 'rgb(var(--safe-300) / <alpha-value>)',
+              500: 'rgb(var(--safe-500) / <alpha-value>)',
+              600: 'rgb(var(--safe-600) / <alpha-value>)',
+              700: 'rgb(var(--safe-700) / <alpha-value>)'
             },
             warn: {
-              50:  '#FFFBEB',
-              100: '#FEF3C7',
-              500: '#F59E0B',
-              700: '#B45309'
+              50:  'rgb(var(--warn-50) / <alpha-value>)',
+              100: 'rgb(var(--warn-100) / <alpha-value>)',
+              500: 'rgb(var(--warn-500) / <alpha-value>)',
+              700: 'rgb(var(--warn-700) / <alpha-value>)'
             },
             danger: {
-              50:  '#FEF2F2',
-              100: '#FEE2E2',
-              500: '#EF4444',
-              700: '#B91C1C'
+              50:  'rgb(var(--danger-50) / <alpha-value>)',
+              100: 'rgb(var(--danger-100) / <alpha-value>)',
+              500: 'rgb(var(--danger-500) / <alpha-value>)',
+              700: 'rgb(var(--danger-700) / <alpha-value>)'
             },
             ink: {
-              900: '#0F172A',
-              700: '#334155',
-              500: '#64748B',
-              300: '#CBD5E1',
-              100: '#F1F5F9',
-              50:  '#F8FAFC'
+              50:  'rgb(var(--ink-50) / <alpha-value>)',
+              100: 'rgb(var(--ink-100) / <alpha-value>)',
+              200: 'rgb(var(--ink-200) / <alpha-value>)',
+              300: 'rgb(var(--ink-300) / <alpha-value>)',
+              400: 'rgb(var(--ink-400) / <alpha-value>)',
+              500: 'rgb(var(--ink-500) / <alpha-value>)',
+              600: 'rgb(var(--ink-600) / <alpha-value>)',
+              700: 'rgb(var(--ink-700) / <alpha-value>)',
+              900: 'rgb(var(--ink-900) / <alpha-value>)'
             }
           },
           fontFamily: {

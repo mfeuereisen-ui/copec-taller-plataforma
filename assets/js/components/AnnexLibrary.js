@@ -52,7 +52,7 @@ export default defineComponent({
 
       <div class="flex flex-col sm:flex-row gap-3 mb-6">
         <div class="flex-1 relative">
-          <Icon name="search" :size="16" stroke="#94A3B8" class="absolute left-3 top-1/2 -translate-y-1/2" />
+          <Icon name="search" :size="16" :stroke="$c.ink400" class="absolute left-3 top-1/2 -translate-y-1/2" />
           <input v-model="search" type="text" placeholder="Buscar por código, nombre o descripción…"
             class="w-full pl-9 pr-3 py-2 border border-ink-100 rounded-lg text-sm bg-white" />
         </div>
@@ -73,12 +73,12 @@ export default defineComponent({
               <span class="text-[12px] font-mono font-semibold text-safe-700">{{ a.code }}</span>
               <Badge variant="neutral" size="sm">{{ a.type }}</Badge>
             </div>
-            <Icon name="chevron" :size="14" stroke="#94A3B8" class="opacity-0 group-hover:opacity-100 transition mt-0.5" />
+            <Icon name="chevron" :size="14" :stroke="$c.ink400" class="opacity-0 group-hover:opacity-100 transition mt-0.5" />
           </div>
           <h3 class="text-[14.5px] font-semibold text-ink-900 leading-snug mb-1">{{ a.title }}</h3>
           <p v-if="a.description" class="text-[12.5px] text-ink-500 line-clamp-2">{{ a.description }}</p>
           <div class="text-[11px] text-ink-500 mt-3 flex items-center gap-2">
-            <Icon name="clock" :size="12" stroke="#94A3B8" />
+            <Icon name="clock" :size="12" :stroke="$c.ink400" />
             <span>{{ a.frequency }}</span>
           </div>
         </button>

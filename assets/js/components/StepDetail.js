@@ -1,5 +1,6 @@
 // components/StepDetail.js
 import { defineComponent, computed } from 'vue';
+import { C } from '../tokens.js';
 import Icon from './shared/Icon.js';
 import Badge from './shared/Badge.js';
 
@@ -15,10 +16,10 @@ export default defineComponent({
   setup(props, { emit }) {
     const typeMeta = computed(() => {
       switch (props.step.type) {
-        case 'decision': return { label: 'Punto de decisión', variant: 'warn', icon: 'filter', color: '#B45309' };
-        case 'alert':    return { label: 'Alerta crítica',    variant: 'danger', icon: 'alert', color: '#B91C1C' };
-        case 'end':      return { label: 'Cierre',            variant: 'safe', icon: 'check', color: '#15803D' };
-        default:         return { label: 'Acción',            variant: 'brand', icon: 'arrow-right', color: '#1D4ED8' };
+        case 'decision': return { label: 'Punto de decisión', variant: 'warn', icon: 'filter', color: C.warn700 };
+        case 'alert':    return { label: 'Alerta crítica',    variant: 'danger', icon: 'alert', color: C.danger700 };
+        case 'end':      return { label: 'Cierre',            variant: 'safe', icon: 'check', color: C.safe700 };
+        default:         return { label: 'Acción',            variant: 'brand', icon: 'arrow-right', color: C.brand700 };
       }
     });
 
@@ -73,21 +74,21 @@ export default defineComponent({
               <button @click="goToStep(step.yes)" class="w-full flex items-center gap-2 px-3 py-2 bg-safe-50 hover:bg-safe-100 rounded-lg text-[13px] text-left transition group">
                 <Badge variant="safe" size="sm">{{ step.yesLabel || 'Sí' }}</Badge>
                 <span class="text-ink-700 flex-1 min-w-0 truncate">{{ targetSummary(step.yes) || ('→ paso ' + step.yes) }}</span>
-                <Icon name="chevron" :size="14" stroke="#15803D" class="opacity-0 group-hover:opacity-100 transition flex-shrink-0" />
+                <Icon name="chevron" :size="14" :stroke="$c.safe700" class="opacity-0 group-hover:opacity-100 transition flex-shrink-0" />
               </button>
             </li>
             <li v-if="step.no">
               <button @click="goToStep(step.no)" class="w-full flex items-center gap-2 px-3 py-2 bg-danger-50 hover:bg-danger-100 rounded-lg text-[13px] text-left transition group">
                 <Badge variant="danger" size="sm">{{ step.noLabel || 'No' }}</Badge>
                 <span class="text-ink-700 flex-1 min-w-0 truncate">{{ targetSummary(step.no) || ('→ paso ' + step.no) }}</span>
-                <Icon name="chevron" :size="14" stroke="#B91C1C" class="opacity-0 group-hover:opacity-100 transition flex-shrink-0" />
+                <Icon name="chevron" :size="14" :stroke="$c.danger700" class="opacity-0 group-hover:opacity-100 transition flex-shrink-0" />
               </button>
             </li>
             <li v-for="b in step.branches" :key="b.label">
               <button @click="goToStep(b.next)" class="w-full flex items-center gap-2 px-3 py-2 bg-ink-50 hover:bg-ink-100 rounded-lg text-[13px] text-left transition group">
                 <Badge variant="brand" size="sm">{{ b.label }}</Badge>
                 <span class="text-ink-700 flex-1 min-w-0 truncate">{{ targetSummary(b.next) || ('→ paso ' + b.next) }}</span>
-                <Icon name="chevron" :size="14" stroke="#1D4ED8" class="opacity-0 group-hover:opacity-100 transition flex-shrink-0" />
+                <Icon name="chevron" :size="14" :stroke="$c.brand700" class="opacity-0 group-hover:opacity-100 transition flex-shrink-0" />
               </button>
             </li>
           </ul>
@@ -110,7 +111,7 @@ export default defineComponent({
           <ul class="space-y-1.5">
             <li v-for="v in step.verifications" :key="v"
               class="flex items-start gap-2 text-[13px] text-ink-700">
-              <Icon name="check" :size="14" stroke="#16A34A" class="mt-0.5 flex-shrink-0" />
+              <Icon name="check" :size="14" :stroke="$c.safe600" class="mt-0.5 flex-shrink-0" />
               <span>{{ v }}</span>
             </li>
           </ul>
@@ -118,7 +119,7 @@ export default defineComponent({
 
         <!-- Duración -->
         <section v-if="step.duration" class="flex items-center gap-2 text-[12.5px] text-ink-500">
-          <Icon name="clock" :size="14" stroke="#64748B" />
+          <Icon name="clock" :size="14" :stroke="$c.ink500" />
           <span>Duración estimada: <strong class="text-ink-900">{{ step.duration }}</strong></span>
         </section>
 
@@ -128,7 +129,7 @@ export default defineComponent({
           <ul class="space-y-1">
             <li v-for="e in protocol.epp.filter(x => x.obligatory)" :key="e.item"
               class="flex items-start gap-2 text-[12.5px] text-ink-700">
-              <Icon name="check" :size="13" stroke="#16A34A" class="mt-0.5 flex-shrink-0" />
+              <Icon name="check" :size="13" :stroke="$c.safe600" class="mt-0.5 flex-shrink-0" />
               <span>{{ e.item }}<span v-if="e.note" class="text-ink-500"> — {{ e.note }}</span></span>
             </li>
           </ul>

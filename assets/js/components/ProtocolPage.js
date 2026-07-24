@@ -72,7 +72,7 @@ export default defineComponent({
   },
   template: `
     <div v-if="!protocol" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
-      <Icon name="alert" :size="40" stroke="#94A3B8" class="mx-auto mb-3" />
+      <Icon name="alert" :size="40" :stroke="$c.ink400" class="mx-auto mb-3" />
       <h2 class="text-lg font-semibold text-ink-900 mb-1">Protocolo no encontrado</h2>
       <p class="text-ink-500 text-sm mb-4">El protocolo {{ route.params.code }} no existe o no fue cargado.</p>
       <router-link to="/" class="text-brand-700 text-sm hover:underline">← Volver al inicio</router-link>
@@ -93,7 +93,7 @@ export default defineComponent({
           <!-- Acciones -->
           <div class="flex items-center gap-1.5 no-print">
             <button @click="toggleFav" :class="['p-2 rounded-lg border', fav ? 'border-warn-100 bg-warn-50 text-warn-700' : 'border-ink-100 hover:bg-ink-50 text-ink-500']" :title="fav ? 'Quitar de favoritos' : 'Agregar a favoritos'">
-              <Icon :name="fav ? 'star-filled' : 'star'" :size="16" :fill="fav ? '#F59E0B' : 'none'" :stroke="fav ? '#F59E0B' : '#64748B'" />
+              <Icon :name="fav ? 'star-filled' : 'star'" :size="16" :fill="fav ? $c.warn500 : 'none'" :stroke="fav ? $c.warn500 : $c.ink500" />
             </button>
             <button @click="goToTraining" class="p-2 rounded-lg border border-ink-100 hover:bg-ink-50 text-ink-500" title="Modo capacitación">
               <Icon name="graduation" :size="16" />
@@ -107,7 +107,7 @@ export default defineComponent({
         <!-- Alert banner -->
         <div v-if="protocol.alertBanner && protocol.criticality === 'alto-riesgo'"
           class="mt-4 px-4 py-3 bg-warn-50 border-l-4 border-warn-500 rounded-r-lg flex items-start gap-3">
-          <Icon name="alert" :size="20" stroke="#B45309" class="flex-shrink-0 mt-0.5" />
+          <Icon name="alert" :size="20" :stroke="$c.warn700" class="flex-shrink-0 mt-0.5" />
           <div>
             <div class="text-[12px] uppercase tracking-wider font-semibold text-warn-700">Protocolo de cumplimiento obligatorio</div>
             <p class="text-[14px] text-ink-900 mt-0.5">{{ protocol.alertBanner }}</p>
@@ -178,7 +178,7 @@ export default defineComponent({
               <div :class="['w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0',
                 r.severity === 'alta' ? 'bg-danger-50' : r.severity === 'media' ? 'bg-warn-50' : 'bg-safe-50']">
                 <Icon name="warning" :size="18"
-                  :stroke="r.severity === 'alta' ? '#B91C1C' : r.severity === 'media' ? '#B45309' : '#15803D'" />
+                  :stroke="r.severity === 'alta' ? $c.danger700 : r.severity === 'media' ? $c.warn700 : $c.safe700" />
               </div>
               <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-2 mb-1">
@@ -200,7 +200,7 @@ export default defineComponent({
             <ul class="space-y-2">
               <li v-for="e in protocol.epp" :key="e.item"
                 class="flex items-start gap-3 p-3 bg-white border border-ink-100 rounded-lg">
-                <Icon name="shield" :size="18" stroke="#1D4ED8" class="flex-shrink-0 mt-0.5" />
+                <Icon name="shield" :size="18" :stroke="$c.brand700" class="flex-shrink-0 mt-0.5" />
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center gap-2 mb-0.5">
                     <span class="text-[13.5px] font-medium text-ink-900">{{ e.item }}</span>
@@ -216,7 +216,7 @@ export default defineComponent({
             <ul class="space-y-2">
               <li v-for="t in protocol.tools" :key="t.name"
                 class="flex items-start gap-3 p-3 bg-white border border-ink-100 rounded-lg">
-                <Icon name="zap" :size="18" stroke="#1D4ED8" class="flex-shrink-0 mt-0.5" />
+                <Icon name="zap" :size="18" :stroke="$c.brand700" class="flex-shrink-0 mt-0.5" />
                 <div class="flex-1 min-w-0">
                   <div class="text-[13.5px] font-medium text-ink-900">{{ t.name }}</div>
                   <div v-if="t.verification" class="text-[11.5px] text-ink-500">Verificación: <code class="font-mono">{{ t.verification }}</code></div>
@@ -232,7 +232,7 @@ export default defineComponent({
           <article v-for="r in protocol.responsibles" :key="r.role"
             class="p-4 bg-white border border-ink-100 rounded-xl flex items-start gap-3">
             <div class="w-10 h-10 rounded-lg bg-brand-50 flex items-center justify-center flex-shrink-0">
-              <Icon name="person" :size="20" stroke="#1D4ED8" />
+              <Icon name="person" :size="20" :stroke="$c.brand700" />
             </div>
             <div>
               <h4 class="text-[14.5px] font-semibold text-ink-900">{{ r.role }}</h4>
@@ -249,15 +249,15 @@ export default defineComponent({
             <a v-if="normativeUrl(n)" :href="normativeUrl(n)" target="_blank" rel="noopener noreferrer"
               class="p-4 bg-white border border-ink-100 hover:border-brand-200 hover:shadow-card rounded-xl flex items-center gap-3 group transition">
               <div class="w-10 h-10 rounded-lg bg-brand-50 flex items-center justify-center flex-shrink-0">
-                <Icon name="book" :size="20" stroke="#1D4ED8" />
+                <Icon name="book" :size="20" :stroke="$c.brand700" />
               </div>
               <span class="text-[14px] text-brand-700 flex-1 group-hover:underline">{{ normativeText(n) }}</span>
-              <Icon name="link" :size="15" stroke="#1D4ED8" class="opacity-0 group-hover:opacity-100 transition flex-shrink-0" />
+              <Icon name="link" :size="15" :stroke="$c.brand700" class="opacity-0 group-hover:opacity-100 transition flex-shrink-0" />
             </a>
             <article v-else
               class="p-4 bg-white border border-ink-100 rounded-xl flex items-center gap-3">
               <div class="w-10 h-10 rounded-lg bg-ink-50 flex items-center justify-center flex-shrink-0">
-                <Icon name="book" :size="20" stroke="#1D4ED8" />
+                <Icon name="book" :size="20" :stroke="$c.brand700" />
               </div>
               <span class="text-[14px] text-ink-900">{{ normativeText(n) }}</span>
             </article>
@@ -273,7 +273,7 @@ export default defineComponent({
             <button @click="goToAnnex(a)"
               class="w-full text-left p-4 bg-white border border-ink-100 hover:border-brand-200 hover:shadow-card rounded-xl flex items-start gap-3 group transition">
               <div class="w-10 h-10 rounded-lg bg-safe-50 flex items-center justify-center flex-shrink-0">
-                <Icon name="file" :size="20" stroke="#15803D" />
+                <Icon name="file" :size="20" :stroke="$c.safe700" />
               </div>
               <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-2 mb-1">
@@ -283,7 +283,7 @@ export default defineComponent({
                 <div class="text-[14px] font-medium text-ink-900">{{ a.title }}</div>
                 <p v-if="a.description" class="text-[12.5px] text-ink-500 mt-1 line-clamp-2">{{ a.description }}</p>
               </div>
-              <Icon name="chevron" :size="16" stroke="#94A3B8" class="opacity-0 group-hover:opacity-100 transition mt-3" />
+              <Icon name="chevron" :size="16" :stroke="$c.ink400" class="opacity-0 group-hover:opacity-100 transition mt-3" />
             </button>
           </div>
         </div>
@@ -292,7 +292,7 @@ export default defineComponent({
         <div v-if="activeTab === 'stops'" class="space-y-2">
           <article v-for="(rule, i) in protocol.stopRules" :key="i"
             class="flex items-start gap-3 p-4 bg-warn-50 border-l-4 border-warn-500 rounded-r-lg">
-            <Icon name="alert" :size="20" stroke="#B45309" class="flex-shrink-0 mt-0.5" />
+            <Icon name="alert" :size="20" :stroke="$c.warn700" class="flex-shrink-0 mt-0.5" />
             <div>
               <div class="text-[11px] uppercase tracking-wider font-semibold text-warn-700 mb-1">DETENER inmediatamente</div>
               <p class="text-[13.5px] text-ink-900">{{ rule }}</p>
@@ -306,7 +306,7 @@ export default defineComponent({
             class="p-4 bg-white border border-ink-100 rounded-xl">
             <div class="flex items-start gap-3">
               <div class="w-10 h-10 rounded-lg bg-danger-50 flex items-center justify-center flex-shrink-0">
-                <Icon name="medical" :size="20" stroke="#B91C1C" />
+                <Icon name="medical" :size="20" :stroke="$c.danger700" />
               </div>
               <div class="flex-1">
                 <h4 class="text-[14.5px] font-semibold text-ink-900 mb-1">{{ e.situation }}</h4>

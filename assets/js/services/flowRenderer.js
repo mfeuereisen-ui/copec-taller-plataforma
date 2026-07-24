@@ -1,4 +1,6 @@
 // flowRenderer.js
+
+import { C } from '../tokens.js';
 // Convierte el array procedure.steps en sintaxis Mermaid (flowchart TD).
 // Cada step se mapea a un nodo según su type:
 //   action   -> [Texto]    (rectángulo)  class nodeStep
@@ -48,11 +50,11 @@ export function generateMermaidDefinition(procedure, currentStepId = null) {
   // El enfoque class+classDef NO funciona aquí porque su selector es sobreescrito
   // por la regla genérica del tema.
   const NODE_STYLES = {
-    nodeStep:     'fill:#DBEAFE,stroke:#1D4ED8,stroke-width:1.5px,color:#0F172A',
-    nodeDecision: 'fill:#FEF3C7,stroke:#B45309,stroke-width:1.5px,color:#0F172A',
-    nodeAlert:    'fill:#FEE2E2,stroke:#B91C1C,stroke-width:1.5px,color:#0F172A',
-    nodeEnd:      'fill:#DCFCE7,stroke:#15803D,stroke-width:1.5px,color:#0F172A',
-    nodeCurrent:  'fill:#DBEAFE,stroke:#0B3D91,stroke-width:3px,color:#0F172A'
+    nodeStep:     `fill:${C.brand100},stroke:${C.brand700},stroke-width:1.5px,color:${C.ink900}`,
+    nodeDecision: `fill:${C.warn100},stroke:${C.warn700},stroke-width:1.5px,color:${C.ink900}`,
+    nodeAlert:    `fill:${C.danger100},stroke:${C.danger700},stroke-width:1.5px,color:${C.ink900}`,
+    nodeEnd:      `fill:${C.safe100},stroke:${C.safe700},stroke-width:1.5px,color:${C.ink900}`,
+    nodeCurrent:  `fill:${C.brand100},stroke:${C.brand900},stroke-width:3px,color:${C.ink900}`
   };
 
   for (const step of procedure.steps) {

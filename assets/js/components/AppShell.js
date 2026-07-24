@@ -125,7 +125,7 @@ export default defineComponent({
               @click="openSearch"
               class="ml-auto flex items-center gap-2 px-3 py-1.5 bg-ink-50 hover:bg-ink-100 border border-ink-100 rounded-lg text-sm text-ink-500 transition w-full sm:w-80 max-w-md"
             >
-              <Icon name="search" :size="16" stroke="#64748B" />
+              <Icon name="search" :size="16" :stroke="$c.ink500" />
               <span class="flex-1 text-left">Buscar protocolo, riesgo, EPP…</span>
               <kbd class="hidden md:inline-block text-[10px] px-1.5 py-0.5 bg-white border border-ink-100 rounded text-ink-500">⌘K</kbd>
             </button>
@@ -136,7 +136,7 @@ export default defineComponent({
       <!-- AVISO: fallas de carga de datos (distinto de "sin resultados por filtro") -->
       <div v-if="loadErrors.length > 0" class="bg-danger-50 border-b border-danger-100 no-print">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center gap-2.5 text-[13px] text-danger-700">
-          <Icon name="alert" :size="16" stroke="#B91C1C" class="flex-shrink-0" />
+          <Icon name="alert" :size="16" :stroke="$c.danger700" class="flex-shrink-0" />
           <span>
             No se pudieron cargar {{ loadErrors.length }} archivo(s) de contenido (posible problema de red).
             Es posible que falten protocolos o anexos en esta sesión — recarga la página para reintentar.
@@ -199,7 +199,7 @@ export default defineComponent({
         <div class="max-w-2xl mx-auto mt-24 p-4" @click.stop>
           <div class="bg-white rounded-2xl shadow-pop overflow-hidden">
             <div class="flex items-center px-4 py-3 border-b border-ink-100">
-              <Icon name="search" :size="20" stroke="#64748B" />
+              <Icon name="search" :size="20" :stroke="$c.ink500" />
               <input
                 ref="searchInput"
                 v-model="searchQuery"
@@ -208,7 +208,7 @@ export default defineComponent({
                 class="flex-1 ml-3 outline-none text-[15px] bg-transparent placeholder:text-ink-500"
               />
               <button @click="closeSearch" class="ml-2 p-1.5 hover:bg-ink-100 rounded">
-                <Icon name="x" :size="16" stroke="#64748B" />
+                <Icon name="x" :size="16" :stroke="$c.ink500" />
               </button>
             </div>
             <div v-if="searchResults.length === 0 && searchQuery" class="px-4 py-8 text-center text-sm text-ink-500">
@@ -226,7 +226,7 @@ export default defineComponent({
                   <span class="w-8 h-8 rounded-md flex items-center justify-center"
                     :class="r.item.type === 'protocol' ? 'bg-brand-50' : 'bg-safe-50'">
                     <Icon :name="r.item.type === 'protocol' ? 'shield' : 'file'" :size="16"
-                      :stroke="r.item.type === 'protocol' ? '#1D4ED8' : '#16A34A'" />
+                      :stroke="r.item.type === 'protocol' ? $c.brand700 : $c.safe600" />
                   </span>
                   <div class="flex-1 min-w-0">
                     <div class="flex items-center gap-2">
@@ -238,7 +238,7 @@ export default defineComponent({
                     </div>
                     <div class="text-sm text-ink-900 truncate">{{ r.item.title }}</div>
                   </div>
-                  <Icon name="chevron" :size="16" stroke="#94A3B8" />
+                  <Icon name="chevron" :size="16" :stroke="$c.ink400" />
                 </button>
               </li>
             </ul>

@@ -49,7 +49,7 @@ export default defineComponent({
           <span class="text-[12px] text-ink-500">{{ favorites.length }} guardado(s)</span>
         </div>
         <div v-if="favorites.length === 0" class="p-8 bg-ink-50 rounded-2xl text-center">
-          <Icon name="star" :size="32" stroke="#94A3B8" class="mx-auto mb-2" />
+          <Icon name="star" :size="32" :stroke="$c.ink400" class="mx-auto mb-2" />
           <p class="text-[13.5px] text-ink-500">Aún no tienes protocolos marcados como favoritos.</p>
           <p class="text-[12.5px] text-ink-500 mt-1">Haz clic en la estrella ★ dentro de un protocolo para guardarlo aquí.</p>
         </div>
@@ -58,7 +58,7 @@ export default defineComponent({
             class="flex items-center gap-3 p-4 bg-white border border-ink-100 hover:border-warn-100 hover:shadow-card rounded-xl transition group">
             <button @click="open(p)" class="flex-1 flex items-center gap-3 text-left min-w-0">
               <div class="w-10 h-10 rounded-lg bg-warn-50 flex items-center justify-center flex-shrink-0">
-                <Icon name="star-filled" :size="20" :fill="'#F59E0B'" :stroke="'#F59E0B'" />
+                <Icon name="star-filled" :size="20" :fill="$c.warn500" :stroke="$c.warn500" />
               </div>
               <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-2 mb-0.5">
@@ -85,7 +85,7 @@ export default defineComponent({
           <button v-for="h in recentHistory" :key="h.protocol.code + h.ts" @click="open(h.protocol)"
             class="w-full text-left flex items-center gap-3 p-3 bg-white border border-ink-100 hover:border-brand-200 hover:shadow-card rounded-xl transition group">
             <div class="w-9 h-9 rounded-lg bg-brand-50 flex items-center justify-center flex-shrink-0">
-              <Icon name="clock" :size="16" stroke="#1D4ED8" />
+              <Icon name="clock" :size="16" :stroke="$c.brand700" />
             </div>
             <div class="flex-1 min-w-0">
               <div class="text-[11.5px] font-mono font-semibold text-brand-700">{{ h.protocol.code }}</div>

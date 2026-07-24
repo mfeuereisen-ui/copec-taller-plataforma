@@ -21,7 +21,7 @@ export default defineComponent({
   },
   template: `
     <div v-if="!annex" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
-      <Icon name="alert" :size="40" stroke="#94A3B8" class="mx-auto mb-3" />
+      <Icon name="alert" :size="40" :stroke="$c.ink400" class="mx-auto mb-3" />
       <h2 class="text-lg font-semibold text-ink-900 mb-1">Anexo no encontrado</h2>
       <p class="text-ink-500 text-sm mb-4">El anexo {{ route.params.code }} no existe o no fue cargado.</p>
       <router-link to="/anexos" class="text-brand-700 text-sm hover:underline">← Volver a la biblioteca</router-link>
@@ -91,7 +91,7 @@ export default defineComponent({
         <ul class="space-y-2">
           <li v-for="(s, i) in annex.sections" :key="i"
             class="flex items-start gap-3 p-3 bg-white border border-ink-100 rounded-lg">
-            <Icon name="check" :size="16" stroke="#16A34A" class="mt-0.5 flex-shrink-0" />
+            <Icon name="check" :size="16" :stroke="$c.safe600" class="mt-0.5 flex-shrink-0" />
             <span class="text-[13.5px] text-ink-900">{{ s }}</span>
           </li>
         </ul>
@@ -99,7 +99,7 @@ export default defineComponent({
 
       <!-- STOP RULE -->
       <section v-if="annex.stopRule" class="mb-6 p-4 bg-warn-50 border-l-4 border-warn-500 rounded-r-lg flex items-start gap-3">
-        <Icon name="alert" :size="20" stroke="#B45309" class="flex-shrink-0 mt-0.5" />
+        <Icon name="alert" :size="20" :stroke="$c.warn700" class="flex-shrink-0 mt-0.5" />
         <div>
           <div class="text-[11px] uppercase tracking-wider font-semibold text-warn-700 mb-1">Regla de parada</div>
           <p class="text-[13.5px] text-ink-900">{{ annex.stopRule }}</p>
