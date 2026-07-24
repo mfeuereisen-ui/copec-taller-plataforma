@@ -3,6 +3,7 @@ import { defineComponent, computed, ref, watch, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { store, getProtocol, getCategory, isFavorite, toggleFavorite, pushHistory, findRelatedProtocols, getAnnex } from '../store.js';
 import { findStep } from '../services/flowRenderer.js';
+import { buildStepOutline } from '../services/stepOutline.js';
 import FlowDiagram from './FlowDiagram.js';
 import StepDetail from './StepDetail.js';
 import Icon from './shared/Icon.js';
@@ -24,6 +25,7 @@ export default defineComponent({
     const selectedStep = computed(() => protocol.value ? findStep(protocol.value.procedure, selectedStepId.value) : null);
     const canGoBackStep = computed(() => stepHistory.value.length > 0);
     const related = computed(() => protocol.value ? findRelatedProtocols(protocol.value.code) : []);
+    const stepOutline = computed(() => protocol.value ? buildStepOutline(protocol.value.procedure) : []);
     const linkedAnnexes = computed(() => {
       if (!protocol.value) return [];
       return (protocol.value.linkedAnnexes || []).map(c => getAnnex(c)).filter(Boolean);
@@ -65,7 +67,7 @@ export default defineComponent({
 
     return {
       route, protocol, category, fav, selectedStep, selectedStepId, activeTab,
-      related, linkedAnnexes, canGoBackStep,
+      related, linkedAnnexes, canGoBackStep, stepOutline,
       selectStep, goBackStep, closeDetail, toggleFav, print, goToAnnex, goToProtocol, goToTraining,
       normativeText, normativeUrl
     };
@@ -132,6 +134,7 @@ export default defineComponent({
         <nav class="flex gap-1 -mb-px overflow-x-auto" role="tablist" aria-label="Secciones del protocolo">
           <button v-for="t in [
             { id:'flow',       label:'Diagrama de flujo', icon:'grid' },
+            { id:'steps',      label:'Paso a paso',      icon:'list', count: stepOutline.length },
             { id:'risks',      label:'Riesgos',           icon:'warning', count: protocol.risks?.length },
             { id:'epp',        label:'EPP y herramientas', icon:'shield' },
             { id:'responsibles', label:'Responsables',     icon:'person' },
@@ -168,6 +171,86 @@ export default defineComponent({
               <StepDetail :step="selectedStep" :protocol="protocol" :can-go-back="canGoBackStep" @close="closeDetail" @select-step="selectStep" @go-back="goBackStep" />
             </div>
           </transition>
+        </div>
+
+        <!-- PASO A PASO -->
+        <div v-if="activeTab === 'steps'" class="max-w-4xl">
+          <p class="text-[13px] text-ink-500 mb-5">
+            Procedimiento completo en orden de ejecución. Los pasos indentados son
+            <span class="text-ink-700 font-medium">alternativas</span>: se aplican solo si se cumple la condición indicada, no se ejecutan todos.
+          </p>
+
+          <ol class="space-y-3">
+            <li v-for="(it, i) in stepOutline" :key="it.step.id"
+              :class="it.conditional ? 'ml-4 sm:ml-10' : ''">
+
+              <!-- Etiqueta de la rama que activa este paso -->
+              <div v-if="it.branchLabel" class="flex items-center gap-2 mb-1.5">
+                <Icon name="arrow-right" :size="13" :stroke="$c.ink400" />
+                <span class="text-[12px] text-ink-500">Si</span>
+                <Badge :variant="it.conditional ? 'warn' : 'brand'" size="sm">{{ it.branchLabel }}</Badge>
+              </div>
+
+              <article :class="['rounded-xl border p-4',
+                it.step.type === 'alert' ? 'bg-danger-50 border-danger-100'
+                : it.step.type === 'decision' ? 'bg-warn-50 border-warn-100'
+                : it.step.type === 'end' ? 'bg-safe-50 border-safe-100'
+                : 'bg-white border-ink-100']">
+
+                <div class="flex items-start gap-3">
+                  <!-- Número o marca de alternativa -->
+                  <div :class="['flex-shrink-0 flex items-center justify-center rounded-lg font-semibold',
+                    it.number ? 'w-8 h-8 text-[13px]' : 'w-8 h-8 text-[11px]',
+                    it.step.type === 'alert' ? 'bg-danger-100 text-danger-700'
+                    : it.step.type === 'decision' ? 'bg-warn-100 text-warn-700'
+                    : it.step.type === 'end' ? 'bg-safe-100 text-safe-700'
+                    : 'bg-brand-50 text-brand-700']">
+                    <span v-if="it.number">{{ it.number }}</span>
+                    <Icon v-else name="arrow-right" :size="14" :stroke="$c.warn700" />
+                  </div>
+
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between gap-2">
+                      <h3 class="font-semibold text-ink-900 text-[15px] leading-snug">{{ it.step.title }}</h3>
+                      <button @click="activeTab = 'flow'; selectStep(it.step.id)"
+                        class="flex-shrink-0 text-[11.5px] text-ink-500 hover:text-brand-700 hover:underline no-print"
+                        title="Ver este paso en el diagrama">ver en diagrama</button>
+                    </div>
+
+                    <p v-if="it.step.summary" class="text-[13px] text-ink-500 mt-0.5">{{ it.step.summary }}</p>
+                    <p v-if="it.step.description" class="text-[13.5px] text-ink-700 leading-relaxed mt-2">{{ it.step.description }}</p>
+
+                    <!-- Alertas críticas -->
+                    <div v-if="it.step.criticalAlerts && it.step.criticalAlerts.length" class="mt-3 space-y-1.5">
+                      <div v-for="(a, ai) in it.step.criticalAlerts" :key="ai"
+                        class="flex items-start gap-2 px-3 py-2 bg-danger-100 rounded-lg">
+                        <Icon name="alert" :size="15" :stroke="$c.danger700" class="flex-shrink-0 mt-0.5" />
+                        <span class="text-[13px] text-danger-700 font-medium">{{ a }}</span>
+                      </div>
+                    </div>
+
+                    <!-- Verificaciones -->
+                    <div v-if="it.step.verifications && it.step.verifications.length" class="mt-3">
+                      <div class="text-[11px] uppercase tracking-wider text-ink-500 font-semibold mb-1.5">Verificar</div>
+                      <ul class="space-y-1">
+                        <li v-for="(v, vi) in it.step.verifications" :key="vi" class="flex items-start gap-2 text-[13px] text-ink-700">
+                          <Icon name="check" :size="14" :stroke="$c.safe600" class="flex-shrink-0 mt-0.5" />
+                          {{ v }}
+                        </li>
+                      </ul>
+                    </div>
+
+                    <!-- Opciones de una decisión -->
+                    <div v-if="it.step.type === 'decision'" class="mt-3 flex flex-wrap gap-1.5">
+                      <Badge v-if="it.step.yesLabel || it.step.yes" variant="safe" size="sm">{{ it.step.yesLabel || 'Sí' }}</Badge>
+                      <Badge v-if="it.step.noLabel || it.step.no" variant="danger" size="sm">{{ it.step.noLabel || 'No' }}</Badge>
+                      <Badge v-for="b in it.step.branches" :key="b.label" variant="warn" size="sm">{{ b.label }}</Badge>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </li>
+          </ol>
         </div>
 
         <!-- RISKS -->
