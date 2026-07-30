@@ -39,21 +39,77 @@
     "note": "Este contenido es editable por el equipo de Prevención de Riesgos en data/catalog/intro.json. Complete o ajuste las respuestas sobre marco regulatorio e implicancias de incumplimiento según la política oficial de Copec Taller."
   },
   "glossary": [
-    { "term": "P1", "definition": "Protocolos de operaciones en Estación de Servicio (foso, elevadores, atención presencial)." },
-    { "term": "P2", "definition": "Protocolos de operaciones en Terreno — Taller Móvil (servicios a domicilio del cliente)." },
-    { "term": "P3", "definition": "Lineamientos transversales, aplicables a todas las operaciones (EPP, primeros auxilios, capacitación)." },
-    { "term": "EPP", "definition": "Equipo de Protección Personal: elementos de uso obligatorio para reducir la exposición a riesgos (guantes, mascarilla, etc.)." },
-    { "term": "RCP", "definition": "Reanimación Cardiopulmonar: maniobra de primeros auxilios ante paro cardiorrespiratorio." },
-    { "term": "DR. ABCD", "definition": "Secuencia de evaluación primaria en primeros auxilios: Peligro (Danger), Respuesta, Vía aérea (Airway), Respiración (Breathing), Circulación y Desfibrilación." },
-    { "term": "SAMU", "definition": "Servicio de Atención Médica de Urgencia. Número de emergencia médica en Chile: 131." },
-    { "term": "Regla de parada", "definition": "Condición ante la cual se debe detener inmediatamente la operación por riesgo inminente." },
-    { "term": "Anexo", "definition": "Documento de apoyo vinculado a un protocolo: checklists, formularios, registros y permisos de trabajo." },
-    { "term": "Permiso de trabajo", "definition": "Autorización formal previa a ejecutar tareas de alto riesgo (ej. espacios confinados, trabajos en caliente)." },
-    { "term": "Preoperacional", "definition": "Verificación del estado de un equipo o vehículo antes de comenzar la operación, mediante una lista de chequeo." },
-    { "term": "Casi-accidente", "definition": "Evento que pudo causar un accidente pero no lo hizo. Debe reportarse igual, porque anticipa riesgos." },
-    { "term": "Severidad", "definition": "Nivel de gravedad potencial de un riesgo: alta, media o baja." },
-    { "term": "Protocolo de cumplimiento obligatorio", "definition": "Protocolo de alto riesgo cuyos pasos no pueden omitirse bajo ninguna circunstancia." },
-    { "term": "DS", "definition": "Decreto Supremo: norma legal chilena. Ej.: DS N°594 sobre condiciones sanitarias y ambientales básicas en los lugares de trabajo." },
-    { "term": "Ley 16.744", "definition": "Ley chilena sobre accidentes del trabajo y enfermedades profesionales." }
-  ]
+    {
+      "term": "P1",
+      "definition": "Protocolos de operaciones en Estación de Servicio (foso, elevadores, atención presencial)."
+    },
+    {
+      "term": "P2",
+      "definition": "Protocolos de operaciones en Terreno — Taller Móvil (servicios a domicilio del cliente)."
+    },
+    {
+      "term": "P3",
+      "definition": "Lineamientos transversales, aplicables a todas las operaciones (EPP, primeros auxilios, capacitación)."
+    },
+    {
+      "term": "EPP",
+      "definition": "Equipo de Protección Personal: elementos de uso obligatorio para reducir la exposición a riesgos (guantes, mascarilla, etc.)."
+    },
+    {
+      "term": "RCP",
+      "definition": "Reanimación Cardiopulmonar: maniobra de primeros auxilios ante paro cardiorrespiratorio."
+    },
+    {
+      "term": "DR. ABCD",
+      "definition": "Secuencia de evaluación primaria en primeros auxilios: Peligro (Danger), Respuesta, Vía aérea (Airway), Respiración (Breathing), Circulación y Desfibrilación."
+    },
+    {
+      "term": "SAMU",
+      "definition": "Servicio de Atención Médica de Urgencia. Número de emergencia médica en Chile: 131."
+    },
+    {
+      "term": "Regla de parada",
+      "definition": "Condición ante la cual se debe detener inmediatamente la operación por riesgo inminente."
+    },
+    {
+      "term": "Anexo",
+      "definition": "Documento de apoyo vinculado a un protocolo: checklists, formularios, registros y permisos de trabajo."
+    },
+    {
+      "term": "Permiso de trabajo",
+      "definition": "Autorización formal previa a ejecutar tareas de alto riesgo (ej. espacios confinados, trabajos en caliente)."
+    },
+    {
+      "term": "Preoperacional",
+      "definition": "Verificación del estado de un equipo o vehículo antes de comenzar la operación, mediante una lista de chequeo."
+    },
+    {
+      "term": "Casi-accidente",
+      "definition": "Evento que pudo causar un accidente pero no lo hizo. Debe reportarse igual, porque anticipa riesgos."
+    },
+    {
+      "term": "Severidad",
+      "definition": "Nivel de gravedad potencial de un riesgo: alta, media o baja."
+    },
+    {
+      "term": "Protocolo de cumplimiento obligatorio",
+      "definition": "Protocolo de alto riesgo cuyos pasos no pueden omitirse bajo ninguna circunstancia."
+    },
+    {
+      "term": "DS",
+      "definition": "Decreto Supremo: norma legal chilena. Ej.: DS N°594 sobre condiciones sanitarias y ambientales básicas en los lugares de trabajo."
+    },
+    {
+      "term": "Ley 16.744",
+      "definition": "Ley chilena sobre accidentes del trabajo y enfermedades profesionales."
+    }
+  ],
+  "welcome": {
+    "title": "Bienvenido a la plataforma de seguridad de Copec Taller",
+    "lines": [
+      "Aquí encuentras, en un solo lugar, cómo realizar cada tarea de forma segura: los pasos a seguir, los riesgos a evitar y qué hacer ante una emergencia.",
+      "Consúltala siempre que tengas una duda antes de ejecutar un trabajo. No es un trámite: es lo que nos permite cuidarnos entre todos y volver sanos a casa cada día.",
+      "Busca un protocolo por nombre o código, revisa su paso a paso y ten a mano los formularios que necesites. Ante cualquier duda, pregunta a tu supervisor."
+    ]
+  }
 }

@@ -96,6 +96,7 @@ export default defineComponent({
     const riskFamilies = computed(() => store.data?.catalog.risks || []);
 
     // Intro / glosario (contenido editable en data/catalog/intro.json)
+    const welcome = computed(() => store.data?.catalog.intro?.welcome || null);
     const intro = computed(() => store.data?.catalog.intro?.intro || null);
     const glossary = computed(() => store.data?.catalog.intro?.glossary || []);
     const showIntro = ref(false);
@@ -156,7 +157,7 @@ export default defineComponent({
 
     return {
       store, view, showFilters, protocols, allTags, categories, riskFamilies,
-      intro, glossary, showIntro, toggleIntro,
+      welcome, intro, glossary, showIntro, toggleIntro,
       totalProtocols, highRiskCount, annexCount,
       emergencyProtocols, criticalProtocols, recentProtocols,
       openProtocol, setView, resetFilters, hasActiveFilters,
@@ -194,6 +195,23 @@ export default defineComponent({
             <div class="px-3 sm:px-4 py-3 bg-safe-50 rounded-xl">
               <div class="text-xl sm:text-2xl font-bold text-safe-700 leading-tight">{{ annexCount }}</div>
               <div class="text-[10.5px] sm:text-[11px] text-safe-700 mt-0.5">Anexos</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BIENVENIDA (lo primero que se lee al entrar) -->
+      <section v-if="welcome" class="mb-10">
+        <div class="rounded-2xl border border-brand-100 bg-gradient-to-br from-brand-50 to-white p-5 sm:p-6">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-xl bg-brand-900 flex items-center justify-center flex-shrink-0">
+              <Icon name="shield" :size="20" stroke="white" />
+            </div>
+            <div class="min-w-0">
+              <h2 class="text-[16px] sm:text-[17px] font-bold text-ink-900 mb-2">{{ welcome.title }}</h2>
+              <div class="space-y-1.5">
+                <p v-for="(line, i) in welcome.lines" :key="i" class="text-[13.5px] text-ink-700 leading-relaxed">{{ line }}</p>
+              </div>
             </div>
           </div>
         </div>
