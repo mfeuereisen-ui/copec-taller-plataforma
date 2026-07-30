@@ -5,7 +5,56 @@
   "type": "registro-capacitacion",
   "frequency": "Por cada actividad de capacitación",
   "archivalYears": 3,
-  "usedInProtocols": ["P3-02"],
+  "usedInProtocols": [
+    "P3-02"
+  ],
   "description": "Registra asistencia y firmas de capacitación en primeros auxilios.",
-  "headerFields": ["Tema / curso", "Fecha", "Duración", "Relator / organismo", "Lugar", "N° asistentes"]
+  "headerFields": [
+    "Tema / curso",
+    "Fecha",
+    "Duración",
+    "Relator / organismo",
+    "Lugar",
+    "N° asistentes"
+  ],
+  "fillable": true,
+  "fields": [
+    {
+      "id": "tema_curso",
+      "label": "Tema / curso",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "duraci_n",
+      "label": "Duración",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "relator_organismo",
+      "label": "Relator / organismo",
+      "type": "textarea",
+      "required": false,
+      "lines": 4
+    },
+    {
+      "id": "lugar",
+      "label": "Lugar",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "n_asistentes",
+      "label": "N° asistentes",
+      "type": "text",
+      "required": false
+    }
+  ]
 }

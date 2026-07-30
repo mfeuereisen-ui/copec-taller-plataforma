@@ -5,9 +5,18 @@
   "type": "inspeccion-preoperacional",
   "frequency": "Diaria, al inicio de cada jornada",
   "archivalYears": 1,
-  "usedInProtocols": ["P2-02"],
+  "usedInProtocols": [
+    "P2-02"
+  ],
   "description": "Garantiza que el vehículo, los equipos de levantamiento y los elementos de emergencia del taller móvil estén operativos antes de salir a terreno.",
-  "headerFields": ["Patente del vehículo", "Fecha", "Técnico responsable", "Km inicial", "Supervisor", "Hora"],
+  "headerFields": [
+    "Patente del vehículo",
+    "Fecha",
+    "Técnico responsable",
+    "Km inicial",
+    "Supervisor",
+    "Hora"
+  ],
   "checks": [
     "Niveles de aceite, refrigerante y líquido de frenos correctos",
     "Neumáticos en buen estado y presión correcta (incl. repuesto)",
@@ -19,5 +28,114 @@
     "Kit de derrames completo",
     "Botiquín completo",
     "EPP completo del técnico"
+  ],
+  "fillable": true,
+  "fields": [
+    {
+      "id": "patente_del_veh_culo",
+      "label": "Patente del vehículo",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "t_cnico_responsable",
+      "label": "Técnico responsable",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "km_inicial",
+      "label": "Km inicial",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "supervisor",
+      "label": "Supervisor",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "hora",
+      "label": "Hora",
+      "type": "time",
+      "required": false
+    },
+    {
+      "id": "chk_0",
+      "label": "Niveles de aceite, refrigerante y líquido de frenos correctos",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_1",
+      "label": "Neumáticos en buen estado y presión correcta (incl. repuesto)",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_2",
+      "label": "Luces, intermitentes y balizas operativas",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_3",
+      "label": "Documentación al día (permiso, revisión técnica, seguro, SOAP)",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_4",
+      "label": "Gato hidráulico sin fugas y operativo",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_5",
+      "label": "Caballetes completos, sin deformaciones, con pasador",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_6",
+      "label": "Cuñas para ruedas disponibles",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_7",
+      "label": "Kit de derrames completo",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_8",
+      "label": "Botiquín completo",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_9",
+      "label": "EPP completo del técnico",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    }
   ]
 }

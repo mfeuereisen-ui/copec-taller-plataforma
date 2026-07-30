@@ -5,7 +5,41 @@
   "type": "inspeccion-periodica",
   "frequency": "Mensual",
   "archivalYears": 1,
-  "usedInProtocols": ["P3-02"],
+  "usedInProtocols": [
+    "P3-02"
+  ],
   "description": "Verifica cantidad, estado y fechas de vencimiento de cada elemento del botiquín.",
-  "headerFields": ["Estación / Vehículo", "Mes / Año", "Responsable", "Fecha de revisión"]
+  "headerFields": [
+    "Estación / Vehículo",
+    "Mes / Año",
+    "Responsable",
+    "Fecha de revisión"
+  ],
+  "fillable": true,
+  "fields": [
+    {
+      "id": "estaci_n_veh_culo",
+      "label": "Estación / Vehículo",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "mes_a_o",
+      "label": "Mes / Año",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "responsable",
+      "label": "Responsable",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "fecha_de_revisi_n",
+      "label": "Fecha de revisión",
+      "type": "date",
+      "required": false
+    }
+  ]
 }

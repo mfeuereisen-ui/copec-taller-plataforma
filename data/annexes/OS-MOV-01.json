@@ -5,7 +5,69 @@
   "type": "orden-servicio",
   "frequency": "Por cada servicio a domicilio",
   "archivalYears": 1,
-  "usedInProtocols": ["P2-02"],
+  "usedInProtocols": [
+    "P2-02"
+  ],
   "description": "Documenta cada servicio a domicilio: cliente, vehículo, evaluación del espacio, servicio realizado, residuos retirados, incidencias.",
-  "headerFields": ["N° de orden", "Fecha", "Cliente", "Teléfono", "Dirección", "Vehículo (marca/modelo/patente)", "Técnico", "Hora de llegada"]
+  "headerFields": [
+    "N° de orden",
+    "Fecha",
+    "Cliente",
+    "Teléfono",
+    "Dirección",
+    "Vehículo (marca/modelo/patente)",
+    "Técnico",
+    "Hora de llegada"
+  ],
+  "fillable": true,
+  "fields": [
+    {
+      "id": "n_de_orden",
+      "label": "N° de orden",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "cliente",
+      "label": "Cliente",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "tel_fono",
+      "label": "Teléfono",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "direcci_n",
+      "label": "Dirección",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "veh_culo_marca_modelo_pa",
+      "label": "Vehículo (marca/modelo/patente)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "t_cnico",
+      "label": "Técnico",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "hora_de_llegada",
+      "label": "Hora de llegada",
+      "type": "time",
+      "required": false
+    }
+  ]
 }

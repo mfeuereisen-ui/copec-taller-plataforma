@@ -5,8 +5,57 @@
   "type": "permiso-trabajo",
   "frequency": "Antes de cada ingreso a espacio confinado",
   "archivalYears": 1,
-  "usedInProtocols": ["P1-02"],
+  "usedInProtocols": [
+    "P1-02"
+  ],
   "description": "Permiso formal antes del ingreso a espacios confinados o con ventilación limitada.",
-  "headerFields": ["Fecha", "Lugar", "Descripción del trabajo", "Hora inicio", "Hora término estimada", "Vigencia"],
-  "stopRule": "Sin medición de gases dentro de límite o sin vigía asignado, no se autoriza el ingreso."
+  "headerFields": [
+    "Fecha",
+    "Lugar",
+    "Descripción del trabajo",
+    "Hora inicio",
+    "Hora término estimada",
+    "Vigencia"
+  ],
+  "stopRule": "Sin medición de gases dentro de límite o sin vigía asignado, no se autoriza el ingreso.",
+  "fillable": true,
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "lugar",
+      "label": "Lugar",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "descripci_n_del_trabajo",
+      "label": "Descripción del trabajo",
+      "type": "textarea",
+      "required": false,
+      "lines": 4
+    },
+    {
+      "id": "hora_inicio",
+      "label": "Hora inicio",
+      "type": "time",
+      "required": false
+    },
+    {
+      "id": "hora_t_rmino_estimada",
+      "label": "Hora término estimada",
+      "type": "time",
+      "required": false
+    },
+    {
+      "id": "vigencia",
+      "label": "Vigencia",
+      "type": "text",
+      "required": false
+    }
+  ]
 }

@@ -5,9 +5,18 @@
   "type": "checklist",
   "frequency": "Al inicio de cada turno (por cada elevador en uso)",
   "archivalYears": 1,
-  "usedInProtocols": ["P1-01"],
+  "usedInProtocols": [
+    "P1-01"
+  ],
   "description": "Permite validar que el elevador hidráulico/neumático se encuentra en condiciones seguras antes de su operación.",
-  "headerFields": ["Estación / Sucursal", "Fecha", "N° o identificación del elevador", "Turno", "Técnico que inspecciona", "Hora"],
+  "headerFields": [
+    "Estación / Sucursal",
+    "Fecha",
+    "N° o identificación del elevador",
+    "Turno",
+    "Técnico que inspecciona",
+    "Hora"
+  ],
   "checks": [
     "Elevador en posición completamente baja al iniciar la revisión",
     "Brazos limpios, sin aceite ni grasa",
@@ -24,5 +33,147 @@
     "Piso del área sin derrames ni obstáculos",
     "Cuñas para ruedas disponibles"
   ],
-  "stopRule": "Si CUALQUIER ítem se marca FALLA, el elevador NO debe utilizarse. Notifique al supervisor."
+  "stopRule": "Si CUALQUIER ítem se marca FALLA, el elevador NO debe utilizarse. Notifique al supervisor.",
+  "fillable": true,
+  "fields": [
+    {
+      "id": "estaci_n_sucursal",
+      "label": "Estación / Sucursal",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "n_o_identificaci_n_del_e",
+      "label": "N° o identificación del elevador",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "turno",
+      "label": "Turno",
+      "type": "select",
+      "required": false,
+      "options": [
+        "Mañana",
+        "Tarde",
+        "Noche"
+      ]
+    },
+    {
+      "id": "t_cnico_que_inspecciona",
+      "label": "Técnico que inspecciona",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "hora",
+      "label": "Hora",
+      "type": "time",
+      "required": false
+    },
+    {
+      "id": "chk_0",
+      "label": "Elevador en posición completamente baja al iniciar la revisión",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_1",
+      "label": "Brazos limpios, sin aceite ni grasa",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_2",
+      "label": "Brazos sin deformaciones, fisuras ni desgaste anormal",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_3",
+      "label": "Adaptadores de goma (tacones) presentes y en buen estado",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_4",
+      "label": "Mangueras hidráulicas / neumáticas sin fugas ni grietas",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_5",
+      "label": "Nivel de aceite hidráulico correcto (si aplica)",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_6",
+      "label": "Mecanismos de bloqueo / pestillos de seguridad funcionales",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_7",
+      "label": "Botonera de mando operativa (sube, baja, parada)",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_8",
+      "label": "Parada de emergencia operativa",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_9",
+      "label": "Pernos y anclajes de la columna firmes",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_10",
+      "label": "Cables / cadenas de sincronización sin daños (si aplica)",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_11",
+      "label": "Área perimetral despejada y señalizada",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_12",
+      "label": "Piso del área sin derrames ni obstáculos",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_13",
+      "label": "Cuñas para ruedas disponibles",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    }
+  ]
 }

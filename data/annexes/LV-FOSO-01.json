@@ -5,9 +5,18 @@
   "type": "checklist",
   "frequency": "Antes de cada jornada de trabajo en el foso",
   "archivalYears": 1,
-  "usedInProtocols": ["P1-02"],
+  "usedInProtocols": [
+    "P1-02"
+  ],
   "description": "Garantiza que el foso de inspección está en condiciones de seguridad antes de iniciar el trabajo.",
-  "headerFields": ["Estación / Sucursal", "Fecha", "Técnico", "Técnico de superficie", "Supervisor", "Hora de inicio"],
+  "headerFields": [
+    "Estación / Sucursal",
+    "Fecha",
+    "Técnico",
+    "Técnico de superficie",
+    "Supervisor",
+    "Hora de inicio"
+  ],
   "checks": [
     "Área delimitada con barreras y conos a ambos lados del acceso",
     "Iluminación del foso operativa (mínimo 300 lux)",
@@ -24,5 +33,142 @@
     "Extintor accesible cerca del área",
     "Técnico de superficie asignado y presente"
   ],
-  "stopRule": "No se autoriza el ingreso al foso si algún ítem está marcado como FALLA o si la medición de gases supera el límite permitido."
+  "stopRule": "No se autoriza el ingreso al foso si algún ítem está marcado como FALLA o si la medición de gases supera el límite permitido.",
+  "fillable": true,
+  "fields": [
+    {
+      "id": "estaci_n_sucursal",
+      "label": "Estación / Sucursal",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "t_cnico",
+      "label": "Técnico",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "t_cnico_de_superficie",
+      "label": "Técnico de superficie",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "supervisor",
+      "label": "Supervisor",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "hora_de_inicio",
+      "label": "Hora de inicio",
+      "type": "time",
+      "required": false
+    },
+    {
+      "id": "chk_0",
+      "label": "Área delimitada con barreras y conos a ambos lados del acceso",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_1",
+      "label": "Iluminación del foso operativa (mínimo 300 lux)",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_2",
+      "label": "Foso libre de líquidos acumulados, aceite o residuos",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_3",
+      "label": "Bordes del foso limpios y secos",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_4",
+      "label": "Escalera de acceso firme, completa y en buen estado",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_5",
+      "label": "Ventilación del foso activa (mínimo 5 min antes de ingresar)",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_6",
+      "label": "Medición de gases realizada (CO ≤ 25 ppm TWA, DS 594)",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_7",
+      "label": "Detector de gases disponible y operativo (si aplica)",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_8",
+      "label": "Vehículo posicionado con motor apagado",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_9",
+      "label": "Cuñas colocadas y freno de mano aplicado",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_10",
+      "label": "Barreras físicas instaladas adelante y atrás del vehículo",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_11",
+      "label": "Lámpara portátil con protección antiexplosión (ATEX) disponible",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_12",
+      "label": "Extintor accesible cerca del área",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_13",
+      "label": "Técnico de superficie asignado y presente",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    }
+  ]
 }

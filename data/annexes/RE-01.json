@@ -5,13 +5,89 @@
   "type": "registro-evento",
   "frequency": "Ante cada emergencia (incendio, evacuación, etc.)",
   "archivalYears": 5,
-  "usedInProtocols": ["P1-05"],
+  "usedInProtocols": [
+    "P1-05"
+  ],
   "description": "Documenta toda emergencia que active los protocolos de respuesta de Copec Taller.",
-  "headerFields": ["Fecha", "Hora de inicio", "Hora de control", "Lugar / Estación", "Tipo de emergencia", "Reportado por"],
+  "headerFields": [
+    "Fecha",
+    "Hora de inicio",
+    "Hora de control",
+    "Lugar / Estación",
+    "Tipo de emergencia",
+    "Reportado por"
+  ],
   "sections": [
     "Tipo de emergencia (incendio, derrame mayor, explosión, sismo, emergencia médica, otra)",
     "Descripción del evento y causa probable",
     "Acciones tomadas / recursos utilizados (extintores, Bomberos 132, SAMU 131)",
     "Daños y consecuencias (lesionados, daños materiales, interrupción de operación)"
+  ],
+  "fillable": true,
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "hora_de_inicio",
+      "label": "Hora de inicio",
+      "type": "time",
+      "required": false
+    },
+    {
+      "id": "hora_de_control",
+      "label": "Hora de control",
+      "type": "time",
+      "required": false
+    },
+    {
+      "id": "lugar_estaci_n",
+      "label": "Lugar / Estación",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "tipo_de_emergencia",
+      "label": "Tipo de emergencia",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "reportado_por",
+      "label": "Reportado por",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sec_0",
+      "label": "Tipo de emergencia (incendio, derrame mayor, explosión, sismo, emergencia médica, otra)",
+      "type": "textarea",
+      "required": false,
+      "lines": 4
+    },
+    {
+      "id": "sec_1",
+      "label": "Descripción del evento y causa probable",
+      "type": "textarea",
+      "required": false,
+      "lines": 4
+    },
+    {
+      "id": "sec_2",
+      "label": "Acciones tomadas / recursos utilizados (extintores, Bomberos 132, SAMU 131)",
+      "type": "textarea",
+      "required": false,
+      "lines": 4
+    },
+    {
+      "id": "sec_3",
+      "label": "Daños y consecuencias (lesionados, daños materiales, interrupción de operación)",
+      "type": "textarea",
+      "required": false,
+      "lines": 4
+    }
   ]
 }

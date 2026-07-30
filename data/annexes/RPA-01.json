@@ -5,8 +5,75 @@
   "type": "registro-evento",
   "frequency": "Ante cada atención de primeros auxilios",
   "archivalYears": 5,
-  "usedInProtocols": ["P3-02"],
+  "usedInProtocols": [
+    "P3-02"
+  ],
   "description": "Bitácora de toda atención de primeros auxilios, por menor que sea, para seguimiento y eventual derivación.",
-  "headerFields": ["Fecha", "Hora", "Persona atendida", "Trabajador / Cliente", "Tipo de lesión", "Acciones brindadas", "Derivación", "Atendido por"],
-  "stopRule": "Ante pérdida de conciencia, dificultad para respirar, hemorragia severa o síntomas de infarto/ACV, llame al SAMU (131) de inmediato."
+  "headerFields": [
+    "Fecha",
+    "Hora",
+    "Persona atendida",
+    "Trabajador / Cliente",
+    "Tipo de lesión",
+    "Acciones brindadas",
+    "Derivación",
+    "Atendido por"
+  ],
+  "stopRule": "Ante pérdida de conciencia, dificultad para respirar, hemorragia severa o síntomas de infarto/ACV, llame al SAMU (131) de inmediato.",
+  "fillable": true,
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "hora",
+      "label": "Hora",
+      "type": "time",
+      "required": false
+    },
+    {
+      "id": "persona_atendida",
+      "label": "Persona atendida",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "trabajador_cliente",
+      "label": "Trabajador / Cliente",
+      "type": "select",
+      "required": false,
+      "options": [
+        "Trabajador",
+        "Cliente"
+      ]
+    },
+    {
+      "id": "tipo_de_lesi_n",
+      "label": "Tipo de lesión",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "acciones_brindadas",
+      "label": "Acciones brindadas",
+      "type": "textarea",
+      "required": false,
+      "lines": 4
+    },
+    {
+      "id": "derivaci_n",
+      "label": "Derivación",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "atendido_por",
+      "label": "Atendido por",
+      "type": "text",
+      "required": false
+    }
+  ]
 }

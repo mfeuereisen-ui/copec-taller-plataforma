@@ -5,8 +5,56 @@
   "type": "registro-medicion",
   "frequency": "Antes y durante el trabajo en espacios con ventilación limitada",
   "archivalYears": 1,
-  "usedInProtocols": ["P1-02"],
+  "usedInProtocols": [
+    "P1-02"
+  ],
   "description": "Registra mediciones de O2, CO y vapores HC en espacios confinados o con ventilación limitada.",
-  "headerFields": ["Estación / Lugar", "Fecha", "Equipo de medición", "Última calibración", "Responsable", "Trabajo asociado"],
-  "stopRule": "Límites DS 594: CO ≤ 25 ppm (TWA), O₂ 19,5–23,5%, vapores HC < 10% LEL. Fuera de límite → evacuar y ventilar."
+  "headerFields": [
+    "Estación / Lugar",
+    "Fecha",
+    "Equipo de medición",
+    "Última calibración",
+    "Responsable",
+    "Trabajo asociado"
+  ],
+  "stopRule": "Límites DS 594: CO ≤ 25 ppm (TWA), O₂ 19,5–23,5%, vapores HC < 10% LEL. Fuera de límite → evacuar y ventilar.",
+  "fillable": true,
+  "fields": [
+    {
+      "id": "estaci_n_lugar",
+      "label": "Estación / Lugar",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "equipo_de_medici_n",
+      "label": "Equipo de medición",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ltima_calibraci_n",
+      "label": "Última calibración",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "responsable",
+      "label": "Responsable",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "trabajo_asociado",
+      "label": "Trabajo asociado",
+      "type": "text",
+      "required": false
+    }
+  ]
 }
