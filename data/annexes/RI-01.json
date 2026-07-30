@@ -1,18 +1,30 @@
 {
   "code": "RI-01",
-  "version": "1.0",
-  "title": "Reporte de incidentes y casi-accidentes",
-  "type": "registro-evento",
-  "frequency": "Ante cada incidente / casi-accidente (dentro de 24 horas)",
-  "archivalYears": 5,
-  "usedInProtocols": ["P1-01", "P1-02", "P1-05", "P2-02", "P3-02"],
-  "description": "Formulario para reportar incidentes con/sin lesión, casi-accidentes, daños y eventos ambientales. Obligatorio dentro de 24 horas.",
-  "headerFields": ["Fecha del evento", "Hora", "Lugar exacto", "Estación / Patente vehículo", "Reportado por", "Cargo"],
-  "sections": [
-    "Tipo de evento (casi-accidente, lesión a trabajador, lesión a cliente, daño material, derrame, incendio)",
-    "Descripción detallada del evento (cronológica)",
-    "Personas involucradas y testigos",
-    "Acciones inmediatas tomadas"
-  ],
-  "stopRule": "Todo accidente con lesión requiere además la Denuncia Individual de Accidente del Trabajo (DIAT) ante el organismo administrador dentro de 24 horas."
+  "title": "Registro de Incidente / Accidente",
+  "type": "formulario",
+  "fillable": true,
+  "periodicity": "por evento",
+  "description": "Formulario para registrar de inmediato un incidente, accidente o casi-accidente ocurrido en las operaciones. Puede completarse en pantalla y descargarse, o imprimirse en blanco para llenarlo a mano. Vinculado al Protocolo P3-03.",
+  "linkedProtocols": ["P3-03"],
+  "instructions": "Complete el formulario lo antes posible tras el evento, idealmente dentro de las 24 horas. Sea específico y objetivo en el relato de los hechos. Si un campo no aplica, indique 'N/A'.",
+  "fields": [
+    { "id": "fecha_evento", "label": "Fecha del evento", "type": "date", "required": true },
+    { "id": "hora_evento", "label": "Hora aproximada", "type": "time", "required": true },
+    { "id": "lugar", "label": "Lugar exacto donde ocurrió", "type": "text", "required": true },
+    { "id": "tipo_evento", "label": "Tipo de evento", "type": "select", "required": true,
+      "options": ["Casi-accidente (sin daño)", "Accidente con lesión", "Daño material", "Evento ambiental / derrame", "Otro"] },
+    { "id": "afectado_nombre", "label": "Nombre del afectado (si hay lesión)", "type": "text", "required": false },
+    { "id": "afectado_tipo", "label": "Tipo de trabajador", "type": "select", "required": false,
+      "options": ["Personal propio de Copec Taller", "Personal externo", "Cliente / tercero", "No aplica"] },
+    { "id": "afectado_mutualidad", "label": "Mutualidad del afectado (si se conoce)", "type": "text", "required": false },
+    { "id": "gravedad", "label": "Gravedad aparente", "type": "select", "required": false,
+      "options": ["Sin lesión", "Lesión leve", "Lesión grave", "Fatal"] },
+    { "id": "descripcion", "label": "Descripción de lo ocurrido (relato cronológico de los hechos)", "type": "textarea", "required": true, "lines": 6 },
+    { "id": "causas", "label": "Causas aparentes / condiciones que contribuyeron", "type": "textarea", "required": false, "lines": 3 },
+    { "id": "acciones_inmediatas", "label": "Acciones inmediatas tomadas", "type": "textarea", "required": true, "lines": 3 },
+    { "id": "testigos", "label": "Testigos (nombre y contacto)", "type": "textarea", "required": false, "lines": 2 },
+    { "id": "notificaciones", "label": "Notificaciones realizadas (autoridad, mutualidad, empresa externa, jefatura)", "type": "textarea", "required": false, "lines": 2 },
+    { "id": "reportado_por", "label": "Reportado por (nombre y cargo)", "type": "text", "required": true },
+    { "id": "fecha_reporte", "label": "Fecha del reporte", "type": "date", "required": true }
+  ]
 }

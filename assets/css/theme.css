@@ -149,3 +149,80 @@
   animation: skeleton 1.4s linear infinite;
 }
 @keyframes skeleton { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+/* ============================================================================
+   ANEXOS RELLENABLES (FillableAnnex.js)
+   ========================================================================== */
+.annex-field { margin-bottom: 14px; }
+.annex-label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: rgb(var(--ink-700));
+  margin-bottom: 4px;
+}
+.annex-input {
+  width: 100%;
+  border: 1px solid rgb(var(--ink-200));
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13.5px;
+  color: rgb(var(--ink-900));
+  background: white;
+  font-family: inherit;
+}
+.annex-input:focus {
+  outline: none;
+  border-color: rgb(var(--brand-500));
+  box-shadow: 0 0 0 3px rgb(var(--brand-500) / 0.12);
+}
+.annex-textarea { resize: vertical; line-height: 1.5; }
+
+/* Líneas en blanco para escribir a mano (solo se ven al imprimir en blanco) */
+.annex-blank-line {
+  border-bottom: 1px solid rgb(var(--ink-400));
+  height: 24px;
+}
+.annex-blank-lines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 27px,
+    rgb(var(--ink-400)) 27px,
+    rgb(var(--ink-400)) 28px
+  );
+  height: calc(28px * var(--lines, 3));
+}
+.annex-blank-options { display: flex; flex-wrap: wrap; gap: 14px; padding-top: 2px; }
+.annex-check-option { font-size: 13px; color: rgb(var(--ink-700)); }
+
+/* Encabezado y firma que solo aparecen impresos */
+.annex-print-header { margin-bottom: 16px; }
+.annex-print-header h1 { font-size: 16pt; font-weight: 700; color: rgb(var(--brand-900)); }
+.annex-print-sub { font-size: 10pt; color: rgb(var(--ink-500)); margin-top: 2px; }
+.annex-signature { display: flex; gap: 40px; margin-top: 40px; }
+.annex-sign-box {
+  flex: 1;
+  border-top: 1px solid rgb(var(--ink-700));
+  padding-top: 6px;
+  font-size: 10pt;
+  color: rgb(var(--ink-600));
+  text-align: center;
+}
+
+/* --- Reglas de impresión específicas del anexo --- */
+@media print {
+  /* Al imprimir, ocultar los inputs vacíos de tipo blank y mostrar líneas */
+  .fillable-annex .no-print { display: none !important; }
+  /* Los inputs rellenados se imprimen sin borde de caja, más limpios */
+  .print-mode-filled .annex-input {
+    border: none;
+    border-bottom: 1px solid rgb(var(--ink-400));
+    border-radius: 0;
+    padding: 2px 0;
+  }
+  .print-mode-filled .annex-textarea {
+    border: 1px solid rgb(var(--ink-300));
+    padding: 6px;
+  }
+  .annex-field { page-break-inside: avoid; }
+}

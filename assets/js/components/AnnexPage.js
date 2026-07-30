@@ -4,10 +4,11 @@ import { useRoute, useRouter } from 'vue-router';
 import { getAnnex, findUsingAnnex, getProtocol } from '../store.js';
 import Icon from './shared/Icon.js';
 import Badge from './shared/Badge.js';
+import FillableAnnex from './FillableAnnex.js';
 
 export default defineComponent({
   name: 'AnnexPage',
-  components: { Icon, Badge },
+  components: { Icon, Badge, FillableAnnex },
   setup() {
     const route = useRoute();
     const router = useRouter();
@@ -16,8 +17,12 @@ export default defineComponent({
 
     function goToProtocol(p) { router.push(`/protocolo/${p.code}`); }
     function print() { window.print(); }
+    function goBack() {
+      if (window.history.length > 1) router.back();
+      else router.push('/anexos');
+    }
 
-    return { route, annex, using, goToProtocol, print };
+    return { route, annex, using, goToProtocol, print, goBack };
   },
   template: `
     <div v-if="!annex" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
@@ -27,6 +32,13 @@ export default defineComponent({
       <router-link to="/anexos" class="text-brand-700 text-sm hover:underline">← Volver a la biblioteca</router-link>
     </div>
     <div v-else class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
+      <!-- VOLVER -->
+      <button @click="goBack"
+        class="no-print inline-flex items-center gap-1.5 mb-4 text-[13px] text-ink-500 hover:text-ink-900 transition">
+        <Icon name="arrow-left" :size="15" />
+        Volver
+      </button>
+
       <!-- HEADER -->
       <header class="mb-6">
         <div class="flex items-start justify-between gap-4 mb-3">
@@ -61,8 +73,11 @@ export default defineComponent({
         </div>
       </section>
 
-      <!-- CAMPOS DE CABECERA -->
-      <section v-if="annex.headerFields && annex.headerFields.length" class="mb-6">
+      <!-- FORMULARIO RELLENABLE (anexos con fillable: true) -->
+      <FillableAnnex v-if="annex.fillable" :annex="annex" class="mb-6" />
+
+      <!-- CAMPOS DE CABECERA (solo para anexos NO rellenables) -->
+      <section v-if="!annex.fillable && annex.headerFields && annex.headerFields.length" class="mb-6">
         <h3 class="text-[11px] uppercase tracking-wider text-ink-500 font-semibold mb-3">Campos de cabecera</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
           <div v-for="f in annex.headerFields" :key="f"
@@ -74,7 +89,7 @@ export default defineComponent({
       </section>
 
       <!-- CHECKS -->
-      <section v-if="annex.checks && annex.checks.length" class="mb-6">
+      <section v-if="!annex.fillable && annex.checks && annex.checks.length" class="mb-6">
         <h3 class="text-[11px] uppercase tracking-wider text-ink-500 font-semibold mb-3">Ítems a verificar</h3>
         <ol class="space-y-2 counter-reset-item">
           <li v-for="(c, i) in annex.checks" :key="i"
@@ -86,7 +101,7 @@ export default defineComponent({
       </section>
 
       <!-- SECTIONS -->
-      <section v-if="annex.sections && annex.sections.length" class="mb-6">
+      <section v-if="!annex.fillable && annex.sections && annex.sections.length" class="mb-6">
         <h3 class="text-[11px] uppercase tracking-wider text-ink-500 font-semibold mb-3">Secciones del formulario</h3>
         <ul class="space-y-2">
           <li v-for="(s, i) in annex.sections" :key="i"

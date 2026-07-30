@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated": "2026-06-05T02:48:35.185Z",
+  "generated": "2026-07-30T12:30:04.634Z",
   "platform": {
     "name": "Plataforma de Seguridad Operacional",
     "owner": "Copec Taller",
@@ -12,7 +12,8 @@
     "P1-02_foso.json",
     "P1-05_incendio.json",
     "P2-02_levantamiento.json",
-    "P3-02_primeros-auxilios.json"
+    "P3-02_primeros-auxilios.json",
+    "P3-03_reporte-incidentes.json"
   ],
   "annexes": [
     "ATE-01.json",

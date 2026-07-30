@@ -14,8 +14,13 @@ const escapeMermaid = (str) => {
   return String(str)
     .replace(/"/g, '#quot;')
     .replace(/[\[\]]/g, ' ')
+    .replace(/[()]/g, ' ')    // paréntesis: rompen el parser de Mermaid
+    .replace(/[{}]/g, ' ')    // llaves: idem
+    .replace(/\|/g, '/')      // pipe: separa etiquetas de arista en Mermaid
     .replace(/[<>]/g, '')
     .replace(/[\r\n]+/g, ' ')
+    .replace(/\s+/g, ' ')     // colapsar espacios resultantes
+    .trim()
     .substring(0, 80); // límite razonable por nodo
 };
 

@@ -1,0 +1,308 @@
+{
+  "code": "P3-03",
+  "title": "Reporte e Investigación de Incidentes",
+  "shortTitle": "Reporte de incidentes",
+  "category": "P3",
+  "service": [
+    "ambos"
+  ],
+  "criticality": "alto-riesgo",
+  "version": "1.0",
+  "lastUpdated": "2026-07-27",
+  "mandatory": true,
+  "tags": [
+    "reporte",
+    "incidente",
+    "casi-accidente",
+    "investigación",
+    "RI-01",
+    "DIAT",
+    "accidente grave",
+    "mutualidad",
+    "ACHS",
+    "Mutual de Seguridad",
+    "servicios transitorios",
+    "empresa usuaria",
+    "externo"
+  ],
+  "objective": "Establecer el procedimiento obligatorio para reportar, registrar e investigar todo incidente, casi-accidente, lesión, daño material o evento ambiental ocurrido en las operaciones de Copec Taller, asegurando la notificación oportuna a las instancias legales correspondientes y la preservación de la evidencia para su investigación.",
+  "scope": "Aplica a todo evento ocurrido durante o a causa de las operaciones de Copec Taller, con o sin lesión, e incluye casi-accidentes y daños materiales o ambientales sin lesión. Cubre dos tipos de trabajadores accidentados, con obligaciones distintas: (a) personal propio de Copec Taller, contratado directamente, afiliado a la mutualidad de la empresa; y (b) personal externo provisto por empresas de servicios transitorios, afiliado a la mutualidad de esa empresa. En este segundo caso Copec Taller actúa como 'empresa usuaria' y tiene obligaciones propias definidas por la Ley 20.123, distintas de las del empleador directo.",
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "action",
+        "title": "Asegurar a las personas y controlar el riesgo",
+        "summary": "Antes de reportar, atender lesionados y controlar el peligro.",
+        "description": "Lo primero es la seguridad de las personas. Si hay lesionados, active de inmediato el Protocolo P3-02 (Primeros Auxilios). Identifique de qué empleador depende el trabajador —personal propio de Copec Taller, o personal externo (empresa de servicios transitorios)— porque cada uno está afiliado a una mutualidad distinta, y derive o solicite rescate al organismo que corresponda. Ante riesgo vital, llame también al SAMU 131. Si el riesgo persiste (fuego, derrame, inestabilidad), controle o aísle el área. No inicie el reporte mientras haya personas en peligro.",
+        "criticalAlerts": [
+          "La atención de lesionados y el control del riesgo tienen prioridad ABSOLUTA sobre el reporte."
+        ],
+        "next": [
+          "s2"
+        ],
+        "verifications": [
+          "Empleador del accidentado identificado (propio o externo)",
+          "Mutualidad correspondiente identificada",
+          "Trabajador derivado o rescate solicitado al organismo correcto"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "action",
+        "title": "Avisar al supervisor de inmediato",
+        "summary": "El trabajador o testigo comunica el evento a la jefatura directa.",
+        "description": "El trabajador accidentado o quien haya presenciado el evento debe avisar de inmediato a su jefatura o supervisor directo. Este aviso interno es verbal y no reemplaza las denuncias formales que vienen a continuación.",
+        "criticalAlerts": [
+          "Ningún incidente puede quedar sin comunicar a la jefatura, por menor que parezca."
+        ],
+        "next": [
+          "s3"
+        ]
+      },
+      {
+        "id": "s3",
+        "type": "decision",
+        "title": "¿El evento es un accidente grave o fatal?",
+        "summary": "Esta clasificación define obligaciones legales inmediatas del empleador.",
+        "description": "Según la Circular N°2.345 de la SUSESO, un accidente del trabajo es GRAVE (definición operacional, no clínica) cuando: obliga a realizar maniobras de reanimación o de rescate; ocurre por caída de altura de más de 1,8 metros; provoca en forma inmediata la amputación o pérdida de cualquier parte del cuerpo; o involucra a un número de trabajadores tal que afecte el desarrollo normal de la faena. Es FATAL cuando provoca la muerte del trabajador en forma inmediata o durante su traslado a un centro asistencial.",
+        "yes": "s4_grave",
+        "no": "s6_empleador",
+        "yesLabel": "Sí, grave o fatal",
+        "noLabel": "No"
+      },
+      {
+        "id": "s4_grave",
+        "type": "alert",
+        "title": "Suspender la faena de inmediato",
+        "summary": "Ante accidente grave o fatal, autosuspensión inmediata del área afectada.",
+        "description": "Ante un accidente grave o fatal, Copec Taller debe suspender de inmediato las faenas del área afectada y, de ser necesario, evacuar el lugar si existe posibilidad de un nuevo accidente similar. Esta obligación recae en Copec Taller por controlar la faena, INCLUSO si el accidentado es personal externo: en ese caso la ley designa a la empresa usuaria (Copec Taller) como responsable de suspender e informar. El ingreso al área para controlar riesgos solo debe hacerse con personal entrenado y equipado. Esta obligación NO aplica a accidentes de trayecto.",
+        "criticalAlerts": [
+          "NO reanude las faenas del área afectada hasta que la autoridad lo autorice por escrito.",
+          "El incumplimiento de suspender e informar se sanciona con multas de 50 a 150 UTM."
+        ],
+        "next": [
+          "s5_notificar"
+        ]
+      },
+      {
+        "id": "s5_notificar",
+        "type": "action",
+        "title": "Notificar a la autoridad — 600 42 000 22",
+        "summary": "Aviso inmediato a la Inspección del Trabajo y a la SEREMI de Salud.",
+        "description": "Copec Taller debe notificar de inmediato a la autoridad, sea el accidentado personal propio o externo (como empresa usuaria, esta obligación es de Copec Taller). Llame al número único 600 42 000 22 (Call Center MINSAL), que deriva a la SEREMI de Salud y a la Inspección del Trabajo del domicilio donde ocurrió el accidente. Si no logra comunicarse, notifique directamente a ambas por teléfono, correo o presencialmente. Entregue al menos: nombre y RUN del trabajador, razón social y RUT del empleador (el de la empresa externa si corresponde), dirección donde ocurrió, tipo de accidente (grave o fatal) y descripción de lo ocurrido.",
+        "criticalAlerts": [
+          "El aviso a la autoridad es INMEDIATO y es responsabilidad del empleador, no de la mutualidad."
+        ],
+        "verifications": [
+          "Llamada al 600 42 000 22 realizada (o notificación directa a Inspección y SEREMI)",
+          "Datos del trabajador y del empleador entregados",
+          "Formulario de Notificación Inmediata de Accidente del Trabajo Fatal y Grave completado (si se notifica por correo o presencialmente)"
+        ],
+        "next": [
+          "s6_empleador"
+        ]
+      },
+      {
+        "id": "s6_empleador",
+        "type": "decision",
+        "title": "¿El accidentado es personal propio o externo?",
+        "summary": "Determina quién emite la DIAT y a qué mutualidad.",
+        "yes": "s7_propio",
+        "no": "s7_est",
+        "yesLabel": "Personal propio de Copec Taller",
+        "noLabel": "Personal externo"
+      },
+      {
+        "id": "s7_propio",
+        "type": "action",
+        "title": "DIAT: Copec Taller emite a su mutualidad en 24 h",
+        "summary": "Para personal propio, Copec Taller es el empleador y denuncia.",
+        "description": "Si el accidentado es personal propio de Copec Taller, la empresa es el empleador y debe presentar la Denuncia Individual de Accidente del Trabajo (DIAT) ante la mutualidad a la que Copec Taller está afiliada, en un plazo máximo de 24 horas desde que tomó conocimiento. Si el accidente fue grave o fatal, la DIAT debe indicarlo. Conserve copia y entregue una al trabajador. Todo accidente con lesión requiere DIAT, aunque no sea grave.",
+        "criticalAlerts": [
+          "Plazo 24 horas. No emitir la DIAT o hacerlo tarde se sanciona con multa (hasta 24 ingresos mínimos mensuales)."
+        ],
+        "verifications": [
+          "DIAT emitida a la mutualidad de Copec Taller dentro de 24 horas",
+          "Copia entregada al trabajador",
+          "Copia archivada"
+        ],
+        "next": [
+          "s8_ri01"
+        ]
+      },
+      {
+        "id": "s7_est",
+        "type": "action",
+        "title": "Externo: notificar a la empresa proveedora + denunciar si es grave/fatal",
+        "summary": "Para personal externo, el empleador es la empresa proveedora; Copec Taller tiene deberes de usuaria.",
+        "description": "Si el accidentado es personal externo provisto por una empresa de servicios transitorios, el empleador es esa empresa y es ella quien emite la DIAT a SU mutualidad. Copec Taller, como empresa usuaria, debe: (1) notificar de inmediato el siniestro a la empresa proveedora para que emita la DIAT en 24 horas; y (2) si el accidente es grave o fatal, denunciarlo también al organismo administrador al que está afiliada esa empresa, además de haber notificado a la autoridad y suspendido la faena. Registre igualmente el evento en el RI-01 interno.",
+        "criticalAlerts": [
+          "Copec Taller debe notificar el siniestro a la empresa externa de inmediato; no basta con esperar que se entere."
+        ],
+        "verifications": [
+          "Empresa externa notificada del siniestro",
+          "Si es grave/fatal: denuncia al organismo administrador de la empresa externa",
+          "Datos del accidente entregados a la empresa externa para su DIAT"
+        ],
+        "next": [
+          "s8_ri01"
+        ]
+      },
+      {
+        "id": "s8_ri01",
+        "type": "action",
+        "title": "Registrar el evento en el formulario interno RI-01",
+        "summary": "Registro interno de todo incidente, incluidos casi-accidentes.",
+        "description": "Complete el formulario interno de Reporte de Incidentes RI-01 dentro de 24 horas. Este registro es propio de Copec Taller y aplica a TODO evento, incluidos los casi-accidentes y los daños materiales o ambientales sin lesión (que no generan DIAT pero sí deben quedar registrados para la investigación y la prevención). Registre el tipo de evento, la descripción cronológica, las personas involucradas y testigos, y las acciones inmediatas tomadas.",
+        "verifications": [
+          "Tipo de evento identificado (lesión / casi-accidente / daño material / ambiental)",
+          "Descripción cronológica completa",
+          "Personas involucradas y testigos registrados",
+          "Fotografías de la escena y equipos involucrados adjuntas"
+        ],
+        "next": [
+          "s9_investigar"
+        ]
+      },
+      {
+        "id": "s9_investigar",
+        "type": "action",
+        "title": "Investigar y definir acciones correctivas",
+        "summary": "Analizar la causa raíz y establecer medidas para evitar repetición.",
+        "description": "Investigue el evento para identificar su causa raíz —no solo la causa inmediata— y defina acciones correctivas con responsable y plazo. El objetivo es evitar que se repita. Conserve el informe junto al RI-01. Para accidentes graves o fatales, la mutualidad del trabajador (ACHS o Mutual de Seguridad) presta asesoría en la investigación y en prevención sin costo adicional: conviene contactarla.",
+        "verifications": [
+          "Causa raíz identificada",
+          "Acciones correctivas definidas con responsable y plazo",
+          "Informe de investigación archivado"
+        ],
+        "next": [
+          "s10_reanudar"
+        ]
+      },
+      {
+        "id": "s10_reanudar",
+        "type": "decision",
+        "title": "¿Hubo suspensión de faena por accidente grave o fatal?",
+        "summary": "La reanudación requiere autorización formal de la autoridad.",
+        "yes": "s11_permiso",
+        "no": "s12_fin",
+        "yesLabel": "Sí, hubo suspensión",
+        "noLabel": "No"
+      },
+      {
+        "id": "s11_permiso",
+        "type": "action",
+        "title": "Solicitar autorización para reanudar faenas",
+        "summary": "Reanudar solo con permiso escrito de la Inspección o SEREMI.",
+        "description": "La reanudación de las faenas suspendidas debe ser solicitada formalmente por el empleador a la Inspección del Trabajo o SEREMI de Salud que constató la suspensión, una vez subsanadas las deficiencias y cumplidas las medidas exigidas por la autoridad y por el organismo administrador. La autorización debe constar por escrito o en formato digital, y el empleador debe mantener una copia en la faena.",
+        "criticalAlerts": [
+          "No reanude sin la autorización formal por escrito de la autoridad."
+        ],
+        "next": [
+          "s12_fin"
+        ]
+      },
+      {
+        "id": "s12_fin",
+        "type": "end",
+        "title": "Incidente reportado, investigado y cerrado",
+        "summary": "El evento queda documentado y con acciones de seguimiento.",
+        "description": "El incidente queda formalmente reportado a las instancias legales que correspondan, registrado internamente, investigado y con acciones correctivas en seguimiento. Los registros se conservan como evidencia."
+      }
+    ]
+  },
+  "risks": [
+    {
+      "id": "R1",
+      "family": "personal",
+      "severity": "alta",
+      "description": "No reportar un accidente grave o fatal a la autoridad de forma inmediata, o no suspender la faena: se sanciona con multas de 50 a 150 UTM además del riesgo de un nuevo accidente."
+    },
+    {
+      "id": "R2",
+      "family": "personal",
+      "severity": "alta",
+      "description": "No emitir la DIAT dentro de 24 horas ante un accidente con lesión: multa de hasta 24 ingresos mínimos mensuales."
+    },
+    {
+      "id": "R3",
+      "family": "personal",
+      "severity": "media",
+      "description": "Alterar la escena antes de documentarla, perdiendo evidencia clave para determinar la causa raíz."
+    },
+    {
+      "id": "R4",
+      "family": "personal",
+      "severity": "media",
+      "description": "Subregistro de casi-accidentes, que son advertencias tempranas de accidentes futuros."
+    }
+  ],
+  "epp": [],
+  "tools": [],
+  "responsibles": [
+    {
+      "role": "Trabajador involucrado o testigo",
+      "duty": "Avisa el evento a su supervisor de inmediato y aporta la información para el reporte."
+    },
+    {
+      "role": "Supervisor de turno / jefatura directa",
+      "duty": "Recibe el aviso, asegura la atención de lesionados y la preservación de la escena, e identifica si el accidentado es personal propio o externo."
+    },
+    {
+      "role": "Copec Taller (empleador directo y/o empresa usuaria)",
+      "duty": "Para personal propio: suspende la faena si es grave/fatal, notifica a la autoridad, emite la DIAT a su mutualidad. Para personal externo: suspende la faena y notifica a la autoridad igualmente (como usuaria), notifica a la empresa proveedora y —si es grave/fatal— denuncia al organismo de esa empresa. En la práctica: el supervisor de turno ejecuta las acciones inmediatas en terreno (aviso, primeros auxilios, preservación de la escena) y escala de inmediato a la jefatura responsable, que asume las notificaciones legales, la emisión de la DIAT y la gestión con la autoridad."
+    },
+    {
+      "role": "Empresa externa (servicios transitorios)",
+      "duty": "Es el empleador del personal externo: emite la DIAT a su propia mutualidad dentro de 24 horas, una vez notificada por Copec Taller."
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 16.744, art. 76 y 80 — Obligación de informar y denunciar accidentes",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "Circular N°2.345 SUSESO — Definición de accidente grave y fatal, y obligaciones del empleador",
+      "url": "https://www.suseso.gob.cl/613/w3-propertyvalue-137143.html"
+    },
+    {
+      "text": "Compendio SUSESO — Denuncia de accidentes (DIAT), plazo de 24 horas",
+      "url": "https://www.suseso.gob.cl/613/w3-propertyvalue-136357.html"
+    },
+    {
+      "text": "Ley 20.123 — Trabajo en régimen de subcontratación y empresas de servicios transitorios",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=253194"
+    },
+    "Canales de emergencia — ACHS: 1404 / 800 800 1404 · Mutual de Seguridad: 1407 / 600 301 2222 · Notificación accidente grave/fatal: 600 42 000 22"
+  ],
+  "stopRules": [
+    "Si hay una persona lesionada, DETENGA todo y active Primeros Auxilios (P3-02) antes de cualquier gestión de reporte.",
+    "Ante un accidente grave o fatal, suspenda de inmediato la faena afectada y NO la reanude hasta contar con autorización escrita de la Inspección del Trabajo o SEREMI de Salud.",
+    "No altere la escena del incidente antes de documentarla, salvo para atender a un lesionado o eliminar un peligro inmediato."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "Hay lesionados en el evento",
+      "action": "Active el Protocolo P3-02 (Primeros Auxilios). Identifique la mutualidad del trabajador y solicite rescate: ACHS 1404 / 800 800 1404, o Mutual de Seguridad 1407 / 600 301 2222. Ante riesgo vital llame al SAMU 131."
+    },
+    {
+      "situation": "Accidente grave o fatal",
+      "action": "Suspenda la faena, evacúe si hay riesgo de otro accidente, y llame de inmediato al 600 42 000 22 para notificar a la Inspección del Trabajo y la SEREMI de Salud."
+    }
+  ],
+  "registry": [
+    "Notificación Inmediata de Accidente del Trabajo Fatal y Grave (solo accidentes graves/fatales), vía 600 42 000 22 o formulario a Inspección y SEREMI.",
+    "Denuncia Individual de Accidente del Trabajo (DIAT) a la mutualidad, dentro de 24 horas, para todo accidente con lesión.",
+    "Formulario interno de Reporte de Incidentes RI-01, dentro de 24 horas, para todo evento incluidos casi-accidentes.",
+    "Informe de investigación con causa raíz y acciones correctivas.",
+    "Autorización escrita de reanudación de faena (si hubo suspensión)."
+  ],
+  "linkedAnnexes": [
+    "RI-01"
+  ],
+  "linkedProtocols": [
+    "P3-02"
+  ]
+}
