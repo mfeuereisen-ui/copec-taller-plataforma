@@ -36,11 +36,19 @@ export async function loadAllData() {
   ]);
 
   // Filtrar nulos (archivos faltantes no rompen la app)
-  const protocolList = protocols.filter(Boolean);
+  const allProtocols = protocols.filter(Boolean);
   const annexList    = annexes.filter(Boolean);
 
+  // Un protocolo está ACTIVO salvo que tenga "activo": false explícito.
+  // Los inactivos se ocultan de listados, filtros, búsqueda y estadísticas,
+  // pero siguen accesibles por código directo (byCode) para no romper
+  // referencias desde otros protocolos. Ver campo "activo" en los JSON.
+  const protocolList = allProtocols.filter(p => p.activo !== false);
+
   // Índices para acceso O(1)
-  const byCode  = new Map(protocolList.map(p => [p.code, p]));
+  // byCode incluye TODOS (activos e inactivos): así una referencia directa a un
+  // protocolo apagado no falla; solo no aparece en los listados.
+  const byCode  = new Map(allProtocols.map(p => [p.code, p]));
   const anByCode = new Map(annexList.map(a => [a.code, a]));
   const byCategory = groupBy(protocolList, p => p.category);
   const byCriticality = groupBy(protocolList, p => p.criticality);

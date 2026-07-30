@@ -10,6 +10,7 @@
   "version": "1.0",
   "lastUpdated": "2026-07-27",
   "mandatory": true,
+  "activo": true,
   "tags": [
     "reporte",
     "incidente",

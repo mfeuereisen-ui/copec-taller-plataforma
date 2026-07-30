@@ -79,6 +79,12 @@ export default defineComponent({
       <p class="text-ink-500 text-sm mb-4">El protocolo {{ route.params.code }} no existe o no fue cargado.</p>
       <router-link to="/" class="text-brand-700 text-sm hover:underline">← Volver al inicio</router-link>
     </div>
+    <div v-else-if="protocol.activo === false" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+      <Icon name="alert" :size="40" :stroke="$c.ink400" class="mx-auto mb-3" />
+      <h2 class="text-lg font-semibold text-ink-900 mb-1">Protocolo no vigente</h2>
+      <p class="text-ink-500 text-sm mb-4">El protocolo {{ protocol.code }} — {{ protocol.title }} está desactivado y no aplica a las operaciones actuales.</p>
+      <router-link to="/" class="text-brand-700 text-sm hover:underline">← Volver al inicio</router-link>
+    </div>
     <div v-else class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
       <!-- HEADER PROTOCOLO -->
       <header class="mb-6">

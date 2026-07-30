@@ -1,6 +1,7 @@
 {
   "code": "P1-05",
   "version": "1.0",
+  "activo": true,
   "lastUpdated": "2026-05-15",
   "title": "Incendio o Conato de Incendio en la Estación",
   "shortTitle": "Incendio en estación",

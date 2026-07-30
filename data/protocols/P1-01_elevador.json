@@ -1,6 +1,7 @@
 {
   "code": "P1-01",
   "version": "1.0",
+  "activo": true,
   "lastUpdated": "2026-05-15",
   "title": "Subida y Bajada del Vehículo al Elevador Hidráulico/Neumático",
   "shortTitle": "Subida y bajada al elevador",

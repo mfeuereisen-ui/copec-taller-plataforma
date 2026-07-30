@@ -1,6 +1,7 @@
 {
   "code": "P1-02",
   "version": "1.0",
+  "activo": true,
   "lastUpdated": "2026-05-15",
   "title": "Trabajo en Foso de Inspección",
   "shortTitle": "Trabajo en foso",

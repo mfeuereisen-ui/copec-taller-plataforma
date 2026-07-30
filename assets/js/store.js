@@ -76,7 +76,8 @@ export function findRelatedProtocols(code) {
   if (!p) return [];
   return (p.linkedProtocols || [])
     .map(c => getProtocol(c))
-    .filter(Boolean);
+    .filter(Boolean)
+    .filter(rp => rp.activo !== false);   // no mostrar protocolos apagados como relacionados
 }
 
 export function findUsingAnnex(annexCode) {
