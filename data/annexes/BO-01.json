@@ -33,6 +33,44 @@
       "label": "Responsable de turno",
       "type": "text",
       "required": false
+    },
+    {
+      "id": "trabajo_realizado",
+      "label": "Trabajo / operación realizada",
+      "type": "textarea",
+      "required": true,
+      "lines": 4
+    },
+    {
+      "id": "tecnico",
+      "label": "Técnico a cargo",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "vigia",
+      "label": "Vigía (si aplica)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "hora_inicio",
+      "label": "Hora de inicio",
+      "type": "time",
+      "required": false
+    },
+    {
+      "id": "hora_termino",
+      "label": "Hora de término",
+      "type": "time",
+      "required": false
+    },
+    {
+      "id": "observaciones",
+      "label": "Observaciones",
+      "type": "textarea",
+      "required": false,
+      "lines": 4
     }
   ]
 }

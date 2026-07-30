@@ -55,6 +55,33 @@
       "label": "N° asistentes",
       "type": "text",
       "required": false
+    },
+    {
+      "id": "contenidos",
+      "label": "Contenidos tratados",
+      "type": "textarea",
+      "required": true,
+      "lines": 4
+    },
+    {
+      "id": "asistentes",
+      "label": "Asistentes (nombre, RUT y firma — uno por línea)",
+      "type": "textarea",
+      "required": true,
+      "lines": 8
+    },
+    {
+      "id": "evaluacion",
+      "label": "Evaluación / observaciones de la capacitación",
+      "type": "textarea",
+      "required": false,
+      "lines": 3
+    },
+    {
+      "id": "firma_relator",
+      "label": "Nombre y firma del relator",
+      "type": "text",
+      "required": true
     }
   ]
 }

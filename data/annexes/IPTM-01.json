@@ -136,6 +136,36 @@
       "type": "check",
       "required": false,
       "kind": "check"
+    },
+    {
+      "id": "km_final",
+      "label": "Km final (al regreso)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "anomalias",
+      "label": "Anomalías detectadas",
+      "type": "textarea",
+      "required": false,
+      "lines": 3
+    },
+    {
+      "id": "apto_salida",
+      "label": "Vehículo apto para salir a terreno",
+      "type": "select",
+      "required": true,
+      "options": [
+        "Sí",
+        "No"
+      ]
+    },
+    {
+      "id": "observaciones",
+      "label": "Observaciones",
+      "type": "textarea",
+      "required": false,
+      "lines": 3
     }
   ]
 }

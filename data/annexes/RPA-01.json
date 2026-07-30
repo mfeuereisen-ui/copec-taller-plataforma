@@ -74,6 +74,27 @@
       "label": "Atendido por",
       "type": "text",
       "required": false
+    },
+    {
+      "id": "relato",
+      "label": "Relato de lo ocurrido y atención brindada",
+      "type": "textarea",
+      "required": true,
+      "lines": 5
+    },
+    {
+      "id": "signos",
+      "label": "Signos / síntomas observados",
+      "type": "textarea",
+      "required": false,
+      "lines": 2
+    },
+    {
+      "id": "seguimiento",
+      "label": "Seguimiento requerido",
+      "type": "textarea",
+      "required": false,
+      "lines": 2
     }
   ]
 }

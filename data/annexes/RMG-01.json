@@ -55,6 +55,54 @@
       "label": "Trabajo asociado",
       "type": "text",
       "required": false
+    },
+    {
+      "id": "medicion_o2",
+      "label": "O₂ — Oxígeno medido (%) [rango seguro 19,5–23,5]",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "medicion_co",
+      "label": "CO — Monóxido de carbono (ppm)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "medicion_hc",
+      "label": "Vapores HC — Hidrocarburos (% LEL)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "hora_medicion",
+      "label": "Hora de la medición",
+      "type": "time",
+      "required": false
+    },
+    {
+      "id": "resultado",
+      "label": "Resultado",
+      "type": "select",
+      "required": false,
+      "options": [
+        "Apto para ingreso",
+        "NO apto — no ingresar"
+      ]
+    },
+    {
+      "id": "mediciones_repetidas",
+      "label": "Mediciones repetidas / continuas (si aplica)",
+      "type": "textarea",
+      "required": false,
+      "lines": 3
+    },
+    {
+      "id": "observaciones",
+      "label": "Observaciones",
+      "type": "textarea",
+      "required": false,
+      "lines": 2
     }
   ]
 }

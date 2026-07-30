@@ -40,6 +40,54 @@
       "label": "Fecha de revisión",
       "type": "date",
       "required": false
+    },
+    {
+      "id": "chk_completo",
+      "label": "Botiquín completo según listado",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_vencimientos",
+      "label": "Sin elementos vencidos",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_estado",
+      "label": "Elementos en buen estado",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_sellado",
+      "label": "Botiquín limpio y accesible",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "elementos_repuestos",
+      "label": "Elementos repuestos o por reponer",
+      "type": "textarea",
+      "required": false,
+      "lines": 4
+    },
+    {
+      "id": "proxima_revision",
+      "label": "Próxima revisión",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "observaciones",
+      "label": "Observaciones",
+      "type": "textarea",
+      "required": false,
+      "lines": 3
     }
   ]
 }

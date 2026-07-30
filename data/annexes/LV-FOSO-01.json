@@ -169,6 +169,29 @@
       "type": "check",
       "required": false,
       "kind": "check"
+    },
+    {
+      "id": "resultado_general",
+      "label": "Resultado general de la inspección",
+      "type": "select",
+      "required": true,
+      "options": [
+        "Apto para operar",
+        "NO apto — fuera de servicio"
+      ]
+    },
+    {
+      "id": "anomalias",
+      "label": "Anomalías detectadas y acciones",
+      "type": "textarea",
+      "required": false,
+      "lines": 3
+    },
+    {
+      "id": "firma",
+      "label": "Firma del técnico que inspecciona",
+      "type": "text",
+      "required": false
     }
   ]
 }

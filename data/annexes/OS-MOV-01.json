@@ -68,6 +68,64 @@
       "label": "Hora de llegada",
       "type": "time",
       "required": false
+    },
+    {
+      "id": "evaluacion_espacio",
+      "label": "Evaluación del espacio de trabajo (condiciones, riesgos, viabilidad)",
+      "type": "textarea",
+      "required": false,
+      "lines": 4
+    },
+    {
+      "id": "servicio_realizado",
+      "label": "Servicio realizado (descripción del trabajo ejecutado)",
+      "type": "textarea",
+      "required": true,
+      "lines": 5
+    },
+    {
+      "id": "repuestos_insumos",
+      "label": "Repuestos e insumos utilizados",
+      "type": "textarea",
+      "required": false,
+      "lines": 3
+    },
+    {
+      "id": "residuos_retirados",
+      "label": "Residuos retirados y disposición",
+      "type": "textarea",
+      "required": false,
+      "lines": 3
+    },
+    {
+      "id": "incidencias",
+      "label": "Incidencias u observaciones durante el servicio",
+      "type": "textarea",
+      "required": false,
+      "lines": 4
+    },
+    {
+      "id": "hora_termino",
+      "label": "Hora de término",
+      "type": "time",
+      "required": false
+    },
+    {
+      "id": "conformidad_cliente",
+      "label": "Conformidad del cliente",
+      "type": "select",
+      "required": false,
+      "options": [
+        "Conforme",
+        "Con observaciones",
+        "No conforme"
+      ]
+    },
+    {
+      "id": "firma_cliente",
+      "label": "Nombre y firma del cliente",
+      "type": "text",
+      "required": false
     }
   ]
 }

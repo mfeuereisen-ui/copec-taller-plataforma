@@ -56,6 +56,79 @@
       "label": "Vigencia",
       "type": "text",
       "required": false
+    },
+    {
+      "id": "responsable_trabajo",
+      "label": "Responsable del trabajo",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "personas_ingresan",
+      "label": "Personas que ingresan al espacio",
+      "type": "textarea",
+      "required": false,
+      "lines": 2
+    },
+    {
+      "id": "vigia",
+      "label": "Vigía asignado (permanece fuera)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "chk_ventilacion",
+      "label": "Ventilación verificada / forzada operativa",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_gases",
+      "label": "Medición de gases realizada (ver RMG-01)",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_epp",
+      "label": "EPP específico disponible y en uso",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_rescate",
+      "label": "Equipo de rescate y comunicación disponible",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_bloqueo",
+      "label": "Energías bloqueadas / aisladas",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "condiciones_especiales",
+      "label": "Condiciones especiales u observaciones",
+      "type": "textarea",
+      "required": false,
+      "lines": 3
+    },
+    {
+      "id": "autorizado_por",
+      "label": "Autorizado por (nombre y cargo)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "firma_autoriza",
+      "label": "Firma de quien autoriza",
+      "type": "text",
+      "required": false
     }
   ]
 }

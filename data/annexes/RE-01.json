@@ -88,6 +88,19 @@
       "type": "textarea",
       "required": false,
       "lines": 4
+    },
+    {
+      "id": "lecciones",
+      "label": "Lecciones aprendidas / acciones preventivas",
+      "type": "textarea",
+      "required": false,
+      "lines": 3
+    },
+    {
+      "id": "firma",
+      "label": "Reportado y cerrado por",
+      "type": "text",
+      "required": true
     }
   ]
 }
