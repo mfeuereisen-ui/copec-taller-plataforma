@@ -1,0 +1,246 @@
+{
+  "code": "P2-05",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Seguridad Vial durante el Traslado del Taller Móvil",
+  "shortTitle": "Seguridad vial",
+  "category": "P2",
+  "criticality": "medio",
+  "service": [
+    "movil"
+  ],
+  "tags": [
+    "seguridad vial",
+    "conducción",
+    "fatiga",
+    "carga",
+    "tránsito"
+  ],
+  "icon": "truck",
+  "alertBanner": "",
+  "objective": "Garantizar la seguridad del técnico durante los desplazamientos en el vehículo del taller móvil, reduciendo el riesgo de accidentes de tránsito mediante conducción defensiva, revisión del vehículo y gestión de la fatiga.",
+  "scope": "Aplica a todos los técnicos que conduzcan el vehículo del taller móvil en trayectos entre la estación y los domicilios, entre distintos domicilios, o en su ruta diaria.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Accidente de tránsito por fatiga, distracción o exceso de velocidad",
+      "severity": "alta",
+      "family": "vial"
+    },
+    {
+      "id": "R2",
+      "description": "Volcamiento por curvas a exceso de velocidad con carga",
+      "severity": "alta",
+      "family": "vial"
+    },
+    {
+      "id": "R3",
+      "description": "Carga no asegurada que se desplaza y altera el manejo",
+      "severity": "media",
+      "family": "vial"
+    },
+    {
+      "id": "R4",
+      "description": "Falla mecánica del vehículo por falta de mantención",
+      "severity": "media",
+      "family": "vial"
+    },
+    {
+      "id": "R5",
+      "description": "Accidente al maniobrar en retroceso en espacios reducidos",
+      "severity": "media",
+      "family": "vial"
+    },
+    {
+      "id": "R6",
+      "description": "Accidente por uso de celular al conducir",
+      "severity": "alta",
+      "family": "vial"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Técnico conductor",
+      "duty": "Responsable primario de la seguridad vial"
+    },
+    {
+      "role": "Supervisor de operaciones",
+      "duty": "Verifica cumplimiento de normas y estado del vehículo"
+    }
+  ],
+  "epp": [
+    {
+      "item": "Cinturón de seguridad",
+      "obligatory": true,
+      "note": "Obligatorio al conducir"
+    },
+    {
+      "item": "Lentes de sol",
+      "obligatory": false,
+      "note": "Si la luminosidad lo requiere"
+    },
+    {
+      "item": "Kit de emergencias del vehículo: triángulos, extintor, botiquín, chaleco reflectante",
+      "obligatory": true
+    }
+  ],
+  "tools": [
+    {
+      "name": "Vehículo del taller móvil",
+      "verification": "IPTM-01"
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 18.290 — Ley de Tránsito",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1007469"
+    },
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS 40 — Reglamento sobre prevención de riesgos profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1041130"
+    },
+    {
+      "text": "Normativas ACHS para conductores profesionales",
+      "url": ""
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "action",
+        "title": "Inspección preoperacional del vehículo",
+        "summary": "Según P3-05 / IPTM-01.",
+        "description": "Antes de conducir, realice la inspección preoperacional del vehículo según Protocolo P3-05 (o IPTM-01 si ya la realizó al inicio del turno).",
+        "next": [
+          "s2"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "action",
+        "title": "Asegurar y distribuir la carga",
+        "summary": "Peso centrado y bajo; todo fijado.",
+        "description": "Verifique que la carga esté correctamente asegurada y distribuida. El peso debe estar centrado y bajo. Fije cajas y herramientas con correas o en los anclajes del furgón.",
+        "verifications": [
+          "Carga asegurada",
+          "Peso centrado y bajo"
+        ],
+        "next": [
+          "s3"
+        ]
+      },
+      {
+        "id": "s3",
+        "type": "action",
+        "title": "Ajustar puesto de conducción",
+        "summary": "Asiento, espejos, cinturón.",
+        "description": "Ajuste el asiento, espejos y cinturón de seguridad antes de partir.",
+        "next": [
+          "s4"
+        ]
+      },
+      {
+        "id": "s4",
+        "type": "alert",
+        "title": "No usar el celular al conducir",
+        "summary": "Detenerse en lugar seguro para revisarlo.",
+        "description": "NUNCA use el teléfono celular mientras conduce. Use manos libres solo si es imprescindible, o deténgase en lugar seguro para revisar mensajes.",
+        "criticalAlerts": [
+          "El uso del celular al conducir es causa frecuente de accidentes y es una infracción."
+        ],
+        "next": [
+          "s5"
+        ]
+      },
+      {
+        "id": "s5",
+        "type": "action",
+        "title": "Conducción defensiva",
+        "summary": "Respetar velocidad, distancia de seguridad.",
+        "description": "Respete los límites de velocidad. En zonas residenciales: máximo 30 km/h. El vehículo con carga tiene mayor distancia de frenado. Mantenga una distancia de seguridad de al menos 3 segundos con el vehículo de adelante (el doble en lluvia).",
+        "next": [
+          "s6"
+        ]
+      },
+      {
+        "id": "s6",
+        "type": "action",
+        "title": "Gestionar fatiga y condición",
+        "summary": "Descansar ante somnolencia; no conducir medicado.",
+        "description": "Si siente cansancio o somnolencia, detenga el vehículo en lugar seguro y descanse mínimo 15 minutos; notifique al supervisor si no puede continuar. No conduzca bajo efectos de alcohol, medicamentos que producen somnolencia o drogas; si toma un medicamento con esa indicación, notifique al supervisor.",
+        "criticalAlerts": [
+          "La fatiga reduce los reflejos tanto como el alcohol. Deténgase si tiene sueño."
+        ],
+        "next": [
+          "s7"
+        ]
+      },
+      {
+        "id": "s7",
+        "type": "action",
+        "title": "Estacionar y maniobrar con seguridad",
+        "summary": "Freno de mano; retroceso con guía.",
+        "description": "Al estacionarse en el domicilio: freno de mano, motor apagado, cierre con llave; coloque triángulos si es vía pública. En retroceso, use siempre los espejos; si no tiene visibilidad completa, pida a alguien que le guíe desde afuera.",
+        "next": [
+          "s8"
+        ]
+      },
+      {
+        "id": "s8",
+        "type": "action",
+        "title": "Cierre de jornada",
+        "summary": "Notificar regreso; vehículo asegurado.",
+        "description": "Al finalizar el último servicio del día, notifique al supervisor el regreso y verifique que el vehículo queda correctamente estacionado y asegurado.",
+        "next": [
+          "s9_fin"
+        ]
+      },
+      {
+        "id": "s9_fin",
+        "type": "end",
+        "title": "Traslados realizados con seguridad",
+        "description": "Los desplazamientos se realizaron con el vehículo inspeccionado, la carga asegurada y conducción defensiva."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: El técnico experimenta somnolencia, visión borrosa o reflejos lentos: detenga el vehículo.",
+    "DETENER: El vehículo presenta anomalías: ruido inusual, frenos blandos, dirección irregular.",
+    "DETENER: Condiciones climáticas adversas (lluvia torrencial, niebla densa): reduzca la velocidad y, si es necesario, detenga el viaje.",
+    "DETENER: La carga se ha desplazado y se siente el vehículo desequilibrado: estacione y reorganice la carga."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "Accidente de tránsito",
+      "action": "Active el Protocolo P2-06."
+    },
+    {
+      "situation": "Falla mecánica en ruta",
+      "action": "Salga de la vía con calma. Encienda las luces de emergencia. Coloque triángulos a 50 m adelante y atrás. Llame al supervisor."
+    },
+    {
+      "situation": "Contactos",
+      "action": "SAMU: 131. Carabineros: 133. Supervisor: número interno."
+    }
+  ],
+  "linkedAnnexes": [
+    "IPTM-01",
+    "BD-01",
+    "RI-01"
+  ],
+  "linkedProtocols": [
+    "P2-06",
+    "P3-05"
+  ],
+  "registry": [
+    "Inspección preoperacional del vehículo IPTM-01: al inicio de cada jornada.",
+    "Bitácora de desplazamientos del técnico (BD-01): origen, destino, hora de salida y llegada.",
+    "Registro de incidentes viales en RI-01."
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "code": "P2-08",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Situación de Riesgo para el Técnico (Cliente Agresivo, Zona Insegura, Clima Adverso)",
+  "shortTitle": "Riesgo para el técnico",
+  "category": "P2",
+  "criticality": "alto-riesgo",
+  "service": [
+    "movil"
+  ],
+  "tags": [
+    "seguridad personal",
+    "agresión",
+    "zona insegura",
+    "robo",
+    "clima"
+  ],
+  "icon": "user-shield",
+  "alertBanner": "La seguridad personal del técnico es prioridad absoluta. Abandone el área si siente que su integridad está en riesgo.",
+  "objective": "Proteger la integridad física y psicológica del técnico de taller móvil ante situaciones de riesgo no técnico: agresión o amenaza del cliente o terceros, zonas con actividad delictual, o condiciones climáticas que pongan en peligro la operación.",
+  "scope": "Aplica al técnico de taller móvil ante cualquier situación que represente un riesgo para su seguridad personal durante la jornada de trabajo en terreno.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Agresión física o verbal por parte del cliente o terceros",
+      "severity": "alta",
+      "family": "personal"
+    },
+    {
+      "id": "R2",
+      "description": "Robo de equipos, herramientas o vehículo del taller móvil",
+      "severity": "alta",
+      "family": "personal"
+    },
+    {
+      "id": "R3",
+      "description": "Exposición a zonas con alta actividad delictual",
+      "severity": "alta",
+      "family": "personal"
+    },
+    {
+      "id": "R4",
+      "description": "Accidentes por conducción o trabajo bajo condiciones climáticas adversas",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R5",
+      "description": "Trauma psicológico por exposición a situaciones violentas",
+      "severity": "media",
+      "family": "personal"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Técnico de taller móvil",
+      "duty": "Evalúa la situación y activa el protocolo"
+    },
+    {
+      "role": "Supervisor de operaciones",
+      "duty": "Proporciona apoyo y decide sobre rescate o cancelación del servicio"
+    },
+    {
+      "role": "Gerencia",
+      "duty": "Gestiona las consecuencias y eventuales denuncias"
+    }
+  ],
+  "epp": [
+    {
+      "item": "Teléfono celular con carga y datos",
+      "obligatory": true,
+      "note": "Principal medio de activación de este protocolo"
+    },
+    {
+      "item": "Chaleco reflectante con logo identificable de Copec Taller",
+      "obligatory": false,
+      "note": "Disuade en ciertos contextos"
+    }
+  ],
+  "tools": [
+    {
+      "name": "Teléfono celular",
+      "verification": ""
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS 40 — Reglamento sobre prevención de riesgos profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1041130"
+    },
+    {
+      "text": "Directrices ACHS para trabajo en terreno",
+      "url": ""
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "decision",
+        "title": "¿Qué tipo de situación de riesgo se presenta?",
+        "summary": "El tipo de riesgo determina la respuesta.",
+        "branches": [
+          {
+            "label": "Cliente agresivo o amenaza verbal",
+            "next": "s2_verbal"
+          },
+          {
+            "label": "Amenaza física o robo",
+            "next": "s3_fisica"
+          },
+          {
+            "label": "Zona insegura",
+            "next": "s4_zona"
+          },
+          {
+            "label": "Clima adverso o calor extremo",
+            "next": "s5_clima"
+          }
+        ]
+      },
+      {
+        "id": "s2_verbal",
+        "type": "action",
+        "title": "Cliente agresivo / amenaza verbal",
+        "summary": "No confrontar, tomar distancia, llamar al supervisor.",
+        "description": "Mantenga la calma. No confronte al cliente. Tome distancia física. Diga con voz firme: 'Voy a llamar a mi supervisor para resolver esta situación.' Llame al supervisor de inmediato.",
+        "next": [
+          "s6_retiro"
+        ]
+      },
+      {
+        "id": "s3_fisica",
+        "type": "alert",
+        "title": "Amenaza física o robo",
+        "summary": "No resistir; proteger la integridad; llamar a Carabineros.",
+        "description": "Ante amenaza física o intimidación: no ponga en riesgo su integridad para proteger los equipos. Deje las herramientas y retírese del área. Llame a Carabineros (133) desde un lugar seguro. Ante robo o intento de robo: no oponga resistencia, colabore para evitar daño físico, memorice características del agresor si es seguro, y al alejarse llame a Carabineros (133) y luego al supervisor.",
+        "criticalAlerts": [
+          "Su vida vale más que cualquier equipo. No oponga resistencia a un robo."
+        ],
+        "next": [
+          "s6_retiro"
+        ]
+      },
+      {
+        "id": "s4_zona",
+        "type": "action",
+        "title": "Zona insegura",
+        "summary": "No ingresar; notificar desde afuera.",
+        "description": "Si al llegar detecta condiciones de inseguridad (personas amenazantes, zona aislada sin visibilidad, reportes previos de violencia): NO ingrese. Notifique al supervisor desde afuera. El supervisor cancela el servicio si lo considera necesario.",
+        "next": [
+          "s6_retiro"
+        ]
+      },
+      {
+        "id": "s5_clima",
+        "type": "action",
+        "title": "Clima adverso o calor extremo",
+        "summary": "Suspender o pausar; hidratación.",
+        "description": "Ante lluvia intensa, tormenta eléctrica, viento fuerte (>40 km/h) o neblina densa: suspenda el servicio, notifique al supervisor y reagende. En calor extremo (>35°C): realice descansos de 15 min por cada hora de trabajo en exterior, con hidratación permanente. Si siente mareos, náuseas o confusión, deténgase y notifique al supervisor.",
+        "next": [
+          "s6_retiro"
+        ]
+      },
+      {
+        "id": "s6_retiro",
+        "type": "action",
+        "title": "Retirarse a lugar seguro y reportar",
+        "summary": "Lugar público; llamar al supervisor antes de continuar.",
+        "description": "Al retirarse de cualquier situación de riesgo, busque un lugar seguro y público. Llame al supervisor antes de continuar con el siguiente servicio. NO reanude el servicio cancelado sin autorización expresa del supervisor. El técnico tiene derecho a rechazar un servicio en un área que considera insegura, sin consecuencias disciplinarias, siempre que lo notifique al supervisor.",
+        "criticalAlerts": [
+          "El técnico tiene derecho a rechazar un servicio inseguro sin consecuencias, avisando al supervisor."
+        ],
+        "next": [
+          "s7_registrar"
+        ]
+      },
+      {
+        "id": "s7_registrar",
+        "type": "action",
+        "title": "Registrar el incidente",
+        "summary": "RI-01, denuncia y evaluación de la zona.",
+        "description": "El supervisor registra el incidente y determina si el servicio puede reprogramarse o cancelarse definitivamente para esa ubicación. Documente en RI-01. Si hubo delito, conserve copia de la denuncia en Carabineros.",
+        "next": [
+          "s8_fin"
+        ]
+      },
+      {
+        "id": "s8_fin",
+        "type": "end",
+        "title": "Técnico a salvo y evento reportado",
+        "description": "El técnico se puso a salvo, el servicio se gestionó según el riesgo y el evento quedó documentado, incluida la evaluación de la zona para el futuro."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: El cliente usa lenguaje amenazante o levanta la voz de forma agresiva.",
+    "DETENER: Hay terceros que rodean el vehículo del taller móvil de forma sospechosa.",
+    "DETENER: El técnico siente miedo o percibe un riesgo real para su seguridad.",
+    "DETENER: Las condiciones climáticas se deterioran durante el servicio."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "Emergencia",
+      "action": "Carabineros: 133. SAMU (si hay lesiones): 131."
+    },
+    {
+      "situation": "El técnico no puede hablar libremente",
+      "action": "Establezca con el supervisor previamente una señal de alerta en código (ej.: preguntar por el 'número de orden de trabajo' cuando no puede expresarse)."
+    },
+    {
+      "situation": "Apoyo psicológico post-incidente",
+      "action": "El organismo administrador (ACHS/Mutual) dispone de atención psicológica para trabajadores. El supervisor facilita el acceso."
+    }
+  ],
+  "linkedAnnexes": [
+    "RI-01"
+  ],
+  "linkedProtocols": [
+    "P2-07",
+    "P3-03"
+  ],
+  "registry": [
+    "Reporte de Incidentes RI-01: descripción detallada del incidente de seguridad.",
+    "Denuncia en Carabineros (copia del comprobante).",
+    "Notificación al supervisor documentada con hora y descripción.",
+    "Registro de la decisión de cancelar o reprogramar el servicio.",
+    "Evaluación de riesgo de la zona para futuros servicios."
+  ]
+}

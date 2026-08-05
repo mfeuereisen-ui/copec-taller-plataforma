@@ -1,0 +1,58 @@
+{
+  "code": "BD-01",
+  "version": "1.0",
+  "title": "Bitácora de Desplazamientos del Técnico",
+  "type": "bitácora",
+  "fillable": true,
+  "description": "Registro de los trayectos del taller móvil: origen, destino y horas. Complete en pantalla o imprima en blanco. Vinculado al protocolo P2-05.",
+  "usedInProtocols": [
+    "P2-05"
+  ],
+  "instructions": "Registre cada trayecto realizado durante la jornada.",
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "tecnico",
+      "label": "Técnico conductor",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "vehiculo",
+      "label": "Vehículo",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "trayectos",
+      "label": "Trayectos (origen, destino, hora salida, hora llegada)",
+      "type": "textarea",
+      "required": true,
+      "lines": 8
+    },
+    {
+      "id": "km_inicial",
+      "label": "Km inicial",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "km_final",
+      "label": "Km final",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "incidentes",
+      "label": "Incidentes viales o novedades",
+      "type": "textarea",
+      "required": false,
+      "lines": 2
+    }
+  ]
+}

@@ -1,0 +1,255 @@
+{
+  "code": "P2-04",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Derrame de Fluidos en Domicilio o Espacio Público",
+  "shortTitle": "Derrame en domicilio",
+  "category": "P2",
+  "criticality": "medio",
+  "service": [
+    "movil"
+  ],
+  "tags": [
+    "derrame",
+    "domicilio",
+    "espacio público",
+    "medio ambiente",
+    "kit de derrames"
+  ],
+  "icon": "droplet",
+  "alertBanner": "",
+  "objective": "Controlar de forma segura y rápida los derrames de aceite, combustible u otros fluidos que ocurran durante el servicio a domicilio, protegiendo al técnico, al cliente y al medio ambiente.",
+  "scope": "Aplica al técnico de taller móvil ante cualquier derrame de fluido en el domicilio del cliente, estacionamiento público, vía pública o espacio de trabajo externo.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Resbalones del técnico o del cliente sobre fluidos derramados",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R2",
+      "description": "Contaminación del jardín, suelo o sistema de alcantarillado del cliente",
+      "severity": "alta",
+      "family": "derrame"
+    },
+    {
+      "id": "R3",
+      "description": "Responsabilidad legal y económica por daños a la propiedad del cliente",
+      "severity": "media",
+      "family": "derrame"
+    },
+    {
+      "id": "R4",
+      "description": "Incendio si el derrame es de combustible y hay fuentes de ignición",
+      "severity": "alta",
+      "family": "incendio"
+    },
+    {
+      "id": "R5",
+      "description": "Multas ambientales si el derrame alcanza espacios públicos o cursos de agua",
+      "severity": "alta",
+      "family": "derrame"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Técnico de taller móvil",
+      "duty": "Actúa de inmediato y contiene el derrame"
+    },
+    {
+      "role": "Supervisor",
+      "duty": "Es notificado si el derrame supera la capacidad de control del técnico"
+    },
+    {
+      "role": "Cliente",
+      "duty": "Colabora alejando personas del área"
+    }
+  ],
+  "epp": [
+    {
+      "item": "Guantes de nitrilo resistentes a hidrocarburos (kit del taller móvil)",
+      "obligatory": true
+    },
+    {
+      "item": "Lentes de seguridad",
+      "obligatory": true
+    },
+    {
+      "item": "Chaleco reflectante",
+      "obligatory": false,
+      "note": "En espacios públicos"
+    },
+    {
+      "item": "Delantal impermeable",
+      "obligatory": false,
+      "note": "Si está disponible"
+    }
+  ],
+  "tools": [
+    {
+      "name": "Kit de derrames del taller móvil",
+      "verification": "IPTM-01"
+    },
+    {
+      "name": "Triángulos de emergencia",
+      "verification": ""
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS 594 — Condiciones sanitarias y ambientales básicas en los lugares de trabajo",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=167766"
+    },
+    {
+      "text": "DS 148 — Reglamento sanitario sobre manejo de residuos peligrosos",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=226458"
+    },
+    {
+      "text": "NCh 382 — Sustancias peligrosas",
+      "url": ""
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "action",
+        "title": "Detener la fuente del derrame",
+        "summary": "Cerrar tapón, enderezar envase.",
+        "description": "Detenga la fuente del derrame si es seguro: cierre el tapón, enderece el envase, pare el proceso.",
+        "next": [
+          "s2"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "action",
+        "title": "Avisar al cliente y despejar",
+        "summary": "Alejar personas y mascotas.",
+        "description": "Avise al cliente del derrame con calma. Solicite que aleje a personas y mascotas del área. En espacios públicos con tráfico, coloque triángulos de emergencia o señales de advertencia.",
+        "next": [
+          "s3"
+        ]
+      },
+      {
+        "id": "s3",
+        "type": "alert",
+        "title": "Eliminar fuentes de ignición",
+        "summary": "Si el producto es inflamable.",
+        "description": "Elimine fuentes de ignición cercanas si el producto es inflamable (motores, cigarrillos, equipos que generen chispa).",
+        "criticalAlerts": [
+          "No genere chispas ni use llamas cerca de un derrame de combustible."
+        ],
+        "next": [
+          "s4"
+        ]
+      },
+      {
+        "id": "s4",
+        "type": "action",
+        "title": "Contener y absorber",
+        "summary": "Kit de derrames, de afuera hacia adentro.",
+        "description": "Use el kit de derrames del taller móvil (paños absorbentes, tierra de diatomeas o absorbente granulado) para contener y absorber el fluido. Rodee el derrame desde afuera hacia adentro. Una vez absorbido, recoja el material contaminado en bolsa de residuos peligrosos con cierre hermético.",
+        "verifications": [
+          "Derrame contenido",
+          "Material recogido en bolsa hermética"
+        ],
+        "next": [
+          "s5"
+        ]
+      },
+      {
+        "id": "s5",
+        "type": "action",
+        "title": "Limpiar la superficie",
+        "summary": "Agua y detergente si el cliente autoriza.",
+        "description": "Limpie la superficie con agua y detergente si el cliente lo autoriza y el material lo permite.",
+        "next": [
+          "s6"
+        ]
+      },
+      {
+        "id": "s6",
+        "type": "decision",
+        "title": "¿El derrame alcanzó alcantarillado o jardín?",
+        "yes": "s7_notif",
+        "no": "s8_registrar",
+        "yesLabel": "Sí",
+        "noLabel": "No"
+      },
+      {
+        "id": "s7_notif",
+        "type": "alert",
+        "title": "Notificar al supervisor",
+        "summary": "Gestión con cliente y autoridades.",
+        "description": "Si el derrame alcanzó la red de alcantarillado o un jardín, notifique al supervisor de inmediato para gestionar la comunicación con el cliente y eventuales autoridades. Notifique al cliente con transparencia y profesionalismo; el supervisor gestionará los costos de limpieza adicional si corresponde.",
+        "criticalAlerts": [
+          "La contaminación de alcantarillado o suelo puede tener consecuencias ambientales y legales."
+        ],
+        "next": [
+          "s8_registrar"
+        ]
+      },
+      {
+        "id": "s8_registrar",
+        "type": "action",
+        "title": "Registrar y reponer el kit",
+        "summary": "OS-MOV-01, RD-01 y reposición.",
+        "description": "Registre el derrame en la Orden de Servicio (OS-MOV-01) y en el Registro de Derrames RD-01. Reponga el kit de derrames del taller móvil antes del siguiente servicio.",
+        "verifications": [
+          "Derrame registrado en OS-MOV-01 y RD-01",
+          "Kit repuesto"
+        ],
+        "next": [
+          "s9_fin"
+        ]
+      },
+      {
+        "id": "s9_fin",
+        "type": "end",
+        "title": "Derrame controlado y documentado",
+        "description": "El derrame fue contenido, limpiado y documentado, con el kit repuesto para el siguiente servicio."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: El derrame alcanzó una canaleta de agua de lluvia o alcantarilla.",
+    "DETENER: El derrame supera la capacidad de absorción del kit portátil.",
+    "DETENER: El cliente reacciona con enojo o amenaza con reclamaciones: notifique al supervisor.",
+    "DETENER: El derrame ocurrió en zona de tráfico sin señalización adecuada: deténgase, señalice, llame al supervisor."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "Ignición del derrame",
+      "action": "Evacue el área. Active extintor si es seguro. Llame a Bomberos (132). Notifique al supervisor."
+    },
+    {
+      "situation": "El cliente sufre lesión por el derrame (resbalón)",
+      "action": "Active Protocolo P3-02 y P3-03. Llame al SAMU si hay lesión."
+    },
+    {
+      "situation": "Derrame en vía pública con riesgo para el tráfico",
+      "action": "Carabineros: 133."
+    }
+  ],
+  "linkedAnnexes": [
+    "RD-01",
+    "OS-MOV-01"
+  ],
+  "linkedProtocols": [
+    "P3-02",
+    "P3-03"
+  ],
+  "registry": [
+    "Registro de Derrames RD-01: fecha, ubicación, tipo de fluido, volumen aproximado, acciones.",
+    "Fotografías del área afectada y del estado final.",
+    "Registro en Orden de Servicio OS-MOV-01.",
+    "Notificación al supervisor documentada."
+  ]
+}

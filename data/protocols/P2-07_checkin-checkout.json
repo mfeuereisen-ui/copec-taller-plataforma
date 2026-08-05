@@ -1,0 +1,196 @@
+{
+  "code": "P2-07",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Comunicación y Check-in/Check-out del Técnico en Terreno",
+  "shortTitle": "Check-in/out en terreno",
+  "category": "P2",
+  "criticality": "medio",
+  "service": [
+    "movil"
+  ],
+  "tags": [
+    "comunicación",
+    "check-in",
+    "check-out",
+    "geolocalización",
+    "búsqueda"
+  ],
+  "icon": "clock",
+  "alertBanner": "",
+  "objective": "Mantener un sistema de comunicación continua y verificable entre el técnico de taller móvil y el supervisor, garantizando que el personal en terreno esté siempre localizable y que se pueda activar asistencia ante cualquier emergencia.",
+  "scope": "Aplica a todos los técnicos de taller móvil durante su jornada de trabajo en terreno, desde el inicio hasta el regreso a la estación base.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Accidente o emergencia del técnico sin que la empresa tenga conocimiento",
+      "severity": "alta",
+      "family": "personal"
+    },
+    {
+      "id": "R2",
+      "description": "Técnico en zona de riesgo sin posibilidad de activar ayuda a tiempo",
+      "severity": "alta",
+      "family": "personal"
+    },
+    {
+      "id": "R3",
+      "description": "Demora en asistencia por desconocimiento de la ubicación exacta del técnico",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R4",
+      "description": "Situaciones de violencia o amenaza sin protocolo de alerta activado",
+      "severity": "media",
+      "family": "personal"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Técnico de taller móvil",
+      "duty": "Realiza el check-in y check-out en cada servicio"
+    },
+    {
+      "role": "Supervisor de operaciones",
+      "duty": "Monitorea la comunicación y activa el protocolo de búsqueda si no hay respuesta"
+    }
+  ],
+  "epp": [
+    {
+      "item": "Teléfono celular corporativo o personal con carga y datos",
+      "obligatory": true
+    },
+    {
+      "item": "Aplicación de geolocalización activada",
+      "obligatory": false,
+      "note": "Si la empresa la dispone"
+    },
+    {
+      "item": "Cargador portátil",
+      "obligatory": false,
+      "note": "Si la batería del teléfono es insuficiente para la jornada"
+    }
+  ],
+  "tools": [
+    {
+      "name": "Teléfono celular con datos y geolocalización",
+      "verification": ""
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS 40 — Reglamento sobre prevención de riesgos profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1041130"
+    },
+    {
+      "text": "Directrices ACHS para trabajo en terreno",
+      "url": ""
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "action",
+        "title": "Check-in de inicio de turno",
+        "summary": "Confirmar nombre, vehículo, primer domicilio.",
+        "description": "Al inicio del turno, el técnico llama o envía mensaje al supervisor confirmando: nombre, vehículo asignado, hora de inicio, primer domicilio del día.",
+        "next": [
+          "s2"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "action",
+        "title": "Check-in de llegada a domicilio",
+        "summary": "Avisar al llegar a cada ubicación.",
+        "description": "Al llegar a cada ubicación, el técnico notifica al supervisor por mensaje o llamada: 'Llegué a [dirección]. Inicio servicio.'",
+        "next": [
+          "s3"
+        ]
+      },
+      {
+        "id": "s3",
+        "type": "action",
+        "title": "Check-out de término de servicio",
+        "summary": "Avisar al terminar y la próxima parada.",
+        "description": "Al terminar cada servicio, el técnico notifica: 'Terminé servicio en [dirección]. Próxima parada: [siguiente dirección o regreso a base].' Si el servicio dura más de lo previsto, notifica una estimación de término.",
+        "next": [
+          "s4"
+        ]
+      },
+      {
+        "id": "s4",
+        "type": "decision",
+        "title": "¿El técnico hizo el check-out en el tiempo estimado?",
+        "yes": "s6_finaldia",
+        "no": "s5_busqueda",
+        "yesLabel": "Sí",
+        "noLabel": "No (pasaron +30 min)"
+      },
+      {
+        "id": "s5_busqueda",
+        "type": "alert",
+        "title": "Activar protocolo de búsqueda",
+        "summary": "Contacto activo y escalamiento.",
+        "description": "Si el técnico no hizo el check-out dentro de los 30 minutos posteriores al tiempo estimado, el supervisor intenta contacto activo (llamada). Si no responde en 15 minutos adicionales, el supervisor activa el protocolo de búsqueda: llama al domicilio del cliente, verifica la última ubicación GPS, y contacta a Carabineros (133) si no hay respuesta.",
+        "criticalAlerts": [
+          "La falta de respuesta prolongada puede indicar un accidente o una situación de riesgo."
+        ],
+        "next": [
+          "s6_finaldia"
+        ]
+      },
+      {
+        "id": "s6_finaldia",
+        "type": "action",
+        "title": "Check-out final del día",
+        "summary": "Notificar término de jornada y regreso.",
+        "description": "Al finalizar el último servicio y al regresar a la base, el técnico notifica el término de la jornada. El técnico NO puede apagar su teléfono ni dejarlo sin batería durante la jornada. En zonas sin señal, debe avisar al supervisor antes de ingresar y fijar un tiempo máximo de contacto posterior.",
+        "next": [
+          "s7_fin"
+        ]
+      },
+      {
+        "id": "s7_fin",
+        "type": "end",
+        "title": "Jornada comunicada y cerrada",
+        "description": "El técnico mantuvo la comunicación en cada servicio y cerró la jornada, o se activó el protocolo de búsqueda cuando fue necesario."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: El técnico no realiza el check-in o check-out en el tiempo establecido.",
+    "DETENER: El técnico no responde llamadas ni mensajes durante más de 30 minutos en jornada activa.",
+    "DETENER: El técnico reporta sentirse en una situación de riesgo (Active Protocolo P2-08)."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "Sin respuesta del técnico",
+      "action": "Protocolo de búsqueda: supervisor llama al domicilio del cliente → verifica GPS → contacta Carabineros (133) → notifica a gerencia."
+    },
+    {
+      "situation": "Se confirma un accidente o emergencia",
+      "action": "Active el protocolo correspondiente (P2-03 o P2-06 según corresponda)."
+    }
+  ],
+  "linkedAnnexes": [
+    "BCT-01"
+  ],
+  "linkedProtocols": [
+    "P2-03",
+    "P2-06",
+    "P2-08"
+  ],
+  "registry": [
+    "Bitácora de comunicaciones del técnico (BCT-01): fecha, hora de check-in y check-out de cada servicio, observaciones.",
+    "Registro de servicios del día con geolocalización si el sistema lo permite.",
+    "Reporte de comunicación fallida si el técnico no fue localizable por más de 30 minutos."
+  ]
+}

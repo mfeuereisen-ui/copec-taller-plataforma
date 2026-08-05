@@ -1,0 +1,53 @@
+{
+  "code": "BT-01",
+  "version": "1.0",
+  "title": "Bitácora del Técnico de Taller Móvil",
+  "type": "bitácora",
+  "fillable": true,
+  "description": "Bitácora general del técnico en terreno: novedades, evaluaciones de espacio y notificaciones al supervisor. Complete en pantalla o imprima en blanco. Vinculada al protocolo P2-01.",
+  "usedInProtocols": [
+    "P2-01"
+  ],
+  "instructions": "Registre las novedades del día, incluidos espacios declarados no aptos.",
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "tecnico",
+      "label": "Técnico",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "espacios_no_aptos",
+      "label": "Espacios declarados no aptos (dirección y motivo)",
+      "type": "textarea",
+      "required": false,
+      "lines": 4
+    },
+    {
+      "id": "notificaciones",
+      "label": "Notificaciones al supervisor",
+      "type": "textarea",
+      "required": false,
+      "lines": 3
+    },
+    {
+      "id": "novedades",
+      "label": "Otras novedades",
+      "type": "textarea",
+      "required": false,
+      "lines": 3
+    },
+    {
+      "id": "firma",
+      "label": "Firma del técnico",
+      "type": "text",
+      "required": false
+    }
+  ]
+}

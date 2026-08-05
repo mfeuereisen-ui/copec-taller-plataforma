@@ -1,0 +1,234 @@
+{
+  "code": "P2-03",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Accidente del Técnico durante el Servicio a Domicilio",
+  "shortTitle": "Accidente del técnico móvil",
+  "category": "P2",
+  "criticality": "alto-riesgo",
+  "service": [
+    "movil"
+  ],
+  "tags": [
+    "accidente",
+    "técnico",
+    "domicilio",
+    "DIAT",
+    "terreno",
+    "soledad"
+  ],
+  "icon": "medical",
+  "alertBanner": "El técnico está solo en terreno. La comunicación con el supervisor es vital para activar asistencia.",
+  "objective": "Garantizar que el técnico de taller móvil reciba atención médica oportuna en caso de accidente durante un servicio a domicilio, y que se cumplan las obligaciones de reporte legal establecidas en la Ley 16.744.",
+  "scope": "Aplica al técnico de taller móvil en caso de cualquier accidente que le afecte durante la ejecución de servicios fuera de la estación, incluyendo trayecto desde y hacia el domicilio del cliente.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Demora en la atención médica por estar en una ubicación remota o desconocida",
+      "severity": "alta",
+      "family": "personal"
+    },
+    {
+      "id": "R2",
+      "description": "No reporte del accidente por desconocimiento del procedimiento",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R3",
+      "description": "Agravamiento de lesiones por traslado inadecuado",
+      "severity": "alta",
+      "family": "personal"
+    },
+    {
+      "id": "R4",
+      "description": "Soledad del técnico al momento del accidente sin apoyo inmediato",
+      "severity": "alta",
+      "family": "personal"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Técnico accidentado",
+      "duty": "Activa el protocolo y contacta al supervisor si puede"
+    },
+    {
+      "role": "Supervisor de operaciones",
+      "duty": "Coordina la asistencia desde la central"
+    },
+    {
+      "role": "Cliente (en cuyo domicilio ocurrió)",
+      "duty": "Actúa como testigo y primer apoyo"
+    },
+    {
+      "role": "Gerencia",
+      "duty": "Notifica al organismo administrador dentro de las 24 horas"
+    }
+  ],
+  "epp": [
+    {
+      "item": "Botiquín de primeros auxilios portátil del taller móvil",
+      "obligatory": true,
+      "note": "Siempre presente y vigente"
+    },
+    {
+      "item": "Guantes de látex (en el botiquín)",
+      "obligatory": true
+    },
+    {
+      "item": "Kit de emergencias del vehículo (triángulos, extintor, linterna)",
+      "obligatory": true
+    }
+  ],
+  "tools": [
+    {
+      "name": "Botiquín portátil del taller móvil",
+      "verification": "IPTM-01"
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 16.744 art. 76 — Obligación de denunciar accidentes",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS 40 — Reglamento sobre prevención de riesgos profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1041130"
+    },
+    {
+      "text": "Directrices ACHS/Mutual",
+      "url": ""
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "action",
+        "title": "Autoevaluar la condición",
+        "summary": "¿Puede moverse? ¿Hay hemorragia?",
+        "description": "Si el técnico puede actuar, evalúe su propia condición: ¿Puede moverse sin agravar la lesión? ¿Hay hemorragia? ¿Dolor en columna?",
+        "next": [
+          "s2"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "decision",
+        "title": "¿La lesión es grave?",
+        "summary": "Pérdida de conciencia previa, fractura, hemorragia severa, dolor torácico.",
+        "yes": "s3_samu",
+        "no": "s4_supervisor",
+        "yesLabel": "Sí, grave",
+        "noLabel": "No, leve"
+      },
+      {
+        "id": "s3_samu",
+        "type": "alert",
+        "title": "Llamar al SAMU (131)",
+        "summary": "Ante lesión grave.",
+        "description": "Llame al SAMU (131) si la lesión es grave (pérdida de conciencia previa, fractura, hemorragia severa, dolor torácico). Si sospecha lesión en columna o cabeza, NO se mueva y espere asistencia profesional.",
+        "criticalAlerts": [
+          "Ante sospecha de lesión de columna o cabeza, no se mueva."
+        ],
+        "next": [
+          "s4_supervisor"
+        ]
+      },
+      {
+        "id": "s4_supervisor",
+        "type": "action",
+        "title": "Llamar al supervisor de operaciones",
+        "summary": "Informar ubicación exacta y condición.",
+        "description": "Llame al supervisor de operaciones de inmediato (número en el carnet del taller móvil). Informe: su ubicación exacta (dirección o coordenadas GPS), tipo de accidente, su condición. El supervisor activará el apoyo (otro técnico, coordinación con ACHS/Mutual o traslado).",
+        "verifications": [
+          "Supervisor notificado",
+          "Ubicación exacta entregada"
+        ],
+        "next": [
+          "s5_traslado"
+        ]
+      },
+      {
+        "id": "s5_traslado",
+        "type": "action",
+        "title": "Trasladarse al centro asistencial",
+        "summary": "Solo si puede; con credencial de la mutualidad.",
+        "description": "Si puede trasladarse, diríjase al centro asistencial ACHS/Mutual más cercano, portando la credencial de la mutualidad. NO conduzca el vehículo del taller móvil si está bajo dolor intenso, medicamentos o con una lesión que afecte su capacidad de conducir: espere apoyo.",
+        "criticalAlerts": [
+          "No conduzca si su capacidad está afectada. Espere apoyo."
+        ],
+        "next": [
+          "s6_testigo"
+        ]
+      },
+      {
+        "id": "s6_testigo",
+        "type": "action",
+        "title": "Registrar al cliente como testigo",
+        "summary": "Datos de contacto del cliente.",
+        "description": "Solicite al cliente que actúe como testigo del accidente y anote sus datos de contacto. El técnico NO debe regresar al trabajo el mismo día sin alta médica.",
+        "next": [
+          "s7_diat"
+        ]
+      },
+      {
+        "id": "s7_diat",
+        "type": "action",
+        "title": "DIAT y aseguramiento del vehículo",
+        "summary": "Supervisor emite DIAT en 24 h; vehículo asegurado.",
+        "description": "El supervisor completa la Denuncia Individual de Accidente del Trabajo (DIAT) dentro de las 24 horas a la mutualidad del técnico. El vehículo del taller móvil debe quedar asegurado (cerrado con llave) mientras el técnico recibe atención; el supervisor coordina su retiro.",
+        "verifications": [
+          "DIAT emitida en 24 h",
+          "Vehículo asegurado"
+        ],
+        "next": [
+          "s8_fin"
+        ]
+      },
+      {
+        "id": "s8_fin",
+        "type": "end",
+        "title": "Técnico atendido y evento reportado",
+        "description": "El técnico recibió atención, el supervisor coordinó el apoyo, se registró al testigo y se emitió la DIAT en plazo."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: El técnico no responde la llamada del supervisor durante el check-in programado: active el protocolo de búsqueda (P2-07).",
+    "DETENER: El técnico sospecha lesión en columna o cabeza: NO se mueva. Llame al SAMU. Espere asistencia profesional.",
+    "DETENER: El accidente ocurrió en zona de difícil acceso: el supervisor coordina con SAMU o Bomberos la ruta de acceso."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "Emergencia médica",
+      "action": "SAMU: 131. Bomberos: 132. Carabineros: 133."
+    },
+    {
+      "situation": "Contacto",
+      "action": "Supervisor de operaciones y centro ACHS/Mutual más cercano: datos en el carnet del técnico."
+    },
+    {
+      "situation": "Lesión del técnico",
+      "action": "Active también el Protocolo P3-02 (Primeros Auxilios) y P3-03 (Reporte de Incidentes)."
+    }
+  ],
+  "linkedAnnexes": [
+    "RI-01",
+    "IA-01",
+    "IPTM-01"
+  ],
+  "linkedProtocols": [
+    "P2-07",
+    "P3-02",
+    "P3-03"
+  ],
+  "registry": [
+    "Denuncia Individual de Accidente del Trabajo (DIAT): elaborada por el supervisor en 24 horas.",
+    "Registro de la llamada al supervisor: hora, descripción del incidente.",
+    "Datos del cliente como testigo.",
+    "Informe de investigación de accidente (IA-01).",
+    "Fotografías del lugar si es posible."
+  ]
+}

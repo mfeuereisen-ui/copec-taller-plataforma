@@ -1,0 +1,242 @@
+{
+  "code": "P2-06",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Colisión o Accidente Vehicular del Vehículo del Taller Móvil",
+  "shortTitle": "Colisión del taller móvil",
+  "category": "P2",
+  "criticality": "alto-riesgo",
+  "service": [
+    "movil"
+  ],
+  "tags": [
+    "colisión",
+    "accidente vehicular",
+    "tránsito",
+    "Carabineros",
+    "seguro"
+  ],
+  "icon": "truck",
+  "alertBanner": "Emergencia vial. Priorice su seguridad y la de otros. No mueva el vehículo hasta que lleguen las autoridades (salvo riesgo vital).",
+  "objective": "Establecer el procedimiento a seguir por el técnico ante una colisión o accidente vehicular con el vehículo del taller móvil, garantizando su seguridad, el correcto manejo de la escena y el cumplimiento de los procedimientos legales y de la empresa.",
+  "scope": "Aplica al técnico conductor del taller móvil ante cualquier colisión, atropello, vuelco u otro accidente de tránsito.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Lesiones del técnico conductor en el accidente",
+      "severity": "alta",
+      "family": "vial"
+    },
+    {
+      "id": "R2",
+      "description": "Derrame de fluidos peligrosos de la carga del taller móvil",
+      "severity": "alta",
+      "family": "derrame"
+    },
+    {
+      "id": "R3",
+      "description": "Riesgo para terceros (conductor contrario, peatones)",
+      "severity": "alta",
+      "family": "vial"
+    },
+    {
+      "id": "R4",
+      "description": "Responsabilidades legales por manejo indebido de la escena",
+      "severity": "media",
+      "family": "vial"
+    },
+    {
+      "id": "R5",
+      "description": "Pérdida o daño de equipos y herramientas de la empresa",
+      "severity": "baja",
+      "family": "vial"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Técnico conductor",
+      "duty": "Actúa en la escena y notifica"
+    },
+    {
+      "role": "Supervisor de operaciones",
+      "duty": "Coordina la gestión desde la central"
+    },
+    {
+      "role": "Gerencia",
+      "duty": "Notifica al seguro y al organismo administrador"
+    }
+  ],
+  "epp": [
+    {
+      "item": "Chaleco reflectante",
+      "obligatory": true,
+      "note": "Obligatorio al salir del vehículo en vía pública"
+    },
+    {
+      "item": "Kit de emergencias del vehículo (triángulos, extintor, botiquín)",
+      "obligatory": true
+    }
+  ],
+  "tools": [
+    {
+      "name": "Kit de emergencias del vehículo",
+      "verification": "IPTM-01"
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 18.290 — Ley de Tránsito",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1007469"
+    },
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS 40 — Reglamento sobre prevención de riesgos profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1041130"
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "action",
+        "title": "Mantener la calma y autoevaluarse",
+        "summary": "¿Está herido? ¿Puede moverse?",
+        "description": "Mantenga la calma. Evalúe su condición física: ¿Está herido? ¿Puede moverse con seguridad?",
+        "next": [
+          "s2"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "action",
+        "title": "Señalizar la escena",
+        "summary": "Luces de emergencia, chaleco y triángulos.",
+        "description": "Si el vehículo está en posición de riesgo, ponga las luces de emergencia. Si puede moverse con seguridad, salga, póngase el chaleco reflectante y coloque los triángulos a 50 metros adelante y atrás del vehículo.",
+        "next": [
+          "s3"
+        ]
+      },
+      {
+        "id": "s3",
+        "type": "decision",
+        "title": "¿Hay heridos?",
+        "yes": "s4_samu",
+        "no": "s5_carabineros",
+        "yesLabel": "Sí",
+        "noLabel": "No"
+      },
+      {
+        "id": "s4_samu",
+        "type": "alert",
+        "title": "Llamar al SAMU (131)",
+        "summary": "Priorizar a los heridos.",
+        "description": "Llame al SAMU (131) si hay heridos, sea en su vehículo o en el contrario. Si sospecha lesión de columna o cabeza en alguien, no lo mueva. Priorice llamar al SAMU y señalizar la zona.",
+        "criticalAlerts": [
+          "No mueva a un herido con sospecha de lesión de columna."
+        ],
+        "next": [
+          "s5_carabineros"
+        ]
+      },
+      {
+        "id": "s5_carabineros",
+        "type": "action",
+        "title": "Llamar a Carabineros (133) y al supervisor",
+        "summary": "Parte policial obligatorio.",
+        "description": "Llame a Carabineros (133) para el parte policial (obligatorio en la vía pública). Llame al supervisor de operaciones de inmediato: informe ubicación, descripción del accidente, su condición y la de terceros.",
+        "verifications": [
+          "Carabineros notificados",
+          "Supervisor notificado"
+        ],
+        "next": [
+          "s6_noadmision"
+        ]
+      },
+      {
+        "id": "s6_noadmision",
+        "type": "alert",
+        "title": "No mover el vehículo ni admitir culpa",
+        "summary": "Esperar a Carabineros; sin acuerdos.",
+        "description": "NO mueva el vehículo hasta que llegue Carabineros, salvo riesgo vital. NO admita culpabilidad ni realice acuerdos económicos con terceros en la escena.",
+        "criticalAlerts": [
+          "No admita culpa ni negocie en la escena: eso lo gestiona la empresa y el seguro."
+        ],
+        "next": [
+          "s7_datos"
+        ]
+      },
+      {
+        "id": "s7_datos",
+        "type": "action",
+        "title": "Recopilar información",
+        "summary": "Placa, conductor, seguro, testigos, fotos.",
+        "description": "Recopile información del accidente: placa del otro vehículo, nombre del conductor contrario y su seguro, datos de testigos, fotografías de la escena. Si hay derrame de la carga del taller móvil, señalice el área y active el Protocolo P2-04.",
+        "verifications": [
+          "Datos del tercero y testigos",
+          "Fotografías de la escena"
+        ],
+        "next": [
+          "s8_retiro"
+        ]
+      },
+      {
+        "id": "s8_retiro",
+        "type": "action",
+        "title": "Coordinar el retiro del vehículo",
+        "summary": "Tras autorización de Carabineros.",
+        "description": "Espere la llegada de Carabineros y siga sus instrucciones; coopere con la toma del parte. Una vez que Carabineros autorice, coordine con el supervisor el retiro del vehículo (grúa si es necesario). NO conduzca el vehículo si tiene daños que afecten la seguridad. El supervisor gestiona la denuncia al seguro y la DIAT si el técnico resultó lesionado.",
+        "verifications": [
+          "Parte policial tomado",
+          "Retiro coordinado"
+        ],
+        "next": [
+          "s9_fin"
+        ]
+      },
+      {
+        "id": "s9_fin",
+        "type": "end",
+        "title": "Accidente gestionado",
+        "description": "La escena fue manejada, las autoridades intervinieron y la empresa gestiona el seguro y la DIAT si corresponde."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: El técnico tiene sospecha de lesión de columna o cabeza: no se mueva. Espere al SAMU.",
+    "DETENER: El vehículo del taller móvil presenta humo o señales de incendio: salga de inmediato. Use el extintor solo si el fuego es pequeño. Llame a Bomberos (132).",
+    "DETENER: Hay heridos en el vehículo contrario o peatones: priorice llamar al SAMU y señalizar la zona."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "Emergencia",
+      "action": "SAMU: 131. Carabineros: 133. Bomberos: 132."
+    },
+    {
+      "situation": "Seguro del vehículo",
+      "action": "Número de la póliza y central del seguro en la documentación del vehículo."
+    },
+    {
+      "situation": "Derrame de la carga",
+      "action": "Active el Protocolo P2-04."
+    }
+  ],
+  "linkedAnnexes": [
+    "RI-01"
+  ],
+  "linkedProtocols": [
+    "P2-04",
+    "P3-02",
+    "P3-03"
+  ],
+  "registry": [
+    "Parte policial (copia): obligatorio.",
+    "Formulario de Declaración de Siniestro del seguro: completar dentro de las 24 horas.",
+    "DIAT si el técnico resultó lesionado.",
+    "Reporte de Incidentes RI-01.",
+    "Fotografías de la escena."
+  ]
+}

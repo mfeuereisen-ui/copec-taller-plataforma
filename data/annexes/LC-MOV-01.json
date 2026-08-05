@@ -1,0 +1,101 @@
+{
+  "code": "LC-MOV-01",
+  "version": "1.0",
+  "title": "Lista de Carga del Taller Móvil",
+  "type": "checklist",
+  "fillable": true,
+  "description": "Verificación de la carga del vehículo del taller móvil al inicio de la jornada. Complete en pantalla o imprima en blanco. Vinculada al protocolo P2-09.",
+  "usedInProtocols": [
+    "P2-09"
+  ],
+  "instructions": "Marque Cumple/Falla/N-A. Verifique antes de partir a terreno.",
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "tecnico",
+      "label": "Técnico",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "vehiculo",
+      "label": "Vehículo",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "chk_peso",
+      "label": "Carga dentro del peso máximo del vehículo",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_distribucion",
+      "label": "Peso distribuido (pesado abajo y al eje trasero)",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_bidones",
+      "label": "Bidones verticales, tapados y en bandeja de contención",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_asegurada",
+      "label": "Toda la carga asegurada con correas/anclajes",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_filos",
+      "label": "Herramientas con filo en estuches o fundas",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_gato",
+      "label": "Gato hidráulico y caballetes asegurados",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_emergencia",
+      "label": "Extintor y botiquín accesibles",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_residuos",
+      "label": "Residuos peligrosos separados y herméticos",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "materiales",
+      "label": "Materiales cargados para los servicios del día",
+      "type": "textarea",
+      "required": false,
+      "lines": 3
+    },
+    {
+      "id": "firma",
+      "label": "Firma del técnico",
+      "type": "text",
+      "required": false
+    }
+  ]
+}

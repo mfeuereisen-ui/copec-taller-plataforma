@@ -1,0 +1,65 @@
+{
+  "code": "BCT-01",
+  "version": "1.0",
+  "title": "Bitácora de Comunicaciones del Técnico en Terreno",
+  "type": "bitácora",
+  "fillable": true,
+  "description": "Registro de check-in y check-out del técnico de taller móvil en cada servicio. Complete en pantalla o imprima en blanco. Vinculado al protocolo P2-07.",
+  "usedInProtocols": [
+    "P2-07"
+  ],
+  "instructions": "Registre la hora de check-in y check-out de cada servicio del día.",
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "tecnico",
+      "label": "Técnico",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "vehiculo",
+      "label": "Vehículo asignado",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "hora_inicio_turno",
+      "label": "Hora de inicio de turno",
+      "type": "time",
+      "required": false
+    },
+    {
+      "id": "servicios",
+      "label": "Servicios del día (dirección, hora check-in, hora check-out)",
+      "type": "textarea",
+      "required": true,
+      "lines": 8
+    },
+    {
+      "id": "zonas_sin_senal",
+      "label": "Zonas sin señal informadas",
+      "type": "textarea",
+      "required": false,
+      "lines": 2
+    },
+    {
+      "id": "hora_cierre",
+      "label": "Hora de check-out final del día",
+      "type": "time",
+      "required": false
+    },
+    {
+      "id": "observaciones",
+      "label": "Observaciones",
+      "type": "textarea",
+      "required": false,
+      "lines": 2
+    }
+  ]
+}

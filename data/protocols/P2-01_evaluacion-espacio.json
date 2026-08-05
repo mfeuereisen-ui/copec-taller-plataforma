@@ -1,0 +1,270 @@
+{
+  "code": "P2-01",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Evaluación y Habilitación del Espacio de Trabajo en Domicilio del Cliente",
+  "shortTitle": "Evaluación del espacio",
+  "category": "P2",
+  "criticality": "alto-riesgo",
+  "service": [
+    "movil"
+  ],
+  "tags": [
+    "taller móvil",
+    "domicilio",
+    "evaluación",
+    "espacio",
+    "terreno"
+  ],
+  "icon": "building",
+  "alertBanner": "El técnico opera en un entorno no controlado. Si el espacio no es seguro, NO se realiza el servicio.",
+  "objective": "Evaluar y validar que el espacio físico en el domicilio o ubicación del cliente cumple las condiciones mínimas de seguridad para realizar el servicio automotriz móvil, garantizando la integridad del técnico.",
+  "scope": "Aplica al técnico de taller móvil en cada visita a domicilio, empresa o ubicación externa, antes de iniciar cualquier trabajo.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Trabajar en superficies con pendiente que puede causar desplazamiento del vehículo",
+      "severity": "alta",
+      "family": "aplastamiento"
+    },
+    {
+      "id": "R2",
+      "description": "Espacio insuficiente para maniobrar con seguridad bajo el vehículo",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R3",
+      "description": "Suelos blandos o irregulares que comprometen la estabilidad del gato hidráulico",
+      "severity": "alta",
+      "family": "aplastamiento"
+    },
+    {
+      "id": "R4",
+      "description": "Presencia de terceros (niños, mascotas, personas no autorizadas) en el área de trabajo",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R5",
+      "description": "Falta de iluminación adecuada para trabajo nocturno o en espacios oscuros",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R6",
+      "description": "Exposición a condiciones climáticas adversas (lluvia, viento fuerte, calor extremo)",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R7",
+      "description": "Áreas con materiales inflamables (combustible, solventes almacenados)",
+      "severity": "alta",
+      "family": "incendio"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Técnico de taller móvil",
+      "duty": "Realiza la evaluación y decide si el espacio es apto"
+    },
+    {
+      "role": "Supervisor de operaciones",
+      "duty": "Puede ser consultado si el técnico tiene dudas sobre la aptitud del espacio"
+    },
+    {
+      "role": "Cliente",
+      "duty": "Debe garantizar las condiciones básicas de espacio y acceso"
+    }
+  ],
+  "epp": [
+    {
+      "item": "Zapatos de seguridad",
+      "obligatory": true,
+      "note": "Siempre"
+    },
+    {
+      "item": "Chaleco reflectante",
+      "obligatory": false,
+      "note": "En espacios públicos o con tráfico"
+    },
+    {
+      "item": "Guantes de inspección",
+      "obligatory": false
+    },
+    {
+      "item": "Linterna",
+      "obligatory": false,
+      "note": "Si el espacio tiene iluminación insuficiente"
+    }
+  ],
+  "tools": [
+    {
+      "name": "Lámpara portátil del taller móvil",
+      "verification": ""
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS 594 — Condiciones sanitarias y ambientales básicas en los lugares de trabajo",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=167766"
+    },
+    {
+      "text": "DS 40 — Reglamento sobre prevención de riesgos profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1041130"
+    },
+    {
+      "text": "Directrices ACHS/Mutual para trabajo en terreno",
+      "url": ""
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "action",
+        "title": "Inspección visual del espacio al llegar",
+        "summary": "Antes de descargar herramientas.",
+        "description": "Al llegar a la ubicación del cliente, antes de descargar las herramientas, realice una inspección visual completa del espacio.",
+        "next": [
+          "s2"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "action",
+        "title": "Verificar la superficie",
+        "summary": "Plana, firme, limpia, sin hoyos.",
+        "description": "Verifique la SUPERFICIE: debe ser plana (pendiente máxima 2%), firme (hormigón, asfalto, baldosa), limpia y sin hoyos o irregularidades.",
+        "verifications": [
+          "Pendiente máxima 2%",
+          "Superficie firme (hormigón/asfalto/baldosa)"
+        ],
+        "next": [
+          "s3"
+        ]
+      },
+      {
+        "id": "s3",
+        "type": "action",
+        "title": "Verificar espacio, iluminación y entorno",
+        "summary": "Espacio para maniobrar, luz suficiente, sin terceros.",
+        "description": "Verifique el ESPACIO: mínimo 1 metro libre a cada costado y 2 metros detrás para maniobrar. Verifique la ILUMINACIÓN: luz natural suficiente de día; use la lámpara portátil en espacios oscuros. Verifique el ENTORNO: sin personas no autorizadas (especialmente niños y mascotas); solicite al cliente que aleje a terceros antes de comenzar.",
+        "verifications": [
+          "1 m libre a cada costado y 2 m detrás",
+          "Iluminación suficiente",
+          "Sin terceros en el área"
+        ],
+        "next": [
+          "s4"
+        ]
+      },
+      {
+        "id": "s4",
+        "type": "action",
+        "title": "Verificar riesgos adicionales y clima",
+        "summary": "Sin inflamables a 3 m; clima apto.",
+        "description": "Verifique RIESGOS ADICIONALES: no debe haber materiales inflamables almacenados a menos de 3 metros del área de trabajo. Verifique las CONDICIONES CLIMÁTICAS: no realice el servicio bajo lluvia intensa, viento mayor a 40 km/h, o tormenta eléctrica.",
+        "verifications": [
+          "Sin inflamables a menos de 3 m",
+          "Condiciones climáticas aptas"
+        ],
+        "next": [
+          "s5"
+        ]
+      },
+      {
+        "id": "s5",
+        "type": "decision",
+        "title": "¿El espacio cumple todas las condiciones?",
+        "yes": "s6_apto",
+        "no": "s7_noapto",
+        "yesLabel": "Sí, es apto",
+        "noLabel": "No cumple alguna"
+      },
+      {
+        "id": "s6_apto",
+        "type": "action",
+        "title": "Proceder con el servicio",
+        "summary": "Registrar evaluación como apto.",
+        "description": "Si el espacio cumple todas las condiciones, proceda con el servicio. Registre en la Orden de Servicio Móvil (OS-MOV-01) la evaluación del espacio como apto.",
+        "next": [
+          "s8_registrar"
+        ]
+      },
+      {
+        "id": "s7_noapto",
+        "type": "alert",
+        "title": "Espacio no apto: proponer alternativas",
+        "summary": "Explicar al cliente sin conflicto y ofrecer opciones.",
+        "description": "Si el espacio NO cumple alguna condición, explique al cliente la razón con claridad y sin conflicto. Proponga alternativas: trasladar el vehículo a un espacio más adecuado, reagendar el servicio, o realizarlo en la estación fija. Notifique al supervisor, especialmente si el cliente manifiesta desacuerdo.",
+        "criticalAlerts": [
+          "Si el cliente insiste en que trabaje en un espacio no apto, NO ceda. Contacte al supervisor."
+        ],
+        "next": [
+          "s8_registrar"
+        ]
+      },
+      {
+        "id": "s8_registrar",
+        "type": "action",
+        "title": "Registrar la evaluación",
+        "summary": "OS-MOV-01: apto o no apto y motivo.",
+        "description": "Registre en la orden de servicio (OS-MOV-01) la evaluación del espacio realizada: apto o no apto, y motivo. Si declaró el espacio no apto, tome fotografías como evidencia.",
+        "verifications": [
+          "Evaluación registrada en OS-MOV-01",
+          "Fotografías si fue no apto"
+        ],
+        "next": [
+          "s9_fin"
+        ]
+      },
+      {
+        "id": "s9_fin",
+        "type": "end",
+        "title": "Evaluación completada",
+        "description": "El espacio fue evaluado y se procedió con el servicio o se propusieron alternativas, con la evaluación registrada."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: La superficie tiene pendiente mayor al 2% o es de tierra blanda.",
+    "DETENER: Hay niños o mascotas en el área y el cliente no puede alejarlos.",
+    "DETENER: Lluvia activa, tormenta eléctrica o viento intenso.",
+    "DETENER: El cliente insiste en que trabaje en un espacio que usted determinó no apto: NO ceda. Contacte al supervisor.",
+    "DETENER: Hay materiales inflamables visibles a menos de 3 metros del área de trabajo."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "El técnico es presionado o amenazado para trabajar en condiciones inseguras",
+      "action": "Active el Protocolo P2-08 (Riesgo para el técnico)."
+    },
+    {
+      "situation": "Ocurre un incidente durante la evaluación",
+      "action": "Active el Protocolo P2-03."
+    },
+    {
+      "situation": "Espacio declarado no apto",
+      "action": "Reportar inmediatamente al supervisor."
+    }
+  ],
+  "linkedAnnexes": [
+    "OS-MOV-01",
+    "BT-01"
+  ],
+  "linkedProtocols": [
+    "P2-03",
+    "P2-08"
+  ],
+  "registry": [
+    "Evaluación de espacio de trabajo en la Orden de Servicio Móvil (OS-MOV-01): fecha, dirección, resultado, observaciones.",
+    "Fotografías del espacio si se declaró no apto.",
+    "Notificación al supervisor documentada en la bitácora del técnico (BT-01)."
+  ]
+}

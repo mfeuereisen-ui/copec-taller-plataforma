@@ -1,0 +1,251 @@
+{
+  "code": "P2-09",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Carga, Transporte y Almacenamiento Seguro de Productos y Herramientas en el Vehículo",
+  "shortTitle": "Carga y transporte",
+  "category": "P2",
+  "criticality": "medio",
+  "service": [
+    "movil"
+  ],
+  "tags": [
+    "carga",
+    "transporte",
+    "almacenamiento",
+    "furgón",
+    "ergonomía"
+  ],
+  "icon": "truck",
+  "alertBanner": "",
+  "objective": "Garantizar que los productos y herramientas transportados en el vehículo del taller móvil estén correctamente cargados, asegurados y almacenados, previniendo derrames, caídas de carga y accidentes durante el transporte.",
+  "scope": "Aplica al técnico de taller móvil en la carga, organización y descarga de equipos y productos en el vehículo.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Volcamiento o derrame de productos durante el trayecto",
+      "severity": "media",
+      "family": "derrame"
+    },
+    {
+      "id": "R2",
+      "description": "Lesiones al técnico por caída de materiales al abrir el furgón",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R3",
+      "description": "Contaminación del interior del vehículo con productos peligrosos",
+      "severity": "media",
+      "family": "quimico"
+    },
+    {
+      "id": "R4",
+      "description": "Exceso de peso que afecta la maniobrabilidad del vehículo",
+      "severity": "alta",
+      "family": "vial"
+    },
+    {
+      "id": "R5",
+      "description": "Incendio por almacenamiento incorrecto de líquidos inflamables",
+      "severity": "alta",
+      "family": "incendio"
+    },
+    {
+      "id": "R6",
+      "description": "Golpes al técnico durante la carga y descarga manual",
+      "severity": "media",
+      "family": "ergonomico"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Técnico de taller móvil",
+      "duty": "Responsable de la organización de la carga"
+    },
+    {
+      "role": "Supervisor de operaciones",
+      "duty": "Verifica la carga al inicio de la jornada"
+    }
+  ],
+  "epp": [
+    {
+      "item": "Guantes de trabajo de cuero o nitrilo para carga y descarga",
+      "obligatory": true
+    },
+    {
+      "item": "Zapatos de seguridad",
+      "obligatory": true
+    },
+    {
+      "item": "Lentes de seguridad",
+      "obligatory": false,
+      "note": "Si manipula productos que pueden salpicarse"
+    },
+    {
+      "item": "Faja lumbar",
+      "obligatory": false,
+      "note": "Para bidones mayores a 10 kg"
+    }
+  ],
+  "tools": [
+    {
+      "name": "Correas tensoras y anclajes del furgón",
+      "verification": ""
+    },
+    {
+      "name": "Carro de mano / portabidones",
+      "verification": ""
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS 594 — Condiciones sanitarias y ambientales básicas en los lugares de trabajo",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=167766"
+    },
+    {
+      "text": "DS 148 — Reglamento sanitario sobre manejo de residuos peligrosos",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=226458"
+    },
+    {
+      "text": "Ley 18.290 — Ley de Tránsito",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1007469"
+    },
+    {
+      "text": "NCh 382 — Sustancias peligrosas",
+      "url": ""
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "action",
+        "title": "Cargar según lista y peso máximo",
+        "summary": "Solo lo necesario; respetar peso del vehículo.",
+        "description": "Al cargar al inicio del turno, revise la lista de materiales necesarios para los servicios del día; no cargue más de lo necesario. Distribuya la carga respetando el peso máximo del vehículo (ficha técnica). El exceso de carga es ilegal y peligroso.",
+        "criticalAlerts": [
+          "El exceso de carga es ilegal y afecta el frenado y la estabilidad."
+        ],
+        "next": [
+          "s2"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "action",
+        "title": "Distribuir el peso correctamente",
+        "summary": "Pesado abajo y cerca del eje trasero.",
+        "description": "Coloque los objetos más pesados en la parte baja del furgón, cerca del eje trasero. Los más livianos, arriba.",
+        "next": [
+          "s3"
+        ]
+      },
+      {
+        "id": "s3",
+        "type": "action",
+        "title": "Asegurar líquidos y carga",
+        "summary": "Bidones verticales y tapados; todo fijado.",
+        "description": "Los bidones de aceite y productos líquidos van siempre con tapas bien cerradas y en posición vertical; use cajas o bandejas de contención. Asegure TODA la carga con correas tensoras o en los anclajes: nada debe quedar libre. Las herramientas con filo van en estuches o fundas. El gato hidráulico y los caballetes se aseguran con correas específicas, no sobre otra carga.",
+        "verifications": [
+          "Bidones verticales y tapados",
+          "Toda la carga asegurada",
+          "Herramientas con filo enfundadas"
+        ],
+        "next": [
+          "s4"
+        ]
+      },
+      {
+        "id": "s4",
+        "type": "action",
+        "title": "Mantener accesibles emergencia y separar residuos",
+        "summary": "Extintor y botiquín a mano; residuos aparte.",
+        "description": "El extintor y el botiquín deben estar accesibles (no enterrados bajo la carga). Los residuos peligrosos generados durante el día (aceite usado, filtros, paños contaminados) van en contenedores herméticamente cerrados y separados de los productos nuevos.",
+        "verifications": [
+          "Extintor y botiquín accesibles",
+          "Residuos separados y herméticos"
+        ],
+        "next": [
+          "s5"
+        ]
+      },
+      {
+        "id": "s5",
+        "type": "action",
+        "title": "Abrir el furgón con cuidado",
+        "summary": "Verificar si la carga se desplazó.",
+        "description": "Al abrir el furgón al llegar al domicilio, abra las puertas con cuidado. Si sospecha que la carga se desplazó durante el viaje, abra la puerta solo parcialmente y verifique antes de abrir completamente.",
+        "next": [
+          "s6"
+        ]
+      },
+      {
+        "id": "s6",
+        "type": "action",
+        "title": "Descargar con técnica correcta",
+        "summary": "Espalda recta, rodillas dobladas; ayuda si +15 kg.",
+        "description": "Descargue con técnica correcta: use las dos manos, mantenga la espalda recta, doble las rodillas. Para bidones de más de 15 kg, use carro de mano o pida asistencia.",
+        "next": [
+          "s7"
+        ]
+      },
+      {
+        "id": "s7",
+        "type": "action",
+        "title": "Retirar residuos al final del turno",
+        "summary": "No acumular residuos en el furgón.",
+        "description": "Al final del turno, retire los residuos peligrosos del vehículo para su disposición correcta. No los deje acumulados de un día para otro en el furgón.",
+        "next": [
+          "s8_fin"
+        ]
+      },
+      {
+        "id": "s8_fin",
+        "type": "end",
+        "title": "Carga gestionada con seguridad",
+        "description": "La carga fue distribuida, asegurada y descargada con técnica correcta, con los residuos retirados al cierre del turno."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: Se detecta olor a combustible o producto químico dentro del furgón: ventile y revise si hay derrame.",
+    "DETENER: La carga se movió durante el trayecto y está desorganizada al abrir el furgón.",
+    "DETENER: El vehículo se comporta de forma diferente (más lento, dificultad para frenar): verifique que la carga no supere el peso máximo.",
+    "DETENER: Los bidones de producto nuevo o de residuos muestran fugas."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "Derrame dentro del vehículo",
+      "action": "Estacione en lugar seguro. Ventile. Use el kit de derrames. Active Protocolo P2-04."
+    },
+    {
+      "situation": "Incendio en el furgón",
+      "action": "Salga del vehículo. Use extintor si el fuego es pequeño. Llame a Bomberos (132). Aleje el vehículo de edificios o personas si es posible. Notifique al supervisor."
+    },
+    {
+      "situation": "Caída de carga sobre el técnico",
+      "action": "Active Protocolo P3-02 y P3-03."
+    }
+  ],
+  "linkedAnnexes": [
+    "LC-MOV-01",
+    "CR-01",
+    "RI-01"
+  ],
+  "linkedProtocols": [
+    "P2-04",
+    "P3-02",
+    "P3-03"
+  ],
+  "registry": [
+    "Lista de carga del taller móvil (LC-MOV-01) al inicio de la jornada: verificada y firmada.",
+    "Registro de residuos transportados y entregados en la estación base (CR-01).",
+    "Reporte de Incidentes RI-01 ante cualquier derrame o accidente durante la carga."
+  ]
+}
