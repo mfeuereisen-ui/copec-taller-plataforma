@@ -1,0 +1,89 @@
+{
+  "code": "IR-RES-01",
+  "version": "1.0",
+  "title": "Inspección Mensual del Área de Residuos",
+  "type": "checklist",
+  "fillable": true,
+  "description": "Inspección mensual del área de almacenamiento de residuos peligrosos. Complete en pantalla o imprima para llenar a mano. Vinculado al protocolo P1-04.",
+  "usedInProtocols": [
+    "P1-04"
+  ],
+  "instructions": "Marque Cumple/Falla/N-A en cada punto. Si hay una falla, indíquela en observaciones y notifique al supervisor.",
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "responsable",
+      "label": "Inspecciona",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "chk_impermeable",
+      "label": "Piso impermeabilizado y sin filtraciones",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_ventilacion",
+      "label": "Área ventilada",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_extintor",
+      "label": "Extintor operativo y vigente",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_etiquetas",
+      "label": "Todos los contenedores etiquetados",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_sin_fugas",
+      "label": "Sin contenedores rotos ni con fugas",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_capacidad",
+      "label": "Ningún contenedor sobre el 80% sin retiro coordinado",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_acceso",
+      "label": "Sin acceso de clientes al área",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_senaletica",
+      "label": "Señalética vigente",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "observaciones",
+      "label": "Observaciones y acciones",
+      "type": "textarea",
+      "required": false,
+      "lines": 3
+    }
+  ]
+}

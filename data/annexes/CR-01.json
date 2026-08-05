@@ -1,0 +1,72 @@
+{
+  "code": "CR-01",
+  "version": "1.0",
+  "title": "Control de Residuos Peligrosos",
+  "type": "registro",
+  "fillable": true,
+  "description": "Planilla de control de residuos peligrosos: tipo, cantidad, fechas de acumulación y retiro. Complete en pantalla o imprima en blanco. Vinculado a los protocolos P1-04 y P2-09.",
+  "usedInProtocols": [
+    "P1-04",
+    "P2-09"
+  ],
+  "instructions": "Registre cada tipo de residuo acumulado y su retiro. Conserve los manifiestos por 5 años.",
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha de registro",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "tipo_residuo",
+      "label": "Tipo de residuo",
+      "type": "select",
+      "required": true,
+      "options": [
+        "Aceite usado",
+        "Filtros",
+        "Líquido de frenos",
+        "Refrigerante",
+        "Baterías",
+        "Trapos contaminados",
+        "Envases vacíos"
+      ]
+    },
+    {
+      "id": "cantidad",
+      "label": "Cantidad acumulada",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "fecha_inicio",
+      "label": "Fecha de inicio de acumulación",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "fecha_retiro",
+      "label": "Fecha de retiro",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "empresa_gestora",
+      "label": "Empresa gestora autorizada",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "n_manifiesto",
+      "label": "N° de manifiesto de retiro",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "responsable",
+      "label": "Responsable",
+      "type": "text",
+      "required": true
+    }
+  ]
+}

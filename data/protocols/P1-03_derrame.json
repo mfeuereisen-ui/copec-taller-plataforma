@@ -1,0 +1,317 @@
+{
+  "code": "P1-03",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Derrame de Aceite, Combustible u Otro Líquido Inflamable",
+  "shortTitle": "Derrame en estación",
+  "category": "P1",
+  "criticality": "alto-riesgo",
+  "service": [
+    "estacion"
+  ],
+  "tags": [
+    "derrame",
+    "incendio",
+    "inflamable",
+    "hidrocarburos",
+    "medio ambiente"
+  ],
+  "icon": "droplet",
+  "alertBanner": "Riesgo de incendio y explosión. Actúe de inmediato. No use llamas abiertas ni equipos que generen chispas.",
+  "objective": "Controlar de forma rápida y segura los derrames de líquidos inflamables o peligrosos en la estación, minimizando el riesgo de incendio, exposición del personal y contaminación del medio ambiente.",
+  "scope": "Aplica a todos los trabajadores de la estación de servicio ante cualquier derrame de aceite, combustible, líquido de frenos, refrigerante u otro fluido de proceso.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Incendio o explosión por ignición de vapores inflamables",
+      "severity": "alta",
+      "family": "incendio"
+    },
+    {
+      "id": "R2",
+      "description": "Resbalones y caídas sobre superficies contaminadas",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R3",
+      "description": "Intoxicación por inhalación de vapores de hidrocarburos",
+      "severity": "media",
+      "family": "quimico"
+    },
+    {
+      "id": "R4",
+      "description": "Irritación cutánea o de mucosas por contacto directo",
+      "severity": "media",
+      "family": "quimico"
+    },
+    {
+      "id": "R5",
+      "description": "Contaminación del alcantarillado y suelo (responsabilidad legal ambiental)",
+      "severity": "alta",
+      "family": "derrame"
+    },
+    {
+      "id": "R6",
+      "description": "Propagación del derrame hacia áreas calientes (motor, herramientas eléctricas, foso)",
+      "severity": "alta",
+      "family": "incendio"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Técnico que detecta el derrame",
+      "duty": "Activa el protocolo de inmediato"
+    },
+    {
+      "role": "Supervisor de turno",
+      "duty": "Coordina la respuesta y notifica a autoridades si el derrame es mayor"
+    },
+    {
+      "role": "Todos los trabajadores en el área",
+      "duty": "Deben conocer la ubicación del kit de derrame"
+    }
+  ],
+  "epp": [
+    {
+      "item": "Guantes de nitrilo gruesos (resistentes a hidrocarburos)",
+      "obligatory": true
+    },
+    {
+      "item": "Lentes de seguridad o máscara facial",
+      "obligatory": true
+    },
+    {
+      "item": "Delantal impermeable o ropa impermeabilizada",
+      "obligatory": true
+    },
+    {
+      "item": "Zapatos de seguridad con suela antideslizante resistente a aceite",
+      "obligatory": true
+    },
+    {
+      "item": "Mascarilla de media cara con filtro de vapores orgánicos (OV)",
+      "obligatory": false,
+      "note": "Si la ventilación es insuficiente"
+    }
+  ],
+  "tools": [
+    {
+      "name": "Kit de derrames (absorbentes, tierra de diatomeas o arena)",
+      "verification": ""
+    },
+    {
+      "name": "Pala no metálica para hidrocarburos",
+      "verification": ""
+    },
+    {
+      "name": "Tambores o bolsas de residuos peligrosos etiquetadas",
+      "verification": ""
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS 594 — Condiciones sanitarias y ambientales básicas en los lugares de trabajo",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=167766"
+    },
+    {
+      "text": "DS 148 — Reglamento sanitario sobre manejo de residuos peligrosos",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=226458"
+    },
+    {
+      "text": "NCh 382 — Sustancias peligrosas, nomenclatura y clasificación",
+      "url": ""
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "action",
+        "title": "Detener la fuente del derrame",
+        "summary": "Cortar el origen si es seguro.",
+        "description": "Detectado el derrame, detenga inmediatamente la fuente si es seguro hacerlo: cierre la válvula, enderece el envase o apague el equipo.",
+        "criticalAlerts": [
+          "Solo actúe sobre la fuente si puede hacerlo sin exponerse."
+        ],
+        "next": [
+          "s2"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "action",
+        "title": "Alertar y evacuar el área",
+        "summary": "Avisar y sacar a personas no esenciales.",
+        "description": "Alerte en voz alta a los compañeros en el área. Evacúe a clientes y personas no esenciales del sector.",
+        "next": [
+          "s3"
+        ]
+      },
+      {
+        "id": "s3",
+        "type": "alert",
+        "title": "Eliminar todas las fuentes de ignición",
+        "summary": "Apagar motores y equipos; no generar chispas.",
+        "description": "Elimine todas las fuentes de ignición: apague motores, no use celulares, no encienda equipos eléctricos y no fume.",
+        "criticalAlerts": [
+          "Una sola chispa puede provocar la ignición de los vapores. Este paso es crítico."
+        ],
+        "next": [
+          "s4"
+        ]
+      },
+      {
+        "id": "s4",
+        "type": "action",
+        "title": "Señalizar y ventilar",
+        "summary": "Delimitar 3 m y ventilar el área.",
+        "description": "Señalice el área del derrame con conos a una distancia mínima de 3 metros desde el borde. Abra puertas y ventanas para ventilar; si hay sistema de extracción, actívelo.",
+        "verifications": [
+          "Área señalizada a 3 m",
+          "Ventilación activa"
+        ],
+        "next": [
+          "s5"
+        ]
+      },
+      {
+        "id": "s5",
+        "type": "action",
+        "title": "Calzar el EPP completo",
+        "summary": "Protección antes de acercarse.",
+        "description": "Calce el EPP completo (guantes de nitrilo, lentes, delantal, calzado) antes de acercarse al derrame.",
+        "next": [
+          "s6"
+        ]
+      },
+      {
+        "id": "s6",
+        "type": "action",
+        "title": "Contener y absorber el derrame",
+        "summary": "Rodear de afuera hacia el centro.",
+        "description": "Contenga el derrame con los absorbentes del kit (paños, tierra de diatomeas o arena), rodeándolo desde los bordes hacia el centro para evitar que se expanda. Cubra con material absorbente suficiente hasta que quede completamente absorbido.",
+        "verifications": [
+          "Derrame contenido en su perímetro",
+          "Absorbido por completo"
+        ],
+        "next": [
+          "s7"
+        ]
+      },
+      {
+        "id": "s7",
+        "type": "action",
+        "title": "Recoger el material contaminado",
+        "summary": "Pala no metálica y contenedor etiquetado.",
+        "description": "Recoja el material contaminado con pala no metálica (para hidrocarburos) y colóquelo en tambor o bolsa de residuos peligrosos debidamente etiquetada.",
+        "next": [
+          "s8"
+        ]
+      },
+      {
+        "id": "s8",
+        "type": "action",
+        "title": "Limpiar la superficie",
+        "summary": "Detergente industrial; sin residuos resbaladizos.",
+        "description": "Limpie la superficie con detergente industrial adecuado. Verifique que no queden residuos resbaladizos.",
+        "next": [
+          "s9"
+        ]
+      },
+      {
+        "id": "s9",
+        "type": "decision",
+        "title": "¿El derrame alcanzó alcantarillas o drenajes?",
+        "yes": "s10_amb",
+        "no": "s11_resid",
+        "yesLabel": "Sí",
+        "noLabel": "No"
+      },
+      {
+        "id": "s10_amb",
+        "type": "alert",
+        "title": "Activar protocolo ambiental",
+        "summary": "Notificar para gestión ambiental.",
+        "description": "Si el derrame alcanzó alcantarillas o drenajes, notifique al supervisor para activar el protocolo ambiental de la empresa. En derrames mayores con riesgo ambiental, el supervisor debe notificar a la SEREMI de Salud.",
+        "criticalAlerts": [
+          "La contaminación de drenajes tiene implicancias legales ambientales."
+        ],
+        "next": [
+          "s11_resid"
+        ]
+      },
+      {
+        "id": "s11_resid",
+        "type": "action",
+        "title": "Disponer los residuos del kit",
+        "summary": "Según Protocolo de residuos peligrosos.",
+        "description": "Elimine los residuos del kit de derrame (materiales contaminados) según el Protocolo P1-04 (Residuos Peligrosos). Reponga de inmediato los materiales consumidos del kit.",
+        "next": [
+          "s12"
+        ]
+      },
+      {
+        "id": "s12",
+        "type": "action",
+        "title": "Documentar el derrame",
+        "summary": "Registro de Derrames RD-01.",
+        "description": "Documente el derrame en el Registro de Derrames (RD-01): hora, causa probable, volumen aproximado y acciones tomadas. Si hubo contacto con personas o afectación a infraestructura, complete además el RI-01.",
+        "verifications": [
+          "RD-01 completado",
+          "RI-01 si hubo afectación"
+        ],
+        "next": [
+          "s13"
+        ]
+      },
+      {
+        "id": "s13",
+        "type": "end",
+        "title": "Derrame controlado y documentado",
+        "description": "El derrame quedó contenido, limpiado, con residuos dispuestos y documentado. Kit de derrames repuesto."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: El derrame supera 10 litros o se acerca a drenajes de alcantarillado.",
+    "DETENER: El técnico experimenta mareos, náuseas o irritación al manipular el derrame: retírese y solicite ayuda.",
+    "DETENER: El material absorbente disponible es insuficiente para contener el derrame.",
+    "DETENER: El derrame alcanzó superficies calientes o fuentes de ignición.",
+    "DETENER: Se detecta olor muy fuerte o vapores visibles que indican alta concentración de gas."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "Ignición del derrame",
+      "action": "Active la alarma de incendio. Evacue. Accione extintor ABC o CO2 si el fuego es pequeño. Llame a Bomberos (132). Active Protocolo P1-05."
+    },
+    {
+      "situation": "Contacto directo de una persona con el producto",
+      "action": "Retire la ropa contaminada. Lave con abundante agua durante 15 minutos. Consulte la HDS del producto. Traslade al servicio médico."
+    },
+    {
+      "situation": "Todo derrame",
+      "action": "Notifique al supervisor y active el Protocolo P3-03 (Reporte de Incidentes)."
+    }
+  ],
+  "linkedAnnexes": [
+    "RD-01",
+    "RI-01"
+  ],
+  "linkedProtocols": [
+    "P1-04",
+    "P1-05",
+    "P3-02",
+    "P3-03"
+  ],
+  "registry": [
+    "Registro de Derrames RD-01 con descripción completa del evento.",
+    "Registro del kit de derrames utilizado y reposición de materiales.",
+    "Reporte de Incidentes RI-01 si hubo contacto con personas o afectación a infraestructura."
+  ]
+}

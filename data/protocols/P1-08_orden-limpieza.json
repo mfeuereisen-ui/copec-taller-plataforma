@@ -1,0 +1,223 @@
+{
+  "code": "P1-08",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Orden y Limpieza del Área de Trabajo",
+  "shortTitle": "Orden y limpieza",
+  "category": "P1",
+  "criticality": "bajo",
+  "service": [
+    "estacion"
+  ],
+  "tags": [
+    "orden",
+    "limpieza",
+    "5S",
+    "prevención",
+    "resbalones"
+  ],
+  "icon": "check",
+  "alertBanner": "",
+  "objective": "Mantener el área de trabajo en condiciones de orden, limpieza e higiene que eliminen riesgos de accidente, faciliten la operación eficiente y cumplan los estándares sanitarios y de seguridad.",
+  "scope": "Aplica a todos los técnicos y personal de la estación en todas las áreas operacionales: elevadores, foso, bodega, recepción, baños y espacios comunes.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Caídas por pisos resbaladizos con aceite o agua",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R2",
+      "description": "Tropiezos con herramientas o piezas abandonadas en el piso",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R3",
+      "description": "Incendio por acumulación de trapos con aceite o material combustible",
+      "severity": "alta",
+      "family": "incendio"
+    },
+    {
+      "id": "R4",
+      "description": "Pérdida de herramientas olvidadas en vehículos",
+      "severity": "baja",
+      "family": "personal"
+    },
+    {
+      "id": "R5",
+      "description": "Accidentes de clientes en zonas sin señalización de piso resbaloso",
+      "severity": "media",
+      "family": "personal"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Técnico",
+      "duty": "Mantiene limpio y ordenado su espacio de trabajo"
+    },
+    {
+      "role": "Supervisor de turno",
+      "duty": "Verifica el cumplimiento al inicio, medio y fin de cada turno"
+    },
+    {
+      "role": "Todo el personal",
+      "duty": "Contribuye al aseo de áreas comunes"
+    }
+  ],
+  "epp": [
+    {
+      "item": "Guantes de caucho para limpieza con productos químicos",
+      "obligatory": false
+    },
+    {
+      "item": "Lentes de seguridad",
+      "obligatory": false,
+      "note": "Si usa productos con salpicaduras"
+    },
+    {
+      "item": "Zapatos de seguridad antideslizantes",
+      "obligatory": true
+    },
+    {
+      "item": "Mascarilla",
+      "obligatory": false,
+      "note": "Si usa productos con vapores irritantes"
+    }
+  ],
+  "tools": [
+    {
+      "name": "Contenedor metálico con tapa hermética para trapos",
+      "verification": ""
+    },
+    {
+      "name": "Señalética 'Piso mojado' / conos",
+      "verification": ""
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS 594 art. 3 y 4 — Condiciones generales de los lugares de trabajo",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=167766"
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "action",
+        "title": "Inspección al inicio del turno",
+        "summary": "Área libre de derrames y obstáculos.",
+        "description": "Al inicio de cada turno, verifique que su área esté libre de derrames, herramientas abandonadas y residuos. Corrija antes de comenzar.",
+        "verifications": [
+          "Área sin derrames",
+          "Sin herramientas en el piso"
+        ],
+        "next": [
+          "s2"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "action",
+        "title": "Mantener orden durante el trabajo",
+        "summary": "Bandejas para fluidos; herramientas en su lugar.",
+        "description": "Durante el trabajo, utilice bandejas o contenedores para recoger fluidos. Ubique las herramientas en sus posicionadores o carros. Nunca deje herramientas en el piso, sobre el capó o en lugares donde puedan caer.",
+        "next": [
+          "s3"
+        ]
+      },
+      {
+        "id": "s3",
+        "type": "alert",
+        "title": "Trapos con aceite en contenedor metálico",
+        "summary": "Prevención de combustión espontánea.",
+        "description": "Los trapos o paños usados con aceite o solvente deben depositarse en contenedores metálicos con tapa hermética (no en papeleras abiertas) para prevenir incendio por combustión espontánea.",
+        "criticalAlerts": [
+          "La acumulación de trapos con aceite puede autoinflamarse."
+        ],
+        "next": [
+          "s4"
+        ]
+      },
+      {
+        "id": "s4",
+        "type": "action",
+        "title": "Señalizar zonas húmedas",
+        "summary": "Aviso 'Piso mojado' de inmediato.",
+        "description": "Señalice inmediatamente cualquier zona húmeda o resbalosa con el aviso 'Piso Mojado' o con conos mientras procede a la limpieza.",
+        "next": [
+          "s5"
+        ]
+      },
+      {
+        "id": "s5",
+        "type": "action",
+        "title": "Revisar el vehículo del cliente",
+        "summary": "No dejar herramientas ni piezas dentro.",
+        "description": "Al término de cada servicio, inspeccione el interior del vehículo del cliente para verificar que no dejó herramientas, tornillos ni piezas.",
+        "verifications": [
+          "Vehículo sin herramientas olvidadas"
+        ],
+        "next": [
+          "s6"
+        ]
+      },
+      {
+        "id": "s6",
+        "type": "action",
+        "title": "Limpieza y cierre de turno",
+        "summary": "Limpiar, guardar, reportar defectos.",
+        "description": "Al término del turno: limpie el área con escoba, pala y paño absorbente. Elimine residuos en los contenedores correspondientes. Deje herramientas limpias y guardadas, cierre envases de productos químicos y guárdelos en bodega. Reporte al supervisor cualquier defecto del piso (grietas, hundimientos, bordes levantados). Mantenga el sistema FIFO en bodega.",
+        "verifications": [
+          "Área limpia",
+          "Herramientas guardadas",
+          "Defectos reportados"
+        ],
+        "next": [
+          "s7"
+        ]
+      },
+      {
+        "id": "s7",
+        "type": "end",
+        "title": "Área ordenada y turno cerrado",
+        "description": "El área quedó limpia, ordenada y segura, con la lista de verificación firmada y los defectos reportados."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: Hay acumulación de trapos con aceite sin depositar en contenedor metálico.",
+    "DETENER: El piso tiene una mancha de aceite o líquido de más de 30 cm sin señalizar ni limpiar.",
+    "DETENER: Las rutas de evacuación están obstruidas con herramientas, cajas o equipos.",
+    "DETENER: Los contenedores de basura o residuos están al 100% de capacidad."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "Un técnico o cliente resbala y cae",
+      "action": "Active el Protocolo P1-06 o P1-07 según corresponda."
+    },
+    {
+      "situation": "Incendio por trapos con aceite",
+      "action": "Active el Protocolo P1-05."
+    }
+  ],
+  "linkedAnnexes": [
+    "HL-01"
+  ],
+  "linkedProtocols": [
+    "P1-05",
+    "P1-06",
+    "P1-07"
+  ],
+  "registry": [
+    "Lista de verificación de orden y limpieza (HL-01) al inicio y fin de cada turno, firmada.",
+    "Registro de reparaciones de infraestructura solicitadas al supervisor (RF-01)."
+  ]
+}

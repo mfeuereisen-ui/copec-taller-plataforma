@@ -1,0 +1,272 @@
+{
+  "code": "P1-09",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Uso Seguro de Herramientas Eléctricas y Neumáticas",
+  "shortTitle": "Herramientas eléctricas/neumáticas",
+  "category": "P1",
+  "criticality": "medio",
+  "service": [
+    "ambos"
+  ],
+  "tags": [
+    "herramientas",
+    "eléctricas",
+    "neumáticas",
+    "esmeril",
+    "cortes",
+    "ruido"
+  ],
+  "icon": "bolt",
+  "alertBanner": "",
+  "objective": "Establecer el procedimiento para el uso seguro de herramientas eléctricas (taladros, esmeriles, soldadoras) y neumáticas (llaves de impacto, pistolas de aire), previniendo accidentes por mal uso, fallas técnicas o condiciones inseguras.",
+  "scope": "Aplica a todos los técnicos que operen herramientas eléctricas o neumáticas en la estación de servicio o el taller móvil.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Cortes o amputaciones por discos, fresas o mechas sin protección",
+      "severity": "alta",
+      "family": "personal"
+    },
+    {
+      "id": "R2",
+      "description": "Electrocución por equipos dañados o mal conectados",
+      "severity": "alta",
+      "family": "electrico"
+    },
+    {
+      "id": "R3",
+      "description": "Proyección de partículas a alta velocidad (esmerilado, corte)",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R4",
+      "description": "Vibraciones excesivas que causan lesiones articulares (Síndrome de Raynaud)",
+      "severity": "media",
+      "family": "ergonomico"
+    },
+    {
+      "id": "R5",
+      "description": "Ruido excesivo que causa hipoacusia",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R6",
+      "description": "Incendio por chispas de esmerilado cerca de inflamables",
+      "severity": "alta",
+      "family": "incendio"
+    },
+    {
+      "id": "R7",
+      "description": "Mangueras de aire presurizado que se desacoplan y golpean",
+      "severity": "media",
+      "family": "personal"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Técnico",
+      "duty": "Verifica el estado del equipo antes de usar, usa EPP y sigue el procedimiento"
+    },
+    {
+      "role": "Supervisor de turno",
+      "duty": "Autoriza el uso de herramientas en condiciones especiales de riesgo"
+    }
+  ],
+  "epp": [
+    {
+      "item": "Lentes de seguridad",
+      "obligatory": true,
+      "note": "Obligatorio para cualquier herramienta eléctrica o neumática"
+    },
+    {
+      "item": "Protectores auditivos",
+      "obligatory": false,
+      "note": "Cuando el ruido supera 82 dB (llaves de impacto, esmeril)"
+    },
+    {
+      "item": "Guantes de cuero",
+      "obligatory": false,
+      "note": "Para esmeril o sierra. NUNCA guantes de tejido suelto en taladro"
+    },
+    {
+      "item": "Pantalla facial (careta)",
+      "obligatory": false,
+      "note": "Para esmerilado o corte con disco"
+    },
+    {
+      "item": "Zapatos de seguridad",
+      "obligatory": true
+    }
+  ],
+  "tools": [
+    {
+      "name": "Herramientas eléctricas y neumáticas",
+      "verification": "IH-01"
+    },
+    {
+      "name": "Etiqueta 'Fuera de servicio — No usar'",
+      "verification": ""
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS 594 — Condiciones sanitarias y ambientales básicas en los lugares de trabajo",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=167766"
+    },
+    {
+      "text": "DS 40 — Reglamento sobre prevención de riesgos profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1041130"
+    },
+    {
+      "text": "Normas IEC de herramientas eléctricas",
+      "url": ""
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "action",
+        "title": "Inspección visual previa",
+        "summary": "Cables, mangueras, discos, protecciones.",
+        "description": "Antes de usar cualquier herramienta, inspecciónela: cable sin cortes ni pelados (eléctrica), manguera sin rajaduras (neumática), disco o accesorio sin grietas ni deformaciones, protecciones y guardas en su lugar.",
+        "verifications": [
+          "Cable/manguera en buen estado",
+          "Accesorio sin daños",
+          "Guardas presentes"
+        ],
+        "next": [
+          "s2"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "decision",
+        "title": "¿La herramienta está en buen estado?",
+        "yes": "s4_conectar",
+        "no": "s3_fuera",
+        "yesLabel": "Sí",
+        "noLabel": "No, tiene daños"
+      },
+      {
+        "id": "s3_fuera",
+        "type": "alert",
+        "title": "Retirar de servicio y etiquetar",
+        "summary": "No usar herramientas dañadas.",
+        "description": "NO use herramientas con cables pelados, sin tierra o con protecciones removidas. Retírelas de servicio y etiquételas: 'FUERA DE SERVICIO — NO USAR'. Notifique al supervisor.",
+        "criticalAlerts": [
+          "Una herramienta dañada puede causar electrocución o proyección del accesorio."
+        ],
+        "next": [
+          "s9_fin"
+        ]
+      },
+      {
+        "id": "s4_conectar",
+        "type": "action",
+        "title": "Conectar correctamente",
+        "summary": "Tierra (eléctrica); presión correcta (neumática).",
+        "description": "Conecte herramientas eléctricas solo a enchufes con puesta a tierra, con alargadores de calibre adecuado. Para neumáticas, verifique la presión del compresor sin superar la máxima indicada por el fabricante.",
+        "next": [
+          "s5"
+        ]
+      },
+      {
+        "id": "s5",
+        "type": "action",
+        "title": "Montar el accesorio con energía desconectada",
+        "summary": "Nunca cambiar accesorios con la herramienta conectada.",
+        "description": "Asegúrese de que el accesorio (disco, mecha, copa) esté correctamente instalado y apretado antes de encender. Desconecte el suministro de energía o aire antes de cambiar accesorios. NUNCA cambie un disco o mecha con la herramienta conectada.",
+        "criticalAlerts": [
+          "Cambiar un accesorio con la herramienta conectada puede provocar un arranque accidental."
+        ],
+        "next": [
+          "s6"
+        ]
+      },
+      {
+        "id": "s6",
+        "type": "action",
+        "title": "Despejar inflamables y usar correctamente",
+        "summary": "Uso según diseño; cuerpo fuera de la línea de proyección.",
+        "description": "Mantenga el área libre de materiales inflamables cuando use esmeril o sierra. Use la herramienta solo para su propósito. Sujétela firmemente con ambas manos cuando el tamaño lo permita y mantenga el cuerpo fuera de la línea de proyección del accesorio.",
+        "next": [
+          "s7"
+        ]
+      },
+      {
+        "id": "s7",
+        "type": "action",
+        "title": "Apagado seguro",
+        "summary": "Esperar detención total antes de depositar.",
+        "description": "Al terminar, desconecte la herramienta. Espere a que el accesorio deje de girar completamente antes de depositarla. Límpiela y guárdela en su lugar designado.",
+        "next": [
+          "s8"
+        ]
+      },
+      {
+        "id": "s8",
+        "type": "action",
+        "title": "Registrar anomalías",
+        "summary": "Libro de Herramientas.",
+        "description": "Registre cualquier daño o anomalía en el Libro de Herramientas. Toda herramienta retirada de servicio se documenta con motivo y fecha.",
+        "next": [
+          "s9_fin"
+        ]
+      },
+      {
+        "id": "s9_fin",
+        "type": "end",
+        "title": "Uso finalizado / herramienta gestionada",
+        "description": "La herramienta se usó de forma segura o se retiró de servicio y etiquetó, con las anomalías registradas."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: La herramienta produce chispas inusuales, humo o calor excesivo: apáguela de inmediato.",
+    "DETENER: El disco o accesorio está agrietado, deformado o fuera de balance (vibra excesivamente).",
+    "DETENER: El cable eléctrico o la manguera neumática están pinchados, rotos o con empalmes improvisados.",
+    "DETENER: La herramienta no tiene la protección o guarda de fábrica.",
+    "DETENER: Se trabaja cerca de líquidos inflamables con herramientas que generan chispas."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "Corte o atrapamiento",
+      "action": "Detenga la herramienta. Presione la herida con paño limpio. Llame al SAMU si hay hemorragia intensa. Active Protocolo P3-02."
+    },
+    {
+      "situation": "Electrocución",
+      "action": "Corte la corriente antes de tocar al afectado. Llame al SAMU. Inicie RCP si no respira y está inconsciente. Active P3-02."
+    },
+    {
+      "situation": "Proyección que impacta el ojo",
+      "action": "No frote. Cubra con apósito limpio. Traslade a urgencias. Active P3-02."
+    },
+    {
+      "situation": "Todo evento",
+      "action": "Notifique al supervisor y active el Protocolo P3-03."
+    }
+  ],
+  "linkedAnnexes": [
+    "IH-01",
+    "RI-01"
+  ],
+  "linkedProtocols": [
+    "P3-02",
+    "P3-03"
+  ],
+  "registry": [
+    "Inspección de herramientas eléctricas y neumáticas (IH-01): mensual o al detectar fallas.",
+    "Etiqueta de fecha de inspección en cada herramienta.",
+    "Registro de herramientas retiradas de servicio: motivo y fecha.",
+    "Reporte de Incidentes RI-01 ante cualquier accidente con herramientas."
+  ]
+}

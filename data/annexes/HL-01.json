@@ -1,0 +1,109 @@
+{
+  "code": "HL-01",
+  "version": "1.0",
+  "title": "Lista de Verificación de Orden y Limpieza",
+  "type": "checklist",
+  "fillable": true,
+  "description": "Verificación de orden y limpieza al inicio y fin de turno. Complete en pantalla o imprima en blanco. Vinculado al protocolo P1-08.",
+  "usedInProtocols": [
+    "P1-08"
+  ],
+  "instructions": "Marque Cumple/Falla/N-A. Complete al inicio y al término de cada turno.",
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "turno",
+      "label": "Turno",
+      "type": "select",
+      "required": false,
+      "options": [
+        "Mañana",
+        "Tarde",
+        "Noche"
+      ]
+    },
+    {
+      "id": "tecnico",
+      "label": "Técnico",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "momento",
+      "label": "Momento",
+      "type": "select",
+      "required": true,
+      "options": [
+        "Inicio de turno",
+        "Fin de turno"
+      ]
+    },
+    {
+      "id": "chk_pisos",
+      "label": "Pisos sin derrames ni superficies resbalosas",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_herramientas",
+      "label": "Herramientas guardadas, ninguna en el piso",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_trapos",
+      "label": "Trapos con aceite en contenedor metálico con tapa",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_rutas",
+      "label": "Rutas de evacuación despejadas",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_residuos",
+      "label": "Contenedores de residuos bajo su capacidad",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_senaletica",
+      "label": "Señalización en su lugar",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_bodega",
+      "label": "Bodega ordenada (FIFO, estanterías)",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "defectos",
+      "label": "Defectos del piso o infraestructura detectados",
+      "type": "textarea",
+      "required": false,
+      "lines": 2
+    },
+    {
+      "id": "firma",
+      "label": "Firma del técnico",
+      "type": "text",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "code": "P1-04",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Manejo y Disposición de Residuos Peligrosos",
+  "shortTitle": "Residuos peligrosos",
+  "category": "P1",
+  "criticality": "medio",
+  "service": [
+    "estacion"
+  ],
+  "tags": [
+    "residuos",
+    "peligrosos",
+    "aceite usado",
+    "medio ambiente",
+    "DS 148",
+    "baterías"
+  ],
+  "icon": "flask",
+  "alertBanner": "",
+  "objective": "Establecer el procedimiento correcto para la clasificación, almacenamiento, etiquetado y disposición de residuos peligrosos generados en la estación (aceites usados, filtros, líquidos de freno, baterías, trapos contaminados), cumpliendo la normativa ambiental vigente.",
+  "scope": "Aplica a todos los trabajadores que manipulen, generen o dispongan de residuos peligrosos en la estación de servicio.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Intoxicación por contacto o inhalación de aceites y fluidos peligrosos",
+      "severity": "media",
+      "family": "quimico"
+    },
+    {
+      "id": "R2",
+      "description": "Incendio por almacenamiento incorrecto de residuos inflamables",
+      "severity": "alta",
+      "family": "incendio"
+    },
+    {
+      "id": "R3",
+      "description": "Contaminación ambiental por disposición inadecuada (suelo, agua, alcantarillado)",
+      "severity": "alta",
+      "family": "derrame"
+    },
+    {
+      "id": "R4",
+      "description": "Multas y sanciones legales por incumplimiento del DS 148",
+      "severity": "media",
+      "family": "quimico"
+    },
+    {
+      "id": "R5",
+      "description": "Exposición dérmica a sustancias cancerígenas (aceites usados de motor)",
+      "severity": "alta",
+      "family": "quimico"
+    },
+    {
+      "id": "R6",
+      "description": "Reacciones químicas peligrosas por mezcla incorrecta de residuos incompatibles",
+      "severity": "alta",
+      "family": "quimico"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Técnico automotriz",
+      "duty": "Separa y almacena correctamente los residuos en el área de trabajo"
+    },
+    {
+      "role": "Supervisor de turno",
+      "duty": "Supervisa el cumplimiento y coordina retiro con empresa gestora"
+    },
+    {
+      "role": "Empresa gestora de residuos (autorizada SEREMI Salud)",
+      "duty": "Realiza el transporte y disposición final"
+    }
+  ],
+  "epp": [
+    {
+      "item": "Guantes de nitrilo resistentes a hidrocarburos",
+      "obligatory": true
+    },
+    {
+      "item": "Delantal o ropa impermeabilizada",
+      "obligatory": true
+    },
+    {
+      "item": "Lentes de seguridad",
+      "obligatory": true
+    },
+    {
+      "item": "Mascarilla con filtro de vapores orgánicos",
+      "obligatory": false,
+      "note": "Si hay olores intensos"
+    },
+    {
+      "item": "Zapatos de seguridad",
+      "obligatory": true
+    }
+  ],
+  "tools": [
+    {
+      "name": "Tambores metálicos o recipientes herméticos de polietileno",
+      "verification": ""
+    },
+    {
+      "name": "Etiquetas de residuo peligroso (NCh 382)",
+      "verification": ""
+    },
+    {
+      "name": "Área de residuos peligrosos habilitada",
+      "verification": "IR-RES-01"
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS 594 — Condiciones sanitarias y ambientales básicas en los lugares de trabajo",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=167766"
+    },
+    {
+      "text": "DS 148 — Reglamento sanitario sobre manejo de residuos peligrosos",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=226458"
+    },
+    {
+      "text": "NCh 382 — Sustancias peligrosas, nomenclatura y clasificación",
+      "url": ""
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "action",
+        "title": "Clasificar los residuos en el punto de generación",
+        "summary": "Separar por tipo.",
+        "description": "Clasifique los residuos según su tipo: aceites usados, filtros (aceite/combustible/aire), líquidos de freno, líquido de transmisión, refrigerante, baterías, trapos o paños contaminados, y envases vacíos de productos peligrosos.",
+        "next": [
+          "s2"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "alert",
+        "title": "No mezclar residuos incompatibles",
+        "summary": "Aceite usado separado de solventes y freno.",
+        "description": "Coloque los aceites usados en tambores metálicos o recipientes herméticos habilitados. NUNCA mezcle aceite usado con solventes, gasolina o líquido de freno. Los líquidos de freno y refrigerante van en contenedores separados e independientes.",
+        "criticalAlerts": [
+          "Mezclar residuos incompatibles puede provocar reacciones químicas peligrosas."
+        ],
+        "next": [
+          "s3"
+        ]
+      },
+      {
+        "id": "s3",
+        "type": "action",
+        "title": "Almacenar filtros y baterías correctamente",
+        "summary": "Filtros escurridos; baterías verticales.",
+        "description": "Almacene los filtros usados en contenedores cerrados, escurridos al menos 24 horas antes de disponerse. Las baterías usadas van en pallets o estanterías, en posición vertical, con terminales protegidas para evitar cortocircuitos.",
+        "next": [
+          "s4"
+        ]
+      },
+      {
+        "id": "s4",
+        "type": "action",
+        "title": "Etiquetar todos los contenedores",
+        "summary": "Nombre, fecha, símbolo de peligro, responsable.",
+        "description": "Etiquete TODOS los contenedores con: nombre del residuo, fecha de inicio de acumulación, símbolo de peligro según NCh 382 y nombre del responsable.",
+        "verifications": [
+          "Todos los contenedores etiquetados"
+        ],
+        "next": [
+          "s5"
+        ]
+      },
+      {
+        "id": "s5",
+        "type": "action",
+        "title": "Almacenar en el área habilitada",
+        "summary": "Piso impermeable, ventilado, con extintor.",
+        "description": "Almacene los residuos en el área de residuos peligrosos habilitada: piso impermeabilizado, ventilación, sin acceso de clientes y con extintor. NUNCA arroje residuos al alcantarillado, suelo o papeleros comunes.",
+        "criticalAlerts": [
+          "Arrojar residuos peligrosos a drenajes o basura común es una infracción ambiental grave."
+        ],
+        "next": [
+          "s6"
+        ]
+      },
+      {
+        "id": "s6",
+        "type": "decision",
+        "title": "¿Los contenedores alcanzaron el 80% de su capacidad?",
+        "yes": "s7_retiro",
+        "no": "s8_fin",
+        "yesLabel": "Sí",
+        "noLabel": "No, aún hay capacidad"
+      },
+      {
+        "id": "s7_retiro",
+        "type": "action",
+        "title": "Coordinar retiro con empresa gestora",
+        "summary": "Retiro y manifiesto firmado.",
+        "description": "Coordine el retiro con la empresa gestora autorizada por la SEREMI de Salud, antes de que los contenedores superen el 80% de su capacidad. Al retirar, exija el manifiesto de residuos peligrosos firmado por el generador (supervisor) y el transportista. Conserve los manifiestos por al menos 5 años.",
+        "verifications": [
+          "Retiro coordinado",
+          "Manifiesto firmado y archivado"
+        ],
+        "next": [
+          "s8_fin"
+        ]
+      },
+      {
+        "id": "s8_fin",
+        "type": "end",
+        "title": "Residuos gestionados conforme a norma",
+        "description": "Los residuos quedaron clasificados, etiquetados, almacenados correctamente y con retiro coordinado según corresponda. Manifiestos conservados."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: Un contenedor de residuos está roto, con fugas o sin etiqueta.",
+    "DETENER: El área de almacenamiento presenta olores intensos o vapores visibles.",
+    "DETENER: Los contenedores superaron el 80% de su capacidad sin retiro coordinado.",
+    "DETENER: Se detecta que residuos peligrosos fueron mezclados de forma incorrecta.",
+    "DETENER: El área de residuos no tiene extintor operativo o señalética vigente."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "Derrame en el área de residuos",
+      "action": "Active el Protocolo P1-03 (Derrame)."
+    },
+    {
+      "situation": "Reacción química visible (humo, calor, burbujeo)",
+      "action": "Evacue el área. Llame a Bomberos (132). No intente neutralizar sin conocimiento técnico."
+    },
+    {
+      "situation": "Todo evento",
+      "action": "Notifique al supervisor y active el Protocolo P3-03 (Reporte de Incidentes)."
+    }
+  ],
+  "linkedAnnexes": [
+    "CR-01",
+    "IR-RES-01"
+  ],
+  "linkedProtocols": [
+    "P1-03",
+    "P3-03"
+  ],
+  "registry": [
+    "Planilla de control de residuos (CR-01): tipo, cantidad, fecha de inicio, fecha de retiro.",
+    "Manifiestos de retiro de residuos peligrosos: archivados 5 años.",
+    "Registro de inspección mensual del área de residuos (IR-RES-01)."
+  ]
+}

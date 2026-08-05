@@ -1,0 +1,274 @@
+{
+  "code": "P1-10",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Seguridad Eléctrica y Desconexión de Baterías",
+  "shortTitle": "Seguridad eléctrica y baterías",
+  "category": "P1",
+  "criticality": "alto-riesgo",
+  "service": [
+    "ambos"
+  ],
+  "tags": [
+    "eléctrico",
+    "batería",
+    "arco eléctrico",
+    "ácido",
+    "híbrido",
+    "alta tensión"
+  ],
+  "icon": "zap",
+  "alertBanner": "Riesgo de arco eléctrico, explosión de batería e incendio. Siga el procedimiento con precisión.",
+  "objective": "Garantizar la seguridad del técnico durante trabajos en sistemas eléctricos del vehículo, especialmente al conectar o desconectar baterías, previniendo arcos eléctricos, cortocircuitos y explosión de gases de batería.",
+  "scope": "Aplica a todos los técnicos que trabajen en sistemas eléctricos de vehículos, realicen cambio de batería o deban desconectarla como parte de una mantención.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Arco eléctrico al cortocircuitar terminales de la batería",
+      "severity": "alta",
+      "family": "electrico"
+    },
+    {
+      "id": "R2",
+      "description": "Explosión de la batería por gas hidrógeno acumulado",
+      "severity": "alta",
+      "family": "electrico"
+    },
+    {
+      "id": "R3",
+      "description": "Quemaduras químicas por ácido sulfúrico de la batería",
+      "severity": "alta",
+      "family": "quimico"
+    },
+    {
+      "id": "R4",
+      "description": "Descarga eléctrica por contacto con circuitos activos",
+      "severity": "alta",
+      "family": "electrico"
+    },
+    {
+      "id": "R5",
+      "description": "Daño a módulos electrónicos por desconexión incorrecta",
+      "severity": "baja",
+      "family": "electrico"
+    },
+    {
+      "id": "R6",
+      "description": "Incendio en el compartimento del motor por chispas",
+      "severity": "alta",
+      "family": "incendio"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Técnico automotriz",
+      "duty": "Ejecuta el protocolo"
+    },
+    {
+      "role": "Supervisor",
+      "duty": "Verifica cuando el trabajo involucra alta tensión (vehículos híbridos o eléctricos, que requieren protocolo especializado)"
+    }
+  ],
+  "epp": [
+    {
+      "item": "Guantes dieléctricos clase 0 (1000V) o de goma aislantes",
+      "obligatory": true
+    },
+    {
+      "item": "Lentes de seguridad o pantalla facial",
+      "obligatory": true
+    },
+    {
+      "item": "Delantal de cuero",
+      "obligatory": false,
+      "note": "Si hay riesgo de derrame de ácido"
+    },
+    {
+      "item": "Zapatos de seguridad con suela aislante",
+      "obligatory": true
+    },
+    {
+      "item": "Sin objetos metálicos (retirar pulseras, anillos, reloj antes de comenzar)",
+      "obligatory": true
+    }
+  ],
+  "tools": [
+    {
+      "name": "Llaves aisladas",
+      "verification": "IH-01"
+    },
+    {
+      "name": "Cargador externo (si aplica)",
+      "verification": ""
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS 594 — Condiciones sanitarias y ambientales básicas en los lugares de trabajo",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=167766"
+    },
+    {
+      "text": "DS 40 — Reglamento sobre prevención de riesgos profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1041130"
+    },
+    {
+      "text": "NCh Elec 4/2003 — Instalaciones de consumo en baja tensión",
+      "url": ""
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "alert",
+        "title": "Retirar objetos metálicos",
+        "summary": "Pulseras, anillos y reloj fuera.",
+        "description": "Antes de comenzar, retire pulseras, anillos y reloj. Estos objetos metálicos pueden causar un cortocircuito grave si tocan los terminales de la batería.",
+        "criticalAlerts": [
+          "Un anillo que puentee los terminales puede provocar un arco y quemaduras graves."
+        ],
+        "next": [
+          "s2"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "decision",
+        "title": "¿La batería está en buen estado?",
+        "summary": "Sin grietas, deformación ni pérdida de ácido.",
+        "yes": "s3_apagar",
+        "no": "s2b_fallida",
+        "yesLabel": "Sí",
+        "noLabel": "No (hinchada, con fugas)"
+      },
+      {
+        "id": "s2b_fallida",
+        "type": "alert",
+        "title": "Batería fallida: no manipular",
+        "summary": "Riesgo de explosión.",
+        "description": "Si la batería está hinchada o tiene pérdida de electrolito, NO la manipule: es una batería fallida con riesgo de explosión. Retire el vehículo del área y llame a un técnico especializado.",
+        "criticalAlerts": [
+          "Una batería hinchada puede explotar. No la mueva ni la cargue."
+        ],
+        "next": [
+          "s8_fin"
+        ]
+      },
+      {
+        "id": "s3_apagar",
+        "type": "action",
+        "title": "Vehículo apagado y asegurado",
+        "summary": "Motor apagado, en PARK, freno de mano.",
+        "description": "Asegúrese de que el vehículo esté APAGADO y en PARK (o freno de mano activado) antes de intervenir.",
+        "next": [
+          "s4_hibrido"
+        ]
+      },
+      {
+        "id": "s4_hibrido",
+        "type": "decision",
+        "title": "¿Es un vehículo híbrido o eléctrico?",
+        "yes": "s4b_stop",
+        "no": "s5_desconectar",
+        "yesLabel": "Sí",
+        "noLabel": "No, convencional"
+      },
+      {
+        "id": "s4b_stop",
+        "type": "alert",
+        "title": "Detener: requiere protocolo de alta tensión",
+        "summary": "No intervenir sin capacitación.",
+        "description": "Para vehículos híbridos o eléctricos, DETENGA el procedimiento y notifique al supervisor. Estos vehículos requieren un protocolo de alta tensión específico. NO intervenga sin capacitación.",
+        "criticalAlerts": [
+          "Los sistemas de alta tensión pueden ser mortales. No intervenga sin protocolo y capacitación específicos."
+        ],
+        "next": [
+          "s8_fin"
+        ]
+      },
+      {
+        "id": "s5_desconectar",
+        "type": "action",
+        "title": "Desconectar: primero el NEGATIVO",
+        "summary": "Negativo (—) y luego positivo (+).",
+        "description": "Para desconectar la batería, SIEMPRE retire primero el cable NEGATIVO (masa, marcado con — o B-). Luego retire el POSITIVO (+ o B+). Use llaves aisladas para las terminales; no use llaves de metal sin aislante.",
+        "next": [
+          "s6_reconectar"
+        ]
+      },
+      {
+        "id": "s6_reconectar",
+        "type": "action",
+        "title": "Reconectar: primero el POSITIVO",
+        "summary": "Orden inverso a la desconexión.",
+        "description": "Al reconectar, conecte PRIMERO el cable POSITIVO y luego el NEGATIVO (orden inverso a la desconexión). Si carga con cargador externo, conéctelo APAGADO: positivo al positivo y negativo a masa del chasis (no al terminal negativo), para reducir el riesgo de chispa cerca del gas hidrógeno.",
+        "criticalAlerts": [
+          "No acerque cables conductores a ambos terminales simultáneamente con el motor encendido."
+        ],
+        "next": [
+          "s7_verificar"
+        ]
+      },
+      {
+        "id": "s7_verificar",
+        "type": "action",
+        "title": "Verificar conexiones y sistemas",
+        "summary": "Terminales firmes; encender para confirmar.",
+        "description": "Al finalizar, verifique que todos los conectores estén firmes. Encienda el vehículo para confirmar que todos los sistemas funcionan.",
+        "verifications": [
+          "Terminales firmes",
+          "Sistemas del vehículo operativos"
+        ],
+        "next": [
+          "s8_fin"
+        ]
+      },
+      {
+        "id": "s8_fin",
+        "type": "end",
+        "title": "Intervención eléctrica finalizada",
+        "description": "El trabajo eléctrico se realizó de forma segura, o se derivó por tratarse de una batería fallida o un vehículo de alta tensión."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: La batería está hinchada, deformada o con pérdida de electrolito.",
+    "DETENER: Hay olor a azufre o gas intenso cerca de la batería.",
+    "DETENER: El técnico trabaja sin guantes dieléctricos.",
+    "DETENER: Se detecta chispa o arco eléctrico al conectar/desconectar terminales.",
+    "DETENER: Se trabaja en vehículo híbrido o eléctrico sin protocolo específico."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "Arco eléctrico con quemadura",
+      "action": "Apague el vehículo. Aplique primeros auxilios para quemaduras (agua fría 20 minutos). Traslade a urgencias. Active P3-02 y P3-03."
+    },
+    {
+      "situation": "Explosión de batería con proyección de ácido",
+      "action": "Enjuague ojos y piel con abundante agua por 20 minutos mínimo. Traslade de urgencia. Llame al SAMU (131)."
+    },
+    {
+      "situation": "Incendio en compartimento motor",
+      "action": "Active el Protocolo P1-05."
+    }
+  ],
+  "linkedAnnexes": [
+    "IH-01",
+    "RI-01"
+  ],
+  "linkedProtocols": [
+    "P1-05",
+    "P3-02",
+    "P3-03"
+  ],
+  "registry": [
+    "Registro de cambio de batería en la orden de trabajo del vehículo.",
+    "Reporte de Incidentes RI-01 ante arcos eléctricos, explosiones o quemaduras.",
+    "Inspección de herramientas dieléctricas (IH-01): cada 6 meses o ante sospecha de daño."
+  ]
+}

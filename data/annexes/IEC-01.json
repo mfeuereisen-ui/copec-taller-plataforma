@@ -1,0 +1,100 @@
+{
+  "code": "IEC-01",
+  "version": "1.0",
+  "title": "Informe de Incidente con Cliente",
+  "type": "formulario",
+  "fillable": true,
+  "description": "Registro de un accidente o incidente que afecta a un cliente o visita. Complete en pantalla o imprima en blanco. Vinculado al protocolo P1-07.",
+  "usedInProtocols": [
+    "P1-07"
+  ],
+  "instructions": "Complete con objetividad. No consigne admisiones de responsabilidad; derive a la gerencia.",
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "hora",
+      "label": "Hora",
+      "type": "time",
+      "required": true
+    },
+    {
+      "id": "lugar",
+      "label": "Lugar del incidente",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "cliente",
+      "label": "Nombre del cliente",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "rut",
+      "label": "RUT",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "telefono",
+      "label": "Teléfono",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "circunstancias",
+      "label": "Circunstancias del incidente",
+      "type": "textarea",
+      "required": true,
+      "lines": 4
+    },
+    {
+      "id": "estado",
+      "label": "Estado del cliente",
+      "type": "textarea",
+      "required": false,
+      "lines": 2
+    },
+    {
+      "id": "acciones",
+      "label": "Acciones tomadas",
+      "type": "textarea",
+      "required": true,
+      "lines": 3
+    },
+    {
+      "id": "testigos",
+      "label": "Testigos (nombre y contacto)",
+      "type": "textarea",
+      "required": false,
+      "lines": 2
+    },
+    {
+      "id": "samu",
+      "label": "¿Se llamó al SAMU?",
+      "type": "select",
+      "required": false,
+      "options": [
+        "No",
+        "Sí"
+      ]
+    },
+    {
+      "id": "notif_gerencia",
+      "label": "Hora de notificación a gerencia",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "responsable",
+      "label": "Elaborado por",
+      "type": "text",
+      "required": true
+    }
+  ]
+}

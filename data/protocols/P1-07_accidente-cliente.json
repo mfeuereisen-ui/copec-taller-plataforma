@@ -1,0 +1,218 @@
+{
+  "code": "P1-07",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Accidente de un Cliente o Visita dentro de las Instalaciones",
+  "shortTitle": "Accidente de cliente",
+  "category": "P1",
+  "criticality": "medio",
+  "service": [
+    "estacion"
+  ],
+  "tags": [
+    "cliente",
+    "visita",
+    "accidente",
+    "responsabilidad legal",
+    "primeros auxilios"
+  ],
+  "icon": "person",
+  "alertBanner": "",
+  "objective": "Brindar atención inmediata y adecuada a un cliente o visita que sufra un accidente dentro de las instalaciones, protegiendo su integridad y gestionando la situación con responsabilidad legal y humana.",
+  "scope": "Aplica ante cualquier accidente, lesión o emergencia médica que afecte a un cliente, acompañante o visitante dentro del perímetro de la estación de servicio.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Lesiones por caídas en zonas húmedas o grasosas",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R2",
+      "description": "Atropellamiento en el área de maniobras de vehículos",
+      "severity": "alta",
+      "family": "personal"
+    },
+    {
+      "id": "R3",
+      "description": "Quemaduras por contacto con superficies calientes",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R4",
+      "description": "Inhalación de vapores en zonas de trabajo",
+      "severity": "media",
+      "family": "quimico"
+    },
+    {
+      "id": "R5",
+      "description": "Responsabilidad legal de la empresa por negligencia en la atención",
+      "severity": "alta",
+      "family": "personal"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Trabajador que presencia el accidente",
+      "duty": "Presta asistencia y llama al supervisor"
+    },
+    {
+      "role": "Supervisor de turno",
+      "duty": "Coordina la atención y maneja la comunicación con el cliente"
+    },
+    {
+      "role": "Recepcionista / cajero",
+      "duty": "Atiende a familiares o acompañantes y gestiona información"
+    },
+    {
+      "role": "Gerencia",
+      "duty": "Es notificada para gestionar implicancias legales y comunicación"
+    }
+  ],
+  "epp": [
+    {
+      "item": "Guantes de látex o nitrilo",
+      "obligatory": true,
+      "note": "Para quien presta primeros auxilios"
+    },
+    {
+      "item": "Botiquín de primeros auxilios",
+      "obligatory": true
+    }
+  ],
+  "tools": [
+    {
+      "name": "Botiquín de primeros auxilios",
+      "verification": "RB-01"
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "Ley 19.496 — Protección de los derechos de los consumidores",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=61438"
+    },
+    {
+      "text": "DS 594 — Condiciones sanitarias y ambientales básicas en los lugares de trabajo",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=167766"
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "action",
+        "title": "Acercarse y evaluar al cliente",
+        "summary": "Identificarse y evaluar su condición.",
+        "description": "Acérquese con calma. Identifíquese como personal de Copec Taller. Evalúe rápidamente su condición: ¿Está consciente? ¿Puede comunicarse? ¿Tiene dolor intenso? No mueva al accidentado si sospecha lesión de cuello o espalda.",
+        "next": [
+          "s2"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "decision",
+        "title": "¿Hay signos de urgencia médica?",
+        "yes": "s3_samu",
+        "no": "s4_notif",
+        "yesLabel": "Sí (inconsciencia, hemorragia, dolor de pecho)",
+        "noLabel": "No"
+      },
+      {
+        "id": "s3_samu",
+        "type": "alert",
+        "title": "Llamar al SAMU (131)",
+        "summary": "Ante infarto, ACV, hemorragia o fractura.",
+        "description": "Llame al SAMU (131) si hay pérdida de conciencia, hemorragia, fractura visible, dolor de pecho, o síntomas de infarto/ACV (dolor de pecho, brazo entumecido, dificultad para hablar). Aplique primeros auxilios básicos dentro de sus competencias (Protocolo P3-02).",
+        "criticalAlerts": [
+          "Ante riesgo vital inminente, no espere instrucciones: llame de inmediato."
+        ],
+        "next": [
+          "s4_notif"
+        ]
+      },
+      {
+        "id": "s4_notif",
+        "type": "action",
+        "title": "Notificar al supervisor y despejar el área",
+        "summary": "Dar espacio; proteger la privacidad.",
+        "description": "Notifique inmediatamente al supervisor. Despeje el área alrededor del accidentado. Pida a otras personas que den espacio. No permita que otros clientes filmen o fotografíen al accidentado. Si el cliente puede moverse, acompáñelo a un área tranquila; ofrezca agua si no hay contraindicación. No administre medicamentos.",
+        "next": [
+          "s5"
+        ]
+      },
+      {
+        "id": "s5",
+        "type": "action",
+        "title": "Recopilar datos y testigos",
+        "summary": "Datos del cliente y del evento.",
+        "description": "El supervisor recopila los datos del cliente: nombre, RUT, teléfono, descripción del accidente y testigos presentes. Contacte a un familiar si el cliente lo solicita o no puede valerse por sí mismo. Tome fotografías del lugar para evidencia; no altere la escena.",
+        "verifications": [
+          "Datos del cliente registrados",
+          "Testigos identificados",
+          "Fotografías del lugar"
+        ],
+        "next": [
+          "s6"
+        ]
+      },
+      {
+        "id": "s6",
+        "type": "action",
+        "title": "Elaborar informe y notificar a gerencia",
+        "summary": "IEC-01 y aviso en 2 horas.",
+        "description": "El supervisor elabora el Informe de Incidente con Cliente (IEC-01): hora, circunstancias, testigos, estado del cliente, acciones tomadas. Notifique a la gerencia dentro de las 2 horas. Si el cliente desea iniciar un reclamo, facilite el contacto de la empresa; NO asuma responsabilidades en nombre de la empresa sin autorización de la gerencia.",
+        "criticalAlerts": [
+          "No responda a amenazas legales: facilite el contacto con la gerencia."
+        ],
+        "next": [
+          "s7"
+        ]
+      },
+      {
+        "id": "s7",
+        "type": "end",
+        "title": "Cliente atendido y evento documentado",
+        "description": "El cliente fue atendido, el evento quedó documentado con testigos y evidencia, y la gerencia fue notificada para gestionar las implicancias."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: El cliente presenta síntomas de infarto o ACV (dolor de pecho, brazo entumecido, dificultad para hablar): llame al SAMU inmediatamente.",
+    "DETENER: El accidente ocurrió en un área que debía estar señalizada o restringida y no lo estaba: incidente de alta responsabilidad. Notifique a gerencia.",
+    "DETENER: El cliente amenaza con acciones legales: no responda a amenazas. Facilite contacto con la gerencia."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "Riesgo vital",
+      "action": "SAMU: 131. Si hay riesgo vital inminente, llame de inmediato."
+    },
+    {
+      "situation": "Notificaciones",
+      "action": "Gerencia dentro de 2 horas. Legal / compañía de seguros dentro de 24 horas."
+    },
+    {
+      "situation": "Documentación",
+      "action": "Preserve toda la documentación del incidente para eventuales procesos legales o administrativos."
+    }
+  ],
+  "linkedAnnexes": [
+    "IEC-01",
+    "RB-01"
+  ],
+  "linkedProtocols": [
+    "P3-02",
+    "P3-03"
+  ],
+  "registry": [
+    "Informe de Incidente con Cliente IEC-01: descripción, testigos, acciones.",
+    "Fotografías del lugar y condición del área.",
+    "Declaración de testigos (firmada).",
+    "Registro de notificación a gerencia y hora."
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "code": "IA-01",
+  "version": "1.0",
+  "title": "Informe de Investigación de Accidente",
+  "type": "formulario",
+  "fillable": true,
+  "description": "Informe de investigación de un accidente: causas raíz y medidas correctivas. Complete en pantalla o imprima en blanco. Vinculado a los protocolos P1-06 y P3-03.",
+  "usedInProtocols": [
+    "P1-06",
+    "P2-03",
+    "P3-03"
+  ],
+  "instructions": "Complete tras la atención del accidentado. Use la metodología de causa raíz (5 Por Qués).",
+  "fields": [
+    {
+      "id": "fecha_accidente",
+      "label": "Fecha del accidente",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "hora",
+      "label": "Hora",
+      "type": "time",
+      "required": false
+    },
+    {
+      "id": "lugar",
+      "label": "Lugar",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "accidentado",
+      "label": "Accidentado",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "descripcion",
+      "label": "Descripción del accidente",
+      "type": "textarea",
+      "required": true,
+      "lines": 4
+    },
+    {
+      "id": "causa_inmediata",
+      "label": "Causas inmediatas (actos y condiciones inseguras)",
+      "type": "textarea",
+      "required": true,
+      "lines": 3
+    },
+    {
+      "id": "causa_raiz",
+      "label": "Causas raíz / básicas (factores personales y del trabajo)",
+      "type": "textarea",
+      "required": true,
+      "lines": 3
+    },
+    {
+      "id": "medidas",
+      "label": "Medidas correctivas (con responsable y plazo)",
+      "type": "textarea",
+      "required": true,
+      "lines": 4
+    },
+    {
+      "id": "seguimiento",
+      "label": "Seguimiento de las medidas",
+      "type": "textarea",
+      "required": false,
+      "lines": 2
+    },
+    {
+      "id": "investigador",
+      "label": "Investigado por (nombre y cargo)",
+      "type": "text",
+      "required": true
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "code": "RD-01",
+  "version": "1.0",
+  "title": "Registro de Derrames",
+  "type": "registro",
+  "fillable": true,
+  "description": "Registro de cada derrame de líquido ocurrido en la estación o en terreno. Complete en pantalla y descargue, o imprima en blanco. Vinculado a los protocolos P1-03 y P2-04.",
+  "usedInProtocols": [
+    "P1-03",
+    "P2-04"
+  ],
+  "instructions": "Complete lo antes posible tras controlar el derrame. Sea específico en el volumen y las acciones tomadas.",
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "hora",
+      "label": "Hora",
+      "type": "time",
+      "required": true
+    },
+    {
+      "id": "lugar",
+      "label": "Lugar del derrame",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "tipo_fluido",
+      "label": "Tipo de fluido",
+      "type": "select",
+      "required": true,
+      "options": [
+        "Aceite",
+        "Combustible",
+        "Líquido de frenos",
+        "Refrigerante",
+        "Otro"
+      ]
+    },
+    {
+      "id": "volumen",
+      "label": "Volumen aproximado (litros)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "causa",
+      "label": "Causa probable",
+      "type": "textarea",
+      "required": false,
+      "lines": 2
+    },
+    {
+      "id": "alcanzo_drenaje",
+      "label": "¿Alcanzó alcantarilla o drenaje?",
+      "type": "select",
+      "required": true,
+      "options": [
+        "No",
+        "Sí"
+      ]
+    },
+    {
+      "id": "acciones",
+      "label": "Acciones tomadas (contención, absorción, limpieza)",
+      "type": "textarea",
+      "required": true,
+      "lines": 4
+    },
+    {
+      "id": "residuos",
+      "label": "Disposición de los residuos generados",
+      "type": "textarea",
+      "required": false,
+      "lines": 2
+    },
+    {
+      "id": "notif_ambiental",
+      "label": "¿Se notificó a la SEREMI de Salud?",
+      "type": "select",
+      "required": false,
+      "options": [
+        "No aplica",
+        "Sí"
+      ]
+    },
+    {
+      "id": "responsable",
+      "label": "Registrado por (nombre y cargo)",
+      "type": "text",
+      "required": true
+    }
+  ]
+}

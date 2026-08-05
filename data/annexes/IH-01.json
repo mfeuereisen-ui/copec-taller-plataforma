@@ -1,0 +1,92 @@
+{
+  "code": "IH-01",
+  "version": "1.0",
+  "title": "Inspección de Herramientas Eléctricas, Neumáticas y Dieléctricas",
+  "type": "checklist",
+  "fillable": true,
+  "description": "Inspección periódica de herramientas eléctricas, neumáticas y dieléctricas. Complete en pantalla o imprima en blanco. Vinculado a los protocolos P1-09 y P1-10.",
+  "usedInProtocols": [
+    "P1-09",
+    "P1-10"
+  ],
+  "instructions": "Marque Cumple/Falla/N-A. Toda herramienta con falla se retira de servicio y se etiqueta.",
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "responsable",
+      "label": "Inspecciona",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "herramienta",
+      "label": "Herramienta / N° de identificación",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "chk_cable",
+      "label": "Cable eléctrico sin cortes ni pelados",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_manguera",
+      "label": "Manguera neumática sin rajaduras",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_tierra",
+      "label": "Enchufe con puesta a tierra",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_guardas",
+      "label": "Protecciones y guardas en su lugar",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_accesorio",
+      "label": "Accesorio (disco/mecha) sin grietas ni deformación",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_dielectrico",
+      "label": "Herramientas dieléctricas: aislación en buen estado",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "resultado",
+      "label": "Resultado",
+      "type": "select",
+      "required": true,
+      "options": [
+        "Apta para uso",
+        "FUERA DE SERVICIO"
+      ]
+    },
+    {
+      "id": "observaciones",
+      "label": "Observaciones",
+      "type": "textarea",
+      "required": false,
+      "lines": 2
+    }
+  ]
+}

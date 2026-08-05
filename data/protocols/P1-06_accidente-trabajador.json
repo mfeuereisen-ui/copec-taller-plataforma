@@ -1,0 +1,247 @@
+{
+  "code": "P1-06",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Accidente de un Trabajador dentro de la Estación",
+  "shortTitle": "Accidente de trabajador",
+  "category": "P1",
+  "criticality": "alto-riesgo",
+  "service": [
+    "estacion"
+  ],
+  "tags": [
+    "accidente",
+    "trabajador",
+    "DIAT",
+    "primeros auxilios",
+    "Ley 16.744"
+  ],
+  "icon": "medical",
+  "alertBanner": "La atención médica del accidentado es prioridad. Cumpla los plazos legales de notificación.",
+  "objective": "Establecer la respuesta inmediata ante un accidente que afecte a un trabajador de la estación, garantizando asistencia médica oportuna, preservación de la evidencia y cumplimiento de las obligaciones legales de reporte.",
+  "scope": "Aplica a todos los trabajadores de la estación de servicio. El protocolo debe ser ejecutado por el supervisor de turno y/o el primer respondedor capacitado.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Agravamiento de lesiones por manejo incorrecto del accidentado",
+      "severity": "alta",
+      "family": "personal"
+    },
+    {
+      "id": "R2",
+      "description": "Retraso en la atención médica por desconocimiento del protocolo",
+      "severity": "alta",
+      "family": "personal"
+    },
+    {
+      "id": "R3",
+      "description": "No cumplimiento de plazos legales de notificación (Ley 16.744)",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R4",
+      "description": "Pérdida de información clave para la investigación del accidente",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R5",
+      "description": "Riesgo para quien presta socorro si el área no está asegurada",
+      "severity": "media",
+      "family": "personal"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Primer respondedor",
+      "duty": "Presta primeros auxilios básicos y llama a emergencias"
+    },
+    {
+      "role": "Supervisor de turno",
+      "duty": "Coordina la atención, notifica a la empresa y al organismo administrador"
+    },
+    {
+      "role": "Gerencia / jefatura",
+      "duty": "Notifica al organismo administrador (ACHS/Mutual) dentro de 24 horas según Ley 16.744"
+    }
+  ],
+  "epp": [
+    {
+      "item": "Guantes de látex o nitrilo descartables",
+      "obligatory": true,
+      "note": "Para quien presta primeros auxilios"
+    },
+    {
+      "item": "Mascarilla facial",
+      "obligatory": false,
+      "note": "Si hay riesgo de contacto con fluidos corporales"
+    },
+    {
+      "item": "Botiquín de primeros auxilios",
+      "obligatory": true,
+      "note": "Ubicación señalizada"
+    }
+  ],
+  "tools": [
+    {
+      "name": "Botiquín de primeros auxilios",
+      "verification": "RB-01"
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 16.744 art. 76 — Obligación de denunciar accidentes",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS 40 — Reglamento sobre prevención de riesgos profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1041130"
+    },
+    {
+      "text": "DS 594 — Condiciones sanitarias y ambientales básicas en los lugares de trabajo",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=167766"
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "action",
+        "title": "Asegurar la zona",
+        "summary": "Detener actividad para evitar un segundo accidente.",
+        "description": "Detenga la actividad en el área afectada para evitar un segundo accidente. Asegure la zona antes de acercarse.",
+        "next": [
+          "s2"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "action",
+        "title": "Evaluar al accidentado sin moverlo",
+        "summary": "Consciencia, respiración, hemorragia.",
+        "description": "Evalúe el estado del accidentado sin moverlo: ¿Está consciente? ¿Respira? ¿Hay hemorragia visible? Aplique primeros auxilios básicos según el Protocolo P3-02.",
+        "criticalAlerts": [
+          "No mueva al accidentado si hay sospecha de lesión en columna, salvo riesgo vital inminente (fuego, gas)."
+        ],
+        "next": [
+          "s3"
+        ]
+      },
+      {
+        "id": "s3",
+        "type": "decision",
+        "title": "¿La lesión requiere atención de urgencia?",
+        "yes": "s4_samu",
+        "no": "s5_notif",
+        "yesLabel": "Sí, urgencia",
+        "noLabel": "No, lesión leve"
+      },
+      {
+        "id": "s4_samu",
+        "type": "alert",
+        "title": "Llamar al SAMU (131)",
+        "summary": "Ante pérdida de consciencia, hemorragia o dificultad respiratoria.",
+        "description": "Llame al SAMU (131). Proporcione: dirección exacta, tipo de accidente, condición del accidentado, su nombre y teléfono de contacto. Ante electrocución, corte la corriente antes de tocar al accidentado.",
+        "criticalAlerts": [
+          "Ante pérdida de consciencia, dificultad para respirar o hemorragia severa, llame al SAMU de inmediato."
+        ],
+        "next": [
+          "s5_notif"
+        ]
+      },
+      {
+        "id": "s5_notif",
+        "type": "action",
+        "title": "Notificar al supervisor",
+        "summary": "Aviso inmediato a la jefatura.",
+        "description": "Notifique de inmediato al supervisor de turno (si no es él quien actúa). Si el accidentado puede trasladarse, llévelo al centro asistencial del organismo administrador (ACHS/Mutual) más cercano, portando su credencial y la de la mutualidad.",
+        "next": [
+          "s6"
+        ]
+      },
+      {
+        "id": "s6",
+        "type": "action",
+        "title": "Preservar la escena",
+        "summary": "No alterar el lugar; fotografiar.",
+        "description": "Preserve la escena del accidente tal como quedó: no mueva equipos, herramientas ni retire evidencias. Tome fotografías si es posible. No permita que el accidentado vuelva a trabajar el mismo día sin alta médica.",
+        "verifications": [
+          "Escena preservada",
+          "Fotografías tomadas"
+        ],
+        "next": [
+          "s7"
+        ]
+      },
+      {
+        "id": "s7",
+        "type": "action",
+        "title": "Emitir la DIAT dentro de 24 horas",
+        "summary": "Denuncia a la mutualidad del trabajador.",
+        "description": "El supervisor/jefatura completa la Denuncia Individual de Accidente del Trabajo (DIAT) dentro de las 24 horas y la envía al organismo administrador al que está afiliado el trabajador. Recuerde que Copec Taller tiene personal en distintas mutualidades: verifique a cuál pertenece el accidentado.",
+        "criticalAlerts": [
+          "El plazo de la DIAT es 24 horas. Su incumplimiento se sanciona."
+        ],
+        "verifications": [
+          "DIAT emitida en 24 h a la mutualidad correcta"
+        ],
+        "next": [
+          "s8"
+        ]
+      },
+      {
+        "id": "s8",
+        "type": "action",
+        "title": "Iniciar la investigación (P3-03)",
+        "summary": "Causas y medidas correctivas.",
+        "description": "Inicie el Protocolo P3-03 (Reporte e Investigación de Incidentes) para establecer causas y medidas correctivas. Informe al trabajador sobre sus derechos bajo la Ley 16.744: atención médica gratuita, subsidio de incapacidad y rehabilitación por el organismo administrador.",
+        "next": [
+          "s9"
+        ]
+      },
+      {
+        "id": "s9",
+        "type": "end",
+        "title": "Accidente atendido y reportado",
+        "description": "El trabajador recibió atención, la escena fue preservada, la DIAT se emitió en plazo y se inició la investigación."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: El accidentado tiene pérdida de conciencia, dificultad para respirar o hemorragia severa: llame al SAMU de inmediato.",
+    "DETENER: Hay sospecha de fractura en columna cervical o lesión de cabeza: no mueva al accidentado.",
+    "DETENER: El accidente ocurrió con equipos eléctricos y hay posibilidad de electrocución: corte la corriente antes de tocar al accidentado.",
+    "DETENER: Se detectan más de un accidentado simultáneamente."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "Emergencia médica",
+      "action": "SAMU: 131. Bomberos: 132. Carabineros: 133."
+    },
+    {
+      "situation": "Accidente fatal o con incapacidad permanente",
+      "action": "Es obligatorio notificar de inmediato a la Inspección del Trabajo y la SEREMI de Salud (600 42 000 22), además de la mutualidad."
+    },
+    {
+      "situation": "Notificación interna",
+      "action": "Gerencia y RRHH deben ser notificados dentro de la primera hora del accidente."
+    }
+  ],
+  "linkedAnnexes": [
+    "RI-01",
+    "IA-01",
+    "RB-01"
+  ],
+  "linkedProtocols": [
+    "P3-02",
+    "P3-03"
+  ],
+  "registry": [
+    "Denuncia Individual de Accidente del Trabajo (DIAT): completar en 24 horas.",
+    "Formulario de Reporte de Incidentes RI-01 (interno).",
+    "Fotografías de la escena del accidente.",
+    "Informe de investigación de accidente (IA-01) con causas y medidas correctivas."
+  ]
+}
