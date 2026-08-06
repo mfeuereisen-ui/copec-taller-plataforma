@@ -29,6 +29,56 @@ const VALID_SERVICES = new Set(['estacion', 'movil', 'ambos']);
 const VALID_STEP_TYPES = new Set(['action', 'decision', 'alert', 'end']);
 const VALID_SEVERITY = new Set(['alta', 'media', 'baja']);
 
+// Mapa de idNorma de BCN a la norma que representa (verificado en bcn.cl).
+// Si un enlace usa uno de estos idNorma, el texto debería mencionar la norma correcta,
+// y si menciona una de estas normas, debería usar el idNorma correcto.
+// Esto detecta enlaces cruzados (ej.: decir "DS 63" pero enlazar a otro decreto).
+const KNOWN_NORMS = {
+  '28650':   { label: 'Ley 16.744', keys: ['16.744', '16744'] },
+  '167766':  { label: 'DS 594',     keys: ['594'] },
+  '1041130': { label: 'DS 40',      keys: ['ds 40', 'ds n°40', 'decreto 40', 'd.s. 40', 'ds40'] },
+  '226458':  { label: 'DS 148',     keys: ['148'] },
+  '241855':  { label: 'DS 63',      keys: ['ds 63', 'decreto 63', 'ds63', 'manejo manual de carga'] },
+  '1007469': { label: 'Ley 18.290 (Tránsito)', keys: ['18.290', '18290', 'tránsito', 'transito'] },
+  '61438':   { label: 'Ley 19.496', keys: ['19.496', '19496'] },
+  '253194':  { label: 'Ley 20.123', keys: ['20.123', '20123'] }
+};
+
+// Verifica coherencia entre el texto de una normativa y el idNorma de su URL.
+// Devuelve un mensaje de advertencia si detecta un cruce, o null si está bien.
+function checkNormativeLink(text, url) {
+  if (!url) return null;
+  const m = url.match(/idNorma=(\d+)/);
+  if (!m) return null;
+  const idNorma = m[1];
+  const t = (text || '').toLowerCase();
+
+  // Caso 1: el idNorma es conocido -> el texto debería mencionar esa norma
+  if (KNOWN_NORMS[idNorma]) {
+    const norm = KNOWN_NORMS[idNorma];
+    const menciona = norm.keys.some(k => t.includes(k));
+    if (!menciona) {
+      // El texto no menciona la norma a la que apunta el idNorma: posible cruce
+      // Solo avisamos si el texto menciona OTRA norma conocida (cruce claro)
+      for (const [otroId, otra] of Object.entries(KNOWN_NORMS)) {
+        if (otroId !== idNorma && otra.keys.some(k => t.includes(k))) {
+          return `El texto dice "${text}" pero el enlace apunta a ${norm.label} (idNorma=${idNorma}). ¿Enlace cruzado?`;
+        }
+      }
+    }
+    return null;
+  }
+
+  // Caso 2: el idNorma NO es conocido, pero el texto menciona una norma conocida
+  // -> el enlace probablemente está mal (apunta a otra norma)
+  for (const [id, norm] of Object.entries(KNOWN_NORMS)) {
+    if (norm.keys.some(k => t.includes(k))) {
+      return `El texto menciona ${norm.label} pero el enlace usa idNorma=${idNorma}, que no corresponde. ${norm.label} es idNorma=${id}.`;
+    }
+  }
+  return null;
+}
+
 function loadJsonFiles(dir) {
   if (!fs.existsSync(dir)) return [];
   return fs.readdirSync(dir)
@@ -98,6 +148,14 @@ function validateProtocol(p, allProtocolCodes, allAnnexCodes) {
   const warns = [];
   (p.linkedProtocols || []).forEach(c => {
     if (!allProtocolCodes.has(c)) warns.push(`Protocolo relacionado "${c}" aún no migrado`);
+  });
+
+  // Enlaces de normativa: detectar idNorma que no corresponde a la ley citada
+  (p.normatives || []).forEach(n => {
+    if (n && typeof n === 'object' && n.url) {
+      const msg = checkNormativeLink(n.text, n.url);
+      if (msg) warns.push(`Normativa: ${msg}`);
+    }
   });
 
   return { errors: errs, warnings: warns };
