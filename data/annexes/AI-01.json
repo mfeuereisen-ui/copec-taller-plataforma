@@ -1,0 +1,110 @@
+{
+  "code": "AI-01",
+  "version": "1.0",
+  "title": "Acta de Inducción de Seguridad",
+  "type": "formulario",
+  "fillable": true,
+  "description": "Acta que certifica la inducción de seguridad de un trabajador nuevo y la entrega de información legal (ODI). Complete en pantalla o imprima en blanco. Vinculada al protocolo P3-04.",
+  "usedInProtocols": [
+    "P3-04"
+  ],
+  "instructions": "Complete al finalizar la inducción. El trabajador y el supervisor deben firmar.",
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha de la inducción",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "trabajador",
+      "label": "Nombre del trabajador",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "cargo",
+      "label": "Cargo",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "modalidad",
+      "label": "Modalidad",
+      "type": "select",
+      "required": false,
+      "options": [
+        "Estación",
+        "Taller móvil",
+        "Ambas"
+      ]
+    },
+    {
+      "id": "induce",
+      "label": "Realizada por (supervisor/encargado)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "chk_recorrido",
+      "label": "Recorrido de instalaciones y puntos de emergencia",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_odi",
+      "label": "Obligación de Informar (ODI) explicada y firmada",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_reglamento",
+      "label": "Reglamento Interno entregado",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_protocolos",
+      "label": "Protocolos clave revisados (P1-01/P2-01, P3-01, P3-02, P3-05)",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_epp",
+      "label": "EPP entregado y RE-EPP-01 firmado",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_prueba",
+      "label": "Prueba de comprensión realizada",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "observaciones",
+      "label": "Observaciones",
+      "type": "textarea",
+      "required": false,
+      "lines": 2
+    },
+    {
+      "id": "firma_trabajador",
+      "label": "Firma del trabajador",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "firma_supervisor",
+      "label": "Firma del supervisor",
+      "type": "text",
+      "required": false
+    }
+  ]
+}

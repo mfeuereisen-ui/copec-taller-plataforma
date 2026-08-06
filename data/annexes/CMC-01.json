@@ -1,0 +1,46 @@
+{
+  "code": "CMC-01",
+  "version": "1.0",
+  "title": "Registro de Capacitación en Manejo Manual de Cargas",
+  "type": "registro",
+  "fillable": true,
+  "description": "Registro de trabajadores capacitados en manejo manual de cargas (DS 63). Complete en pantalla o imprima en blanco. Vinculado al protocolo P3-06.",
+  "usedInProtocols": [
+    "P3-06"
+  ],
+  "instructions": "Registre la capacitación entregada y los asistentes.",
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha de la capacitación",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "relator",
+      "label": "Relator",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "contenidos",
+      "label": "Contenidos tratados",
+      "type": "textarea",
+      "required": false,
+      "lines": 3
+    },
+    {
+      "id": "asistentes",
+      "label": "Asistentes (nombre y firma)",
+      "type": "textarea",
+      "required": true,
+      "lines": 6
+    },
+    {
+      "id": "duracion",
+      "label": "Duración",
+      "type": "text",
+      "required": false
+    }
+  ]
+}

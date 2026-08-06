@@ -1,0 +1,280 @@
+{
+  "code": "P3-01",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Uso Obligatorio de EPP según Tipo de Tarea",
+  "shortTitle": "Uso de EPP",
+  "category": "P3",
+  "criticality": "medio",
+  "service": [
+    "ambos"
+  ],
+  "tags": [
+    "EPP",
+    "protección personal",
+    "obligatorio",
+    "tareas"
+  ],
+  "icon": "shield",
+  "alertBanner": "",
+  "objective": "Definir los equipos de protección personal (EPP) obligatorios para cada tipo de tarea en Copec Taller, garantizando que todos los trabajadores utilicen la protección adecuada en todo momento.",
+  "scope": "Aplica a todos los trabajadores de Copec Taller en todas sus modalidades operacionales: estación de servicio, taller móvil, servicios empresa, taller automotriz.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Lesiones oculares por proyección de partículas, salpicaduras de fluidos o chispas",
+      "severity": "alta",
+      "family": "personal"
+    },
+    {
+      "id": "R2",
+      "description": "Lesiones en pies por caída de objetos pesados o derrames",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R3",
+      "description": "Lesiones en manos por cortes, aplastamiento o contacto con sustancias corrosivas",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R4",
+      "description": "Hipoacusia por exposición a ruido de herramientas neumáticas y de motor",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R5",
+      "description": "Lesiones en cabeza por golpes bajo vehículos o en espacios reducidos",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R6",
+      "description": "Enfermedades dermatológicas por contacto repetido con aceites y lubricantes",
+      "severity": "media",
+      "family": "quimico"
+    },
+    {
+      "id": "R7",
+      "description": "Enfermedades respiratorias por inhalación de gases, vapores o polvos",
+      "severity": "alta",
+      "family": "quimico"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Técnico automotriz",
+      "duty": "Usa el EPP correspondiente a cada tarea sin excepción"
+    },
+    {
+      "role": "Supervisor de turno",
+      "duty": "Verifica el uso correcto del EPP y corrige cualquier incumplimiento"
+    },
+    {
+      "role": "Empresa (Copec Taller)",
+      "duty": "Proporciona los EPP en cantidad suficiente, en buen estado y de forma gratuita"
+    }
+  ],
+  "epp": [
+    {
+      "item": "Zapatos de seguridad con suela antideslizante",
+      "obligatory": true,
+      "note": "Uso permanente en toda operación"
+    },
+    {
+      "item": "Lentes de seguridad",
+      "obligatory": true,
+      "note": "Uso permanente en área de trabajo"
+    },
+    {
+      "item": "Guantes de nitrilo o cuero según tarea",
+      "obligatory": true
+    },
+    {
+      "item": "Casco de seguridad",
+      "obligatory": false,
+      "note": "Si aplica"
+    },
+    {
+      "item": "Protectores auditivos",
+      "obligatory": false,
+      "note": "Herramientas neumáticas, motor encendido prolongado"
+    },
+    {
+      "item": "Mascarilla con filtro de vapores orgánicos",
+      "obligatory": false,
+      "note": "Productos químicos, espacios cerrados"
+    },
+    {
+      "item": "Chaleco reflectante",
+      "obligatory": false,
+      "note": "Taller móvil en vía pública"
+    },
+    {
+      "item": "Pantalla facial",
+      "obligatory": false,
+      "note": "Esmerilado, corte con disco"
+    },
+    {
+      "item": "Rodilleras ergonómicas",
+      "obligatory": false,
+      "note": "Trabajo de larga duración en piso"
+    },
+    {
+      "item": "Delantal de cuero",
+      "obligatory": false,
+      "note": "Soldadura, trabajo con ácido de batería"
+    }
+  ],
+  "tools": [
+    {
+      "name": "Tabla de EPP por tipo de tarea (publicada en el área de trabajo)",
+      "verification": ""
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS 594 art. 53 y ss. — Elementos de protección personal",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=167766"
+    },
+    {
+      "text": "DS 40 — Reglamento sobre prevención de riesgos profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1041130"
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "action",
+        "title": "Identificar el tipo de tarea",
+        "summary": "Antes de comenzar.",
+        "description": "Identifique el tipo de tarea que va a realizar antes de comenzar.",
+        "next": [
+          "s2"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "action",
+        "title": "Consultar la tabla de EPP",
+        "summary": "Seleccionar la protección correcta.",
+        "description": "Consulte la tabla de EPP por tipo de tarea (publicada en el área de trabajo) para seleccionar la protección correcta.",
+        "next": [
+          "s3"
+        ]
+      },
+      {
+        "id": "s3",
+        "type": "action",
+        "title": "Verificar el estado del EPP",
+        "summary": "Sin roturas, sin deterioro, limpio.",
+        "description": "Verifique el estado del EPP antes de ponérselo: sin roturas, sin deterioro, limpio y en condiciones de uso.",
+        "verifications": [
+          "EPP sin roturas ni deterioro",
+          "EPP limpio y en condiciones"
+        ],
+        "next": [
+          "s4"
+        ]
+      },
+      {
+        "id": "s4",
+        "type": "decision",
+        "title": "¿El EPP está en buen estado?",
+        "yes": "s6_colocar",
+        "no": "s5_reemplazo",
+        "yesLabel": "Sí",
+        "noLabel": "No, deteriorado/vencido"
+      },
+      {
+        "id": "s5_reemplazo",
+        "type": "alert",
+        "title": "Solicitar reemplazo",
+        "summary": "No usar EPP deteriorado o vencido.",
+        "description": "Si detecta EPP deteriorado, roto o vencido (como mascarillas o guantes): retírelo de uso y solicite reemplazo al supervisor. No inicie la tarea sin la protección adecuada.",
+        "criticalAlerts": [
+          "El EPP deteriorado no protege. No inicie la tarea sin reemplazarlo."
+        ],
+        "next": [
+          "s9_fin"
+        ]
+      },
+      {
+        "id": "s6_colocar",
+        "type": "action",
+        "title": "Colocar el EPP correctamente",
+        "summary": "El EPP mal colocado no protege.",
+        "description": "Coloque el EPP correctamente antes de iniciar la tarea. El EPP mal colocado no protege.",
+        "next": [
+          "s7_durante"
+        ]
+      },
+      {
+        "id": "s7_durante",
+        "type": "alert",
+        "title": "No retirar el EPP durante la tarea",
+        "summary": "Aunque la tarea parezca casi terminada.",
+        "description": "Durante la tarea, NO retire el EPP aunque la tarea parezca casi terminada. Muchos accidentes ocurren en el último minuto de trabajo.",
+        "criticalAlerts": [
+          "No se quite el EPP antes de terminar completamente la tarea."
+        ],
+        "next": [
+          "s8_final"
+        ]
+      },
+      {
+        "id": "s8_final",
+        "type": "action",
+        "title": "Retirar y guardar el EPP",
+        "summary": "Limpiar y no compartir sin higiene.",
+        "description": "Al finalizar la tarea, retire el EPP y guárdelo en el lugar designado. Limpie guantes y lentes si corresponde. Los EPP personales (casco, protectores auditivos) no deben compartirse sin limpieza previa. Informe al supervisor si el stock de EPP está bajo o no disponible.",
+        "next": [
+          "s9_fin"
+        ]
+      },
+      {
+        "id": "s9_fin",
+        "type": "end",
+        "title": "Tarea realizada con protección adecuada",
+        "description": "La tarea se realizó con el EPP correcto, en buen estado y correctamente utilizado, o se detuvo hasta contar con la protección adecuada."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: Un técnico trabaja sin el EPP correspondiente a la tarea: el supervisor debe detener la actividad.",
+    "DETENER: El EPP disponible está deteriorado o venció: solicitar reposición antes de continuar.",
+    "DETENER: Un trabajador nuevo o visita ingresa al área sin EPP: proporcionar EPP de visitante o impedir el acceso."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "Incidente por falta de EPP",
+      "action": "Aplique el Protocolo P3-02 (primeros auxilios) y P3-03 (reporte)."
+    },
+    {
+      "situation": "Incumplimiento reiterado",
+      "action": "El incumplimiento reiterado del uso de EPP es sancionable según el Reglamento Interno."
+    }
+  ],
+  "linkedAnnexes": [
+    "RE-EPP-01",
+    "IE-EPP-01"
+  ],
+  "linkedProtocols": [
+    "P3-02",
+    "P3-03"
+  ],
+  "registry": [
+    "Registro de entrega de EPP a cada trabajador (RE-EPP-01): firma del trabajador al recibir.",
+    "Inspección periódica del estado del EPP (IE-EPP-01): mensual.",
+    "Registro de reposición de EPP deteriorados.",
+    "Reporte de incumplimiento de uso de EPP al supervisor (documentado)."
+  ]
+}

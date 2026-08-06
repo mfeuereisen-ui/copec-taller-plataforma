@@ -1,0 +1,81 @@
+{
+  "code": "IE-EPP-01",
+  "version": "1.0",
+  "title": "Inspección Mensual del Estado del EPP",
+  "type": "checklist",
+  "fillable": true,
+  "description": "Inspección mensual del estado de los EPP en uso. Complete en pantalla o imprima en blanco. Vinculada al protocolo P3-01.",
+  "usedInProtocols": [
+    "P3-01"
+  ],
+  "instructions": "Marque Cumple/Falla/N-A. Todo EPP deteriorado se repone.",
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "responsable",
+      "label": "Inspecciona",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "trabajador",
+      "label": "Trabajador / puesto",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "chk_zapatos",
+      "label": "Zapatos de seguridad en buen estado",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_lentes",
+      "label": "Lentes de seguridad sin rayas ni roturas",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_guantes",
+      "label": "Guantes sin perforaciones ni desgaste",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_auditivos",
+      "label": "Protectores auditivos en buen estado",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_mascarilla",
+      "label": "Mascarilla y filtros vigentes (no saturados)",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_otros",
+      "label": "Otros EPP del cargo en buen estado",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "reposicion",
+      "label": "EPP que requiere reposición",
+      "type": "textarea",
+      "required": false,
+      "lines": 2
+    }
+  ]
+}

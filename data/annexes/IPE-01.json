@@ -1,0 +1,99 @@
+{
+  "code": "IPE-01",
+  "version": "1.0",
+  "title": "Inspección Preoperacional Diaria — Estación",
+  "type": "checklist",
+  "fillable": true,
+  "description": "Planilla de inspección preoperacional al inicio de la jornada en estación. Complete en pantalla o imprima en blanco. Vinculada al protocolo P3-05.",
+  "usedInProtocols": [
+    "P3-05"
+  ],
+  "instructions": "Marque Cumple/Falla/N-A. Toda falla crítica se marca fuera de servicio y se notifica al supervisor.",
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "turno",
+      "label": "Turno",
+      "type": "select",
+      "required": false,
+      "options": [
+        "Mañana",
+        "Tarde",
+        "Noche"
+      ]
+    },
+    {
+      "id": "tecnico",
+      "label": "Técnico",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "chk_manuales",
+      "label": "Herramientas manuales sin daños",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_electricas",
+      "label": "Herramientas eléctricas/neumáticas OK (cables, guardas)",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_elevador",
+      "label": "Elevador: seguros, mangueras, nivel hidráulico OK",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_botiquin",
+      "label": "Botiquín completo y vigente",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_extintores",
+      "label": "Extintores operativos (manómetro verde, precinto)",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_derrames",
+      "label": "Kit de derrames completo",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "chk_area",
+      "label": "Área ordenada, sin derrames, señalizada",
+      "type": "check",
+      "required": false,
+      "kind": "check"
+    },
+    {
+      "id": "fallas",
+      "label": "Fallas detectadas / equipos fuera de servicio",
+      "type": "textarea",
+      "required": false,
+      "lines": 3
+    },
+    {
+      "id": "firma",
+      "label": "Firma (técnico / supervisor)",
+      "type": "text",
+      "required": false
+    }
+  ]
+}

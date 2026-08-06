@@ -1,0 +1,220 @@
+{
+  "code": "P3-06",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Manejo Manual de Cargas (Ergonomía)",
+  "shortTitle": "Manejo manual de cargas",
+  "category": "P3",
+  "criticality": "medio",
+  "service": [
+    "ambos"
+  ],
+  "tags": [
+    "ergonomía",
+    "cargas",
+    "levantamiento",
+    "lumbalgia",
+    "DS 63"
+  ],
+  "icon": "lift",
+  "alertBanner": "",
+  "objective": "Establecer las técnicas correctas para el manejo manual de cargas en Copec Taller, previniendo lesiones músculo-esqueléticas (lumbalgias, hernias, distensiones) por levantamiento, transporte o arrastre de cargas pesadas.",
+  "scope": "Aplica a todos los trabajadores de Copec Taller que manipulen cargas manualmente: bidones de aceite, baterías, llantas, neumáticos, herramientas pesadas, cajas de repuestos.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Lumbalgia aguda por levantamiento incorrecto",
+      "severity": "media",
+      "family": "ergonomico"
+    },
+    {
+      "id": "R2",
+      "description": "Hernia discal por sobreesfuerzo repetitivo",
+      "severity": "alta",
+      "family": "ergonomico"
+    },
+    {
+      "id": "R3",
+      "description": "Distensiones musculares en espalda, hombros y brazos",
+      "severity": "media",
+      "family": "ergonomico"
+    },
+    {
+      "id": "R4",
+      "description": "Lesiones en pies por caída de cargas",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R5",
+      "description": "Enfermedad profesional por manipulación repetitiva a lo largo del tiempo",
+      "severity": "alta",
+      "family": "ergonomico"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Técnico automotriz",
+      "duty": "Aplica las técnicas correctas en cada manipulación de carga"
+    },
+    {
+      "role": "Supervisor",
+      "duty": "Verifica las técnicas y dispone de medios auxiliares cuando la carga supera los límites"
+    },
+    {
+      "role": "Empresa",
+      "duty": "Proporciona medios auxiliares (carro de mano, elevador)"
+    }
+  ],
+  "epp": [
+    {
+      "item": "Guantes de trabajo de cuero o nitrilo para manejo de cargas",
+      "obligatory": true
+    },
+    {
+      "item": "Zapatos de seguridad con punta de acero",
+      "obligatory": true
+    },
+    {
+      "item": "Faja lumbar de soporte",
+      "obligatory": false,
+      "note": "Opcional, no reemplaza la técnica correcta"
+    }
+  ],
+  "tools": [
+    {
+      "name": "Carro de mano / portabidones",
+      "verification": ""
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS 63 — Manejo manual de cargas (Ergonomía)",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=242030"
+    },
+    {
+      "text": "DS 594 art. 5",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=167766"
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "action",
+        "title": "Evaluar la carga",
+        "summary": "Peso, puntos de agarre, estabilidad.",
+        "description": "Evalúe la carga antes de levantarla: ¿Cuánto pesa? ¿Tiene puntos de agarre? ¿Está estable?",
+        "next": [
+          "s2"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "decision",
+        "title": "¿La carga supera el límite legal (DS 63)?",
+        "summary": "Hombres: 25 kg normal / 50 kg ocasional. Mujeres: 20 kg.",
+        "yes": "s3_ayuda",
+        "no": "s4_tecnica",
+        "yesLabel": "Sí, lo supera",
+        "noLabel": "No, dentro del límite"
+      },
+      {
+        "id": "s3_ayuda",
+        "type": "alert",
+        "title": "Usar ayuda mecánica o entre dos",
+        "summary": "No levantar solo una carga sobre el límite.",
+        "description": "Límites legales según DS 63: hombres máximo 50 kg (levantamiento ocasional), 25 kg en condiciones normales; mujeres máximo 20 kg. Si la carga supera el límite, utilice ayuda mecánica (carro, grúa, carretilla) o entre dos personas.",
+        "criticalAlerts": [
+          "No intente levantar solo una carga que supera el límite legal."
+        ],
+        "next": [
+          "s4_tecnica"
+        ]
+      },
+      {
+        "id": "s4_tecnica",
+        "type": "action",
+        "title": "Técnica correcta de levantamiento",
+        "summary": "Piernas, no espalda; no girar la columna.",
+        "description": "Colóquese cerca de la carga, pies separados al ancho de los hombros. Doble las rodillas, mantenga la espalda recta y el core contraído. Agarre la carga firmemente con ambas manos. Levante con la fuerza de las piernas, no de la espalda. Mantenga la carga cerca del cuerpo. NO gire la columna mientras levanta.",
+        "verifications": [
+          "Espalda recta, fuerza en las piernas",
+          "Sin giro de columna"
+        ],
+        "next": [
+          "s5_transporte"
+        ]
+      },
+      {
+        "id": "s5_transporte",
+        "type": "action",
+        "title": "Transportar y depositar",
+        "summary": "Visibilidad; movimiento inverso al bajar.",
+        "description": "Camine en forma segura, con visibilidad sobre la carga; si tapa su visión, pida a alguien que lo guíe. Para depositar, haga el movimiento inverso: doble las rodillas, mantenga la espalda recta y baje la carga con control.",
+        "next": [
+          "s6_auxiliares"
+        ]
+      },
+      {
+        "id": "s6_auxiliares",
+        "type": "action",
+        "title": "Usar medios auxiliares para cargas específicas",
+        "summary": "Carro para bidones; asistencia para baterías/llantas.",
+        "description": "Para bidones de 20 o 25 litros: use el carro portabidones, incline el bidón y hágalo rodar sobre su arista hasta el carro. Para llantas y baterías: use carro de mano o pida asistencia (baterías de auto pesan 12-22 kg; las de camión pueden superar 30 kg).",
+        "next": [
+          "s7_pausas"
+        ]
+      },
+      {
+        "id": "s7_pausas",
+        "type": "action",
+        "title": "Alternar posturas y pausar",
+        "summary": "Pausas de estiramiento cada 2 horas.",
+        "description": "Evite mantener la misma postura por períodos prolongados. Alterne posturas y realice pausas de estiramiento cada 2 horas. Si siente dolor de espalda durante o después del trabajo, notifique al supervisor; no ignore el dolor, es una señal de alerta.",
+        "next": [
+          "s8_fin"
+        ]
+      },
+      {
+        "id": "s8_fin",
+        "type": "end",
+        "title": "Carga manipulada con técnica segura",
+        "description": "La carga se manipuló con la técnica correcta o con ayuda cuando superaba el límite, con pausas para prevenir lesiones."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: Un trabajador intenta levantar una carga que supera el límite legal: intervenga y proporcione asistencia o medios auxiliares.",
+    "DETENER: Un trabajador realiza movimientos bruscos o gira la columna con carga.",
+    "DETENER: Se repiten muchos levantamientos de carga en un turno sin pausas: reorganice las tareas."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "Lesión de espalda aguda (dolor intenso, irradiación a piernas, incapacidad de moverse)",
+      "action": "Active Protocolo P3-02. Llame al SAMU si es severo. Notifique al supervisor."
+    },
+    {
+      "situation": "Lesión",
+      "action": "Active Protocolo P3-03 (Reporte de Incidentes)."
+    }
+  ],
+  "linkedAnnexes": [
+    "CMC-01",
+    "RI-01"
+  ],
+  "linkedProtocols": [
+    "P3-02",
+    "P3-03"
+  ],
+  "registry": [
+    "Capacitación en manejo manual de cargas (CMC-01): registro de los trabajadores capacitados.",
+    "Reporte de incidentes RI-01 ante lesiones musculo-esqueléticas.",
+    "Evaluación ergonómica del puesto de trabajo si se detectan lesiones repetitivas."
+  ]
+}

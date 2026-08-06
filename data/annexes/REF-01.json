@@ -1,0 +1,49 @@
+{
+  "code": "REF-01",
+  "version": "1.0",
+  "title": "Registro de Entrega y Cambio de Filtros de Mascarillas",
+  "type": "registro",
+  "fillable": true,
+  "description": "Registro de entrega y cambio de filtros de mascarillas respiratorias. Complete en pantalla o imprima en blanco. Vinculado al protocolo P3-08.",
+  "usedInProtocols": [
+    "P3-08"
+  ],
+  "instructions": "Registre cada entrega o cambio de filtro.",
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "trabajador",
+      "label": "Trabajador",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "tipo_filtro",
+      "label": "Tipo de filtro (OV, AG, P100, etc.)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "motivo",
+      "label": "Motivo",
+      "type": "select",
+      "required": false,
+      "options": [
+        "Entrega inicial",
+        "Cambio por saturación",
+        "Cambio periódico"
+      ]
+    },
+    {
+      "id": "firma",
+      "label": "Firma del trabajador",
+      "type": "text",
+      "required": false
+    }
+  ]
+}

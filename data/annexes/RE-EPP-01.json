@@ -1,0 +1,57 @@
+{
+  "code": "RE-EPP-01",
+  "version": "1.0",
+  "title": "Registro de Entrega de EPP",
+  "type": "registro",
+  "fillable": true,
+  "description": "Registro de entrega de equipos de protección personal a cada trabajador, con firma de recepción. Complete en pantalla o imprima en blanco. Vinculado a los protocolos P3-01 y P3-04.",
+  "usedInProtocols": [
+    "P3-01",
+    "P3-04"
+  ],
+  "instructions": "Registre cada EPP entregado. El trabajador firma al recibir.",
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha de entrega",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "trabajador",
+      "label": "Trabajador",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "cargo",
+      "label": "Cargo",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "epp_entregado",
+      "label": "EPP entregado (tipo, cantidad, talla)",
+      "type": "textarea",
+      "required": true,
+      "lines": 5
+    },
+    {
+      "id": "motivo",
+      "label": "Motivo",
+      "type": "select",
+      "required": false,
+      "options": [
+        "Entrega inicial (inducción)",
+        "Reposición por desgaste",
+        "Reposición por pérdida"
+      ]
+    },
+    {
+      "id": "firma",
+      "label": "Firma del trabajador",
+      "type": "text",
+      "required": false
+    }
+  ]
+}

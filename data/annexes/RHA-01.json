@@ -1,0 +1,71 @@
+{
+  "code": "RHA-01",
+  "version": "1.0",
+  "title": "Registro de Mediciones de Higiene Ambiental",
+  "type": "registro",
+  "fillable": true,
+  "description": "Registro de mediciones de higiene ambiental (gases, vapores) y su comparación con los límites del DS 594. Complete en pantalla o imprima en blanco. Vinculado al protocolo P3-08.",
+  "usedInProtocols": [
+    "P3-08"
+  ],
+  "instructions": "Registre las mediciones realizadas por el organismo administrador u otro competente.",
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha de la medición",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "organismo",
+      "label": "Organismo que midió",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "agente",
+      "label": "Agente medido (CO, HC, vapores, etc.)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "resultado",
+      "label": "Resultado",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "limite",
+      "label": "Límite DS 594",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "cumple",
+      "label": "¿Dentro del límite?",
+      "type": "select",
+      "required": false,
+      "options": [
+        "Sí",
+        "No"
+      ]
+    },
+    {
+      "id": "medidas",
+      "label": "Medidas adoptadas si excede",
+      "type": "textarea",
+      "required": false,
+      "lines": 3
+    },
+    {
+      "id": "comunicado",
+      "label": "¿Comunicado a los trabajadores?",
+      "type": "select",
+      "required": false,
+      "options": [
+        "Sí",
+        "No"
+      ]
+    }
+  ]
+}

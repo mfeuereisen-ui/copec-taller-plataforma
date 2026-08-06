@@ -1,0 +1,40 @@
+{
+  "code": "RHDS-01",
+  "version": "1.0",
+  "title": "Registro de Hojas de Datos de Seguridad (HDS) Disponibles",
+  "type": "registro",
+  "fillable": true,
+  "description": "Listado actualizado de las HDS de los productos químicos presentes en la estación. Complete en pantalla o imprima en blanco. Vinculado al protocolo P3-08.",
+  "usedInProtocols": [
+    "P3-08"
+  ],
+  "instructions": "Registre cada producto químico y la vigencia de su HDS.",
+  "fields": [
+    {
+      "id": "fecha",
+      "label": "Fecha de actualización",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "responsable",
+      "label": "Responsable",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "productos",
+      "label": "Productos y estado de su HDS (nombre, proveedor, fecha HDS, ubicación)",
+      "type": "textarea",
+      "required": true,
+      "lines": 8
+    },
+    {
+      "id": "faltantes",
+      "label": "Productos sin HDS (requieren gestión)",
+      "type": "textarea",
+      "required": false,
+      "lines": 2
+    }
+  ]
+}

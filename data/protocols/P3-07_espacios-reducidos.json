@@ -1,0 +1,279 @@
+{
+  "code": "P3-07",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Trabajo en Espacios Reducidos o con Ventilación Limitada",
+  "shortTitle": "Espacios reducidos",
+  "category": "P3",
+  "criticality": "alto-riesgo",
+  "service": [
+    "ambos"
+  ],
+  "tags": [
+    "espacio confinado",
+    "ventilación",
+    "gases",
+    "asfixia",
+    "foso",
+    "medición"
+  ],
+  "icon": "warning",
+  "alertBanner": "Riesgo de asfixia y exposición a gases tóxicos. El técnico nunca debe trabajar solo en un espacio confinado.",
+  "objective": "Establecer los controles de seguridad para trabajar en espacios con ventilación limitada o que potencialmente acumulan gases o vapores peligrosos: foso de inspección, interior de vehículos en estaciones cerradas, bodegas o garajes sin ventilación.",
+  "scope": "Aplica a todos los técnicos de Copec Taller que trabajen en espacios reducidos o con ventilación insuficiente, en ambas modalidades de operación.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Asfixia por desplazamiento del oxígeno (acumulación de gases inertes o de combustión)",
+      "severity": "alta",
+      "family": "personal"
+    },
+    {
+      "id": "R2",
+      "description": "Intoxicación por monóxido de carbono (CO) de motores encendidos en espacios cerrados",
+      "severity": "alta",
+      "family": "quimico"
+    },
+    {
+      "id": "R3",
+      "description": "Intoxicación por vapores de hidrocarburos o solventes",
+      "severity": "alta",
+      "family": "quimico"
+    },
+    {
+      "id": "R4",
+      "description": "Explosión por acumulación de vapores inflamables",
+      "severity": "alta",
+      "family": "incendio"
+    },
+    {
+      "id": "R5",
+      "description": "Pérdida de conciencia sin testigos cercanos",
+      "severity": "alta",
+      "family": "personal"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Técnico que trabaja en el espacio",
+      "duty": "Cumple el protocolo y avisa al técnico de apoyo"
+    },
+    {
+      "role": "Técnico de apoyo",
+      "duty": "Permanece en el exterior, visible y disponible durante toda la operación"
+    },
+    {
+      "role": "Supervisor",
+      "duty": "Autoriza el ingreso y verifica las condiciones antes de comenzar"
+    }
+  ],
+  "epp": [
+    {
+      "item": "Mascarilla de media cara con filtro de vapores orgánicos (OV) y gases ácidos (AG)",
+      "obligatory": false,
+      "note": "Si se detectan vapores"
+    },
+    {
+      "item": "Detector de gases portátil (CO, O2, HC)",
+      "obligatory": false,
+      "note": "Obligatorio si se dispone"
+    },
+    {
+      "item": "Zapatos de seguridad antideslizantes",
+      "obligatory": true
+    },
+    {
+      "item": "Linterna o lámpara portátil ATEX (antiexplosión)",
+      "obligatory": false,
+      "note": "Si hay riesgo de inflamación"
+    },
+    {
+      "item": "Guantes de trabajo",
+      "obligatory": true
+    }
+  ],
+  "tools": [
+    {
+      "name": "Detector de gases portátil (CO, O2, HC)",
+      "verification": "RMG-01"
+    },
+    {
+      "name": "Ventilador eléctrico / sistema de extracción",
+      "verification": ""
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS 594 art. 36 y ss. — Trabajo en espacio confinado",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=167766"
+    },
+    {
+      "text": "DS 40 — Reglamento sobre prevención de riesgos profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1041130"
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "action",
+        "title": "Identificar el espacio y contaminantes",
+        "summary": "¿Motores? ¿Solventes? ¿Subterráneo?",
+        "description": "Antes de ingresar, identifique el tipo de espacio y los potenciales contaminantes. ¿Hay motores en funcionamiento cercanos? ¿Se usaron solventes o pinturas recientemente? ¿Es un espacio subterráneo (foso)?",
+        "next": [
+          "s2"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "action",
+        "title": "Ventilar antes de ingresar",
+        "summary": "Mínimo 10 minutos.",
+        "description": "Ventile el espacio durante al menos 10 minutos antes de ingresar: abra puertas, ventanas, use ventilador eléctrico si está disponible.",
+        "next": [
+          "s3"
+        ]
+      },
+      {
+        "id": "s3",
+        "type": "decision",
+        "title": "¿La medición de gases está dentro de límites?",
+        "summary": "CO <25 ppm, O2 >19,5%, HC <10% LEL.",
+        "yes": "s5_apoyo",
+        "no": "s4_noingresar",
+        "yesLabel": "Sí, dentro de límites",
+        "noLabel": "No / sin detector"
+      },
+      {
+        "id": "s4_noingresar",
+        "type": "alert",
+        "title": "No ingresar: ventilar más",
+        "summary": "Si supera límites o no hay detector.",
+        "description": "Si dispone de detector de gases y algún nivel supera el límite (CO 25 ppm, O2 mínimo 19,5%, HC 10% del LEL), NO ingrese y ventile más. Si no dispone de detector, extreme la ventilación y la precaución, y no ingrese si hay cualquier señal de acumulación de gases (olor, motores recién apagados).",
+        "criticalAlerts": [
+          "No ingrese a un espacio con niveles de gas fuera de límite o sin ventilar."
+        ],
+        "next": [
+          "s5_apoyo"
+        ]
+      },
+      {
+        "id": "s5_apoyo",
+        "type": "alert",
+        "title": "Asignar un técnico de apoyo",
+        "summary": "Nunca trabajar solo.",
+        "description": "Asigne un técnico de apoyo que permanezca en el exterior del espacio en todo momento, con comunicación directa con el técnico en el interior. El técnico de apoyo conoce la ubicación del extintor, botiquín y los números de emergencia.",
+        "criticalAlerts": [
+          "El técnico NUNCA debe trabajar solo en un espacio confinado."
+        ],
+        "next": [
+          "s6_ingresar"
+        ]
+      },
+      {
+        "id": "s6_ingresar",
+        "type": "action",
+        "title": "Ingresar con EPP y detector",
+        "summary": "Monitoreo continuo de gases.",
+        "description": "Ingrese con el EPP completo. Lleve el detector de gases si está disponible (monitoreo continuo).",
+        "next": [
+          "s7_motor"
+        ]
+      },
+      {
+        "id": "s7_motor",
+        "type": "alert",
+        "title": "No encender motores sin extracción",
+        "summary": "Usar extracción forzada de gases.",
+        "description": "NO encienda motores de vehículos en espacios cerrados sin extracción forzada de gases. Si debe encenderse un motor, use el sistema de extracción de gases de escape; si no hay sistema, abra todas las puertas y ubíquese en una zona con flujo de aire.",
+        "criticalAlerts": [
+          "El monóxido de carbono de un motor en un espacio cerrado puede ser mortal en minutos."
+        ],
+        "next": [
+          "s8_comunicacion"
+        ]
+      },
+      {
+        "id": "s8_comunicacion",
+        "type": "action",
+        "title": "Comunicación periódica",
+        "summary": "Cada 10 minutos como máximo.",
+        "description": "Establezca una comunicación periódica con el técnico de apoyo (cada 10 minutos como máximo).",
+        "next": [
+          "s9_sintomas"
+        ]
+      },
+      {
+        "id": "s9_sintomas",
+        "type": "alert",
+        "title": "Salir ante cualquier síntoma",
+        "summary": "Mareo, dolor de cabeza, náuseas, confusión.",
+        "description": "Si siente cualquier síntoma (mareo, dolor de cabeza, náuseas, confusión), salga INMEDIATAMENTE del espacio.",
+        "criticalAlerts": [
+          "Los síntomas de intoxicación son una alerta de peligro vital. Salga de inmediato."
+        ],
+        "next": [
+          "s10_salir"
+        ]
+      },
+      {
+        "id": "s10_salir",
+        "type": "action",
+        "title": "Finalizar y ventilar",
+        "summary": "Salir y ventilar antes de cerrar.",
+        "description": "Al finalizar el trabajo, salga del espacio y ventile nuevamente antes de autorizar el cierre.",
+        "next": [
+          "s11_fin"
+        ]
+      },
+      {
+        "id": "s11_fin",
+        "type": "end",
+        "title": "Trabajo en espacio reducido finalizado",
+        "description": "El trabajo se realizó con ventilación, medición de gases, técnico de apoyo y monitoreo, saliendo ante cualquier síntoma."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: El técnico no responde a la comunicación periódica del técnico de apoyo.",
+    "DETENER: El detector de gases indica superación de los límites permitidos.",
+    "DETENER: El técnico experimenta síntomas (mareo, náuseas): salida inmediata.",
+    "DETENER: Se enciende un motor sin ventilación activa."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "El técnico pierde el conocimiento en el espacio",
+      "action": "NO ingrese sin protección respiratoria. Llame al SAMU (131) y a Bomberos (132). Ventile al máximo desde el exterior."
+    },
+    {
+      "situation": "El técnico puede salir asistido",
+      "action": "Sáquelo de inmediato al aire fresco. Aplique Protocolo P3-02."
+    },
+    {
+      "situation": "Todo evento",
+      "action": "Active Protocolo P3-03 (Reporte de Incidentes)."
+    }
+  ],
+  "linkedAnnexes": [
+    "ATE-01",
+    "RMG-01",
+    "RI-01"
+  ],
+  "linkedProtocols": [
+    "P1-02",
+    "P3-02",
+    "P3-03",
+    "P3-08"
+  ],
+  "registry": [
+    "Autorización de trabajo en espacio confinado (ATE-01): firmada por el supervisor antes de cada ingreso.",
+    "Registro de medición de gases (RMG-01): niveles antes y durante el trabajo.",
+    "Registro del técnico de apoyo (nombre, hora, verificaciones).",
+    "Reporte de Incidentes RI-01 ante cualquier evento."
+  ]
+}

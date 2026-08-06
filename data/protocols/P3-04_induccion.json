@@ -1,0 +1,231 @@
+{
+  "code": "P3-04",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Inducción de Seguridad para Trabajadores Nuevos",
+  "shortTitle": "Inducción de seguridad",
+  "category": "P3",
+  "criticality": "medio",
+  "service": [
+    "ambos"
+  ],
+  "tags": [
+    "inducción",
+    "trabajador nuevo",
+    "ODI",
+    "obligación de informar",
+    "DS 40"
+  ],
+  "icon": "graduation",
+  "alertBanner": "",
+  "objective": "Asegurar que todo trabajador que ingresa a Copec Taller recibe la formación en seguridad operacional necesaria para desempeñar su trabajo de forma segura desde el primer día, cumpliendo con la obligación legal de informar sobre riesgos (DS 40).",
+  "scope": "Aplica a todos los trabajadores nuevos (contratados o contratistas), trabajadores en período de prueba y personal temporal.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Accidentes en las primeras semanas por desconocimiento del entorno y los procedimientos",
+      "severity": "alta",
+      "family": "personal"
+    },
+    {
+      "id": "R2",
+      "description": "Exposición a riesgos no conocidos por falta de información",
+      "severity": "alta",
+      "family": "personal"
+    },
+    {
+      "id": "R3",
+      "description": "Incumplimiento legal de la Obligación de Informar (DS 40)",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R4",
+      "description": "Daño a equipos o vehículos de clientes por desconocimiento de procedimientos",
+      "severity": "media",
+      "family": "personal"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Supervisor de turno o encargado de prevención",
+      "duty": "Realiza la inducción"
+    },
+    {
+      "role": "Gerencia",
+      "duty": "Garantiza que la inducción se realice antes del primer día de trabajo operativo"
+    },
+    {
+      "role": "Trabajador nuevo",
+      "duty": "Participa activamente y firma el acta de recepción"
+    }
+  ],
+  "epp": [
+    {
+      "item": "EPP completo del cargo (se entrega durante la inducción: zapatos, lentes, guantes, casco)",
+      "obligatory": true
+    }
+  ],
+  "tools": [
+    {
+      "name": "Reglamento Interno de Orden, Higiene y Seguridad",
+      "verification": ""
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS 40 art. 21 — Obligación de informar (ODI)",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1041130"
+    },
+    {
+      "text": "DS 594 — Condiciones sanitarias y ambientales básicas en los lugares de trabajo",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=167766"
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "alert",
+        "title": "Inducción antes del primer día operativo",
+        "summary": "No puede iniciar sin completarla.",
+        "description": "Antes del primer día operativo, el supervisor agenda y realiza la inducción. El trabajador NO puede iniciar actividades sin haberla completado.",
+        "criticalAlerts": [
+          "Un trabajador no puede comenzar a operar sin la inducción completa."
+        ],
+        "next": [
+          "s2"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "action",
+        "title": "Bienvenida y recorrido",
+        "summary": "Instalaciones, salidas, botiquín, extintores.",
+        "description": "Presente al trabajador al equipo, recorra las instalaciones y muestre: áreas de trabajo, salidas de emergencia, puntos de encuentro, ubicación del botiquín, extintores y kit de derrames.",
+        "next": [
+          "s3"
+        ]
+      },
+      {
+        "id": "s3",
+        "type": "action",
+        "title": "Obligación de Informar (DS 40)",
+        "summary": "Riesgos, medidas y EPP, por escrito.",
+        "description": "Explique los riesgos específicos de cada puesto, las medidas preventivas y los EPP asignados. Esta información debe constar por escrito y ser firmada por el trabajador (ODI).",
+        "verifications": [
+          "ODI explicada",
+          "ODI firmada por el trabajador"
+        ],
+        "next": [
+          "s4"
+        ]
+      },
+      {
+        "id": "s4",
+        "type": "action",
+        "title": "Reglamento Interno",
+        "summary": "Entrega y acuse de recibo.",
+        "description": "Entregue una copia del Reglamento Interno de Orden, Higiene y Seguridad. Explique las normas más importantes. El trabajador firma el acuse de recibo.",
+        "next": [
+          "s5"
+        ]
+      },
+      {
+        "id": "s5",
+        "type": "action",
+        "title": "Revisión de protocolos clave",
+        "summary": "P1-01/P2-01, P3-01, P3-02, P3-05.",
+        "description": "Revise los protocolos más relevantes para su puesto: P1-01 o P2-01 (según modalidad), P3-01 (EPP), P3-02 (primeros auxilios), P3-05 (inspección preoperacional).",
+        "next": [
+          "s6"
+        ]
+      },
+      {
+        "id": "s6",
+        "type": "action",
+        "title": "Demostración práctica acompañada",
+        "summary": "Supervisión durante los primeros 5 días.",
+        "description": "Acompañe al trabajador nuevo en la ejecución de sus primeras tareas. Un técnico experimentado debe supervisar y guiar al nuevo trabajador durante los primeros 5 días de trabajo operativo.",
+        "next": [
+          "s7"
+        ]
+      },
+      {
+        "id": "s7",
+        "type": "action",
+        "title": "Entrega de EPP",
+        "summary": "Todos los EPP del cargo, con firma.",
+        "description": "Entregue todos los EPP correspondientes al cargo. Explique el uso correcto de cada uno. El trabajador firma el Registro de Entrega de EPP (RE-EPP-01). Para taller móvil, explique el protocolo P2-07 (check-in/out) y practíquelo.",
+        "verifications": [
+          "EPP entregado",
+          "RE-EPP-01 firmado"
+        ],
+        "next": [
+          "s8"
+        ]
+      },
+      {
+        "id": "s8",
+        "type": "action",
+        "title": "Prueba de comprensión y acta",
+        "summary": "Verificar y firmar el AI-01.",
+        "description": "Realice preguntas orales o una evaluación escrita breve para verificar que el trabajador comprendió los conceptos fundamentales. El trabajador y el supervisor firman el Acta de Inducción (AI-01) que certifica que se realizó la inducción y se entregó la información requerida por ley.",
+        "verifications": [
+          "Prueba de comprensión realizada",
+          "Acta de Inducción AI-01 firmada"
+        ],
+        "next": [
+          "s9"
+        ]
+      },
+      {
+        "id": "s9",
+        "type": "action",
+        "title": "Período de supervisión (30 días)",
+        "summary": "Observaciones 2 veces por semana.",
+        "description": "En los primeros 30 días, el supervisor realiza observaciones de seguridad del trabajador nuevo al menos 2 veces por semana.",
+        "next": [
+          "s10_fin"
+        ]
+      },
+      {
+        "id": "s10_fin",
+        "type": "end",
+        "title": "Inducción completada",
+        "description": "El trabajador recibió la inducción completa, firmó la ODI, el acta y el registro de EPP, y entra al período de supervisión."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: Un trabajador nuevo comienza actividades sin haber completado la inducción: detener de inmediato y completar la inducción.",
+    "DETENER: El trabajador nuevo no firma el Acta de Inducción o la ODI: no puede iniciar actividades hasta firmar."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "El trabajador nuevo sufre un accidente durante la inducción o los primeros días",
+      "action": "Aplique Protocolo P3-02 y P3-03. Reporte incluyendo la mención de que se trata de un trabajador en inducción."
+    }
+  ],
+  "linkedAnnexes": [
+    "AI-01",
+    "RE-EPP-01"
+  ],
+  "linkedProtocols": [
+    "P3-01",
+    "P3-02",
+    "P3-05"
+  ],
+  "registry": [
+    "Acta de Inducción AI-01: firmada por el trabajador y el supervisor.",
+    "Obligación de Informar ODI: firmada por el trabajador.",
+    "Registro de Entrega de EPP RE-EPP-01: firmada por el trabajador.",
+    "Registro de Entrega del Reglamento Interno.",
+    "Evaluación de comprensión de la inducción (si aplica)."
+  ]
+}

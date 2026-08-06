@@ -1,0 +1,247 @@
+{
+  "code": "P3-05",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Inspección Preoperacional Diaria (Herramientas, Equipos, Vehículo)",
+  "shortTitle": "Inspección preoperacional",
+  "category": "P3",
+  "criticality": "medio",
+  "service": [
+    "ambos"
+  ],
+  "tags": [
+    "inspección",
+    "preoperacional",
+    "diaria",
+    "equipos",
+    "vehículo"
+  ],
+  "icon": "check",
+  "alertBanner": "",
+  "objective": "Garantizar que al inicio de cada jornada de trabajo, todos los equipos, herramientas y vehículos de Copec Taller se encuentren en condiciones óptimas de seguridad para su operación, detectando y corrigiendo fallas antes de que causen accidentes.",
+  "scope": "Aplica a todos los técnicos y supervisores de Copec Taller al inicio de cada jornada de trabajo, tanto en la estación fija como en el taller móvil.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Fallas de equipo durante la operación que causan accidentes",
+      "severity": "alta",
+      "family": "personal"
+    },
+    {
+      "id": "R2",
+      "description": "Uso de herramientas deterioradas que aumentan el riesgo de lesión",
+      "severity": "media",
+      "family": "personal"
+    },
+    {
+      "id": "R3",
+      "description": "Accidente vial por falla mecánica del vehículo del taller móvil",
+      "severity": "alta",
+      "family": "vial"
+    },
+    {
+      "id": "R4",
+      "description": "Derrames por contenedores o mangueras dañadas",
+      "severity": "media",
+      "family": "derrame"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Técnico",
+      "duty": "Realiza la inspección y completa la planilla"
+    },
+    {
+      "role": "Supervisor",
+      "duty": "Revisa y aprueba la planilla. Resuelve las anomalías antes de iniciar operaciones."
+    }
+  ],
+  "epp": [
+    {
+      "item": "Zapatos de seguridad y guantes de trabajo durante la inspección",
+      "obligatory": true
+    },
+    {
+      "item": "Linterna",
+      "obligatory": false,
+      "note": "Si la inspección incluye áreas poco iluminadas"
+    }
+  ],
+  "tools": [
+    {
+      "name": "Planilla de inspección preoperacional estación",
+      "verification": "IPE-01"
+    },
+    {
+      "name": "Planilla de inspección preoperacional taller móvil",
+      "verification": "IPTM-01"
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS 594 — Condiciones sanitarias y ambientales básicas en los lugares de trabajo",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=167766"
+    },
+    {
+      "text": "DS 40 — Reglamento sobre prevención de riesgos profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1041130"
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "action",
+        "title": "Obtener la planilla correspondiente",
+        "summary": "IPE-01 estación / IPTM-01 taller móvil.",
+        "description": "Al inicio de la jornada, antes de cualquier operación, obtenga la planilla de inspección preoperacional correspondiente (IPE-01 para estación, IPTM-01 para taller móvil).",
+        "next": [
+          "s2"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "action",
+        "title": "Inspeccionar herramientas manuales",
+        "summary": "Sin daños, mangos en buen estado.",
+        "description": "Verifique que las llaves, destornilladores, martillos y demás herramientas no estén dobladas, rotas, oxidadas o con mangos en mal estado.",
+        "next": [
+          "s3"
+        ]
+      },
+      {
+        "id": "s3",
+        "type": "action",
+        "title": "Inspeccionar herramientas eléctricas y neumáticas",
+        "summary": "Cables, mangueras, protecciones (P1-09).",
+        "description": "Verifique cables, mangueras, accesorios y protecciones según Protocolo P1-09.",
+        "next": [
+          "s4"
+        ]
+      },
+      {
+        "id": "s4",
+        "type": "action",
+        "title": "Inspeccionar equipos de elevación",
+        "summary": "Elevador (estación) o gato y caballetes (móvil).",
+        "description": "ELEVADOR HIDRÁULICO (estación): verifique estado visual, seguros, mangueras y nivel de aceite hidráulico; pruebe descenso y ascenso una vez sin carga. GATO HIDRÁULICO y CABALLETES (taller móvil): verifique que no haya fugas, que el gato eleve y sostenga bien y que los caballetes estén en buen estado.",
+        "verifications": [
+          "Elevador o gato sin fugas y operativo",
+          "Caballetes en buen estado"
+        ],
+        "next": [
+          "s5"
+        ]
+      },
+      {
+        "id": "s5",
+        "type": "action",
+        "title": "Inspeccionar equipos de emergencia",
+        "summary": "Botiquín, extintores, kit de derrames.",
+        "description": "BOTIQUÍN: completo, insumos no vencidos, accesible. EXTINTORES: manómetro en zona verde, precinto intacto, fecha de recarga vigente, en su lugar. KIT DE DERRAMES: completo con absorbentes, paños, bolsas y señales.",
+        "verifications": [
+          "Botiquín completo y vigente",
+          "Extintores operativos",
+          "Kit de derrames completo"
+        ],
+        "next": [
+          "s6"
+        ]
+      },
+      {
+        "id": "s6",
+        "type": "action",
+        "title": "Inspeccionar el vehículo del taller móvil",
+        "summary": "Niveles, neumáticos, luces, frenos.",
+        "description": "VEHÍCULO DEL TALLER MÓVIL: revise niveles de aceite, agua y líquido de freno; estado de neumáticos (presión y desgaste); luces (balizas, freno, reversa); frenos; cinturón de seguridad; triángulos de emergencia.",
+        "verifications": [
+          "Niveles OK",
+          "Neumáticos, luces y frenos OK"
+        ],
+        "next": [
+          "s7"
+        ]
+      },
+      {
+        "id": "s7",
+        "type": "action",
+        "title": "Verificar el área de trabajo",
+        "summary": "Ordenada, sin derrames, señalizada.",
+        "description": "Verifique que el área esté ordenada, sin derrames y con las señalizaciones en su lugar.",
+        "next": [
+          "s8"
+        ]
+      },
+      {
+        "id": "s8",
+        "type": "decision",
+        "title": "¿Se detectó alguna falla crítica?",
+        "summary": "Equipo que no puede operarse con seguridad.",
+        "yes": "s9_fuera",
+        "no": "s10_firmar",
+        "yesLabel": "Sí",
+        "noLabel": "No, todo OK"
+      },
+      {
+        "id": "s9_fuera",
+        "type": "alert",
+        "title": "Marcar FUERA DE SERVICIO y notificar",
+        "summary": "Etiquetar y avisar al supervisor.",
+        "description": "Si detecta una falla crítica (equipo no operable con seguridad): marque como FUERA DE SERVICIO, etiquete el equipo y notifique al supervisor antes de comenzar el turno. El técnico tiene derecho a negarse a usar un equipo con falla crítica según la Ley 16.744.",
+        "criticalAlerts": [
+          "No use un equipo marcado fuera de servicio, aunque le indiquen lo contrario."
+        ],
+        "next": [
+          "s10_firmar"
+        ]
+      },
+      {
+        "id": "s10_firmar",
+        "type": "action",
+        "title": "Completar y firmar la planilla",
+        "summary": "OK/Observación/Falla por ítem.",
+        "description": "Complete la planilla marcando OK, OBSERVACIÓN o FALLA para cada ítem. El supervisor/técnico firma la planilla si todo está correcto, o coordina la reparación de las fallas antes de autorizar el inicio de operaciones.",
+        "verifications": [
+          "Planilla completada y firmada"
+        ],
+        "next": [
+          "s11_fin"
+        ]
+      },
+      {
+        "id": "s11_fin",
+        "type": "end",
+        "title": "Inspección completada",
+        "description": "Los equipos, herramientas y vehículo fueron inspeccionados; las fallas críticas se marcaron fuera de servicio y la planilla quedó firmada."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: Un equipo presenta una falla crítica y el supervisor autoriza usarlo de todas formas: el técnico puede negarse y tiene derecho a ello según la Ley 16.744.",
+    "DETENER: La planilla no está siendo completada de forma real (se marca OK sin revisar): esto es una falta grave."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "Falla de equipo descubierta durante la operación (no detectada en inspección)",
+      "action": "Detenga la operación. Aplique el protocolo de emergencia correspondiente. Reporte al supervisor."
+    }
+  ],
+  "linkedAnnexes": [
+    "IPE-01",
+    "IPTM-01"
+  ],
+  "linkedProtocols": [
+    "P1-09",
+    "P2-05"
+  ],
+  "registry": [
+    "Planilla IPE-01 (estación) o IPTM-01 (taller móvil): completada y firmada al inicio de cada jornada.",
+    "Registro de equipos fuera de servicio y fecha de reparación.",
+    "Archivo de planillas por al menos 1 año para auditorías."
+  ]
+}

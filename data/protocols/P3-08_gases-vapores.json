@@ -1,0 +1,269 @@
+{
+  "code": "P3-08",
+  "version": "1.0",
+  "activo": true,
+  "lastUpdated": "2026-05-15",
+  "title": "Exposición a Gases, Vapores y Humos (Escape, Productos Químicos)",
+  "shortTitle": "Gases, vapores y humos",
+  "category": "P3",
+  "criticality": "alto-riesgo",
+  "service": [
+    "ambos"
+  ],
+  "tags": [
+    "gases",
+    "vapores",
+    "humos",
+    "HDS",
+    "CO",
+    "químicos",
+    "ventilación"
+  ],
+  "icon": "flask",
+  "alertBanner": "La exposición crónica o aguda a gases de escape y vapores de hidrocarburos tiene efectos graves en la salud. Controles permanentes obligatorios.",
+  "objective": "Controlar la exposición de los trabajadores de Copec Taller a gases de escape, vapores de hidrocarburos, humos de soldadura y vapores de productos químicos, dentro de los límites permisibles establecidos por el DS 594.",
+  "scope": "Aplica a todos los trabajadores de Copec Taller expuestos a gases, vapores y humos en ambas modalidades de operación.",
+  "risks": [
+    {
+      "id": "R1",
+      "description": "Intoxicación aguda por monóxido de carbono (CO) de escapes de vehículos",
+      "severity": "alta",
+      "family": "quimico"
+    },
+    {
+      "id": "R2",
+      "description": "Intoxicación crónica por exposición repetida a vapores de hidrocarburos",
+      "severity": "alta",
+      "family": "quimico"
+    },
+    {
+      "id": "R3",
+      "description": "Cáncer por exposición prolongada a aceites minerales y sus derivados",
+      "severity": "alta",
+      "family": "quimico"
+    },
+    {
+      "id": "R4",
+      "description": "Irritación respiratoria y de mucosas por vapores de solventes",
+      "severity": "media",
+      "family": "quimico"
+    },
+    {
+      "id": "R5",
+      "description": "Enfermedad pulmonar obstructiva crónica (EPOC) por exposición prolongada",
+      "severity": "alta",
+      "family": "quimico"
+    },
+    {
+      "id": "R6",
+      "description": "Toxicidad sistémica por absorción cutánea de productos químicos",
+      "severity": "media",
+      "family": "quimico"
+    }
+  ],
+  "responsibles": [
+    {
+      "role": "Técnico",
+      "duty": "Usa EPP respiratorio y avisa al supervisor si detecta condiciones de exposición anormales"
+    },
+    {
+      "role": "Supervisor",
+      "duty": "Gestiona la ventilación, verifica el uso del EPP y coordina la evaluación de exposición con el organismo administrador"
+    },
+    {
+      "role": "Empresa",
+      "duty": "Realiza mediciones de higiene ambiental al menos 1 vez al año y cuando cambien las condiciones de trabajo"
+    }
+  ],
+  "epp": [
+    {
+      "item": "Mascarilla de media cara con filtro de vapores orgánicos (OV)",
+      "obligatory": true,
+      "note": "Productos químicos o áreas con motores encendidos"
+    },
+    {
+      "item": "Respirador desechable N95 mínimo",
+      "obligatory": false,
+      "note": "Exposición a polvos y partículas"
+    },
+    {
+      "item": "Guantes de nitrilo gruesos para manejo de productos químicos",
+      "obligatory": true
+    },
+    {
+      "item": "Lentes de seguridad para salpicaduras",
+      "obligatory": true
+    },
+    {
+      "item": "Ropa de trabajo de manga larga para protección cutánea",
+      "obligatory": true
+    }
+  ],
+  "tools": [
+    {
+      "name": "Sistema de ventilación/extracción del área",
+      "verification": ""
+    },
+    {
+      "name": "Hojas de Datos de Seguridad (HDS) de los productos",
+      "verification": "RHDS-01"
+    }
+  ],
+  "normatives": [
+    {
+      "text": "Ley 16.744 — Accidentes del trabajo y enfermedades profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=28650"
+    },
+    {
+      "text": "DS 594 — Agentes químicos y límites permisibles",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=167766"
+    },
+    {
+      "text": "DS 40 — Reglamento sobre prevención de riesgos profesionales",
+      "url": "https://www.bcn.cl/leychile/navegar?idNorma=1041130"
+    },
+    {
+      "text": "NCh 2245 — Hojas de Datos de Seguridad (HDS)",
+      "url": ""
+    }
+  ],
+  "procedure": {
+    "steps": [
+      {
+        "id": "s1",
+        "type": "action",
+        "title": "Verificar la ventilación/extracción",
+        "summary": "Al inicio de cada jornada.",
+        "description": "Al inicio de cada jornada, verifique el funcionamiento del sistema de ventilación/extracción del área. Si no funciona correctamente, notifique al supervisor antes de comenzar.",
+        "next": [
+          "s2"
+        ]
+      },
+      {
+        "id": "s2",
+        "type": "action",
+        "title": "Leer la HDS antes de usar un producto",
+        "summary": "Deben estar accesibles (NCh 2245).",
+        "description": "Antes de usar cualquier producto químico, lea la Hoja de Datos de Seguridad (HDS). Las HDS deben estar disponibles en la estación en un lugar accesible para todos los trabajadores (NCh 2245).",
+        "next": [
+          "s3"
+        ]
+      },
+      {
+        "id": "s3",
+        "type": "action",
+        "title": "Usar el EPP respiratorio indicado",
+        "summary": "Filtro en buen estado, no saturado.",
+        "description": "Use el EPP respiratorio indicado en la HDS del producto. Revise que la mascarilla esté en buen estado y el filtro no esté saturado (cámbielo según las instrucciones del fabricante o al detectar olor a través de él).",
+        "verifications": [
+          "EPP respiratorio según HDS",
+          "Filtro no saturado"
+        ],
+        "next": [
+          "s4_motores"
+        ]
+      },
+      {
+        "id": "s4_motores",
+        "type": "alert",
+        "title": "No encender motores sin extracción",
+        "summary": "Conectar escapes a los ductos.",
+        "description": "NUNCA encienda motores de vehículos en espacios cerrados sin sistema de extracción activo. En la estación, los escapes de vehículos deben conectarse a los ductos de extracción cuando el motor esté encendido en el interior.",
+        "criticalAlerts": [
+          "El CO es inodoro y letal. No encienda motores sin extracción activa."
+        ],
+        "next": [
+          "s5_volatiles"
+        ]
+      },
+      {
+        "id": "s5_volatiles",
+        "type": "action",
+        "title": "Manejar productos volátiles con cuidado",
+        "summary": "Ventilado, lejos de llamas, poca cantidad.",
+        "description": "Si trabaja con productos de alta volatilidad (solventes, limpiacontactos, desengrasantes): mantenga el área ventilada, no trabaje cerca de llamas y úselos en pequeñas cantidades.",
+        "next": [
+          "s6_higiene"
+        ]
+      },
+      {
+        "id": "s6_higiene",
+        "type": "action",
+        "title": "Higiene tras el trabajo",
+        "summary": "Lavar manos; no comer ni fumar en el área.",
+        "description": "Después de trabajar con productos químicos, lávese las manos con agua y jabón antes de comer, beber o tocarse la cara. NO coma, beba ni fume en el área de trabajo.",
+        "next": [
+          "s7_sintomas"
+        ]
+      },
+      {
+        "id": "s7_sintomas",
+        "type": "alert",
+        "title": "Detener ante olor fuerte o síntomas",
+        "summary": "Ventilar y notificar.",
+        "description": "Si percibe olor inusualmente fuerte o nota que compañeros presentan síntomas (tos, mareo, náuseas): detenga la actividad, ventile el área y notifique al supervisor.",
+        "criticalAlerts": [
+          "Los síntomas en varios trabajadores indican una exposición peligrosa. Detenga y ventile."
+        ],
+        "next": [
+          "s8_evaluaciones"
+        ]
+      },
+      {
+        "id": "s8_evaluaciones",
+        "type": "action",
+        "title": "Participar de las evaluaciones ambientales",
+        "summary": "Higiene ambiental del organismo administrador.",
+        "description": "Participe de las evaluaciones de higiene ambiental que realiza el organismo administrador u otro organismo competente. Los resultados deben ser comunicados a los trabajadores.",
+        "next": [
+          "s9_fin"
+        ]
+      },
+      {
+        "id": "s9_fin",
+        "type": "end",
+        "title": "Exposición controlada",
+        "description": "La exposición a gases y vapores se controló con ventilación, HDS, EPP respiratorio, higiene y participación en las evaluaciones ambientales."
+      }
+    ]
+  },
+  "stopRules": [
+    "DETENER: Se detecta olor intenso a gases de escape en el interior de la estación.",
+    "DETENER: Un trabajador presenta síntomas de intoxicación (mareo, dolor de cabeza, náuseas).",
+    "DETENER: El sistema de extracción no está funcionando.",
+    "DETENER: Los filtros de la mascarilla están saturados (se percibe el olor a través de ellos).",
+    "DETENER: No hay HDS disponible de un producto que se va a utilizar."
+  ],
+  "emergencyActions": [
+    {
+      "situation": "Intoxicación aguda por CO u otro gas",
+      "action": "Traslade a la víctima a aire fresco INMEDIATAMENTE. Llame al SAMU (131). Si no respira, inicie RCP. Active Protocolo P3-02."
+    },
+    {
+      "situation": "Salpicadura de producto químico en ojos",
+      "action": "Irrigue con agua limpia 20 minutos mínimo. Traslade a urgencias. Llame a CITUC (Central de Intoxicaciones): 800 200 579."
+    },
+    {
+      "situation": "Todo evento",
+      "action": "Active Protocolo P3-03. Central de Intoxicaciones CITUC: 800 200 579."
+    }
+  ],
+  "linkedAnnexes": [
+    "RHDS-01",
+    "RHA-01",
+    "REF-01",
+    "RI-01"
+  ],
+  "linkedProtocols": [
+    "P3-02",
+    "P3-03",
+    "P3-07"
+  ],
+  "registry": [
+    "Registro de HDS disponibles en la estación (RHDS-01): listado actualizado de todos los productos.",
+    "Registro de mediciones de higiene ambiental (RHA-01) con resultados y comparación con límites del DS 594.",
+    "Registro de entrega y cambio de filtros de mascarillas (REF-01).",
+    "Reporte de Incidentes RI-01 ante exposición accidental o síntomas.",
+    "Registro de vigilancia de salud del trabajador (coordinado con organismo administrador)."
+  ]
+}
